@@ -1,0 +1,250 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import ToolLayout from "@/components/ToolLayout";
+import CopyButton from "@/components/CopyButton";
+
+type SchemaType = "string" | "number" | "integer" | "boolean" | "object" | "array" | "null";
+
+interface ValidationError {
+  path: string;
+  message: string;
+}
+
+function validateValue(
+  value: unknown,
+  schema: Record<string, unknown>,
+  path: string
+): ValidationError[] {
+  const errors: ValidationError[] = [];
+
+  if (schema.type) {
+    const types = Array.isArray(schema.type)
+      ? (schema.type as SchemaType[])
+      : [schema.type as SchemaType];
+    const actualType = getType(value);
+    if (!types.includes(actualType as SchemaType)) {
+      errors.push({
+        path: path || "(root)",
+        message: `Expected type "${types.join(" | ")}" but got "${actualType}"`,
+      });
+      return errors;
+    }
+  }
+
+  if (typeof value === "string") {
+    if (typeof schema.minLength === "number" && value.length < schema.minLength) {
+      errors.push({ path, message: `String length ${value.length} is less than minLength ${schema.minLength}` });
+    }
+    if (typeof schema.maxLength === "number" && value.length > schema.maxLength) {
+      errors.push({ path, message: `String length ${value.length} exceeds maxLength ${schema.maxLength}` });
+    }
+    if (typeof schema.pattern === "string") {
+      const re = new RegExp(schema.pattern);
+      if (!re.test(value)) {
+        errors.push({ path, message: `String does not match pattern "${schema.pattern}"` });
+      }
+    }
+  }
+
+  if (typeof value === "number") {
+    if (typeof schema.minimum === "number" && value < schema.minimum) {
+      errors.push({ path, message: `Value ${value} is less than minimum ${schema.minimum}` });
+    }
+    if (typeof schema.maximum === "number" && value > schema.maximum) {
+      errors.push({ path, message: `Value ${value} exceeds maximum ${schema.maximum}` });
+    }
+  }
+
+  if (Array.isArray(value)) {
+    if (typeof schema.minItems === "number" && value.length < schema.minItems) {
+      errors.push({ path, message: `Array has ${value.length} items, minimum is ${schema.minItems}` });
+    }
+    if (typeof schema.maxItems === "number" && value.length > schema.maxItems) {
+      errors.push({ path, message: `Array has ${value.length} items, maximum is ${schema.maxItems}` });
+    }
+    if (schema.items && typeof schema.items === "object") {
+      value.forEach((item, i) => {
+        errors.push(...validateValue(item, schema.items as Record<string, unknown>, `${path}[${i}]`));
+      });
+    }
+  }
+
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    const obj = value as Record<string, unknown>;
+    const properties = (schema.properties || {}) as Record<string, Record<string, unknown>>;
+    const required = (schema.required || []) as string[];
+
+    for (const req of required) {
+      if (!(req in obj)) {
+        errors.push({ path: `${path}.${req}`, message: `Required property "${req}" is missing` });
+      }
+    }
+
+    for (const [key, val] of Object.entries(obj)) {
+      if (properties[key]) {
+        errors.push(...validateValue(val, properties[key], `${path}.${key}`));
+      }
+    }
+  }
+
+  if (schema.enum && Array.isArray(schema.enum)) {
+    if (!schema.enum.includes(value)) {
+      errors.push({ path, message: `Value must be one of: ${JSON.stringify(schema.enum)}` });
+    }
+  }
+
+  return errors;
+}
+
+function getType(value: unknown): string {
+  if (value === null) return "null";
+  if (Array.isArray(value)) return "array";
+  if (typeof value === "number" && Number.isInteger(value)) return "integer";
+  return typeof value;
+}
+
+const sampleJSON = `{
+  "name": "John Doe",
+  "age": 30,
+  "email": "john@example.com",
+  "tags": ["developer", "designer"]
+}`;
+
+const sampleSchema = `{
+  "type": "object",
+  "required": ["name", "age", "email"],
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "age": { "type": "integer", "minimum": 0, "maximum": 150 },
+    "email": { "type": "string", "pattern": "^[^@]+@[^@]+\\\\.[^@]+$" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}`;
+
+export default function JsonSchemaValidator() {
+  const [json, setJson] = useState(sampleJSON);
+  const [schema, setSchema] = useState(sampleSchema);
+
+  const result = useMemo(() => {
+    let parsedJson: unknown;
+    let parsedSchema: Record<string, unknown>;
+
+    try {
+      parsedJson = JSON.parse(json);
+    } catch (e) {
+      return { error: `Invalid JSON: ${(e as Error).message}`, errors: [] };
+    }
+
+    try {
+      parsedSchema = JSON.parse(schema);
+    } catch (e) {
+      return { error: `Invalid Schema: ${(e as Error).message}`, errors: [] };
+    }
+
+    const errors = validateValue(parsedJson, parsedSchema, "");
+    return { error: null, errors };
+  }, [json, schema]);
+
+  const resultText = result.error
+    ? result.error
+    : result.errors.length === 0
+      ? "Valid! JSON matches the schema."
+      : result.errors.map((e) => `${e.path}: ${e.message}`).join("\n");
+
+  return (
+    <ToolLayout
+      title="JSON Schema Validator"
+      description="Validate JSON data against a JSON Schema. Check types, required fields, patterns, and constraints."
+      relatedTools={["json-formatter", "json-path-finder", "json-to-typescript"]}
+    >
+      <div className="grid gap-4 md:grid-cols-2">
+        {/* JSON Input */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            JSON Data
+          </label>
+          <textarea
+            value={json}
+            onChange={(e) => setJson(e.target.value)}
+            rows={14}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            spellCheck={false}
+          />
+        </div>
+
+        {/* Schema Input */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            JSON Schema
+          </label>
+          <textarea
+            value={schema}
+            onChange={(e) => setSchema(e.target.value)}
+            rows={14}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            spellCheck={false}
+          />
+        </div>
+      </div>
+
+      {/* Result */}
+      <div className="mt-4">
+        <div className="flex items-center justify-between">
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            Validation Result
+          </label>
+          <CopyButton text={resultText} />
+        </div>
+        <div
+          className={`rounded-lg border p-3 text-sm font-mono ${
+            result.error
+              ? "border-red-300 bg-red-50 text-red-700"
+              : result.errors.length === 0
+                ? "border-green-300 bg-green-50 text-green-700"
+                : "border-yellow-300 bg-yellow-50 text-yellow-700"
+          }`}
+        >
+          {result.error ? (
+            <p>{result.error}</p>
+          ) : result.errors.length === 0 ? (
+            <p>Valid! JSON matches the schema.</p>
+          ) : (
+            <ul className="list-inside space-y-1">
+              {result.errors.map((err, i) => (
+                <li key={i}>
+                  <span className="font-semibold">{err.path}</span>: {err.message}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+
+      {/* SEO Content */}
+      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          What is JSON Schema?
+        </h2>
+        <p className="mb-3">
+          JSON Schema is a vocabulary that allows you to validate and annotate
+          JSON documents. It defines the structure, types, and constraints of
+          JSON data, making it useful for API validation, configuration files,
+          and data exchange.
+        </p>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          Supported validations
+        </h2>
+        <p>
+          This validator supports type checking (string, number, integer,
+          boolean, object, array, null), required properties, minimum/maximum
+          values, minLength/maxLength, pattern matching, enum values, and
+          array item validation.
+        </p>
+      </div>
+    </ToolLayout>
+  );
+}

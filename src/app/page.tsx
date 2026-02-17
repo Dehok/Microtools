@@ -1,7 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { tools, CATEGORIES } from "@/lib/tools";
 
 export default function Home() {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  const filteredTools = activeCategory
+    ? tools.filter((tool) => tool.category === activeCategory)
+    : tools;
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       {/* Hero */}
@@ -17,19 +26,36 @@ export default function Home() {
 
       {/* Categories */}
       <div className="mb-10 flex flex-wrap justify-center gap-3">
+        <button
+          onClick={() => setActiveCategory(null)}
+          className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+            activeCategory === null
+              ? "border-blue-500 bg-blue-50 text-blue-700"
+              : "border-gray-200 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50"
+          }`}
+        >
+          All Tools
+        </button>
         {CATEGORIES.map((cat) => (
-          <span
+          <button
             key={cat.id}
-            className="rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm font-medium text-gray-700"
+            onClick={() =>
+              setActiveCategory(activeCategory === cat.id ? null : cat.id)
+            }
+            className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+              activeCategory === cat.id
+                ? "border-blue-500 bg-blue-50 text-blue-700"
+                : "border-gray-200 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50"
+            }`}
           >
             {cat.icon} {cat.name}
-          </span>
+          </button>
         ))}
       </div>
 
       {/* Tools grid */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tools.map((tool) => (
+        {filteredTools.map((tool) => (
           <Link
             key={tool.slug}
             href={`/${tool.slug}`}

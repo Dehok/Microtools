@@ -1,0 +1,253 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import ToolLayout from "@/components/ToolLayout";
+import CopyButton from "@/components/CopyButton";
+
+export default function GithubReadmeGenerator() {
+  const [name, setName] = useState("");
+  const [subtitle, setSubtitle] = useState("");
+  const [about, setAbout] = useState("");
+  const [currentWork, setCurrentWork] = useState("");
+  const [learning, setLearning] = useState("");
+  const [collaborate, setCollaborate] = useState("");
+  const [contact, setContact] = useState("");
+  const [funFact, setFunFact] = useState("");
+  const [github, setGithub] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [website, setWebsite] = useState("");
+  const [languages, setLanguages] = useState("");
+  const [showStats, setShowStats] = useState(true);
+  const [showStreak, setShowStreak] = useState(true);
+  const [showTopLangs, setShowTopLangs] = useState(true);
+
+  const markdown = useMemo(() => {
+    const lines: string[] = [];
+
+    if (name) {
+      lines.push(`# Hi there, I'm ${name} 👋`);
+    } else {
+      lines.push("# Hi there 👋");
+    }
+    lines.push("");
+
+    if (subtitle) {
+      lines.push(`### ${subtitle}`);
+      lines.push("");
+    }
+
+    if (about) {
+      lines.push(about);
+      lines.push("");
+    }
+
+    const bullets: string[] = [];
+    if (currentWork) bullets.push(`🔭 I'm currently working on **${currentWork}**`);
+    if (learning) bullets.push(`🌱 I'm currently learning **${learning}**`);
+    if (collaborate) bullets.push(`👯 I'm looking to collaborate on **${collaborate}**`);
+    if (contact) bullets.push(`📫 How to reach me: **${contact}**`);
+    if (funFact) bullets.push(`⚡ Fun fact: **${funFact}**`);
+
+    if (bullets.length > 0) {
+      lines.push(...bullets.map((b) => `- ${b}`));
+      lines.push("");
+    }
+
+    // Social links
+    const socials: string[] = [];
+    if (twitter) {
+      socials.push(`[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/${twitter})`);
+    }
+    if (linkedin) {
+      socials.push(`[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/${linkedin})`);
+    }
+    if (website) {
+      socials.push(`[![Website](https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](${website})`);
+    }
+
+    if (socials.length > 0) {
+      lines.push("### Connect with me:");
+      lines.push(socials.join(" "));
+      lines.push("");
+    }
+
+    // Languages & tools
+    if (languages.trim()) {
+      lines.push("### Languages and Tools:");
+      lines.push("");
+      const langs = languages.split(",").map((l) => l.trim().toLowerCase()).filter(Boolean);
+      const badges = langs.map((lang) => {
+        const colors: Record<string, string> = {
+          javascript: "F7DF1E", typescript: "3178C6", python: "3776AB",
+          java: "ED8B00", react: "61DAFB", "node.js": "339933",
+          nodejs: "339933", html: "E34F26", css: "1572B6",
+          go: "00ADD8", rust: "000000", php: "777BB4",
+          ruby: "CC342D", swift: "FA7343", kotlin: "7F52FF",
+          dart: "0175C2", vue: "4FC08D", angular: "DD0031",
+          docker: "2496ED", git: "F05032", linux: "FCC624",
+          mongodb: "47A248", postgresql: "4169E1", mysql: "4479A1",
+          aws: "232F3E", azure: "0078D4", firebase: "FFCA28",
+          figma: "F24E1E", tailwind: "06B6D4", nextjs: "000000",
+          graphql: "E10098", redis: "DC382D", nginx: "009639",
+        };
+        const color = colors[lang] || "333333";
+        const logoName = lang.replace(/[.\s]/g, "");
+        return `![${lang}](https://img.shields.io/badge/${encodeURIComponent(lang)}-${color}?style=for-the-badge&logo=${logoName}&logoColor=white)`;
+      });
+      lines.push(badges.join(" "));
+      lines.push("");
+    }
+
+    // GitHub stats
+    if (github && (showStats || showStreak || showTopLangs)) {
+      lines.push("### GitHub Stats:");
+      lines.push("");
+      if (showStats) {
+        lines.push(`![GitHub Stats](https://github-readme-stats.vercel.app/api?username=${github}&show_icons=true&theme=default)`);
+        lines.push("");
+      }
+      if (showStreak) {
+        lines.push(`![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=${github}&theme=default)`);
+        lines.push("");
+      }
+      if (showTopLangs) {
+        lines.push(`![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=${github}&layout=compact&theme=default)`);
+        lines.push("");
+      }
+    }
+
+    return lines.join("\n");
+  }, [name, subtitle, about, currentWork, learning, collaborate, contact, funFact, github, twitter, linkedin, website, languages, showStats, showStreak, showTopLangs]);
+
+  return (
+    <ToolLayout
+      title="GitHub Profile README Generator"
+      description="Create an awesome GitHub profile README with a visual editor. Add stats, badges, social links, and more."
+      relatedTools={["markdown-preview", "markdown-table-generator", "slug-generator"]}
+    >
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Form */}
+        <div className="space-y-4">
+          <h3 className="font-semibold text-gray-900">Profile Info</h3>
+
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">Name</label>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">Subtitle</label>
+            <input type="text" value={subtitle} onChange={(e) => setSubtitle(e.target.value)} placeholder="Full Stack Developer | Open Source Enthusiast" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">About</label>
+            <textarea value={about} onChange={(e) => setAbout(e.target.value)} rows={2} placeholder="A short bio about yourself..." className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+
+          <h3 className="font-semibold text-gray-900">Details</h3>
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">Currently working on</label>
+            <input type="text" value={currentWork} onChange={(e) => setCurrentWork(e.target.value)} placeholder="My awesome project" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">Currently learning</label>
+            <input type="text" value={learning} onChange={(e) => setLearning(e.target.value)} placeholder="Rust, Kubernetes" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">Looking to collaborate on</label>
+            <input type="text" value={collaborate} onChange={(e) => setCollaborate(e.target.value)} placeholder="Open source projects" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">Contact</label>
+            <input type="text" value={contact} onChange={(e) => setContact(e.target.value)} placeholder="john@example.com" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">Fun fact</label>
+            <input type="text" value={funFact} onChange={(e) => setFunFact(e.target.value)} placeholder="I love coffee ☕" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+
+          <h3 className="font-semibold text-gray-900">Social Links</h3>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-sm text-gray-600">GitHub username</label>
+              <input type="text" value={github} onChange={(e) => setGithub(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            </div>
+            <div>
+              <label className="mb-1 block text-sm text-gray-600">Twitter/X handle</label>
+              <input type="text" value={twitter} onChange={(e) => setTwitter(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            </div>
+            <div>
+              <label className="mb-1 block text-sm text-gray-600">LinkedIn username</label>
+              <input type="text" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            </div>
+            <div>
+              <label className="mb-1 block text-sm text-gray-600">Website URL</label>
+              <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://example.com" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            </div>
+          </div>
+
+          <h3 className="font-semibold text-gray-900">Languages & Tools</h3>
+          <div>
+            <label className="mb-1 block text-sm text-gray-600">
+              Comma-separated (e.g. JavaScript, React, Python)
+            </label>
+            <input type="text" value={languages} onChange={(e) => setLanguages(e.target.value)} placeholder="JavaScript, TypeScript, React, Node.js, Python" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+          </div>
+
+          <h3 className="font-semibold text-gray-900">GitHub Stats</h3>
+          <div className="flex flex-wrap gap-4">
+            <label className="flex items-center gap-1.5 text-sm text-gray-600">
+              <input type="checkbox" checked={showStats} onChange={(e) => setShowStats(e.target.checked)} className="rounded border-gray-300" />
+              Stats card
+            </label>
+            <label className="flex items-center gap-1.5 text-sm text-gray-600">
+              <input type="checkbox" checked={showStreak} onChange={(e) => setShowStreak(e.target.checked)} className="rounded border-gray-300" />
+              Streak stats
+            </label>
+            <label className="flex items-center gap-1.5 text-sm text-gray-600">
+              <input type="checkbox" checked={showTopLangs} onChange={(e) => setShowTopLangs(e.target.checked)} className="rounded border-gray-300" />
+              Top languages
+            </label>
+          </div>
+        </div>
+
+        {/* Output */}
+        <div>
+          <div className="mb-1 flex items-center justify-between">
+            <label className="block text-sm font-medium text-gray-700">
+              Generated Markdown
+            </label>
+            <CopyButton text={markdown} />
+          </div>
+          <textarea
+            value={markdown}
+            readOnly
+            rows={30}
+            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm"
+            spellCheck={false}
+          />
+        </div>
+      </div>
+
+      {/* SEO Content */}
+      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          What is a GitHub Profile README?
+        </h2>
+        <p className="mb-3">
+          A GitHub Profile README is a special repository (with the same name
+          as your username) that appears on your GitHub profile page. It allows
+          you to showcase your skills, projects, and personality using Markdown.
+        </p>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+          How to set up your GitHub README
+        </h2>
+        <p>
+          Create a new repository with the same name as your GitHub username,
+          add a README.md file, and paste the generated markdown. Your profile
+          will automatically display the content.
+        </p>
+      </div>
+    </ToolLayout>
+  );
+}
