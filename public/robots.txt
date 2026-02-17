@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.codeutilo.com
+Host: https://codeutilo.com
 
 # Sitemaps
-Sitemap: https://www.codeutilo.com/sitemap.xml
+Sitemap: https://codeutilo.com/sitemap.xml
