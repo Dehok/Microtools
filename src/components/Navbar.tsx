@@ -20,7 +20,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="text-xl font-bold text-gray-900">
-          <span className="text-blue-600">Micro</span>Tools
+          <span className="text-blue-600">Code</span>Utilo
         </Link>
 
         <div className="relative hidden sm:block">

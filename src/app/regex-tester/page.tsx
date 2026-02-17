@@ -7,7 +7,7 @@ export default function RegexTester() {
   const [pattern, setPattern] = useState("\\b\\w+@\\w+\\.\\w+\\b");
   const [flags, setFlags] = useState("gi");
   const [testText, setTestText] = useState(
-    "Contact us at hello@microtools.dev or support@example.com for help.\nInvalid: @broken, test@, @.com"
+    "Contact us at hello@codeutilo.com or support@example.com for help.\nInvalid: @broken, test@, @.com"
   );
   const results = useMemo(() => {
     if (!pattern) return { matches: [], highlighted: testText, error: "" };

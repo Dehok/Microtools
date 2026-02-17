@@ -91,7 +91,7 @@ Inline \`code\` and code blocks:
 
 \`\`\`javascript
 function hello() {
-  console.log("Hello, MicroTools!");
+  console.log("Hello, CodeUtilo!");
 }
 \`\`\`
 
@@ -103,7 +103,7 @@ function hello() {
 
 ### Links & Quotes
 
-[Visit MicroTools](https://microtools.dev)
+[Visit CodeUtilo](https://www.codeutilo.com)
 
 > This is a blockquote. It can contain **formatted** text.
 

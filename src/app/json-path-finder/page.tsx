@@ -7,7 +7,7 @@ import CopyButton from "@/components/CopyButton";
 const SAMPLE = JSON.stringify(
   {
     store: {
-      name: "MicroTools Shop",
+      name: "CodeUtilo Shop",
       books: [
         { title: "JavaScript Guide", price: 29.99, inStock: true },
         { title: "CSS Mastery", price: 24.99, inStock: false },

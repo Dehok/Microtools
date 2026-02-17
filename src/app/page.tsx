@@ -51,7 +51,7 @@ export default function Home() {
       {/* Bottom SEO text */}
       <div className="mt-16 text-center text-sm text-gray-400">
         <p>
-          MicroTools provides free online utilities for developers, designers,
+          CodeUtilo provides free online utilities for developers, designers,
           and content creators. Built with privacy in mind — all processing
           happens locally in your browser.
         </p>

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://microtools.dev
+Host: https://www.codeutilo.com
 
 # Sitemaps
-Sitemap: https://microtools.dev/sitemap.xml
+Sitemap: https://www.codeutilo.com/sitemap.xml

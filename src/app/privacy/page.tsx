@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy for MicroTools. Learn how we handle your data — spoiler: we don't collect any.",
+  description: "Privacy policy for CodeUtilo. Learn how we handle your data — spoiler: we don't collect any.",
 };
 
 export default function PrivacyPage() {
@@ -15,21 +15,21 @@ export default function PrivacyPage() {
       <div className="space-y-4 text-gray-600">
         <h2 className="mt-6 text-xl font-semibold text-gray-900">1. Overview</h2>
         <p>
-          MicroTools (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) is committed to protecting your
+          CodeUtilo (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) is committed to protecting your
           privacy. This policy explains how we handle information when you use our
-          website at microtools.dev.
+          website at codeutilo.com.
         </p>
 
         <h2 className="mt-6 text-xl font-semibold text-gray-900">2. Data We Collect</h2>
         <p>
-          <strong>We do not collect any personal data.</strong> All tools on MicroTools
+          <strong>We do not collect any personal data.</strong> All tools on CodeUtilo
           run entirely in your browser. No data you enter into any tool is sent to our
           servers or any third party. Your input stays on your device.
         </p>
 
         <h2 className="mt-6 text-xl font-semibold text-gray-900">3. Cookies</h2>
         <p>
-          MicroTools itself does not use cookies. However, third-party services we use
+          CodeUtilo itself does not use cookies. However, third-party services we use
           (such as Google AdSense for advertising) may place cookies on your device.
           These cookies are used to serve relevant advertisements and measure ad performance.
         </p>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
         <h2 className="mt-6 text-xl font-semibold text-gray-900">9. Contact</h2>
         <p>
           If you have questions about this privacy policy, please contact us at{" "}
-          <strong>hello@microtools.dev</strong>.
+          <strong>hello@codeutilo.com</strong>.
         </p>
       </div>
 

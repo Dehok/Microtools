@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://microtools.dev",
+  siteUrl: "https://www.codeutilo.com",
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: "weekly",

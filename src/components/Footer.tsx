@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div>
             <span className="font-bold text-gray-900">
-              <span className="text-blue-600">Micro</span>Tools
+              <span className="text-blue-600">Code</span>Utilo
             </span>
             <span className="ml-2 text-sm text-gray-500">
               Free online tools for developers
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
         </div>
         <p className="mt-4 text-center text-xs text-gray-400">
-          &copy; {new Date().getFullYear()} MicroTools. All tools run in your
+          &copy; {new Date().getFullYear()} CodeUtilo. All tools run in your
           browser — no data is sent to any server.
         </p>
       </div>

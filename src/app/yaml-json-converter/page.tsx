@@ -130,7 +130,7 @@ function jsonToYaml(obj: unknown, indent = 0): string {
   return String(obj);
 }
 
-const SAMPLE_YAML = `name: MicroTools
+const SAMPLE_YAML = `name: CodeUtilo
 version: 1.0
 description: Free online developer tools
 features:
@@ -145,7 +145,7 @@ debug: false`;
 
 const SAMPLE_JSON = JSON.stringify(
   {
-    name: "MicroTools",
+    name: "CodeUtilo",
     version: 1.0,
     description: "Free online developer tools",
     features: ["fast", "free", "no signup"],

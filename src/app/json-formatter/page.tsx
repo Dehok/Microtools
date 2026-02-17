@@ -50,7 +50,7 @@ export default function JsonFormatter() {
 
   const handleSample = () => {
     const sample = {
-      name: "MicroTools",
+      name: "CodeUtilo",
       version: "1.0.0",
       tools: ["JSON Formatter", "Base64", "UUID"],
       config: { theme: "light", language: "en" },

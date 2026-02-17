@@ -69,7 +69,7 @@ function htmlToMarkdown(html: string): string {
   return md.trim();
 }
 
-const SAMPLE = `<h1>Welcome to MicroTools</h1>
+const SAMPLE = `<h1>Welcome to CodeUtilo</h1>
 <p>This is a <strong>free online</strong> tool for converting <em>HTML to Markdown</em>.</p>
 <h2>Features</h2>
 <ul>

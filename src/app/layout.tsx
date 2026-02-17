@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "MicroTools — Free Online Tools for Developers",
-    template: "%s | MicroTools",
+    default: "CodeUtilo — Free Online Tools for Developers",
+    template: "%s | CodeUtilo",
   },
   description:
     "100+ free online developer tools: JSON formatter, Base64 encoder, UUID generator, and more. All tools run in your browser — fast, free, and private.",

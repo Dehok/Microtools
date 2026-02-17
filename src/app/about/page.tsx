@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About MicroTools",
-  description: "MicroTools is a collection of free online developer tools. All tools run in your browser — fast, free, and private.",
+  title: "About CodeUtilo",
+  description: "CodeUtilo is a collection of free online developer tools. All tools run in your browser — fast, free, and private.",
 };
 
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
-      <h1 className="mb-6 text-3xl font-bold text-gray-900">About MicroTools</h1>
+      <h1 className="mb-6 text-3xl font-bold text-gray-900">About CodeUtilo</h1>
 
       <div className="space-y-4 text-gray-600">
         <p>
-          <strong>MicroTools</strong> is a growing collection of free online tools
+          <strong>CodeUtilo</strong> is a growing collection of free online tools
           built for developers, designers, and content creators. Every tool runs
           entirely in your browser — no data is ever sent to any server.
         </p>
@@ -41,7 +41,7 @@ export default function AboutPage() {
         <h2 className="mt-8 text-xl font-semibold text-gray-900">Contact</h2>
         <p>
           Have a suggestion for a new tool? Found a bug? We&apos;d love to hear from you.
-          Reach out at <strong>hello@microtools.dev</strong>.
+          Reach out at <strong>hello@codeutilo.com</strong>.
         </p>
       </div>
 
