@@ -1,0 +1,194 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import ToolLayout from "@/components/ToolLayout";
+import CopyButton from "@/components/CopyButton";
+
+function gcd(a: number, b: number): number {
+  return b === 0 ? a : gcd(b, a % b);
+}
+
+const PRESETS = [
+  { label: "16:9 (HD)", w: 1920, h: 1080 },
+  { label: "4:3 (Classic)", w: 1024, h: 768 },
+  { label: "1:1 (Square)", w: 1080, h: 1080 },
+  { label: "21:9 (Ultra-wide)", w: 2560, h: 1080 },
+  { label: "9:16 (Story/Reel)", w: 1080, h: 1920 },
+  { label: "3:2 (Photo)", w: 1500, h: 1000 },
+  { label: "4:5 (Instagram)", w: 1080, h: 1350 },
+  { label: "2:1 (Twitter header)", w: 1500, h: 750 },
+];
+
+export default function AspectRatioCalculator() {
+  const [width, setWidth] = useState("1920");
+  const [height, setHeight] = useState("1080");
+  const [lockRatio, setLockRatio] = useState(false);
+  const [targetW, setTargetW] = useState("1280");
+  const [targetH, setTargetH] = useState("");
+
+  const ratio = useMemo(() => {
+    const w = parseInt(width);
+    const h = parseInt(height);
+    if (!w || !h || w <= 0 || h <= 0) return null;
+    const d = gcd(w, h);
+    return { x: w / d, y: h / d, decimal: (w / h).toFixed(4) };
+  }, [width, height]);
+
+  const scaled = useMemo(() => {
+    if (!ratio) return null;
+    const tw = parseInt(targetW);
+    const th = parseInt(targetH);
+    if (tw && tw > 0) {
+      return { w: tw, h: Math.round(tw / (ratio.x / ratio.y)) };
+    }
+    if (th && th > 0) {
+      return { w: Math.round(th * (ratio.x / ratio.y)), h: th };
+    }
+    return null;
+  }, [ratio, targetW, targetH]);
+
+  const handleTargetW = (val: string) => {
+    setTargetW(val);
+    setTargetH("");
+  };
+
+  const handleTargetH = (val: string) => {
+    setTargetH(val);
+    setTargetW("");
+  };
+
+  return (
+    <ToolLayout
+      title="Aspect Ratio Calculator — Resize & Scale"
+      description="Calculate aspect ratios, resize dimensions proportionally, and find equivalent sizes. Free online calculator for designers."
+      relatedTools={["color-picker", "css-minifier", "number-base-converter"]}
+    >
+      {/* Main dimensions */}
+      <div className="mb-4 grid grid-cols-2 gap-4">
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">Width</label>
+          <input
+            type="number"
+            value={width}
+            onChange={(e) => {
+              setWidth(e.target.value);
+              if (lockRatio && ratio) {
+                const w = parseInt(e.target.value);
+                if (w > 0) setHeight(Math.round(w / (ratio.x / ratio.y)).toString());
+              }
+            }}
+            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">Height</label>
+          <input
+            type="number"
+            value={height}
+            onChange={(e) => {
+              setHeight(e.target.value);
+              if (lockRatio && ratio) {
+                const h = parseInt(e.target.value);
+                if (h > 0) setWidth(Math.round(h * (ratio.x / ratio.y)).toString());
+              }
+            }}
+            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+          />
+        </div>
+      </div>
+
+      <label className="mb-4 flex items-center gap-2 text-sm text-gray-600">
+        <input
+          type="checkbox"
+          checked={lockRatio}
+          onChange={(e) => setLockRatio(e.target.checked)}
+          className="rounded border-gray-300"
+        />
+        Lock aspect ratio when changing dimensions
+      </label>
+
+      {/* Result */}
+      {ratio && (
+        <div className="mb-6 rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
+          <div className="mb-1 text-sm font-medium text-blue-600">Aspect Ratio</div>
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-3xl font-bold text-blue-800">
+              {ratio.x}:{ratio.y}
+            </span>
+            <CopyButton text={`${ratio.x}:${ratio.y}`} />
+          </div>
+          <div className="mt-1 text-sm text-blue-600">Decimal: {ratio.decimal}</div>
+        </div>
+      )}
+
+      {/* Scale calculator */}
+      {ratio && (
+        <div className="mb-6">
+          <h3 className="mb-2 text-sm font-semibold text-gray-900">Scale to New Size</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="mb-1 block text-xs text-gray-500">New width</label>
+              <input
+                type="number"
+                value={targetW}
+                onChange={(e) => handleTargetW(e.target.value)}
+                placeholder="Enter width..."
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-gray-500">New height</label>
+              <input
+                type="number"
+                value={targetH}
+                onChange={(e) => handleTargetH(e.target.value)}
+                placeholder="Enter height..."
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+              />
+            </div>
+          </div>
+          {scaled && (
+            <div className="mt-2 flex items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-4 py-2 text-sm text-green-700">
+              <span>
+                Scaled size: <strong>{scaled.w} × {scaled.h}</strong>
+              </span>
+              <CopyButton text={`${scaled.w}x${scaled.h}`} />
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Presets */}
+      <h3 className="mb-2 text-sm font-semibold text-gray-900">Common Ratios</h3>
+      <div className="mb-4 flex flex-wrap gap-2">
+        {PRESETS.map((p) => (
+          <button
+            key={p.label}
+            onClick={() => {
+              setWidth(p.w.toString());
+              setHeight(p.h.toString());
+            }}
+            className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50"
+          >
+            {p.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is Aspect Ratio?</h2>
+        <p className="mb-3">
+          Aspect ratio is the proportional relationship between width and height. It is expressed
+          as two numbers separated by a colon (e.g., 16:9). Maintaining aspect ratio when resizing
+          prevents images and videos from being stretched or distorted.
+        </p>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">Common Aspect Ratios</h2>
+        <p>
+          <strong>16:9</strong> is standard for HD video and monitors. <strong>4:3</strong> is the classic
+          TV/monitor format. <strong>1:1</strong> is square (Instagram posts). <strong>9:16</strong> is
+          vertical (Stories, Reels, TikTok). <strong>21:9</strong> is ultra-wide cinema format.
+        </p>
+      </div>
+    </ToolLayout>
+  );
+}

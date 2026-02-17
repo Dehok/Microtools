@@ -1,0 +1,141 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import ToolLayout from "@/components/ToolLayout";
+import CopyButton from "@/components/CopyButton";
+
+const PRESETS = [
+  { name: "Subtle", x: 0, y: 1, blur: 3, spread: 0, color: "#00000012", inset: false },
+  { name: "Medium", x: 0, y: 4, blur: 6, spread: -1, color: "#0000001a", inset: false },
+  { name: "Large", x: 0, y: 10, blur: 15, spread: -3, color: "#0000001a", inset: false },
+  { name: "XL", x: 0, y: 20, blur: 25, spread: -5, color: "#0000001a", inset: false },
+  { name: "Inner", x: 0, y: 2, blur: 4, spread: 0, color: "#0000001a", inset: true },
+  { name: "Outline", x: 0, y: 0, blur: 0, spread: 3, color: "#3b82f680", inset: false },
+  { name: "Layered", x: 0, y: 1, blur: 2, spread: 0, color: "#0000000d", inset: false },
+  { name: "Hard", x: 5, y: 5, blur: 0, spread: 0, color: "#000000", inset: false },
+];
+
+export default function BoxShadowGenerator() {
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(4);
+  const [blur, setBlur] = useState(6);
+  const [spread, setSpread] = useState(-1);
+  const [color, setColor] = useState("#0000001a");
+  const [inset, setInset] = useState(false);
+  const [bgColor, setBgColor] = useState("#ffffff");
+  const [boxColor, setBoxColor] = useState("#ffffff");
+
+  const css = useMemo(() => {
+    const parts = [inset ? "inset" : "", `${x}px`, `${y}px`, `${blur}px`, `${spread}px`, color]
+      .filter(Boolean)
+      .join(" ");
+    return `box-shadow: ${parts};`;
+  }, [x, y, blur, spread, color, inset]);
+
+  return (
+    <ToolLayout
+      title="CSS Box Shadow Generator — Visual Editor"
+      description="Create CSS box shadows with a visual editor. Adjust offset, blur, spread, and color. Copy ready-to-use CSS code."
+      relatedTools={["css-gradient-generator", "color-picker", "css-minifier"]}
+    >
+      {/* Preview */}
+      <div
+        className="mb-6 flex items-center justify-center rounded-lg border border-gray-200 p-12"
+        style={{ backgroundColor: bgColor }}
+      >
+        <div
+          className="h-32 w-48 rounded-lg"
+          style={{
+            backgroundColor: boxColor,
+            boxShadow: `${inset ? "inset " : ""}${x}px ${y}px ${blur}px ${spread}px ${color}`,
+          }}
+        />
+      </div>
+
+      {/* Controls */}
+      <div className="mb-4 grid gap-4 sm:grid-cols-2">
+        {[
+          { label: "Offset X", value: x, set: setX, min: -50, max: 50 },
+          { label: "Offset Y", value: y, set: setY, min: -50, max: 50 },
+          { label: "Blur", value: blur, set: setBlur, min: 0, max: 100 },
+          { label: "Spread", value: spread, set: setSpread, min: -50, max: 50 },
+        ].map((ctrl) => (
+          <div key={ctrl.label}>
+            <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+              {ctrl.label}
+              <span className="font-mono text-gray-500">{ctrl.value}px</span>
+            </label>
+            <input
+              type="range"
+              min={ctrl.min}
+              max={ctrl.max}
+              value={ctrl.value}
+              onChange={(e) => ctrl.set(parseInt(e.target.value))}
+              className="w-full"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="mb-4 flex flex-wrap gap-4">
+        <div>
+          <label className="mb-1 block text-xs font-medium text-gray-700">Shadow Color</label>
+          <div className="flex gap-1">
+            <input type="color" value={color.slice(0, 7)} onChange={(e) => setColor(e.target.value + color.slice(7))} className="h-8 w-8 cursor-pointer rounded border" />
+            <input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="w-24 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs" />
+          </div>
+        </div>
+        <div>
+          <label className="mb-1 block text-xs font-medium text-gray-700">Background</label>
+          <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="h-8 w-8 cursor-pointer rounded border" />
+        </div>
+        <div>
+          <label className="mb-1 block text-xs font-medium text-gray-700">Box Color</label>
+          <input type="color" value={boxColor} onChange={(e) => setBoxColor(e.target.value)} className="h-8 w-8 cursor-pointer rounded border" />
+        </div>
+        <label className="flex items-end gap-1.5 pb-1 text-sm text-gray-600">
+          <input type="checkbox" checked={inset} onChange={(e) => setInset(e.target.checked)} className="rounded border-gray-300" />
+          Inset
+        </label>
+      </div>
+
+      {/* CSS output */}
+      <div className="mb-4">
+        <div className="flex items-center justify-between">
+          <label className="text-sm font-medium text-gray-700">CSS Code</label>
+          <CopyButton text={css} />
+        </div>
+        <pre className="mt-1 rounded-lg border border-gray-200 bg-gray-900 p-3 font-mono text-sm text-green-400">{css}</pre>
+      </div>
+
+      {/* Presets */}
+      <h3 className="mb-2 text-sm font-semibold text-gray-900">Presets</h3>
+      <div className="flex flex-wrap gap-2">
+        {PRESETS.map((p) => (
+          <button
+            key={p.name}
+            onClick={() => { setX(p.x); setY(p.y); setBlur(p.blur); setSpread(p.spread); setColor(p.color); setInset(p.inset); }}
+            className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50"
+          >
+            {p.name}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">CSS Box Shadow</h2>
+        <p className="mb-3">
+          The <code>box-shadow</code> property adds shadow effects to elements. It takes values for
+          horizontal offset, vertical offset, blur radius, spread radius, and color. The optional
+          <code> inset</code> keyword creates an inner shadow.
+        </p>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900">Performance Tips</h2>
+        <p>
+          Box shadows with large blur values can impact rendering performance, especially during
+          animations. For better performance, use <code>filter: drop-shadow()</code> for simple
+          shadows or pre-render complex shadows as images.
+        </p>
+      </div>
+    </ToolLayout>
+  );
+}

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://microtools.dev
+
+# Sitemaps
+Sitemap: https://microtools.dev/sitemap.xml
