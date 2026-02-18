@@ -3,11 +3,11 @@ import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
   title: "Password Strength Checker — Test Your Password",
-  description: "Analyze password strength with detailed scoring. Get tips to improve security. Free online tool.",
-  keywords: ["password strength checker","password tester","password strength","check password security","how strong is my password"],
+  description: "Check how strong your password is. Get detailed scoring, crack time estimates, and tips to improve security. Everything runs locally.",
+  keywords: ["password strength checker","password tester","password security","check password strength","password analyzer"],
   openGraph: {
     title: "Password Strength Checker — Test Your Password | CodeUtilo",
-    description: "Analyze password strength with detailed scoring. Get tips to improve security. Free online tool.",
+    description: "Check how strong your password is. Get detailed scoring, crack time estimates, and tips to improve security. Everything runs locally.",
     url: "https://codeutilo.com/password-strength-checker",
     siteName: "CodeUtilo",
     type: "website",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Password Strength Checker — Test Your Password | CodeUtilo",
-    description: "Analyze password strength with detailed scoring. Get tips to improve security. Free online tool.",
+    description: "Check how strong your password is. Get detailed scoring, crack time estimates, and tips to improve security. Everything runs locally.",
   },
   alternates: {
     canonical: "https://codeutilo.com/password-strength-checker",
@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <SchemaOrg
         name="Password Strength Checker"
-        description="Analyze password strength with detailed scoring. Get tips to improve security. Free online tool."
+        description="Check how strong your password is. Get detailed scoring, crack time estimates, and tips to improve security. Everything runs locally."
         slug="password-strength-checker"
       />
       {children}

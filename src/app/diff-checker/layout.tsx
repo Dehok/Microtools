@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "Diff Checker — Compare Two Texts Online",
+  title: "Diff Checker — Compare Two Texts Online Free",
   description: "Compare two texts and highlight the differences line by line. Free online diff checker and text comparison tool.",
-  keywords: ["diff checker","text compare","compare two texts","text diff online","difference checker"],
+  keywords: ["diff checker","text compare","text diff","compare two texts","online diff tool"],
   openGraph: {
-    title: "Diff Checker — Compare Two Texts Online | CodeUtilo",
+    title: "Diff Checker — Compare Two Texts Online Free | CodeUtilo",
     description: "Compare two texts and highlight the differences line by line. Free online diff checker and text comparison tool.",
     url: "https://codeutilo.com/diff-checker",
     siteName: "CodeUtilo",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Diff Checker — Compare Two Texts Online | CodeUtilo",
+    title: "Diff Checker — Compare Two Texts Online Free | CodeUtilo",
     description: "Compare two texts and highlight the differences line by line. Free online diff checker and text comparison tool.",
   },
   alternates: {

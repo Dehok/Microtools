@@ -3,11 +3,11 @@ import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
   title: "Unit Converter — Length, Weight, Temperature & More",
-  description: "Convert between units of length, weight, temperature, speed, area, and volume. Free online tool.",
-  keywords: ["unit converter","measurement converter","length converter","weight converter","temperature converter"],
+  description: "Convert between units of length, weight, temperature, speed, area, and volume. Free online unit converter with instant results.",
+  keywords: ["unit converter","convert units","length converter","weight converter","temperature converter","metric converter"],
   openGraph: {
     title: "Unit Converter — Length, Weight, Temperature & More | CodeUtilo",
-    description: "Convert between units of length, weight, temperature, speed, area, and volume. Free online tool.",
+    description: "Convert between units of length, weight, temperature, speed, area, and volume. Free online unit converter with instant results.",
     url: "https://codeutilo.com/unit-converter",
     siteName: "CodeUtilo",
     type: "website",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Unit Converter — Length, Weight, Temperature & More | CodeUtilo",
-    description: "Convert between units of length, weight, temperature, speed, area, and volume. Free online tool.",
+    description: "Convert between units of length, weight, temperature, speed, area, and volume. Free online unit converter with instant results.",
   },
   alternates: {
     canonical: "https://codeutilo.com/unit-converter",
@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <SchemaOrg
         name="Unit Converter"
-        description="Convert between units of length, weight, temperature, speed, area, and volume. Free online tool."
+        description="Convert between units of length, weight, temperature, speed, area, and volume. Free online unit converter with instant results."
         slug="unit-converter"
       />
       {children}

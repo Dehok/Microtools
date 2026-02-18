@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "Color Contrast Checker — WCAG AA & AAA Validator",
-  description: "Check WCAG 2.1 color contrast ratios. Validate AA and AAA accessibility standards. Free tool.",
-  keywords: ["color contrast checker","wcag contrast","contrast ratio checker","accessibility color","aa aaa contrast"],
+  title: "Color Contrast Checker — WCAG Accessibility Validator",
+  description: "Check color contrast ratios for WCAG 2.1 compliance. Test text and background colors for AA and AAA accessibility standards.",
+  keywords: ["color contrast checker","wcag contrast","accessibility checker","contrast ratio","color accessibility"],
   openGraph: {
-    title: "Color Contrast Checker — WCAG AA & AAA Validator | CodeUtilo",
-    description: "Check WCAG 2.1 color contrast ratios. Validate AA and AAA accessibility standards. Free tool.",
+    title: "Color Contrast Checker — WCAG Accessibility Validator | CodeUtilo",
+    description: "Check color contrast ratios for WCAG 2.1 compliance. Test text and background colors for AA and AAA accessibility standards.",
     url: "https://codeutilo.com/color-contrast-checker",
     siteName: "CodeUtilo",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Color Contrast Checker — WCAG AA & AAA Validator | CodeUtilo",
-    description: "Check WCAG 2.1 color contrast ratios. Validate AA and AAA accessibility standards. Free tool.",
+    title: "Color Contrast Checker — WCAG Accessibility Validator | CodeUtilo",
+    description: "Check color contrast ratios for WCAG 2.1 compliance. Test text and background colors for AA and AAA accessibility standards.",
   },
   alternates: {
     canonical: "https://codeutilo.com/color-contrast-checker",
@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <SchemaOrg
         name="Color Contrast Checker"
-        description="Check WCAG 2.1 color contrast ratios. Validate AA and AAA accessibility standards. Free tool."
+        description="Check color contrast ratios for WCAG 2.1 compliance. Test text and background colors for AA and AAA accessibility standards."
         slug="color-contrast-checker"
       />
       {children}

@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "Markdown Table Generator — Visual Table Editor",
-  description: "Create Markdown tables with a visual editor and column alignment. Free online table generator.",
-  keywords: ["markdown table generator","markdown table","create markdown table","markdown table editor","md table generator"],
+  title: "Markdown Table Generator — Create Tables Visually",
+  description: "Generate Markdown tables with a visual editor. Set alignment, add rows/columns, and copy the result. Free online tool.",
+  keywords: ["markdown table generator","markdown table","create markdown table","table to markdown","md table generator"],
   openGraph: {
-    title: "Markdown Table Generator — Visual Table Editor | CodeUtilo",
-    description: "Create Markdown tables with a visual editor and column alignment. Free online table generator.",
+    title: "Markdown Table Generator — Create Tables Visually | CodeUtilo",
+    description: "Generate Markdown tables with a visual editor. Set alignment, add rows/columns, and copy the result. Free online tool.",
     url: "https://codeutilo.com/markdown-table-generator",
     siteName: "CodeUtilo",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Markdown Table Generator — Visual Table Editor | CodeUtilo",
-    description: "Create Markdown tables with a visual editor and column alignment. Free online table generator.",
+    title: "Markdown Table Generator — Create Tables Visually | CodeUtilo",
+    description: "Generate Markdown tables with a visual editor. Set alignment, add rows/columns, and copy the result. Free online tool.",
   },
   alternates: {
     canonical: "https://codeutilo.com/markdown-table-generator",
@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <SchemaOrg
         name="Markdown Table Generator"
-        description="Create Markdown tables with a visual editor and column alignment. Free online table generator."
+        description="Generate Markdown tables with a visual editor. Set alignment, add rows/columns, and copy the result. Free online tool."
         slug="markdown-table-generator"
       />
       {children}

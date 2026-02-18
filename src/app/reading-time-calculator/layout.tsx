@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "Reading Time Calculator — Estimate Read Time Online",
-  description: "Estimate reading time and speaking time for any text. Word and character stats included. Free tool.",
-  keywords: ["reading time calculator","read time estimator","reading time","speaking time calculator","text reading time"],
+  title: "Reading Time Calculator — Estimate Read Time",
+  description: "Estimate reading time and speaking time for any text. Get word count, character count, and paragraph stats. Free reading time estimator.",
+  keywords: ["reading time calculator","estimate reading time","word count","reading speed","speaking time calculator"],
   openGraph: {
-    title: "Reading Time Calculator — Estimate Read Time Online | CodeUtilo",
-    description: "Estimate reading time and speaking time for any text. Word and character stats included. Free tool.",
+    title: "Reading Time Calculator — Estimate Read Time | CodeUtilo",
+    description: "Estimate reading time and speaking time for any text. Get word count, character count, and paragraph stats. Free reading time estimator.",
     url: "https://codeutilo.com/reading-time-calculator",
     siteName: "CodeUtilo",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Reading Time Calculator — Estimate Read Time Online | CodeUtilo",
-    description: "Estimate reading time and speaking time for any text. Word and character stats included. Free tool.",
+    title: "Reading Time Calculator — Estimate Read Time | CodeUtilo",
+    description: "Estimate reading time and speaking time for any text. Get word count, character count, and paragraph stats. Free reading time estimator.",
   },
   alternates: {
     canonical: "https://codeutilo.com/reading-time-calculator",
@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <SchemaOrg
         name="Reading Time Calculator"
-        description="Estimate reading time and speaking time for any text. Word and character stats included. Free tool."
+        description="Estimate reading time and speaking time for any text. Get word count, character count, and paragraph stats. Free reading time estimator."
         slug="reading-time-calculator"
       />
       {children}
