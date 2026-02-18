@@ -187,7 +187,45 @@ export default function LoremIpsumGenerator() {
         <p>
           Select whether you want paragraphs, sentences, or words. Set the desired amount using the controls. The Lorem Ipsum text is generated instantly. Copy it to your clipboard with the Copy button.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is Lorem Ipsum?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Lorem Ipsum is dummy text used in the printing and typesetting industry since the 1500s. It is derived from a scrambled section of &apos;De Finibus Bonorum et Malorum&apos; by Cicero, written in 45 BC.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Why use Lorem Ipsum instead of real text?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Lorem Ipsum helps focus on visual design without the distraction of readable content. Real text can bias viewers toward reading rather than evaluating layout, typography, and spacing.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Is Lorem Ipsum real Latin?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Lorem Ipsum is based on Latin but is not standard Latin. It is a scrambled and altered version of a passage by Cicero. Some words are real Latin, while others are modified or made up.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I use Lorem Ipsum in my projects commercially?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. Lorem Ipsum is in the public domain and can be used freely in any project. It is meant as placeholder text and should be replaced with real content before publishing.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

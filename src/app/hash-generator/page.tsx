@@ -171,7 +171,45 @@ export default function HashGenerator() {
         <p>
           Enter or paste your text into the input area. Hash values for all supported algorithms are generated instantly. Click the Copy button next to any hash to copy it to your clipboard.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is a hash function?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              A hash function takes any input and produces a fixed-length output (the hash). The same input always produces the same hash, but it&apos;s computationally infeasible to reverse the process or find two inputs with the same hash.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Which hash algorithm should I use?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              For general purposes, use SHA-256. MD5 and SHA-1 are considered insecure for cryptographic use. For password hashing, use bcrypt, scrypt, or Argon2 instead.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Is MD5 secure?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              No. MD5 is cryptographically broken — collision attacks are practical and fast. Don&apos;t use MD5 for security purposes. It&apos;s still acceptable for checksums and non-security data integrity checks.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I reverse a hash to get the original text?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Hash functions are one-way by design. You cannot mathematically reverse a hash. However, short or common inputs can be found using rainbow tables or brute force, which is why strong passwords are important.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

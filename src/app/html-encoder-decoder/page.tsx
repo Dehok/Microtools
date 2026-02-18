@@ -162,7 +162,45 @@ export default function HtmlEncoderDecoder() {
         <p>
           Select Encode or Decode mode. Paste your text or HTML into the input area. The encoded or decoded result appears instantly. Copy the result to use in your HTML documents.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Why do I need to encode HTML entities?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              HTML encoding prevents special characters like &lt;, &gt;, and &amp; from being interpreted as HTML tags or entities. This is essential for displaying code snippets and preventing cross-site scripting (XSS) attacks.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is XSS and how does HTML encoding prevent it?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              XSS (Cross-Site Scripting) is an attack where malicious scripts are injected into web pages. HTML encoding user input ensures that &lt; and &gt; are displayed as text rather than interpreted as HTML tags, preventing script execution.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the difference between &amp;amp; and &amp;#38;?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              &amp;amp; is a named HTML entity, while &amp;#38; is its numeric equivalent. Both represent the ampersand (&amp;) character. Named entities are more readable, while numeric entities work for any Unicode character.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Should I encode all special characters?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              At minimum, encode these five characters: &lt; (&amp;lt;), &gt; (&amp;gt;), &amp; (&amp;amp;), &quot; (&amp;quot;), and &apos; (&amp;#39;). These are the characters that can cause interpretation issues or security vulnerabilities in HTML.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

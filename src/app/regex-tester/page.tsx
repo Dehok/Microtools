@@ -214,7 +214,45 @@ export default function RegexTester() {
         <p>
           Enter your regular expression pattern in the regex input field and set the desired flags (global, case-insensitive, multiline). Then paste or type your test text below. All matches are highlighted in real time. Match details show the matched text, groups, and positions.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What are regex flags?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Flags modify how the regex engine works. Common ones: g (global — find all matches), i (case-insensitive), m (multiline — ^ and $ match line boundaries), s (dotAll — dot matches newlines).
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the difference between * and + in regex?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              * matches zero or more occurrences of the preceding element (can match empty strings). + matches one or more occurrences (must match at least once). For example, a* matches &apos;&apos; and &apos;aaa&apos;, while a+ only matches &apos;aaa&apos;.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              How do I match an email address with regex?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              A common pattern is: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]&#123;2,&#125;$. However, email validation with regex is complex — for production use, consider using a dedicated validation library.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Why does my regex work differently in different languages?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Different programming languages use different regex engines (PCRE, POSIX, ECMAScript). This tool uses JavaScript&apos;s RegExp engine (ECMAScript). Some features like lookbehinds may not be available in all engines.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

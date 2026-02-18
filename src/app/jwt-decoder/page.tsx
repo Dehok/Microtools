@@ -181,7 +181,45 @@ export default function JwtDecoder() {
         <p>
           Paste your JWT token into the input field. The tool automatically decodes and displays the header, payload, and signature information. The expiration status is shown if the token contains an exp claim.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is a JWT?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              A JSON Web Token (JWT) is a compact, URL-safe token format used for securely transmitting information between parties. It consists of three Base64-encoded parts separated by dots: header, payload, and signature.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I decode a JWT without the secret key?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. The header and payload of a JWT are only Base64-encoded, not encrypted. Anyone can decode them. The secret key is only needed to verify the signature (i.e., to confirm the token hasn&apos;t been tampered with).
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What does the &apos;exp&apos; claim mean?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              The &apos;exp&apos; (expiration time) claim identifies the time after which the JWT must not be accepted. It&apos;s a Unix timestamp. This tool automatically checks whether the token has expired.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Is it safe to put sensitive data in a JWT?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              No. Since JWT payloads are only Base64-encoded (not encrypted), anyone who has the token can read its contents. Never put passwords, credit card numbers, or other secrets in a JWT payload.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

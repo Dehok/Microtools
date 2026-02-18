@@ -188,7 +188,45 @@ export default function EpochConverter() {
         <p>
           Enter a Unix timestamp (in seconds or milliseconds) to see it converted to a human-readable date. Or use the date picker to select a date and get the corresponding Unix timestamp. The current timestamp is displayed at the top for reference.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is Unix epoch time?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Unix epoch time (also called POSIX time or Unix timestamp) is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. It&apos;s the standard way computers internally track time.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the difference between seconds and milliseconds timestamps?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Unix timestamps in seconds are 10 digits (e.g., 1708300800), while millisecond timestamps are 13 digits (e.g., 1708300800000). JavaScript&apos;s Date.now() returns milliseconds, while most other systems use seconds.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the Year 2038 problem?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Systems using 32-bit signed integers to store Unix timestamps will overflow on January 19, 2038. After this date, the timestamp wraps around to a negative number. Most modern systems use 64-bit integers to avoid this.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              How do I get the current Unix timestamp in code?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              In JavaScript: Math.floor(Date.now() / 1000). In Python: import time; int(time.time()). In PHP: time(). In Java: System.currentTimeMillis() / 1000.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FAQSchema from "@/components/FAQSchema";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         description="Minify CSS to reduce file size or beautify compressed CSS for readability. Free online CSS minifier and formatter."
         slug="css-minifier"
       />
+        <FAQSchema faqs={[{"question":"What does CSS minification do?","answer":"CSS minification removes all unnecessary characters from CSS code — whitespace, line breaks, comments, and redundant semicolons — without changing its functionality. This reduces file size and improves page load speed."},{"question":"How much file size reduction can I expect?","answer":"Typically, CSS minification reduces file size by 20-40% depending on how your CSS is written. Files with many comments and generous formatting see the biggest reductions."},{"question":"Will minification break my CSS?","answer":"No. Proper minification only removes characters that have no effect on how CSS is interpreted by browsers. Your styles will look and work exactly the same."},{"question":"Should I minify CSS for development or production?","answer":"Only for production. During development, keep your CSS readable and well-formatted for easier debugging. Minify only when deploying to production for optimal performance."}]} />
       {children}
     </>
   );

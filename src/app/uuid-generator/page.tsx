@@ -140,7 +140,45 @@ export default function UuidGenerator() {
         <p>
           Click the Generate button to create a new UUID. Use the bulk generation option to create multiple UUIDs at once. Click on any UUID to copy it to your clipboard.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is a UUID?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              A UUID (Universally Unique Identifier) is a 128-bit identifier that is unique across space and time. It looks like: 550e8400-e29b-41d4-a716-446655440000. UUIDs are used as primary keys in databases, API identifiers, and session tokens.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the difference between UUID v1 and v4?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              UUID v1 uses a timestamp and MAC address, making it sequential but potentially exposing hardware information. UUID v4 is fully random, providing better privacy and unpredictability. This tool generates v4 UUIDs.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Are UUIDs truly unique?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              For all practical purposes, yes. The probability of generating two identical v4 UUIDs is astronomically small — about 1 in 5.3 × 10^36. You&apos;d need to generate 1 billion UUIDs per second for about 85 years to have a 50% chance of one collision.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I use UUIDs as database primary keys?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes, UUIDs are commonly used as primary keys in databases like PostgreSQL, MongoDB, and MySQL. They enable distributed systems to generate unique IDs without coordination.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

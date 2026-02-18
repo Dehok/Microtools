@@ -267,7 +267,45 @@ export default function ColorPicker() {
         <p>
           Use the color picker to select a color visually, or enter a specific color value in any supported format (HEX, RGB, or HSL). The tool instantly converts and displays the color in all formats. Click the Copy button next to any format to copy the color value to your clipboard.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is HEX color format?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              HEX is a six-digit hexadecimal representation of color. The first two digits represent red, the middle two green, and the last two blue. For example, #FF5733 is a shade of orange-red.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the difference between RGB and HSL?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              RGB defines colors using Red, Green, and Blue channel values (0-255). HSL uses Hue (0-360°), Saturation (0-100%), and Lightness (0-100%). HSL is more intuitive for humans — you can easily make a color lighter or more saturated.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I use the picked color in CSS?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. All color values are displayed in CSS-ready format. Simply copy the HEX, RGB, or HSL value and paste it directly into your CSS stylesheet.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              How do I find the exact color from a website?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Use your browser&apos;s built-in color picker: right-click → Inspect → click the color swatch in the Styles panel. Or use browser extensions like ColorZilla to pick colors from any webpage.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

@@ -229,7 +229,45 @@ export default function DiffChecker() {
         <p>
           Paste the original text in the left panel and the modified text in the right panel. The differences are highlighted automatically. Added lines appear in green, removed lines in red, and modified lines show both old and new content.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What types of differences does it detect?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              The tool detects three types of differences: added lines (present only in the new text), removed lines (present only in the original text), and modified lines (lines that exist in both but have different content).
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I compare code with this tool?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. The diff checker works with any text, including source code in any programming language. It&apos;s commonly used for code reviews, comparing configuration files, and tracking changes between versions.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              How does the comparison algorithm work?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              The tool uses a line-by-line comparison algorithm similar to Unix diff. It identifies the longest common subsequence between the two texts and highlights everything that differs.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I compare files directly?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Currently, the tool works with pasted text. Copy and paste the contents of two files into the left and right panels to compare them.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

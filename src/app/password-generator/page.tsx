@@ -234,7 +234,45 @@ export default function PasswordGenerator() {
         <p>
           Adjust the password length using the slider and select which character types to include (uppercase, lowercase, numbers, symbols). Click Generate to create a new password. The strength indicator shows how secure the password is. Copy the password to your clipboard with the Copy button.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              How strong is a generated password?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              A 16-character password with uppercase, lowercase, numbers, and symbols has approximately 95^16 possible combinations, which would take billions of years to crack with current technology.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Is it safe to generate passwords online?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes, with this tool. The password is generated entirely in your browser using the cryptographic random number generator (crypto.getRandomValues). No password is ever sent to any server.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What makes a password strong?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Strong passwords are long (12+ characters), use all character types (uppercase, lowercase, numbers, symbols), and are randomly generated rather than based on dictionary words or personal information.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              How often should I change my passwords?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Modern security guidelines (NIST) recommend changing passwords only when there&apos;s evidence of compromise, rather than on a fixed schedule. Using unique, strong passwords with a password manager is more effective.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

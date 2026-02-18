@@ -196,7 +196,45 @@ export default function UrlEncoderDecoder() {
         <p>
           Select Encode or Decode mode. Paste your URL or text into the input field. The encoded or decoded result appears instantly. Copy the result with the Copy button.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Why do URLs need encoding?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              URLs can only contain a limited set of ASCII characters. Special characters like spaces, &amp;, =, and non-ASCII characters must be percent-encoded (e.g., space → %20) to be valid in URLs.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the difference between encodeURI and encodeURIComponent?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              encodeURI() encodes a complete URI, preserving characters like :, /, ?, and #. encodeURIComponent() encodes everything except letters, digits, and a few special characters — use it for encoding individual query parameter values.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What does %20 mean in a URL?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              %20 is the percent-encoded representation of a space character. Sometimes you&apos;ll also see + used for spaces in query strings (application/x-www-form-urlencoded), but %20 is the standard URL encoding.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Is URL encoding reversible?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. URL encoding is a simple, reversible transformation. Any percent-encoded string can be decoded back to its original characters using this tool or the decodeURIComponent() function in JavaScript.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

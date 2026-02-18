@@ -179,7 +179,45 @@ export default function Base64Tool() {
         <p>
           Select the mode (Encode or Decode) and paste your text into the input area. The result appears instantly in the output. Use the Copy button to copy the encoded or decoded text to your clipboard.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is Base64 encoding?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Base64 is a method of encoding binary data into ASCII text using 64 characters (A-Z, a-z, 0-9, +, /). It&apos;s commonly used to embed images in HTML, transmit data in URLs, and encode email attachments.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Is Base64 encoding the same as encryption?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              No. Base64 is an encoding scheme, not encryption. Anyone can decode Base64 text back to its original form. It provides no security — it&apos;s only used to safely transmit binary data as text.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Why does Base64 increase the size of data?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Base64 encoding increases data size by approximately 33% because it represents 3 bytes of binary data using 4 ASCII characters. This trade-off is necessary for safe text-based transmission.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Does this tool handle Unicode characters?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. The tool encodes text as UTF-8 before Base64 conversion, ensuring that special characters, emojis, and non-Latin scripts are handled correctly.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

@@ -206,7 +206,45 @@ export default function CronGenerator() {
         <p>
           Use the visual editor to select your desired schedule by choosing values for minutes, hours, days of month, months, and days of week. The cron expression is generated automatically. Use preset buttons for common schedules. Copy the expression and use it in your crontab or scheduling service.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is a cron expression?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              A cron expression is a string of five fields (minute, hour, day of month, month, day of week) that defines a schedule for automated tasks. For example, &apos;0 9 * * 1&apos; means &apos;every Monday at 9:00 AM&apos;.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What does the asterisk (*) mean in cron?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              The asterisk (*) means &apos;every possible value&apos; for that field. For example, * in the minute field means &apos;every minute&apos;, and * in the day-of-week field means &apos;every day of the week&apos;.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the difference between cron and crontab?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Cron is the daemon (background service) that runs scheduled tasks. Crontab (cron table) is the file where you define your scheduled tasks and their cron expressions. You edit it with &apos;crontab -e&apos;.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I use cron expressions in cloud services?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. AWS CloudWatch Events, Azure Functions, Google Cloud Scheduler, GitHub Actions, and many CI/CD platforms use cron expressions (sometimes with slight syntax variations) for scheduling.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

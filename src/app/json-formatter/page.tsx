@@ -187,7 +187,53 @@ export default function JsonFormatter() {
         <p>
           Paste your JSON data into the input area or type it directly. Click &quot;Format / Beautify&quot; to prettify the JSON with proper indentation, or click &quot;Minify&quot; to compress it into a single line. If your JSON contains errors, the tool will display the error message with the location of the problem. You can copy the formatted output to your clipboard with one click.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is valid JSON?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Valid JSON must use double quotes for keys and strings, no trailing commas, no comments, and must start with an object &#123;&#125; or array []. Numbers, booleans (true/false), and null are also valid values.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Does this tool validate JSON?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. When you paste or type JSON, the tool checks for syntax errors and shows the error message with the exact location of the problem, making it easy to fix invalid JSON.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Is my data safe?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Absolutely. All formatting and validation happens locally in your browser using JavaScript. Your JSON data is never sent to any server.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the difference between formatting and minifying JSON?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Formatting (beautifying) adds indentation and line breaks to make JSON readable. Minifying removes all unnecessary whitespace to reduce file size, which is useful for production environments and API responses.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I use this tool for large JSON files?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes, the tool handles large JSON documents efficiently since all processing runs in your browser. However, extremely large files (10MB+) may cause slower performance depending on your device.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

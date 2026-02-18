@@ -159,7 +159,45 @@ export default function SlugGenerator() {
         <p>
           Type or paste your text (e.g., a blog post title) into the input field. The URL-friendly slug is generated instantly. Copy the slug with the Copy button and use it in your URLs.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is a URL slug?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              A URL slug is the human-readable part of a URL that identifies a specific page. For example, in &apos;example.com/blog/my-first-post&apos;, the slug is &apos;my-first-post&apos;. Good slugs are lowercase, hyphenated, and descriptive.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Why are slugs important for SEO?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Search engines use URL slugs as a ranking signal. URLs containing relevant keywords rank slightly better than generic ones. Clean, descriptive slugs also improve click-through rates in search results.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What characters are allowed in a URL slug?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Best practice is to use only lowercase letters (a-z), numbers (0-9), and hyphens (-). Avoid underscores, spaces, special characters, and uppercase letters for maximum compatibility.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              How does this tool handle special characters?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              The tool transliterates accented characters (é → e, ü → u), removes non-alphanumeric characters, converts spaces to hyphens, and removes consecutive or trailing hyphens.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

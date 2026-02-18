@@ -254,7 +254,45 @@ export default function MarkdownPreview() {
         <p>
           Type or paste your Markdown content into the editor on the left. The rendered HTML preview appears instantly on the right. Edit your content and see the changes reflected in real time.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is Markdown?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Markdown is a lightweight markup language created by John Gruber in 2004. It uses simple syntax like # for headings, ** for bold, and - for lists to format text. It&apos;s widely used for README files, documentation, and content writing.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What Markdown syntax is supported?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              This tool supports standard Markdown including headings (#), bold (**), italic (*), links, images, ordered and unordered lists, blockquotes, code blocks, horizontal rules, and tables (GitHub Flavored Markdown).
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I export the HTML output?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. The tool generates clean HTML from your Markdown. You can copy the rendered HTML and use it in your web pages, emails, or documentation.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is GitHub Flavored Markdown (GFM)?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              GFM is GitHub&apos;s extended version of Markdown that adds support for tables, task lists, strikethrough text, autolinked URLs, and syntax-highlighted code blocks.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }

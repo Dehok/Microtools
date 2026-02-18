@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FAQSchema from "@/components/FAQSchema";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {

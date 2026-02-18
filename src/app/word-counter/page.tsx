@@ -113,7 +113,45 @@ export default function WordCounter() {
         <p>
           Paste or type your text into the input area. All statistics (words, characters, sentences, paragraphs) are calculated instantly in real time. The counts update automatically as you edit the text.
         </p>
-      </div>
+      
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              How does the word counter count words?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              The tool counts words by splitting text on whitespace boundaries (spaces, tabs, newlines). It handles multiple consecutive spaces correctly and ignores leading/trailing whitespace.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Does it count characters with or without spaces?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Both. The tool shows total characters (including spaces) and characters without spaces, so you can use whichever metric you need.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Can I use this for essay word count requirements?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. The word count is accurate and matches the counting method used by most word processors. It&apos;s ideal for checking essay, blog post, and assignment word limits.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What is the average reading time calculation based on?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Reading time is estimated at approximately 200-250 words per minute, which is the average adult reading speed. Speaking time uses approximately 130-150 words per minute.
+            </p>
+          </details>
+        </div>
+</div>
     </ToolLayout>
   );
 }
