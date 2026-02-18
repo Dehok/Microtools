@@ -1,0 +1,276 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import ToolLayout from "@/components/ToolLayout";
+import CopyButton from "@/components/CopyButton";
+
+interface EnvLine {
+  line: number;
+  raw: string;
+  key: string;
+  value: string;
+  type: "variable" | "comment" | "empty" | "invalid";
+  issues: string[];
+}
+
+const EXAMPLE_ENV = `# Database configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=myapp
+DB_USER=admin
+DB_PASSWORD=secret123
+
+# API keys
+API_KEY=sk_live_abc123def456
+API_SECRET=
+
+# Duplicate key example
+DB_HOST=127.0.0.1
+
+# Invalid lines
+this has no equals sign
+SPACES IN KEY=bad
+GOOD_KEY=value with spaces
+MISSING_QUOTES=hello world
+
+# App settings
+NODE_ENV=production
+PORT=3000
+DEBUG=false`;
+
+function parseEnvLines(input: string): EnvLine[] {
+  return input.split("\n").map((raw, idx) => {
+    const trimmed = raw.trim();
+    if (!trimmed) return { line: idx + 1, raw, key: "", value: "", type: "empty" as const, issues: [] };
+    if (trimmed.startsWith("#")) return { line: idx + 1, raw, key: "", value: "", type: "comment" as const, issues: [] };
+
+    const eqIdx = trimmed.indexOf("=");
+    if (eqIdx === -1) return { line: idx + 1, raw, key: "", value: "", type: "invalid" as const, issues: ["Missing '=' sign"] };
+
+    const key = trimmed.slice(0, eqIdx).trim();
+    let value = trimmed.slice(eqIdx + 1);
+    const issues: string[] = [];
+
+    if (/\s/.test(key)) issues.push("Key contains spaces");
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key)) issues.push("Invalid key format (use UPPER_SNAKE_CASE)");
+    if (!value) issues.push("Empty value");
+    if (value.includes(" ") && !value.startsWith('"') && !value.startsWith("'")) {
+      issues.push("Value with spaces should be quoted");
+    }
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+
+    return { line: idx + 1, raw, key, value, type: "variable" as const, issues };
+  });
+}
+
+export default function EnvEditorPage() {
+  const [input, setInput] = useState("");
+
+  const parsed = useMemo(() => {
+    if (!input.trim()) return { lines: [] as EnvLine[], duplicates: [] as string[], stats: { vars: 0, comments: 0, empty: 0, invalid: 0, issues: 0 } };
+    const lines = parseEnvLines(input);
+    const keyCounts: Record<string, number[]> = {};
+    for (const l of lines) {
+      if (l.type === "variable" && l.key) {
+        if (!keyCounts[l.key]) keyCounts[l.key] = [];
+        keyCounts[l.key].push(l.line);
+      }
+    }
+    const duplicates: string[] = [];
+    for (const [key, occurrences] of Object.entries(keyCounts)) {
+      if (occurrences.length > 1) {
+        duplicates.push(key);
+        for (const l of lines) {
+          if (l.key === key) l.issues.push(`Duplicate key (lines: ${occurrences.join(", ")})`);
+        }
+      }
+    }
+    const vars = lines.filter((l) => l.type === "variable").length;
+    const comments = lines.filter((l) => l.type === "comment").length;
+    const empty = lines.filter((l) => l.type === "empty").length;
+    const invalid = lines.filter((l) => l.type === "invalid").length;
+    const issues = lines.reduce((sum, l) => sum + l.issues.length, 0);
+    return { lines, duplicates, stats: { vars, comments, empty, invalid, issues } };
+  }, [input]);
+
+  const sortAlpha = () => {
+    const lines = input.split("\n");
+    const vars: { key: string; line: string }[] = [];
+    const other: string[] = [];
+    for (const line of lines) {
+      const trimmed = line.trim();
+      const eqIdx = trimmed.indexOf("=");
+      if (trimmed && !trimmed.startsWith("#") && eqIdx !== -1) {
+        vars.push({ key: trimmed.slice(0, eqIdx).trim(), line });
+      } else {
+        other.push(line);
+      }
+    }
+    vars.sort((a, b) => a.key.localeCompare(b.key));
+    const result = other.filter((l) => l.trim()).join("\n") + (other.some((l) => l.trim()) ? "\n\n" : "") + vars.map((v) => v.line).join("\n");
+    setInput(result.trim());
+  };
+
+  const removeDuplicates = () => {
+    const seen = new Set<string>();
+    const lines = input.split("\n");
+    const result: string[] = [];
+    for (let i = lines.length - 1; i >= 0; i--) {
+      const trimmed = lines[i].trim();
+      const eqIdx = trimmed.indexOf("=");
+      if (trimmed && !trimmed.startsWith("#") && eqIdx !== -1) {
+        const key = trimmed.slice(0, eqIdx).trim();
+        if (seen.has(key)) continue;
+        seen.add(key);
+      }
+      result.unshift(lines[i]);
+    }
+    setInput(result.join("\n"));
+  };
+
+  const removeComments = () => {
+    setInput(input.split("\n").filter((l) => !l.trim().startsWith("#")).join("\n"));
+  };
+
+  const removeEmptyLines = () => {
+    setInput(input.split("\n").filter((l) => l.trim()).join("\n"));
+  };
+
+  const quoteAllValues = () => {
+    setInput(
+      input.split("\n").map((line) => {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith("#")) return line;
+        const eqIdx = trimmed.indexOf("=");
+        if (eqIdx === -1) return line;
+        const key = trimmed.slice(0, eqIdx);
+        let val = trimmed.slice(eqIdx + 1);
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) return line;
+        return `${key}="${val}"`;
+      }).join("\n")
+    );
+  };
+
+  return (
+    <ToolLayout
+      title=".env Editor & Validator"
+      description="Edit and validate .env files. Check for duplicates, empty values, and syntax errors."
+      relatedTools={["json-formatter", "yaml-validator", "nginx-config-generator"]}
+    >
+      {/* Buttons */}
+      <div className="mb-4 flex flex-wrap gap-2">
+        <button onClick={() => setInput(EXAMPLE_ENV)} className="rounded-lg bg-gray-100 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-200">Load Example</button>
+        <button onClick={sortAlpha} className="rounded-lg bg-blue-50 px-3 py-1.5 text-sm text-blue-700 hover:bg-blue-100">Sort A-Z</button>
+        <button onClick={removeDuplicates} className="rounded-lg bg-blue-50 px-3 py-1.5 text-sm text-blue-700 hover:bg-blue-100">Remove Duplicates</button>
+        <button onClick={removeComments} className="rounded-lg bg-blue-50 px-3 py-1.5 text-sm text-blue-700 hover:bg-blue-100">Remove Comments</button>
+        <button onClick={removeEmptyLines} className="rounded-lg bg-blue-50 px-3 py-1.5 text-sm text-blue-700 hover:bg-blue-100">Remove Empty Lines</button>
+        <button onClick={quoteAllValues} className="rounded-lg bg-blue-50 px-3 py-1.5 text-sm text-blue-700 hover:bg-blue-100">Quote All Values</button>
+        <button onClick={() => setInput("")} className="rounded-lg bg-gray-100 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-200">Clear</button>
+      </div>
+
+      {/* Editor */}
+      <div className="mb-4">
+        <div className="mb-1 flex items-center justify-between">
+          <label className="text-sm font-medium text-gray-700">.env Content</label>
+          {input && <CopyButton text={input} />}
+        </div>
+        <textarea
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Paste your .env file content here..."
+          className="h-64 w-full rounded-lg border border-gray-300 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          spellCheck={false}
+        />
+      </div>
+
+      {/* Stats */}
+      {input.trim() && (
+        <>
+          <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
+            <div className="rounded-lg bg-blue-50 p-3 text-center">
+              <div className="text-2xl font-bold text-blue-700">{parsed.stats.vars}</div>
+              <div className="text-xs text-blue-600">Variables</div>
+            </div>
+            <div className="rounded-lg bg-gray-50 p-3 text-center">
+              <div className="text-2xl font-bold text-gray-700">{parsed.stats.comments}</div>
+              <div className="text-xs text-gray-600">Comments</div>
+            </div>
+            <div className="rounded-lg bg-gray-50 p-3 text-center">
+              <div className="text-2xl font-bold text-gray-700">{parsed.stats.empty}</div>
+              <div className="text-xs text-gray-600">Empty Lines</div>
+            </div>
+            <div className="rounded-lg bg-red-50 p-3 text-center">
+              <div className="text-2xl font-bold text-red-700">{parsed.stats.invalid}</div>
+              <div className="text-xs text-red-600">Invalid Lines</div>
+            </div>
+            <div className={`rounded-lg p-3 text-center ${parsed.stats.issues > 0 ? "bg-yellow-50" : "bg-green-50"}`}>
+              <div className={`text-2xl font-bold ${parsed.stats.issues > 0 ? "text-yellow-700" : "text-green-700"}`}>{parsed.stats.issues}</div>
+              <div className={`text-xs ${parsed.stats.issues > 0 ? "text-yellow-600" : "text-green-600"}`}>Issues</div>
+            </div>
+          </div>
+
+          {/* Results Table */}
+          <div className="overflow-x-auto rounded-lg border border-gray-200">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <th className="px-3 py-2 text-left font-medium text-gray-700">Line</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-700">Key</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-700">Value</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-700">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {parsed.lines.filter((l) => l.type !== "empty").map((l) => (
+                  <tr key={l.line} className={`border-b border-gray-100 ${l.issues.length > 0 ? "bg-yellow-50" : l.type === "invalid" ? "bg-red-50" : l.type === "comment" ? "bg-gray-50" : ""}`}>
+                    <td className="px-3 py-1.5 font-mono text-xs text-gray-500">{l.line}</td>
+                    <td className="px-3 py-1.5 font-mono text-xs">
+                      {l.type === "comment" ? <span className="text-gray-400">{l.raw.trim()}</span> : l.type === "invalid" ? <span className="text-red-500">{l.raw.trim()}</span> : l.key}
+                    </td>
+                    <td className="max-w-[200px] truncate px-3 py-1.5 font-mono text-xs text-gray-600">{l.value}</td>
+                    <td className="px-3 py-1.5 text-xs">
+                      {l.type === "comment" && <span className="text-gray-400">Comment</span>}
+                      {l.type === "invalid" && <span className="text-red-600">Invalid</span>}
+                      {l.type === "variable" && l.issues.length === 0 && <span className="text-green-600">✓ Valid</span>}
+                      {l.issues.length > 0 && (
+                        <div className="space-y-0.5">
+                          {l.issues.map((issue, i) => (
+                            <div key={i} className="text-yellow-600">⚠ {issue}</div>
+                          ))}
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
+      {/* SEO Content */}
+      <section className="mt-12 space-y-6 text-gray-700">
+        <h2 className="text-2xl font-bold text-gray-900">What is a .env File?</h2>
+        <p>
+          A .env file stores environment variables as key-value pairs. It is commonly used in Node.js, Python, PHP, and other
+          frameworks to manage configuration like database credentials, API keys, and app settings. The format is simple:
+          one KEY=value per line, with optional comments starting with #.
+        </p>
+        <h2 className="text-2xl font-bold text-gray-900">Common .env Issues</h2>
+        <p>
+          Duplicate keys can cause unexpected behavior — the last value usually wins. Empty values may cause runtime errors.
+          Values with spaces should be quoted. Keys should follow UPPER_SNAKE_CASE convention. This validator catches all
+          these issues and helps you maintain clean environment files.
+        </p>
+        <h2 className="text-2xl font-bold text-gray-900">How to Use This Tool</h2>
+        <p>
+          Paste your .env file content into the editor. The tool automatically validates each line and reports issues.
+          Use the action buttons to sort, deduplicate, remove comments, or quote values. Everything runs locally
+          in your browser — no data is sent to any server.
+        </p>
+      </section>
+    </ToolLayout>
+  );
+}
