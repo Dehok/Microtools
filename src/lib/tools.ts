@@ -562,13 +562,6 @@ export const tools: Tool[] = [
     icon: "JWG",
   },
   {
-    slug: "yaml-validator",
-    name: "YAML Validator",
-    description: "Validate YAML syntax online. Find errors with line numbers and helpful messages.",
-    category: "developer",
-    icon: "YML✓",
-  },
-  {
     slug: "css-grid-generator",
     name: "CSS Grid Generator",
     description: "Create CSS Grid layouts with a visual editor. Set columns, rows, and gap.",
