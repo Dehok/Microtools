@@ -1,0 +1,816 @@
+/**
+ * Generates layout.tsx files with SEO metadata + Schema.org JSON-LD
+ * for every tool page in the CodeUtilo project.
+ *
+ * Run: node generate-layouts.mjs
+ */
+import { writeFileSync, mkdirSync, existsSync } from "fs";
+import { join } from "path";
+
+const SITE = "CodeUtilo";
+const URL = "https://codeutilo.com";
+const APP_DIR = join(import.meta.dirname, "src", "app");
+
+// ─── Tool definitions with SEO titles and keywords ────────────────────
+const tools = [
+    {
+        slug: "json-formatter",
+        name: "JSON Formatter",
+        seoTitle: "JSON Formatter & Validator Online",
+        desc: "Format, validate, and beautify JSON data with syntax highlighting. Free online JSON tool — no signup required.",
+        kw: ["json formatter", "json beautifier", "json validator", "format json online", "json pretty print"],
+    },
+    {
+        slug: "base64-encode-decode",
+        name: "Base64 Encode / Decode",
+        seoTitle: "Base64 Encode & Decode Online",
+        desc: "Encode text to Base64 or decode Base64 to plain text instantly. Supports UTF-8 characters. Free online tool.",
+        kw: ["base64 encode", "base64 decode", "base64 converter", "base64 online", "encode to base64"],
+    },
+    {
+        slug: "uuid-generator",
+        name: "UUID Generator",
+        seoTitle: "UUID Generator Online — Generate Random UUIDs",
+        desc: "Generate random UUIDs (v4) with one click. Bulk generation supported. Free online UUID/GUID generator.",
+        kw: ["uuid generator", "guid generator", "random uuid", "uuid v4", "generate uuid online"],
+    },
+    {
+        slug: "lorem-ipsum-generator",
+        name: "Lorem Ipsum Generator",
+        seoTitle: "Lorem Ipsum Generator — Placeholder Text",
+        desc: "Generate placeholder text in paragraphs, sentences, or words. Free Lorem Ipsum generator for designers and developers.",
+        kw: ["lorem ipsum generator", "placeholder text", "dummy text generator", "lorem ipsum online"],
+    },
+    {
+        slug: "word-counter",
+        name: "Word Counter",
+        seoTitle: "Word Counter & Character Counter Online",
+        desc: "Count words, characters, sentences, and paragraphs in any text. Free online word counter tool.",
+        kw: ["word counter", "character counter", "word count online", "text counter", "count words"],
+    },
+    {
+        slug: "url-encoder-decoder",
+        name: "URL Encoder / Decoder",
+        seoTitle: "URL Encoder & Decoder Online",
+        desc: "Encode or decode URLs and query strings. Handles special characters. Free online URL encoding tool.",
+        kw: ["url encoder", "url decoder", "url encode online", "percent encoding", "encode url"],
+    },
+    {
+        slug: "hash-generator",
+        name: "Hash Generator",
+        seoTitle: "Hash Generator Online — MD5, SHA-256, SHA-512",
+        desc: "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text. Free online hash generator.",
+        kw: ["hash generator", "md5 hash", "sha256 generator", "sha512 hash", "online hash tool"],
+    },
+    {
+        slug: "password-generator",
+        name: "Password Generator",
+        seoTitle: "Password Generator Online — Strong & Random",
+        desc: "Generate strong, random, and secure passwords. Customize length, characters, and generate in bulk.",
+        kw: ["password generator", "random password", "strong password generator", "secure password", "generate password online"],
+    },
+    {
+        slug: "color-picker",
+        name: "Color Picker",
+        seoTitle: "Color Picker — HEX, RGB & HSL Converter",
+        desc: "Pick colors and convert between HEX, RGB, and HSL formats. Free online color picker tool.",
+        kw: ["color picker", "hex color picker", "rgb color picker", "color converter", "pick color online"],
+    },
+    {
+        slug: "markdown-preview",
+        name: "Markdown Preview",
+        seoTitle: "Markdown Editor & Preview Online",
+        desc: "Write Markdown and preview the rendered HTML output in real time. Free online Markdown editor.",
+        kw: ["markdown preview", "markdown editor online", "markdown to html", "live markdown editor", "markdown viewer"],
+    },
+    {
+        slug: "css-minifier",
+        name: "CSS Minifier / Beautifier",
+        seoTitle: "CSS Minifier & Beautifier Online",
+        desc: "Minify or beautify CSS code. Remove whitespace or format for readability. Free online CSS tool.",
+        kw: ["css minifier", "css beautifier", "minify css online", "css formatter", "compress css"],
+    },
+    {
+        slug: "diff-checker",
+        name: "Diff Checker",
+        seoTitle: "Diff Checker — Compare Two Texts Online",
+        desc: "Compare two texts and highlight the differences line by line. Free online diff checker and text comparison tool.",
+        kw: ["diff checker", "text compare", "compare two texts", "text diff online", "difference checker"],
+    },
+    {
+        slug: "epoch-converter",
+        name: "Epoch / Timestamp Converter",
+        seoTitle: "Epoch Converter — Unix Timestamp to Date",
+        desc: "Convert Unix timestamps to human-readable dates and vice versa. Free online epoch converter.",
+        kw: ["epoch converter", "unix timestamp converter", "timestamp to date", "epoch to date", "unix time converter"],
+    },
+    {
+        slug: "json-csv-converter",
+        name: "JSON to CSV Converter",
+        seoTitle: "JSON to CSV Converter Online",
+        desc: "Convert JSON arrays to CSV format and CSV back to JSON. Free online JSON/CSV converter.",
+        kw: ["json to csv", "csv to json", "json csv converter", "convert json to csv online", "json to csv online"],
+    },
+    {
+        slug: "slug-generator",
+        name: "Slug Generator",
+        seoTitle: "Slug Generator — URL-Friendly Text Converter",
+        desc: "Convert any text into a URL-friendly slug. Clean, lowercase, hyphenated. Free online slug generator.",
+        kw: ["slug generator", "url slug", "slugify text", "url friendly text", "generate slug online"],
+    },
+    {
+        slug: "regex-tester",
+        name: "Regex Tester",
+        seoTitle: "Regex Tester — Test Regular Expressions Online",
+        desc: "Test regular expressions against text with real-time highlighting of matches. Free online regex tester.",
+        kw: ["regex tester", "regex online", "test regex", "regular expression tester", "regex matcher"],
+    },
+    {
+        slug: "jwt-decoder",
+        name: "JWT Decoder",
+        seoTitle: "JWT Decoder — Decode JSON Web Tokens Online",
+        desc: "Decode and inspect JSON Web Tokens. View header, payload, and expiration. Free online JWT decoder.",
+        kw: ["jwt decoder", "decode jwt", "json web token decoder", "jwt parser", "jwt inspect"],
+    },
+    {
+        slug: "html-encoder-decoder",
+        name: "HTML Encoder / Decoder",
+        seoTitle: "HTML Encoder & Decoder Online",
+        desc: "Encode special characters to HTML entities or decode them back to text. Free online HTML encoding tool.",
+        kw: ["html encoder", "html decoder", "html entities", "encode html", "html entity converter"],
+    },
+    {
+        slug: "cron-generator",
+        name: "Cron Expression Generator",
+        seoTitle: "Cron Expression Generator & Explainer",
+        desc: "Build and understand cron expressions with a visual, interactive editor. Free online cron generator.",
+        kw: ["cron expression generator", "crontab guru", "cron builder", "cron schedule generator", "cron job expression"],
+    },
+    {
+        slug: "number-base-converter",
+        name: "Number Base Converter",
+        seoTitle: "Number Base Converter — Binary, Hex, Octal, Decimal",
+        desc: "Convert numbers between decimal, binary, octal, and hexadecimal. Free online base converter.",
+        kw: ["number base converter", "binary to decimal", "hex to decimal", "decimal to binary", "base converter"],
+    },
+    {
+        slug: "text-case-converter",
+        name: "Text Case Converter",
+        seoTitle: "Text Case Converter — UPPER, lower, camelCase & More",
+        desc: "Convert text between uppercase, lowercase, camelCase, snake_case, and more. Free online tool.",
+        kw: ["text case converter", "uppercase converter", "lowercase converter", "camelcase converter", "snake case converter"],
+    },
+    {
+        slug: "chmod-calculator",
+        name: "Chmod Calculator",
+        seoTitle: "Chmod Calculator — Unix File Permissions",
+        desc: "Calculate Unix file permissions in octal and symbolic notation. Free online chmod calculator.",
+        kw: ["chmod calculator", "unix permissions", "file permissions calculator", "chmod online", "linux chmod"],
+    },
+    {
+        slug: "timestamp-converter",
+        name: "Timestamp Converter",
+        seoTitle: "Timestamp Converter — ISO 8601, Unix & Human Dates",
+        desc: "Convert between ISO 8601, Unix timestamps, and human-readable dates. Free online timestamp converter.",
+        kw: ["timestamp converter", "iso 8601 converter", "date to timestamp", "timestamp to date", "unix timestamp"],
+    },
+    {
+        slug: "backslash-escape",
+        name: "Backslash Escape / Unescape",
+        seoTitle: "Backslash Escape & Unescape Tool Online",
+        desc: "Escape or unescape special characters like newlines, tabs, and quotes. Free online escape tool.",
+        kw: ["backslash escape", "string escape", "unescape string", "escape characters online", "escape newline"],
+    },
+    {
+        slug: "ip-address-info",
+        name: "IP Address Analyzer",
+        seoTitle: "IP Address Analyzer — IPv4 & IPv6 Inspector",
+        desc: "Analyze IPv4/IPv6 addresses: class, scope, binary, and hex representation. Free online IP analyzer.",
+        kw: ["ip address analyzer", "ip address info", "ipv4 analyzer", "ipv6 info", "ip address lookup"],
+    },
+    {
+        slug: "line-sorter",
+        name: "Line Sorter & Deduplicator",
+        seoTitle: "Line Sorter & Deduplicator Online",
+        desc: "Sort lines alphabetically, numerically, or by length. Remove duplicates. Free online line sorter.",
+        kw: ["line sorter", "sort lines online", "remove duplicate lines", "text line sorter", "deduplicator"],
+    },
+    {
+        slug: "json-path-finder",
+        name: "JSON Path Finder",
+        seoTitle: "JSON Path Finder — Extract JSONPath Expressions",
+        desc: "Extract all paths from a JSON object. Filter and copy JSONPath expressions. Free online tool.",
+        kw: ["json path finder", "jsonpath", "json path extractor", "find json path", "jsonpath expressions"],
+    },
+    {
+        slug: "aspect-ratio-calculator",
+        name: "Aspect Ratio Calculator",
+        seoTitle: "Aspect Ratio Calculator — Resize Proportionally",
+        desc: "Calculate aspect ratios and resize dimensions proportionally. Free online aspect ratio calculator.",
+        kw: ["aspect ratio calculator", "ratio calculator", "image aspect ratio", "16:9 calculator", "resize proportionally"],
+    },
+    {
+        slug: "sql-formatter",
+        name: "SQL Formatter",
+        seoTitle: "SQL Formatter & Beautifier Online",
+        desc: "Format and beautify SQL queries with proper indentation and keywords. Free online SQL formatter.",
+        kw: ["sql formatter", "sql beautifier", "format sql online", "sql pretty print", "sql query formatter"],
+    },
+    {
+        slug: "placeholder-image",
+        name: "Placeholder Image Generator",
+        seoTitle: "Placeholder Image Generator — SVG Placeholders",
+        desc: "Generate lightweight SVG placeholder images with custom dimensions and colors. Free online tool.",
+        kw: ["placeholder image", "placeholder image generator", "svg placeholder", "dummy image", "image placeholder online"],
+    },
+    {
+        slug: "yaml-json-converter",
+        name: "YAML ↔ JSON Converter",
+        seoTitle: "YAML to JSON Converter & JSON to YAML Online",
+        desc: "Convert between YAML and JSON formats instantly. Free online YAML/JSON converter.",
+        kw: ["yaml to json", "json to yaml", "yaml converter", "yaml json online", "convert yaml to json"],
+    },
+    {
+        slug: "yaml-validator",
+        name: "YAML Validator",
+        seoTitle: "YAML Validator — Check YAML Syntax Online",
+        desc: "Validate YAML syntax online. Find errors with line numbers and see parsed JSON output. Free tool.",
+        kw: ["yaml validator", "yaml lint", "validate yaml online", "yaml syntax checker", "yaml parser"],
+    },
+    {
+        slug: "unicode-lookup",
+        name: "Unicode Character Lookup",
+        seoTitle: "Unicode Character Lookup — Code Points & Entities",
+        desc: "Inspect characters: code points, HTML entities, CSS escapes, UTF-8 bytes. Free Unicode lookup.",
+        kw: ["unicode lookup", "unicode character search", "code point lookup", "html entities", "unicode inspector"],
+    },
+    {
+        slug: "hex-rgb-converter",
+        name: "HEX ↔ RGB Converter",
+        seoTitle: "HEX to RGB Converter & RGB to HEX Online",
+        desc: "Convert between HEX, RGB, and HSL color values. Free online color converter.",
+        kw: ["hex to rgb", "rgb to hex", "color converter", "hex rgb converter", "hex color to rgb"],
+    },
+    {
+        slug: "js-minifier",
+        name: "JavaScript Minifier",
+        seoTitle: "JavaScript Minifier — Minify JS Code Online",
+        desc: "Minify JavaScript code by removing comments and whitespace. Free online JS minifier.",
+        kw: ["javascript minifier", "js minifier", "minify javascript", "minify js online", "compress javascript"],
+    },
+    {
+        slug: "text-repeater",
+        name: "Text Repeater",
+        seoTitle: "Text Repeater — Repeat Text Multiple Times",
+        desc: "Repeat any text multiple times with custom separators. Free online text repeater tool.",
+        kw: ["text repeater", "repeat text online", "text multiplier", "repeat string", "copy paste repeater"],
+    },
+    {
+        slug: "html-to-markdown",
+        name: "HTML to Markdown",
+        seoTitle: "HTML to Markdown Converter Online",
+        desc: "Convert HTML to Markdown format. Handles headings, lists, links, and more. Free online converter.",
+        kw: ["html to markdown", "convert html to markdown", "html markdown converter", "html2md", "html to md"],
+    },
+    {
+        slug: "byte-counter",
+        name: "Byte Counter",
+        seoTitle: "Byte Counter — UTF-8 & UTF-16 Size Calculator",
+        desc: "Count bytes, characters, and code points. Shows UTF-8 and UTF-16 sizes. Free online byte counter.",
+        kw: ["byte counter", "string byte count", "utf8 size", "character byte size", "text byte counter"],
+    },
+    {
+        slug: "random-number-generator",
+        name: "Random Number Generator",
+        seoTitle: "Random Number Generator Online",
+        desc: "Generate random numbers within a custom range with various options. Free online random number tool.",
+        kw: ["random number generator", "random number", "rng online", "generate random number", "number generator"],
+    },
+    {
+        slug: "morse-code",
+        name: "Morse Code Translator",
+        seoTitle: "Morse Code Translator — Text to Morse & Back",
+        desc: "Translate text to Morse code and Morse code back to text. Free online Morse code translator.",
+        kw: ["morse code translator", "text to morse", "morse to text", "morse code converter", "morse code online"],
+    },
+    {
+        slug: "rot13",
+        name: "ROT13 / Caesar Cipher",
+        seoTitle: "ROT13 Encoder & Caesar Cipher Tool Online",
+        desc: "Encode/decode text with ROT13, ROT47, or custom Caesar cipher shift. Free online tool.",
+        kw: ["rot13", "caesar cipher", "rot13 encoder", "rot13 decoder", "caesar cipher online"],
+    },
+    {
+        slug: "css-gradient-generator",
+        name: "CSS Gradient Generator",
+        seoTitle: "CSS Gradient Generator — Linear & Radial Gradients",
+        desc: "Create CSS linear and radial gradients with a visual editor and presets. Free online gradient tool.",
+        kw: ["css gradient generator", "gradient generator", "css gradient", "linear gradient css", "radial gradient generator"],
+    },
+    {
+        slug: "json-to-typescript",
+        name: "JSON to TypeScript",
+        seoTitle: "JSON to TypeScript Interface Generator",
+        desc: "Generate TypeScript interfaces from JSON data automatically. Free online JSON to TypeScript tool.",
+        kw: ["json to typescript", "json to ts", "typescript interface generator", "json to interface", "json2ts"],
+    },
+    {
+        slug: "text-to-binary",
+        name: "Text to Binary",
+        seoTitle: "Text to Binary Converter — Hex, Octal & Decimal",
+        desc: "Convert text to binary, hexadecimal, octal, or decimal representation. Free online converter.",
+        kw: ["text to binary", "binary converter", "text to hex", "ascii to binary", "binary translator"],
+    },
+    {
+        slug: "markdown-table-generator",
+        name: "Markdown Table Generator",
+        seoTitle: "Markdown Table Generator — Visual Table Editor",
+        desc: "Create Markdown tables with a visual editor and column alignment. Free online table generator.",
+        kw: ["markdown table generator", "markdown table", "create markdown table", "markdown table editor", "md table generator"],
+    },
+    {
+        slug: "json-stringify",
+        name: "JSON Stringify / Parse",
+        seoTitle: "JSON Stringify & Parse Tool Online",
+        desc: "Convert between formatted and stringified (escaped) JSON. Free online JSON stringify tool.",
+        kw: ["json stringify", "json parse", "stringify json online", "json escape", "json string converter"],
+    },
+    {
+        slug: "box-shadow-generator",
+        name: "CSS Box Shadow Generator",
+        seoTitle: "CSS Box Shadow Generator — Visual Shadow Editor",
+        desc: "Create box shadows with a visual editor. Adjust offset, blur, spread, and color. Free CSS tool.",
+        kw: ["box shadow generator", "css box shadow", "shadow generator css", "drop shadow css", "css shadow tool"],
+    },
+    {
+        slug: "px-converter",
+        name: "PX / REM / EM Converter",
+        seoTitle: "PX to REM Converter — CSS Unit Calculator",
+        desc: "Convert between px, rem, em, pt, vw, vh, and percent CSS units. Free online unit converter.",
+        kw: ["px to rem", "rem to px", "css unit converter", "px rem converter", "em to px converter"],
+    },
+    {
+        slug: "og-meta-generator",
+        name: "Open Graph Generator",
+        seoTitle: "Open Graph Meta Tag Generator Online",
+        desc: "Generate Open Graph and Twitter Card meta tags for social media previews. Free online OG generator.",
+        kw: ["open graph generator", "og tag generator", "twitter card generator", "meta tag generator", "social media tags"],
+    },
+    {
+        slug: "url-parser",
+        name: "URL Parser",
+        seoTitle: "URL Parser — Break Down Any URL Online",
+        desc: "Parse URLs into protocol, hostname, port, path, query params, and hash. Free online URL parser.",
+        kw: ["url parser", "parse url online", "url breakdown", "url components", "query string parser"],
+    },
+    {
+        slug: "favicon-generator",
+        name: "Favicon Generator",
+        seoTitle: "Favicon Generator — Create Favicons from Emoji or Text",
+        desc: "Generate SVG favicons with emoji, text, or initials. No upload needed. Free online favicon maker.",
+        kw: ["favicon generator", "favicon maker", "create favicon", "svg favicon", "emoji favicon generator"],
+    },
+    {
+        slug: "qr-code-generator",
+        name: "QR Code Generator",
+        seoTitle: "QR Code Generator Online — Free & Customizable",
+        desc: "Generate QR codes from text or URLs. Customize colors and download as PNG or SVG. Free QR maker.",
+        kw: ["qr code generator", "qr code maker", "generate qr code", "qr code online", "free qr code"],
+    },
+    {
+        slug: "json-schema-validator",
+        name: "JSON Schema Validator",
+        seoTitle: "JSON Schema Validator Online",
+        desc: "Validate JSON data against a JSON Schema. Check types, required fields, and constraints. Free tool.",
+        kw: ["json schema validator", "validate json schema", "json schema online", "json validation", "schema checker"],
+    },
+    {
+        slug: "github-readme-generator",
+        name: "GitHub README Generator",
+        seoTitle: "GitHub Profile README Generator Online",
+        desc: "Create an awesome GitHub profile README with stats, badges, and social links. Free online generator.",
+        kw: ["github readme generator", "github profile readme", "readme generator", "github profile", "awesome readme"],
+    },
+    {
+        slug: "tailwind-color-generator",
+        name: "Tailwind Color Generator",
+        seoTitle: "Tailwind CSS Color Palette Generator",
+        desc: "Generate Tailwind CSS color palettes (50-950) from any base color. Free online Tailwind tool.",
+        kw: ["tailwind colors", "tailwind color generator", "tailwind palette", "tailwind css colors", "color palette generator"],
+    },
+    {
+        slug: "xml-formatter",
+        name: "XML Formatter",
+        seoTitle: "XML Formatter & Beautifier Online",
+        desc: "Format, beautify, and validate XML data with custom indentation. Free online XML formatter.",
+        kw: ["xml formatter", "xml beautifier", "format xml online", "xml pretty print", "xml viewer"],
+    },
+    {
+        slug: "subnet-calculator",
+        name: "Subnet Calculator",
+        seoTitle: "Subnet Calculator — CIDR, Netmask & Host Range",
+        desc: "Calculate subnet details from CIDR notation. Network, broadcast, host range, and netmask. Free tool.",
+        kw: ["subnet calculator", "cidr calculator", "subnet mask calculator", "ip subnet", "network calculator"],
+    },
+    {
+        slug: "robots-txt-generator",
+        name: "robots.txt Generator",
+        seoTitle: "robots.txt Generator — Create Robots.txt Online",
+        desc: "Generate robots.txt files with crawl rules, sitemaps, and bot-specific directives. Free online tool.",
+        kw: ["robots.txt generator", "robots txt", "create robots.txt", "robots file generator", "seo robots.txt"],
+    },
+    {
+        slug: "color-palette-generator",
+        name: "Color Palette Generator",
+        seoTitle: "Color Palette Generator — Beautiful Color Schemes",
+        desc: "Generate beautiful color palettes. Random, analogous, complementary, and triadic schemes. Free tool.",
+        kw: ["color palette generator", "color scheme generator", "random color palette", "complementary colors", "color harmony"],
+    },
+    {
+        slug: "http-status-codes",
+        name: "HTTP Status Codes",
+        seoTitle: "HTTP Status Codes Reference — Complete List",
+        desc: "Complete reference of all HTTP status codes (1xx-5xx) with descriptions and examples. Free tool.",
+        kw: ["http status codes", "status code list", "http response codes", "404 status code", "http error codes"],
+    },
+    {
+        slug: "regex-cheat-sheet",
+        name: "Regex Cheat Sheet",
+        seoTitle: "Regex Cheat Sheet — Regular Expression Reference",
+        desc: "Quick reference for regular expressions. Character classes, quantifiers, groups, and common patterns.",
+        kw: ["regex cheat sheet", "regular expression cheat sheet", "regex reference", "regex patterns", "regex syntax"],
+    },
+    {
+        slug: "meta-tag-generator",
+        name: "Meta Tag Generator",
+        seoTitle: "Meta Tag Generator — SEO HTML Meta Tags",
+        desc: "Generate HTML meta tags for SEO. Title, description, viewport, robots, and canonical tags. Free tool.",
+        kw: ["meta tag generator", "html meta tags", "seo meta tags", "meta description generator", "meta tags online"],
+    },
+    {
+        slug: "privacy-policy-generator",
+        name: "Privacy Policy Generator",
+        seoTitle: "Privacy Policy Generator — Free & GDPR Ready",
+        desc: "Generate a free privacy policy for your website. GDPR, cookies, and data collection covered.",
+        kw: ["privacy policy generator", "free privacy policy", "gdpr privacy policy", "website privacy policy", "privacy policy template"],
+    },
+    {
+        slug: "base64-image-encoder",
+        name: "Base64 Image Encoder",
+        seoTitle: "Base64 Image Encoder — Convert Images to Base64",
+        desc: "Convert images to Base64 strings. Supports PNG, JPG, GIF, SVG, and WebP formats. Free tool.",
+        kw: ["base64 image encoder", "image to base64", "convert image to base64", "base64 image", "png to base64"],
+    },
+    {
+        slug: "border-radius-generator",
+        name: "CSS Border Radius Generator",
+        seoTitle: "CSS Border Radius Generator — Visual Editor",
+        desc: "Create CSS border-radius values with a visual editor. Adjust each corner individually. Free tool.",
+        kw: ["border radius generator", "css border radius", "rounded corners css", "border radius css", "corner radius generator"],
+    },
+    {
+        slug: "htaccess-generator",
+        name: ".htaccess Generator",
+        seoTitle: ".htaccess Generator — Redirects, SSL & Caching",
+        desc: "Generate .htaccess rules for redirects, HTTPS, caching, and security headers. Free online tool.",
+        kw: ["htaccess generator", ".htaccess", "htaccess redirect", "htaccess ssl", "apache htaccess"],
+    },
+    {
+        slug: "emoji-picker",
+        name: "Emoji Picker",
+        seoTitle: "Emoji Picker — Search, Browse & Copy Emojis",
+        desc: "Search, browse, and copy emojis to clipboard. Organized by category with Unicode info. Free tool.",
+        kw: ["emoji picker", "emoji search", "copy emoji", "emoji list", "emoji keyboard online"],
+    },
+    {
+        slug: "color-contrast-checker",
+        name: "Color Contrast Checker",
+        seoTitle: "Color Contrast Checker — WCAG AA & AAA Validator",
+        desc: "Check WCAG 2.1 color contrast ratios. Validate AA and AAA accessibility standards. Free tool.",
+        kw: ["color contrast checker", "wcag contrast", "contrast ratio checker", "accessibility color", "aa aaa contrast"],
+    },
+    {
+        slug: "flexbox-generator",
+        name: "CSS Flexbox Generator",
+        seoTitle: "CSS Flexbox Generator — Visual Layout Builder",
+        desc: "Generate CSS flexbox layouts with a visual editor. Set direction, alignment, and wrapping. Free tool.",
+        kw: ["flexbox generator", "css flexbox", "flexbox layout generator", "flexbox builder", "css flex generator"],
+    },
+    {
+        slug: "text-shadow-generator",
+        name: "CSS Text Shadow Generator",
+        seoTitle: "CSS Text Shadow Generator — Visual Shadow Editor",
+        desc: "Create CSS text-shadow effects with a visual editor. Multiple shadows and presets. Free tool.",
+        kw: ["text shadow generator", "css text shadow", "text shadow css", "shadow text effect", "css shadow generator"],
+    },
+    {
+        slug: "json-to-xml",
+        name: "JSON to XML Converter",
+        seoTitle: "JSON to XML Converter Online",
+        desc: "Convert JSON data to XML format. Handles nested objects, arrays, and attributes. Free converter.",
+        kw: ["json to xml", "convert json to xml", "json xml converter", "json2xml", "json to xml online"],
+    },
+    {
+        slug: "markdown-to-html",
+        name: "Markdown to HTML",
+        seoTitle: "Markdown to HTML Converter Online",
+        desc: "Convert Markdown text to clean HTML code. Supports headings, lists, links, and code blocks. Free tool.",
+        kw: ["markdown to html", "convert markdown to html", "md to html", "markdown html converter", "markdown compiler"],
+    },
+    {
+        slug: "fake-data-generator",
+        name: "Fake Data Generator",
+        seoTitle: "Fake Data Generator — Names, Emails & Addresses",
+        desc: "Generate realistic fake data for testing. Names, emails, phone numbers, and addresses. Free tool.",
+        kw: ["fake data generator", "test data generator", "random data", "mock data", "dummy data generator"],
+    },
+    {
+        slug: "csv-viewer",
+        name: "CSV Viewer",
+        seoTitle: "CSV Viewer — View & Sort CSV Data Online",
+        desc: "View CSV data as a formatted table. Sort columns, search, and filter rows. Free online CSV viewer.",
+        kw: ["csv viewer", "csv reader online", "view csv file", "csv table viewer", "open csv online"],
+    },
+    {
+        slug: "json-diff",
+        name: "JSON Diff",
+        seoTitle: "JSON Diff — Compare Two JSON Objects Online",
+        desc: "Compare two JSON objects and highlight added, removed, and modified keys. Free online JSON diff.",
+        kw: ["json diff", "compare json", "json comparison", "json diff online", "json compare tool"],
+    },
+    {
+        slug: "toc-generator",
+        name: "Table of Contents Generator",
+        seoTitle: "Table of Contents Generator for Markdown",
+        desc: "Generate a table of contents from Markdown headings. Create linked TOC for README files. Free tool.",
+        kw: ["table of contents generator", "toc generator", "markdown toc", "readme table of contents", "generate toc"],
+    },
+    {
+        slug: "git-cheat-sheet",
+        name: "Git Cheat Sheet",
+        seoTitle: "Git Cheat Sheet — Essential Git Commands Reference",
+        desc: "Essential Git commands reference. Setup, branching, merging, stashing, and more. Free cheat sheet.",
+        kw: ["git cheat sheet", "git commands", "git reference", "git tutorial", "git command list"],
+    },
+    {
+        slug: "jwt-generator",
+        name: "JWT Generator",
+        seoTitle: "JWT Generator — Create JSON Web Tokens Online",
+        desc: "Create JSON Web Tokens with custom payload, expiration, and HS256 signing. Free online JWT maker.",
+        kw: ["jwt generator", "create jwt", "json web token generator", "jwt maker", "jwt token online"],
+    },
+    {
+        slug: "css-grid-generator",
+        name: "CSS Grid Generator",
+        seoTitle: "CSS Grid Generator — Visual Grid Layout Builder",
+        desc: "Create CSS Grid layouts with a visual editor. Set columns, rows, and gap. Free online grid tool.",
+        kw: ["css grid generator", "grid layout generator", "css grid builder", "css grid online", "grid template generator"],
+    },
+    {
+        slug: "open-source-licenses",
+        name: "Open Source Licenses",
+        seoTitle: "Open Source Licenses — Compare MIT, Apache, GPL & More",
+        desc: "Compare and copy open source licenses. MIT, Apache, GPL, BSD, ISC, and more. Free reference.",
+        kw: ["open source licenses", "mit license", "apache license", "gpl license", "software license comparison"],
+    },
+    {
+        slug: "html-minifier",
+        name: "HTML Minifier",
+        seoTitle: "HTML Minifier & Beautifier Online",
+        desc: "Minify or beautify HTML code. Remove whitespace and comments to reduce file size. Free tool.",
+        kw: ["html minifier", "minify html", "html compressor", "html beautifier", "compress html online"],
+    },
+    {
+        slug: "css-animation-generator",
+        name: "CSS Animation Generator",
+        seoTitle: "CSS Animation Generator — Keyframe Animation Builder",
+        desc: "Create CSS keyframe animations with a visual editor. Preview and copy animation code. Free tool.",
+        kw: ["css animation generator", "keyframe animation", "css animation builder", "css animate", "animation generator online"],
+    },
+    {
+        slug: "xml-to-json",
+        name: "XML to JSON Converter",
+        seoTitle: "XML to JSON Converter Online",
+        desc: "Convert XML data to JSON format. Handles nested elements, attributes, and arrays. Free converter.",
+        kw: ["xml to json", "convert xml to json", "xml json converter", "xml2json", "xml to json online"],
+    },
+    {
+        slug: "unit-converter",
+        name: "Unit Converter",
+        seoTitle: "Unit Converter — Length, Weight, Temperature & More",
+        desc: "Convert between units of length, weight, temperature, speed, area, and volume. Free online tool.",
+        kw: ["unit converter", "measurement converter", "length converter", "weight converter", "temperature converter"],
+    },
+    {
+        slug: "time-zone-converter",
+        name: "Time Zone Converter",
+        seoTitle: "Time Zone Converter — Compare Time Zones Online",
+        desc: "Convert time between different time zones. Compare multiple zones at a glance. Free online tool.",
+        kw: ["time zone converter", "timezone converter", "convert time zones", "world clock", "time difference calculator"],
+    },
+    {
+        slug: "reading-time-calculator",
+        name: "Reading Time Calculator",
+        seoTitle: "Reading Time Calculator — Estimate Read Time Online",
+        desc: "Estimate reading time and speaking time for any text. Word and character stats included. Free tool.",
+        kw: ["reading time calculator", "read time estimator", "reading time", "speaking time calculator", "text reading time"],
+    },
+    {
+        slug: "color-blindness-simulator",
+        name: "Color Blindness Simulator",
+        seoTitle: "Color Blindness Simulator — Preview Color Vision Deficiency",
+        desc: "Preview how colors appear with different types of color vision deficiency. Free online simulator.",
+        kw: ["color blindness simulator", "color blind test", "color vision deficiency", "deuteranopia simulator", "protanopia test"],
+    },
+    {
+        slug: "json-to-go",
+        name: "JSON to Go Struct",
+        seoTitle: "JSON to Go Struct Generator Online",
+        desc: "Generate Go struct definitions from JSON data. Handles nested objects and arrays. Free online tool.",
+        kw: ["json to go", "json to go struct", "go struct generator", "golang json", "convert json to go"],
+    },
+    {
+        slug: "csv-to-sql",
+        name: "CSV to SQL Converter",
+        seoTitle: "CSV to SQL Converter — Generate INSERT Statements",
+        desc: "Convert CSV data to SQL INSERT statements or CREATE TABLE queries. Free online converter.",
+        kw: ["csv to sql", "csv to sql converter", "csv insert statements", "csv to create table", "convert csv to sql"],
+    },
+    {
+        slug: "password-strength-checker",
+        name: "Password Strength Checker",
+        seoTitle: "Password Strength Checker — Test Your Password",
+        desc: "Analyze password strength with detailed scoring. Get tips to improve security. Free online tool.",
+        kw: ["password strength checker", "password tester", "password strength", "check password security", "how strong is my password"],
+    },
+    {
+        slug: "email-validator",
+        name: "Email Validator",
+        seoTitle: "Email Validator — Check Email Format Online",
+        desc: "Validate email address format and syntax. Check for common mistakes and typos. Free online tool.",
+        kw: ["email validator", "email checker", "validate email", "email syntax checker", "check email format"],
+    },
+    {
+        slug: "nginx-config-generator",
+        name: "Nginx Config Generator",
+        seoTitle: "Nginx Config Generator — Server Block Builder",
+        desc: "Generate nginx server blocks for static sites, reverse proxy, SSL, and redirects. Free online tool.",
+        kw: ["nginx config generator", "nginx server block", "nginx configuration", "nginx reverse proxy", "nginx ssl config"],
+    },
+    {
+        slug: "screen-resolution-info",
+        name: "Screen Resolution Info",
+        seoTitle: "Screen Resolution Info — Viewport & Device Details",
+        desc: "View your screen resolution, viewport size, DPR, color depth, and device info. Free online tool.",
+        kw: ["screen resolution", "viewport size", "screen size", "dpr checker", "device pixel ratio"],
+    },
+    {
+        slug: "keyboard-event-tester",
+        name: "Keyboard Event Tester",
+        seoTitle: "Keyboard Event Tester — Key Codes & Event Properties",
+        desc: "Test keyboard events in real time. See key codes, key names, and event properties. Free online tool.",
+        kw: ["keyboard event tester", "key code tester", "keycode", "keyboard event", "javascript keycode"],
+    },
+    {
+        slug: "text-to-nato",
+        name: "NATO Phonetic Alphabet",
+        seoTitle: "NATO Phonetic Alphabet Converter Online",
+        desc: "Convert text to NATO phonetic alphabet. Alpha, Bravo, Charlie and back. Free online converter.",
+        kw: ["nato phonetic alphabet", "phonetic alphabet", "nato alphabet converter", "alpha bravo charlie", "military alphabet"],
+    },
+    {
+        slug: "html-table-generator",
+        name: "HTML Table Generator",
+        seoTitle: "HTML Table Generator — Visual Table Builder",
+        desc: "Create HTML tables with a visual editor. Set rows, columns, headers, and styling. Free online tool.",
+        kw: ["html table generator", "html table builder", "create html table", "table generator online", "html table maker"],
+    },
+    {
+        slug: "hmac-generator",
+        name: "HMAC Generator",
+        seoTitle: "HMAC Generator — SHA-256 & SHA-512 Signatures",
+        desc: "Generate HMAC signatures using SHA-256, SHA-512, and other hash algorithms. Free online tool.",
+        kw: ["hmac generator", "hmac sha256", "hmac sha512", "hmac online", "generate hmac signature"],
+    },
+    {
+        slug: "text-to-ascii-art",
+        name: "Text to ASCII Art",
+        seoTitle: "Text to ASCII Art Generator — FIGlet Font Banners",
+        desc: "Convert text to ASCII art with multiple font styles. Copy and share text banners. Free online tool.",
+        kw: ["text to ascii art", "ascii art generator", "figlet", "text banner generator", "ascii text art"],
+    },
+    {
+        slug: "data-size-converter",
+        name: "Data Size Converter",
+        seoTitle: "Data Size Converter — Bytes, KB, MB, GB & TB",
+        desc: "Convert between bytes, KB, MB, GB, TB, and PB. Binary and decimal units. Free online converter.",
+        kw: ["data size converter", "bytes to mb", "mb to gb", "file size converter", "storage unit converter"],
+    },
+    {
+        slug: "text-reverser",
+        name: "Text Reverser",
+        seoTitle: "Text Reverser — Reverse Characters, Words & Lines",
+        desc: "Reverse text characters, words, or lines. Create mirror text and palindromes. Free online tool.",
+        kw: ["text reverser", "reverse text", "backwards text", "mirror text", "reverse string online"],
+    },
+    {
+        slug: "toml-to-json",
+        name: "TOML ↔ JSON Converter",
+        seoTitle: "TOML to JSON Converter & JSON to TOML Online",
+        desc: "Convert between TOML and JSON formats. Validate TOML syntax and see parsed output. Free tool.",
+        kw: ["toml to json", "json to toml", "toml converter", "toml parser", "convert toml to json"],
+    },
+    {
+        slug: "env-editor",
+        name: ".env Editor & Validator",
+        seoTitle: ".env Editor & Validator — Check Environment Files",
+        desc: "Edit and validate .env files. Check for duplicates, empty values, and syntax errors. Free tool.",
+        kw: ["env editor", "env file validator", "dotenv editor", ".env checker", "environment file editor"],
+    },
+    {
+        slug: "api-response-mocker",
+        name: "API Response Mocker",
+        seoTitle: "API Response Mocker — Create Mock API Responses",
+        desc: "Create mock API responses with custom status codes, headers, and JSON body. Free online tool.",
+        kw: ["api mocker", "mock api response", "api response generator", "json placeholder", "fake api response"],
+    },
+    {
+        slug: "tailwind-class-sorter",
+        name: "Tailwind Class Sorter",
+        seoTitle: "Tailwind Class Sorter — Sort CSS Classes Online",
+        desc: "Sort Tailwind CSS classes in the recommended order. Paste your class string and get sorted output.",
+        kw: ["tailwind class sorter", "tailwind sort", "sort tailwind classes", "tailwind class order", "tailwind css sorter"],
+    },
+    {
+        slug: "regex-to-english",
+        name: "Regex to English",
+        seoTitle: "Regex to English — Explain Regular Expressions",
+        desc: "Translate regular expressions to plain English explanations. Understand any regex pattern. Free tool.",
+        kw: ["regex to english", "explain regex", "regex explainer", "understand regex", "regex translator"],
+    },
+];
+
+// ─── Generate layout.tsx for each tool ────────────────────────────────
+let created = 0;
+
+for (const tool of tools) {
+    const dir = join(APP_DIR, tool.slug);
+    const layoutPath = join(dir, "layout.tsx");
+
+    const title = tool.seoTitle;
+    const desc = tool.desc;
+    const kwArr = JSON.stringify(tool.kw);
+
+    const content = `import type { Metadata } from "next";
+import SchemaOrg from "@/components/SchemaOrg";
+
+export const metadata: Metadata = {
+  title: ${JSON.stringify(title)},
+  description: ${JSON.stringify(desc)},
+  keywords: ${kwArr},
+  openGraph: {
+    title: "${title} | ${SITE}",
+    description: ${JSON.stringify(desc)},
+    url: "${URL}/${tool.slug}",
+    siteName: "${SITE}",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "${title} | ${SITE}",
+    description: ${JSON.stringify(desc)},
+  },
+  alternates: {
+    canonical: "${URL}/${tool.slug}",
+  },
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <SchemaOrg
+        name=${JSON.stringify(tool.name)}
+        description=${JSON.stringify(desc)}
+        slug="${tool.slug}"
+      />
+      {children}
+    </>
+  );
+}
+`;
+
+    if (!existsSync(dir)) {
+        console.warn(`  SKIP: directory ${tool.slug}/ does not exist`);
+        continue;
+    }
+
+    writeFileSync(layoutPath, content, "utf-8");
+    created++;
+}
+
+console.log(`\n✅ Generated ${created} layout.tsx files out of ${tools.length} tools.`);
+
+const missing = tools.length - created;
+if (missing > 0) {
+    console.log(`⚠️  ${missing} tool directories were not found and were skipped.`);
+}

@@ -1,12 +1,36 @@
 import type { Metadata } from "next";
+import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "robots.txt Generator Online — Create Robots.txt File",
-  description:
-    "Generate a robots.txt file for your website. Set crawl rules for search engines, add sitemaps, and control bot access. Free online tool.",
-  keywords: ["robots.txt generator", "robots txt", "create robots.txt", "seo robots", "crawl rules"],
+  title: "robots.txt Generator — Create Robots.txt Online",
+  description: "Generate robots.txt files with crawl rules, sitemaps, and bot-specific directives. Free online tool.",
+  keywords: ["robots.txt generator","robots txt","create robots.txt","robots file generator","seo robots.txt"],
+  openGraph: {
+    title: "robots.txt Generator — Create Robots.txt Online | CodeUtilo",
+    description: "Generate robots.txt files with crawl rules, sitemaps, and bot-specific directives. Free online tool.",
+    url: "https://codeutilo.com/robots-txt-generator",
+    siteName: "CodeUtilo",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "robots.txt Generator — Create Robots.txt Online | CodeUtilo",
+    description: "Generate robots.txt files with crawl rules, sitemaps, and bot-specific directives. Free online tool.",
+  },
+  alternates: {
+    canonical: "https://codeutilo.com/robots-txt-generator",
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <SchemaOrg
+        name="robots.txt Generator"
+        description="Generate robots.txt files with crawl rules, sitemaps, and bot-specific directives. Free online tool."
+        slug="robots-txt-generator"
+      />
+      {children}
+    </>
+  );
 }

@@ -1,12 +1,36 @@
 import type { Metadata } from "next";
+import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "JSON Formatter & Validator Online — Free JSON Beautifier",
-  description:
-    "Format, beautify, validate, and minify JSON data instantly. Free online JSON formatter with adjustable indentation. No signup required.",
-  keywords: ["json formatter", "json beautifier", "json validator", "json minifier", "format json online"],
+  title: "JSON Formatter & Validator Online",
+  description: "Format, validate, and beautify JSON data with syntax highlighting. Free online JSON tool — no signup required.",
+  keywords: ["json formatter","json beautifier","json validator","format json online","json pretty print"],
+  openGraph: {
+    title: "JSON Formatter & Validator Online | CodeUtilo",
+    description: "Format, validate, and beautify JSON data with syntax highlighting. Free online JSON tool — no signup required.",
+    url: "https://codeutilo.com/json-formatter",
+    siteName: "CodeUtilo",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "JSON Formatter & Validator Online | CodeUtilo",
+    description: "Format, validate, and beautify JSON data with syntax highlighting. Free online JSON tool — no signup required.",
+  },
+  alternates: {
+    canonical: "https://codeutilo.com/json-formatter",
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <SchemaOrg
+        name="JSON Formatter"
+        description="Format, validate, and beautify JSON data with syntax highlighting. Free online JSON tool — no signup required."
+        slug="json-formatter"
+      />
+      {children}
+    </>
+  );
 }
