@@ -42,13 +42,13 @@ export default function FaviconGenerator() {
         {/* Controls */}
         <div className="space-y-3">
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Emoji (click to pick)</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Emoji (click to pick)</label>
             <div className="flex flex-wrap gap-1">
               {["🚀", "⚡", "🔥", "💡", "🎯", "⭐", "🌍", "💎", "🎉", "🛠️", "📦", "🎨"].map((e) => (
                 <button
                   key={e}
                   onClick={() => { setEmoji(e); setText(""); }}
-                  className={`rounded border px-2 py-1 text-lg ${emoji === e && !text ? "border-blue-300 bg-blue-50" : "border-gray-200 hover:bg-gray-50"}`}
+                  className={`rounded border px-2 py-1 text-lg ${emoji === e && !text ? "border-blue-300 bg-blue-50 dark:bg-blue-950" : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"}`}
                 >
                   {e}
                 </button>
@@ -57,43 +57,43 @@ export default function FaviconGenerator() {
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Or custom text / initials</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Or custom text / initials</label>
             <input
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value.slice(0, 2))}
               placeholder="MT"
               maxLength={2}
-              className="w-24 rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-center text-sm focus:border-blue-500 focus:outline-none"
+              className="w-24 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-center text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">Background</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Background</label>
               <div className="flex gap-1">
                 <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="h-8 w-8 cursor-pointer rounded border" />
-                <input type="text" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="flex-1 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs" />
+                <input type="text" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="flex-1 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs" />
               </div>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">Text Color</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Text Color</label>
               <div className="flex gap-1">
                 <input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} className="h-8 w-8 cursor-pointer rounded border" />
-                <input type="text" value={textColor} onChange={(e) => setTextColor(e.target.value)} className="flex-1 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs" />
+                <input type="text" value={textColor} onChange={(e) => setTextColor(e.target.value)} className="flex-1 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs" />
               </div>
             </div>
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Shape</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Shape</label>
             <div className="flex gap-2">
               {(["square", "rounded", "circle"] as const).map((s) => (
                 <button
                   key={s}
                   onClick={() => setShape(s)}
                   className={`rounded-lg px-3 py-1.5 text-xs font-medium capitalize transition-colors ${
-                    shape === s ? "bg-blue-600 text-white" : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+                    shape === s ? "bg-blue-600 text-white" : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
                   }`}
                 >
                   {s}
@@ -103,36 +103,36 @@ export default function FaviconGenerator() {
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Font Size: {fontSize}px</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Font Size: {fontSize}px</label>
             <input type="range" min="12" max="40" value={fontSize} onChange={(e) => setFontSize(parseInt(e.target.value))} className="w-full" />
           </div>
         </div>
 
         {/* Preview */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Preview</label>
-          <div className="mb-4 flex items-center gap-6 rounded-lg border border-gray-200 bg-white p-6">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Preview</label>
+          <div className="mb-4 flex items-center gap-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6">
             <div className="text-center">
-              <div className="mb-1 text-xs text-gray-400">48×48</div>
+              <div className="mb-1 text-xs text-gray-400 dark:text-gray-500">48×48</div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={dataUri} alt="Favicon 48px" width={48} height={48} />
             </div>
             <div className="text-center">
-              <div className="mb-1 text-xs text-gray-400">32×32</div>
+              <div className="mb-1 text-xs text-gray-400 dark:text-gray-500">32×32</div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={dataUri} alt="Favicon 32px" width={32} height={32} />
             </div>
             <div className="text-center">
-              <div className="mb-1 text-xs text-gray-400">16×16</div>
+              <div className="mb-1 text-xs text-gray-400 dark:text-gray-500">16×16</div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={dataUri} alt="Favicon 16px" width={16} height={16} />
             </div>
             <div className="text-center">
-              <div className="mb-1 text-xs text-gray-400">Browser tab</div>
-              <div className="flex items-center gap-1 rounded-t bg-gray-100 px-2 py-1">
+              <div className="mb-1 text-xs text-gray-400 dark:text-gray-500">Browser tab</div>
+              <div className="flex items-center gap-1 rounded-t bg-gray-100 dark:bg-gray-800 px-2 py-1">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={dataUri} alt="Tab" width={16} height={16} />
-                <span className="text-xs text-gray-600">My Page</span>
+                <span className="text-xs text-gray-600 dark:text-gray-400">My Page</span>
               </div>
             </div>
           </div>
@@ -141,37 +141,37 @@ export default function FaviconGenerator() {
           <div className="space-y-3">
             <div>
               <div className="flex items-center justify-between">
-                <label className="text-xs font-medium text-gray-700">SVG Code</label>
+                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">SVG Code</label>
                 <CopyButton text={svg} />
               </div>
-              <pre className="mt-1 max-h-20 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-2 font-mono text-[10px]">{svg}</pre>
+              <pre className="mt-1 max-h-20 overflow-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-2 font-mono text-[10px]">{svg}</pre>
             </div>
             <div>
               <div className="flex items-center justify-between">
-                <label className="text-xs font-medium text-gray-700">HTML (inline data URI)</label>
+                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">HTML (inline data URI)</label>
                 <CopyButton text={htmlLink} />
               </div>
-              <pre className="mt-1 max-h-16 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-2 font-mono text-[10px] break-all">{htmlLink}</pre>
+              <pre className="mt-1 max-h-16 overflow-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-2 font-mono text-[10px] break-all">{htmlLink}</pre>
             </div>
             <div>
               <div className="flex items-center justify-between">
-                <label className="text-xs font-medium text-gray-700">HTML (external file)</label>
+                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">HTML (external file)</label>
                 <CopyButton text={svgFavicon} />
               </div>
-              <pre className="mt-1 rounded-lg border border-gray-200 bg-gray-50 p-2 font-mono text-[10px]">{svgFavicon}</pre>
+              <pre className="mt-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-2 font-mono text-[10px]">{svgFavicon}</pre>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why SVG Favicons?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why SVG Favicons?</h2>
         <p className="mb-3">
           SVG favicons are lightweight, scalable, and supported by all modern browsers.
           They look crisp on any display density and can even respond to dark mode with CSS
           media queries inside the SVG.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How to Use</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How to Use</h2>
         <p>
           Save the SVG code as <code>favicon.svg</code> in your public folder, or use the inline
           data URI directly in your HTML head. SVG favicons are supported in Chrome, Firefox,

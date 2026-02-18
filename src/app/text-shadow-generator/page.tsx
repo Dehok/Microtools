@@ -157,7 +157,7 @@ export default function TextShadowGenerator() {
     >
       {/* Live Preview */}
       <div
-        className="mb-6 flex items-center justify-center rounded-lg border border-gray-200 p-8"
+        className="mb-6 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 p-8"
         style={{ backgroundColor: bgColor, minHeight: "160px" }}
       >
         <span
@@ -178,19 +178,19 @@ export default function TextShadowGenerator() {
       {/* Preview Text + Font Size */}
       <div className="mb-4 grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Preview Text</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Preview Text</label>
           <input
             type="text"
             value={previewText}
             onChange={(e) => setPreviewText(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             placeholder="Enter preview text..."
           />
         </div>
         <div>
-          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
             Font Size
-            <span className="font-mono text-gray-500">{fontSize}px</span>
+            <span className="font-mono text-gray-500 dark:text-gray-400">{fontSize}px</span>
           </label>
           <input
             type="range"
@@ -206,7 +206,7 @@ export default function TextShadowGenerator() {
       {/* Color Controls */}
       <div className="mb-4 flex flex-wrap gap-4">
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Text Color</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Text Color</label>
           <div className="flex items-center gap-1.5">
             <input
               type="color"
@@ -218,12 +218,12 @@ export default function TextShadowGenerator() {
               type="text"
               value={textColor}
               onChange={(e) => setTextColor(e.target.value)}
-              className="w-20 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs"
+              className="w-20 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs"
             />
           </div>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Background</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Background</label>
           <div className="flex items-center gap-1.5">
             <input
               type="color"
@@ -235,20 +235,20 @@ export default function TextShadowGenerator() {
               type="text"
               value={bgColor}
               onChange={(e) => setBgColor(e.target.value)}
-              className="w-20 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs"
+              className="w-20 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs"
             />
           </div>
         </div>
       </div>
 
       {/* Presets */}
-      <h3 className="mb-2 text-sm font-semibold text-gray-900">Presets</h3>
+      <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Presets</h3>
       <div className="mb-6 flex flex-wrap gap-2">
         {PRESETS.map((p) => (
           <button
             key={p.name}
             onClick={() => applyPreset(p)}
-            className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-blue-300 hover:bg-blue-50"
+            className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50 dark:bg-blue-950 dark:hover:bg-blue-950"
           >
             {p.name}
           </button>
@@ -258,7 +258,7 @@ export default function TextShadowGenerator() {
       {/* Shadow Layers */}
       <div className="mb-4">
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-900">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
             Shadow Layers ({shadows.length})
           </h3>
           <button
@@ -278,7 +278,7 @@ export default function TextShadowGenerator() {
               className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 i === activeIndex
                   ? "bg-blue-600 text-white"
-                  : "border border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+                  : "border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               }`}
             >
               Layer {i + 1}
@@ -291,7 +291,7 @@ export default function TextShadowGenerator() {
                   className={`ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full text-[10px] leading-none ${
                     i === activeIndex
                       ? "hover:bg-blue-500"
-                      : "hover:bg-gray-200"
+                      : "hover:bg-gray-200 dark:bg-gray-700"
                   }`}
                 >
                   x
@@ -303,12 +303,12 @@ export default function TextShadowGenerator() {
 
         {/* Active Shadow Controls */}
         {activeShadow && (
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                   X Offset
-                  <span className="font-mono text-gray-500">{activeShadow.x}px</span>
+                  <span className="font-mono text-gray-500 dark:text-gray-400">{activeShadow.x}px</span>
                 </label>
                 <input
                   type="range"
@@ -320,9 +320,9 @@ export default function TextShadowGenerator() {
                 />
               </div>
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                   Y Offset
-                  <span className="font-mono text-gray-500">{activeShadow.y}px</span>
+                  <span className="font-mono text-gray-500 dark:text-gray-400">{activeShadow.y}px</span>
                 </label>
                 <input
                   type="range"
@@ -334,9 +334,9 @@ export default function TextShadowGenerator() {
                 />
               </div>
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                   Blur Radius
-                  <span className="font-mono text-gray-500">{activeShadow.blur}px</span>
+                  <span className="font-mono text-gray-500 dark:text-gray-400">{activeShadow.blur}px</span>
                 </label>
                 <input
                   type="range"
@@ -348,9 +348,9 @@ export default function TextShadowGenerator() {
                 />
               </div>
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                   Opacity
-                  <span className="font-mono text-gray-500">{activeShadow.opacity}%</span>
+                  <span className="font-mono text-gray-500 dark:text-gray-400">{activeShadow.opacity}%</span>
                 </label>
                 <input
                   type="range"
@@ -363,7 +363,7 @@ export default function TextShadowGenerator() {
               </div>
             </div>
             <div className="mt-4">
-              <label className="mb-1 block text-xs font-medium text-gray-700">Shadow Color</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Shadow Color</label>
               <div className="flex items-center gap-1.5">
                 <input
                   type="color"
@@ -375,7 +375,7 @@ export default function TextShadowGenerator() {
                   type="text"
                   value={activeShadow.color}
                   onChange={(e) => updateShadow(activeShadow.id, "color", e.target.value)}
-                  className="w-24 rounded border border-gray-300 bg-white px-2 py-1 font-mono text-xs"
+                  className="w-24 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-1 font-mono text-xs"
                 />
               </div>
             </div>
@@ -386,35 +386,35 @@ export default function TextShadowGenerator() {
       {/* CSS Output */}
       <div className="mb-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">CSS Code</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">CSS Code</label>
           <CopyButton text={css} />
         </div>
-        <pre className="mt-1 overflow-x-auto rounded-lg border border-gray-200 bg-gray-900 p-3 font-mono text-sm text-green-400">
+        <pre className="mt-1 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-900 p-3 font-mono text-sm text-green-400">
           {css}
         </pre>
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">CSS Text Shadow</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">CSS Text Shadow</h2>
         <p className="mb-3">
-          The <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">text-shadow</code> CSS
+          The <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">text-shadow</code> CSS
           property adds shadow effects to text. It accepts values for horizontal offset, vertical
           offset, blur radius, and color. You can apply multiple shadows by separating each shadow
           definition with a comma.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Syntax</h2>
-        <pre className="mb-3 rounded-lg bg-gray-100 p-3 font-mono text-xs text-gray-800">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Syntax</h2>
+        <pre className="mb-3 rounded-lg bg-gray-100 dark:bg-gray-800 p-3 font-mono text-xs text-gray-800 dark:text-gray-200">
           text-shadow: offset-x offset-y blur-radius color;
         </pre>
         <p className="mb-3">
-          Unlike <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">box-shadow</code>,
-          text-shadow does not support the <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">spread</code> or{" "}
-          <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">inset</code> values. However,
+          Unlike <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">box-shadow</code>,
+          text-shadow does not support the <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">spread</code> or{" "}
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">inset</code> values. However,
           layering multiple text shadows can produce stunning effects like neon glows, 3D lettering,
           fire effects, retro outlines, and glitch typography.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Performance Tips</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Performance Tips</h2>
         <p>
           Text shadows with large blur values on long blocks of text can impact rendering
           performance, especially during animations or scrolling. For decorative headings, text

@@ -241,9 +241,9 @@ export default function NginxConfigGenerator() {
   ]);
 
   const inputClass =
-    "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none";
-  const labelClass = "mb-1 block text-xs font-medium text-gray-600";
-  const sectionClass = "border-t border-gray-100 pt-5";
+    "w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none";
+  const labelClass = "mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400";
+  const sectionClass = "border-t border-gray-100 dark:border-gray-800 pt-5";
 
   return (
     <ToolLayout
@@ -258,7 +258,7 @@ export default function NginxConfigGenerator() {
       <div className="space-y-6">
         {/* Server Type */}
         <div>
-          <span className="block text-sm font-semibold text-gray-900 mb-3">
+          <span className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
             Server Type
           </span>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -272,8 +272,8 @@ export default function NginxConfigGenerator() {
                 key={opt.value}
                 className={`flex cursor-pointer items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
                   serverType === opt.value
-                    ? "border-blue-500 bg-blue-50 text-blue-700"
-                    : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
+                    ? "border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+                    : "border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-gray-300 dark:border-gray-600 dark:hover:border-gray-600 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
                 }`}
               >
                 <input
@@ -292,7 +292,7 @@ export default function NginxConfigGenerator() {
 
         {/* Common Fields */}
         <div className={sectionClass}>
-          <span className="block text-sm font-semibold text-gray-900 mb-3">
+          <span className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
             General Settings
           </span>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -319,7 +319,7 @@ export default function NginxConfigGenerator() {
                 disabled={sslEnabled}
               />
               {sslEnabled && (
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                   Port overridden to 443 when SSL is enabled.
                 </p>
               )}
@@ -341,12 +341,12 @@ export default function NginxConfigGenerator() {
 
         {/* SSL / HTTPS */}
         <div className={sectionClass}>
-          <label className="flex items-center gap-2 text-sm font-semibold text-gray-900 cursor-pointer">
+          <label className="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-gray-100 cursor-pointer">
             <input
               type="checkbox"
               checked={sslEnabled}
               onChange={(e) => setSslEnabled(e.target.checked)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             Enable SSL / HTTPS
           </label>
@@ -374,12 +374,12 @@ export default function NginxConfigGenerator() {
                   />
                 </div>
               </div>
-              <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+              <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={redirectHttpToHttps}
                   onChange={(e) => setRedirectHttpToHttps(e.target.checked)}
-                  className="rounded border-gray-300"
+                  className="rounded border-gray-300 dark:border-gray-600"
                 />
                 Redirect HTTP to HTTPS (adds separate server block on port 80)
               </label>
@@ -390,7 +390,7 @@ export default function NginxConfigGenerator() {
         {/* Reverse Proxy Options */}
         {serverType === "proxy" && (
           <div className={sectionClass}>
-            <span className="block text-sm font-semibold text-gray-900 mb-3">
+            <span className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
               Reverse Proxy Settings
             </span>
             <div className="space-y-4">
@@ -404,12 +404,12 @@ export default function NginxConfigGenerator() {
                   className={inputClass}
                 />
               </div>
-              <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+              <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={websocketSupport}
                   onChange={(e) => setWebsocketSupport(e.target.checked)}
-                  className="rounded border-gray-300"
+                  className="rounded border-gray-300 dark:border-gray-600"
                 />
                 Enable WebSocket Support
               </label>
@@ -420,7 +420,7 @@ export default function NginxConfigGenerator() {
         {/* PHP Options */}
         {serverType === "php" && (
           <div className={sectionClass}>
-            <span className="block text-sm font-semibold text-gray-900 mb-3">
+            <span className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
               PHP-FPM Settings
             </span>
             <div>
@@ -432,7 +432,7 @@ export default function NginxConfigGenerator() {
                 placeholder="unix:/run/php/php8.2-fpm.sock"
                 className={inputClass}
               />
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                 Use a TCP address like <code>127.0.0.1:9000</code> if not using a Unix socket.
               </p>
             </div>
@@ -441,39 +441,39 @@ export default function NginxConfigGenerator() {
 
         {/* Additional Options */}
         <div className={sectionClass}>
-          <span className="block text-sm font-semibold text-gray-900 mb-4">
+          <span className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4">
             Additional Options
           </span>
           <div className="space-y-4">
             {/* Gzip */}
             <div>
-              <label className="flex items-center gap-2 text-sm font-medium text-gray-900 cursor-pointer">
+              <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={gzipEnabled}
                   onChange={(e) => setGzipEnabled(e.target.checked)}
-                  className="rounded border-gray-300"
+                  className="rounded border-gray-300 dark:border-gray-600"
                 />
                 Enable Gzip Compression
               </label>
-              <p className="ml-6 mt-0.5 text-xs text-gray-500">
+              <p className="ml-6 mt-0.5 text-xs text-gray-500 dark:text-gray-400">
                 Compress HTML, CSS, JS, JSON, XML, and SVG responses.
               </p>
             </div>
 
             {/* Security Headers */}
             <div>
-              <label className="flex items-center gap-2 text-sm font-medium text-gray-900 cursor-pointer">
+              <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={securityHeaders}
                   onChange={(e) => setSecurityHeaders(e.target.checked)}
-                  className="rounded border-gray-300"
+                  className="rounded border-gray-300 dark:border-gray-600"
                 />
                 Add Security Headers
               </label>
               {securityHeaders && (
-                <ul className="ml-6 mt-2 text-xs text-gray-500 space-y-0.5 list-disc list-inside">
+                <ul className="ml-6 mt-2 text-xs text-gray-500 dark:text-gray-400 space-y-0.5 list-disc list-inside">
                   <li>X-Frame-Options: SAMEORIGIN</li>
                   <li>X-Content-Type-Options: nosniff</li>
                   <li>X-XSS-Protection: 1; mode=block</li>
@@ -485,12 +485,12 @@ export default function NginxConfigGenerator() {
 
             {/* Custom Error Pages */}
             <div>
-              <label className="flex items-center gap-2 text-sm font-medium text-gray-900 cursor-pointer">
+              <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={customErrorPages}
                   onChange={(e) => setCustomErrorPages(e.target.checked)}
-                  className="rounded border-gray-300"
+                  className="rounded border-gray-300 dark:border-gray-600"
                 />
                 Custom Error Pages
               </label>
@@ -552,9 +552,9 @@ export default function NginxConfigGenerator() {
                 value={clientMaxBodySize}
                 onChange={(e) => setClientMaxBodySize(e.target.value)}
                 placeholder="10m"
-                className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none w-32"
+                className="rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none w-32"
               />
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                 e.g. <code>10m</code>, <code>50m</code>, <code>1g</code>. Controls the maximum allowed size of request bodies.
               </p>
             </div>
@@ -562,37 +562,37 @@ export default function NginxConfigGenerator() {
         </div>
 
         {/* Generated Output */}
-        <div className="border-t border-gray-200 pt-6">
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
           <div className="mb-2 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-900">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
               Generated Nginx Config
             </h3>
             <CopyButton text={nginxConfig} />
           </div>
-          <pre className="overflow-x-auto rounded-lg border border-gray-300 bg-gray-50 p-4 text-sm leading-relaxed">
+          <pre className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-4 text-sm leading-relaxed">
             <code>{nginxConfig}</code>
           </pre>
-          <p className="mt-2 text-xs text-gray-400">
+          <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">
             Save this as <code>/etc/nginx/sites-available/your-site.conf</code> and enable it with <code>sudo nginx -t &amp;&amp; sudo systemctl reload nginx</code>.
           </p>
         </div>
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is an Nginx Server Block?
         </h2>
         <p className="mb-3">
           An Nginx server block (the equivalent of Apache&apos;s virtual host) defines how the Nginx web server handles incoming requests for a specific domain or IP address. Each server block specifies the listening port, domain names, root directory, SSL settings, and request routing rules.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Choosing the Right Server Type
         </h2>
         <p className="mb-3">
           Use <strong>Static Website</strong> to serve HTML, CSS, and JavaScript files directly from disk. Choose <strong>Reverse Proxy</strong> when Nginx sits in front of another server such as a Node.js, Python, or Ruby application running on a local port. Select <strong>PHP (FastCGI)</strong> to process PHP files via PHP-FPM, which is the standard setup for WordPress and other PHP applications. The <strong>SPA</strong> (Single Page Application) mode adds a fallback to <code>index.html</code> so client-side routers like React Router work correctly, and also caches static assets aggressively.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to Deploy the Generated Config
         </h2>
         <p>

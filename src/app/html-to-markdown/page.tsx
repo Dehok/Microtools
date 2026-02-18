@@ -96,24 +96,24 @@ export default function HtmlToMarkdown() {
     >
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">HTML Input</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">HTML Input</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste HTML here..."
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setInput(SAMPLE)}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Sample
             </button>
             <button
               onClick={() => setInput("")}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Clear
             </button>
@@ -121,26 +121,26 @@ export default function HtmlToMarkdown() {
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Markdown Output</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Markdown Output</label>
             <CopyButton text={output} />
           </div>
           <textarea
             value={output}
             readOnly
             placeholder="Markdown will appear here..."
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs"
           />
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">HTML to Markdown Conversion</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">HTML to Markdown Conversion</h2>
         <p className="mb-3">
           This tool converts common HTML elements to their Markdown equivalents: headings to #,
           bold to **, italic to *, lists to - and numbered items, links to [text](url),
           code blocks to backticks, and blockquotes to &gt;.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">When to Convert</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to Convert</h2>
         <p>
           Convert HTML to Markdown when migrating content between CMS platforms, writing documentation,
           creating README files, or converting web content for use in Markdown-based tools like GitHub,

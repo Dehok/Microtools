@@ -224,35 +224,35 @@ export default function JwtGenerator() {
 
       {/* Algorithm */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">Algorithm</label>
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Algorithm</label>
         <select
           value="HS256"
           disabled
-          className="w-full rounded-lg border border-gray-300 bg-gray-100 p-2.5 text-sm text-gray-700 sm:w-48"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 p-2.5 text-sm text-gray-700 dark:text-gray-300 sm:w-48"
         >
           <option value="HS256">HS256 (HMAC-SHA256)</option>
         </select>
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
           Only HS256 is supported for client-side signing.
         </p>
       </div>
 
       {/* Secret key */}
       <div className="mb-5">
-        <label className="mb-1 block text-sm font-medium text-gray-700">Secret Key</label>
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Secret Key</label>
         <input
           type="text"
           value={secret}
           onChange={(e) => setSecret(e.target.value)}
           placeholder="Enter your secret key..."
-          className="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 font-mono text-sm focus:border-blue-500 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-2.5 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           spellCheck={false}
         />
       </div>
 
       {/* Payload */}
       <div className="mb-2">
-        <label className="mb-1 block text-sm font-medium text-gray-700">Payload (JSON)</label>
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Payload (JSON)</label>
       </div>
 
       {/* Quick-add claim buttons */}
@@ -262,7 +262,7 @@ export default function JwtGenerator() {
             key={c.key}
             onClick={() => addClaim(c)}
             title={c.description}
-            className="rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xs font-medium text-gray-700 transition-colors hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700"
+            className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors hover:border-blue-400 hover:bg-blue-50 dark:bg-blue-950 dark:hover:bg-blue-950 hover:text-blue-700 dark:text-blue-300"
           >
             + {c.label}
           </button>
@@ -271,12 +271,12 @@ export default function JwtGenerator() {
 
       {/* Expiration picker */}
       <div className="mb-3 flex flex-wrap items-center gap-1.5">
-        <span className="text-xs font-medium text-gray-500">Expiration:</span>
+        <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Expiration:</span>
         {EXPIRATION_OPTIONS.map((opt) => (
           <button
             key={opt.label}
             onClick={() => setExpiration(opt.seconds)}
-            className="rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xs font-medium text-gray-700 transition-colors hover:border-green-400 hover:bg-green-50 hover:text-green-700"
+            className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors hover:border-green-400 hover:bg-green-50 dark:bg-green-950 dark:hover:bg-green-950 hover:text-green-700 dark:text-green-300"
           >
             {opt.label}
           </button>
@@ -287,12 +287,12 @@ export default function JwtGenerator() {
             value={customExpMinutes}
             onChange={(e) => setCustomExpMinutes(Number(e.target.value))}
             min={1}
-            className="w-20 rounded-md border border-gray-300 bg-white px-2 py-1 text-xs focus:border-blue-500 focus:outline-none"
+            className="w-20 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-1 text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
-          <span className="text-xs text-gray-500">min</span>
+          <span className="text-xs text-gray-500 dark:text-gray-400">min</span>
           <button
             onClick={() => setExpiration(customExpMinutes * 60)}
-            className="rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xs font-medium text-gray-700 transition-colors hover:border-green-400 hover:bg-green-50 hover:text-green-700"
+            className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors hover:border-green-400 hover:bg-green-50 dark:bg-green-950 dark:hover:bg-green-950 hover:text-green-700 dark:text-green-300"
           >
             Set
           </button>
@@ -303,22 +303,22 @@ export default function JwtGenerator() {
         value={payload}
         onChange={(e) => setPayload(e.target.value)}
         placeholder='{"sub":"1234567890","name":"Test","iat":1708000000}'
-        className={`mb-4 h-48 w-full rounded-lg border bg-gray-50 p-3 font-mono text-xs focus:outline-none ${
+        className={`mb-4 h-48 w-full rounded-lg border bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:outline-none ${
           payloadValid.ok
-            ? "border-gray-300 focus:border-blue-500"
+            ? "border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:border-blue-400"
             : "border-red-400 focus:border-red-500"
         }`}
         spellCheck={false}
       />
 
       {!payloadValid.ok && (
-        <div className="mb-4 -mt-2 text-xs text-red-600">{payloadValid.error}</div>
+        <div className="mb-4 -mt-2 text-xs text-red-600 dark:text-red-400">{payloadValid.error}</div>
       )}
 
       <div className="mb-5 flex gap-2">
         <button
           onClick={handleClear}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Reset
         </button>
@@ -326,7 +326,7 @@ export default function JwtGenerator() {
 
       {/* Error */}
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
@@ -336,14 +336,14 @@ export default function JwtGenerator() {
         <div className="space-y-4">
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <label className="text-sm font-semibold text-gray-700">Generated JWT</label>
+              <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Generated JWT</label>
               <CopyButton text={jwt} />
             </div>
-            <div className="rounded-lg border border-gray-200 bg-gray-900 p-4 font-mono text-sm leading-relaxed break-all">
+            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-900 p-4 font-mono text-sm leading-relaxed break-all">
               <span className="text-red-400">{jwtParts[0]}</span>
-              <span className="text-gray-500">.</span>
+              <span className="text-gray-500 dark:text-gray-400">.</span>
               <span className="text-purple-400">{jwtParts[1]}</span>
-              <span className="text-gray-500">.</span>
+              <span className="text-gray-500 dark:text-gray-400">.</span>
               <span className="text-cyan-400">{jwtParts[2]}</span>
             </div>
             <div className="mt-2 flex gap-4 text-xs">
@@ -364,35 +364,35 @@ export default function JwtGenerator() {
 
           {/* Decoded view */}
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-sm font-semibold text-red-600">Header</span>
+                <span className="text-sm font-semibold text-red-600 dark:text-red-400">Header</span>
                 <CopyButton text={decodedHeader} />
               </div>
-              <pre className="whitespace-pre-wrap font-mono text-sm text-gray-800">{decodedHeader}</pre>
+              <pre className="whitespace-pre-wrap font-mono text-sm text-gray-800 dark:text-gray-200">{decodedHeader}</pre>
             </div>
 
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-sm font-semibold text-purple-600">Payload</span>
+                <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">Payload</span>
                 <CopyButton text={decodedPayload} />
               </div>
-              <pre className="whitespace-pre-wrap font-mono text-sm text-gray-800">{decodedPayload}</pre>
+              <pre className="whitespace-pre-wrap font-mono text-sm text-gray-800 dark:text-gray-200">{decodedPayload}</pre>
             </div>
           </div>
         </div>
       )}
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is a JWT?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is a JWT?</h2>
         <p className="mb-3">
           A JSON Web Token (JWT) is a compact, URL-safe token format defined by RFC 7519. It is
           widely used for authentication and secure information exchange between parties. A JWT
           consists of three Base64url-encoded parts separated by dots: header, payload, and signature.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">JWT Structure</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">JWT Structure</h2>
         <p className="mb-3">
           The <strong>header</strong> specifies the signing algorithm (e.g., HS256) and token type.
           The <strong>payload</strong> contains claims — statements about the user and metadata such
@@ -401,7 +401,7 @@ export default function JwtGenerator() {
           secret key, ensuring the token has not been tampered with.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Standard JWT Claims</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Standard JWT Claims</h2>
         <ul className="mb-3 list-inside list-disc space-y-1">
           <li><strong>iss</strong> (Issuer) — identifies who issued the token</li>
           <li><strong>sub</strong> (Subject) — identifies the subject of the token</li>
@@ -412,14 +412,14 @@ export default function JwtGenerator() {
           <li><strong>jti</strong> (JWT ID) — unique identifier for the token</li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How does this tool work?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How does this tool work?</h2>
         <p className="mb-3">
           This generator creates JWTs entirely in your browser using the Web Crypto API for
           HMAC-SHA256 signing. No data is sent to any server. The generated tokens are suitable
           for testing, learning, and development purposes.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Is this tool secure?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Is this tool secure?</h2>
         <p>
           All signing happens locally in your browser. However, client-side token generation
           should never be used in production systems, as the secret key would be exposed to the

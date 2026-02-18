@@ -138,19 +138,19 @@ export default function JsonToTypescript() {
     >
       <div className="mb-4 flex flex-wrap items-end gap-4">
         <div>
-          <label className="mb-1 block text-xs text-gray-500">Root name</label>
+          <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Root name</label>
           <input
             type="text"
             value={rootName}
             onChange={(e) => setRootName(e.target.value || "Root")}
-            className="w-32 rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-32 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
         <div className="flex gap-2">
           <button
             onClick={() => setMode("separate")}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              mode === "separate" ? "bg-blue-600 text-white" : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              mode === "separate" ? "bg-blue-600 text-white" : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             Separate interfaces
@@ -158,7 +158,7 @@ export default function JsonToTypescript() {
           <button
             onClick={() => setMode("inline")}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              mode === "inline" ? "bg-blue-600 text-white" : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              mode === "inline" ? "bg-blue-600 text-white" : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             Inline
@@ -168,24 +168,24 @@ export default function JsonToTypescript() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">JSON Input</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">JSON Input</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste JSON here..."
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setInput(SAMPLE)}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Sample
             </button>
             <button
               onClick={() => setInput("")}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Clear
             </button>
@@ -193,27 +193,27 @@ export default function JsonToTypescript() {
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">TypeScript Output</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">TypeScript Output</label>
             <CopyButton text={output} />
           </div>
           <textarea
             value={error || output}
             readOnly
             className={`h-72 w-full rounded-lg border p-3 font-mono text-xs ${
-              error ? "border-red-300 bg-red-50 text-red-700" : "border-gray-300 bg-gray-50"
+              error ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-300" : "border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950"
             }`}
           />
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">JSON to TypeScript Conversion</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">JSON to TypeScript Conversion</h2>
         <p className="mb-3">
           This tool analyzes JSON data and generates corresponding TypeScript interfaces. It
           infers types from values (string, number, boolean), handles nested objects as separate
           interfaces, and detects array item types.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">When to Use This</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to Use This</h2>
         <p>
           Use this when integrating with APIs — paste a JSON response to instantly get TypeScript
           types. This saves time and ensures type safety when working with external data sources.

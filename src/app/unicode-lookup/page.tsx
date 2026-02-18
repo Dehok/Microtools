@@ -58,28 +58,28 @@ export default function UnicodeLookup() {
       description="Inspect Unicode characters: code points, HTML entities, CSS escapes, and UTF-8 bytes. Browse common character sets."
       relatedTools={["html-encoder-decoder", "text-case-converter", "number-base-converter"]}
     >
-      <label className="mb-1 block text-sm font-medium text-gray-700">Input Text</label>
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Input Text</label>
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Type or paste characters to inspect..."
-        className="mb-4 h-20 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm focus:border-blue-500 focus:outline-none"
+        className="mb-4 h-20 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
         spellCheck={false}
       />
 
       {/* Common character sets */}
       <div className="mb-4">
-        <h3 className="mb-2 text-sm font-semibold text-gray-900">Common Characters</h3>
+        <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Common Characters</h3>
         <div className="space-y-2">
           {COMMON_CHARS.map((group) => (
             <div key={group.label} className="flex items-start gap-2">
-              <span className="w-20 text-xs font-medium text-gray-500 pt-1">{group.label}</span>
+              <span className="w-20 text-xs font-medium text-gray-500 dark:text-gray-400 pt-1">{group.label}</span>
               <div className="flex flex-wrap gap-1">
                 {group.chars.split(" ").map((char, i) => (
                   <button
                     key={i}
                     onClick={() => setInput((prev) => prev + char)}
-                    className="rounded border border-gray-200 bg-white px-2 py-1 text-lg hover:bg-gray-50"
+                    className="rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-2 py-1 text-lg hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
                     title={`Add ${char}`}
                   >
                     {char}
@@ -96,56 +96,56 @@ export default function UnicodeLookup() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-gray-200 text-left">
-                <th className="py-2 pr-3 font-medium text-gray-700">Char</th>
-                <th className="py-2 pr-3 font-medium text-gray-700">Code Point</th>
-                <th className="py-2 pr-3 font-medium text-gray-700">Unicode</th>
-                <th className="py-2 pr-3 font-medium text-gray-700">HTML Hex</th>
-                <th className="py-2 pr-3 font-medium text-gray-700">HTML Dec</th>
-                <th className="py-2 pr-3 font-medium text-gray-700">CSS</th>
-                <th className="py-2 font-medium text-gray-700">UTF-8</th>
+              <tr className="border-b border-gray-200 dark:border-gray-700 text-left">
+                <th className="py-2 pr-3 font-medium text-gray-700 dark:text-gray-300">Char</th>
+                <th className="py-2 pr-3 font-medium text-gray-700 dark:text-gray-300">Code Point</th>
+                <th className="py-2 pr-3 font-medium text-gray-700 dark:text-gray-300">Unicode</th>
+                <th className="py-2 pr-3 font-medium text-gray-700 dark:text-gray-300">HTML Hex</th>
+                <th className="py-2 pr-3 font-medium text-gray-700 dark:text-gray-300">HTML Dec</th>
+                <th className="py-2 pr-3 font-medium text-gray-700 dark:text-gray-300">CSS</th>
+                <th className="py-2 font-medium text-gray-700 dark:text-gray-300">UTF-8</th>
               </tr>
             </thead>
             <tbody>
               {chars.slice(0, 100).map((c, i) => (
-                <tr key={i} className="border-b border-gray-100 hover:bg-gray-50">
+                <tr key={i} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800">
                   <td className="py-1.5 pr-3 text-lg">{c.char === " " ? "␣" : c.char}</td>
-                  <td className="py-1.5 pr-3 font-mono text-gray-600">{c.codePoint}</td>
-                  <td className="py-1.5 pr-3 font-mono text-blue-700">
+                  <td className="py-1.5 pr-3 font-mono text-gray-600 dark:text-gray-400">{c.codePoint}</td>
+                  <td className="py-1.5 pr-3 font-mono text-blue-700 dark:text-blue-300">
                     <span className="inline-flex items-center gap-1">
                       {c.hex}
                       <CopyButton text={c.hex} />
                     </span>
                   </td>
-                  <td className="py-1.5 pr-3 font-mono text-gray-600">
+                  <td className="py-1.5 pr-3 font-mono text-gray-600 dark:text-gray-400">
                     <span className="inline-flex items-center gap-1">
                       {c.htmlEntity}
                       <CopyButton text={c.htmlEntity} />
                     </span>
                   </td>
-                  <td className="py-1.5 pr-3 font-mono text-gray-600">{c.htmlDecimal}</td>
-                  <td className="py-1.5 pr-3 font-mono text-gray-600">{c.cssEscape}</td>
-                  <td className="py-1.5 font-mono text-gray-600">{c.utf8}</td>
+                  <td className="py-1.5 pr-3 font-mono text-gray-600 dark:text-gray-400">{c.htmlDecimal}</td>
+                  <td className="py-1.5 pr-3 font-mono text-gray-600 dark:text-gray-400">{c.cssEscape}</td>
+                  <td className="py-1.5 font-mono text-gray-600 dark:text-gray-400">{c.utf8}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           {chars.length > 100 && (
-            <div className="mt-2 text-xs text-gray-400">
+            <div className="mt-2 text-xs text-gray-400 dark:text-gray-500">
               Showing first 100 of {chars.length} characters.
             </div>
           )}
         </div>
       )}
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is Unicode?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is Unicode?</h2>
         <p className="mb-3">
           Unicode is a universal character encoding standard that assigns a unique number (code point)
           to every character in every writing system. It covers over 150,000 characters, including
           letters, symbols, emoji, and technical characters.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Character Encodings</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Character Encodings</h2>
         <p>
           <strong>HTML entities</strong> (like &amp;copy;) display special characters in web pages.
           <strong> CSS escapes</strong> (like \00A9) work in stylesheets. <strong>UTF-8</strong> is

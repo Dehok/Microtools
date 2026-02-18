@@ -61,38 +61,38 @@ export default function ReadingTimeCalculator() {
     {
       label: "Reading Time",
       value: formatTime(stats.readingSeconds),
-      color: "text-blue-600",
-      bg: "bg-blue-50 border-blue-200",
+      color: "text-blue-600 dark:text-blue-400",
+      bg: "bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800",
     },
     {
       label: "Speaking Time",
       value: formatTime(stats.speakingSeconds),
-      color: "text-purple-600",
-      bg: "bg-purple-50 border-purple-200",
+      color: "text-purple-600 dark:text-purple-400",
+      bg: "bg-purple-50 dark:bg-purple-950 border-purple-200",
     },
     {
       label: "Words",
       value: stats.wordCount.toLocaleString(),
-      color: "text-green-600",
-      bg: "bg-green-50 border-green-200",
+      color: "text-green-600 dark:text-green-400",
+      bg: "bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800",
     },
     {
       label: "Characters",
       value: stats.charCount.toLocaleString(),
-      color: "text-yellow-600",
-      bg: "bg-yellow-50 border-yellow-200",
+      color: "text-yellow-600 dark:text-yellow-400",
+      bg: "bg-yellow-50 dark:bg-yellow-950 border-yellow-200 dark:border-yellow-800",
     },
     {
       label: "Chars (no spaces)",
       value: stats.charCountNoSpaces.toLocaleString(),
-      color: "text-orange-600",
-      bg: "bg-orange-50 border-orange-200",
+      color: "text-orange-600 dark:text-orange-400",
+      bg: "bg-orange-50 dark:bg-orange-950 border-orange-200",
     },
     {
       label: "Sentences",
       value: stats.sentenceCount.toLocaleString(),
-      color: "text-red-600",
-      bg: "bg-red-50 border-red-200",
+      color: "text-red-600 dark:text-red-400",
+      bg: "bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800",
     },
     {
       label: "Paragraphs",
@@ -122,7 +122,7 @@ export default function ReadingTimeCalculator() {
             className={`rounded-lg border p-3 text-center ${card.bg}`}
           >
             <div className={`text-2xl font-bold ${card.color}`}>{card.value}</div>
-            <div className="mt-0.5 text-xs text-gray-500">{card.label}</div>
+            <div className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">{card.label}</div>
           </div>
         ))}
       </div>
@@ -130,9 +130,9 @@ export default function ReadingTimeCalculator() {
       {/* Speed Sliders */}
       <div className="mb-5 grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 flex items-center justify-between text-sm font-medium text-gray-700">
+          <label className="mb-1 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
             <span>Reading Speed</span>
-            <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-700">
+            <span className="rounded bg-blue-100 dark:bg-blue-900 px-2 py-0.5 text-xs font-semibold text-blue-700 dark:text-blue-300">
               {readingWpm} WPM
             </span>
           </label>
@@ -143,18 +143,18 @@ export default function ReadingTimeCalculator() {
             step={10}
             value={readingWpm}
             onChange={(e) => setReadingWpm(Number(e.target.value))}
-            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-blue-600"
+            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700 accent-blue-600"
           />
-          <div className="mt-1 flex justify-between text-xs text-gray-400">
+          <div className="mt-1 flex justify-between text-xs text-gray-400 dark:text-gray-500">
             <span>100</span>
             <span>400 WPM</span>
           </div>
         </div>
 
         <div>
-          <label className="mb-1 flex items-center justify-between text-sm font-medium text-gray-700">
+          <label className="mb-1 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
             <span>Speaking Speed</span>
-            <span className="rounded bg-purple-100 px-2 py-0.5 text-xs font-semibold text-purple-700">
+            <span className="rounded bg-purple-100 dark:bg-purple-900 px-2 py-0.5 text-xs font-semibold text-purple-700 dark:text-purple-300">
               {speakingWpm} WPM
             </span>
           </label>
@@ -165,9 +165,9 @@ export default function ReadingTimeCalculator() {
             step={5}
             value={speakingWpm}
             onChange={(e) => setSpeakingWpm(Number(e.target.value))}
-            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-purple-600"
+            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700 accent-purple-600"
           />
-          <div className="mt-1 flex justify-between text-xs text-gray-400">
+          <div className="mt-1 flex justify-between text-xs text-gray-400 dark:text-gray-500">
             <span>100</span>
             <span>200 WPM</span>
           </div>
@@ -179,28 +179,28 @@ export default function ReadingTimeCalculator() {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Paste or type your text here to calculate reading and speaking time..."
-        className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-4 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-4 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
       />
 
       {/* Actions */}
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <button
           onClick={() => setText("")}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 active:bg-gray-100"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 active:bg-gray-100 dark:bg-gray-800 dark:active:bg-gray-800"
         >
           Clear
         </button>
         {summaryText && <CopyButton text={summaryText} />}
         {summaryText && (
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-gray-400 dark:text-gray-500">
             Copy copies a summary of the stats
           </span>
         )}
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Free Online Reading Time Calculator
         </h2>
         <p className="mb-3">
@@ -211,7 +211,7 @@ export default function ReadingTimeCalculator() {
           (with and without spaces), sentence count, paragraph count, and
           average word length.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How is reading time calculated?
         </h2>
         <p className="mb-3">
@@ -221,7 +221,7 @@ export default function ReadingTimeCalculator() {
           adjust between 100 WPM (slow / careful reading) and 400 WPM (fast /
           speed reading) to match your audience or use case.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Who is this tool for?
         </h2>
         <p>

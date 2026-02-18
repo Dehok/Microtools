@@ -204,24 +204,24 @@ export default function DataSizeConverter() {
     >
       {/* Binary / Decimal toggle */}
       <div className="mb-5 flex items-center gap-4">
-        <span className="text-sm font-medium text-gray-700">Mode:</span>
-        <div className="flex rounded-lg border border-gray-300 overflow-hidden text-sm font-medium">
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Mode:</span>
+        <div className="flex rounded-lg border border-gray-300 dark:border-gray-600 overflow-hidden text-sm font-medium">
           <button
             onClick={() => setIsBinary(false)}
             className={`px-4 py-1.5 transition-colors ${
               !isBinary
                 ? "bg-blue-600 text-white"
-                : "bg-white text-gray-700 hover:bg-gray-50"
+                : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             Decimal (1000-based)
           </button>
           <button
             onClick={() => setIsBinary(true)}
-            className={`px-4 py-1.5 transition-colors border-l border-gray-300 ${
+            className={`px-4 py-1.5 transition-colors border-l border-gray-300 dark:border-gray-600 ${
               isBinary
                 ? "bg-blue-600 text-white"
-                : "bg-white text-gray-700 hover:bg-gray-50"
+                : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             Binary (1024-based)
@@ -230,7 +230,7 @@ export default function DataSizeConverter() {
       </div>
 
       {/* Mode info badge */}
-      <div className="mb-5 rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-xs text-gray-600">
+      <div className="mb-5 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 px-4 py-2 text-xs text-gray-600 dark:text-gray-400">
         {isBinary
           ? "Binary mode: 1 KiB = 1024 B, 1 MiB = 1024 KiB — used by RAM, operating systems (Windows)."
           : "Decimal mode: 1 KB = 1000 B, 1 MB = 1000 KB — used by hard drives, SSDs, and network speeds."}
@@ -239,23 +239,23 @@ export default function DataSizeConverter() {
       {/* Input row */}
       <div className="mb-5 flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-[140px]">
-          <label className="mb-1 block text-sm font-medium text-gray-700">Value</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Value</label>
           <input
             type="number"
             min="0"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             placeholder="Enter value"
           />
         </div>
 
         <div className="flex-1 min-w-[180px]">
-          <label className="mb-1 block text-sm font-medium text-gray-700">Unit</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Unit</label>
           <select
             value={fromUnit}
             onChange={(e) => setFromUnit(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             {UNITS.map((u) => (
               <option key={u.label} value={u.label}>
@@ -269,7 +269,7 @@ export default function DataSizeConverter() {
           <button
             onClick={handleSwap}
             title="Switch to next unit"
-            className="rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100"
+            className="rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
           >
             &#8645; Swap
           </button>
@@ -278,13 +278,13 @@ export default function DataSizeConverter() {
 
       {/* Quick presets */}
       <div className="mb-5">
-        <div className="mb-2 text-sm font-medium text-gray-700">Quick Presets:</div>
+        <div className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Quick Presets:</div>
         <div className="flex flex-wrap gap-2">
           {PRESETS.map(([label, value, unit]) => (
             <button
               key={label}
               onClick={() => applyPreset(value, unit)}
-              className="rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-700 transition-colors hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700"
+              className="rounded-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors hover:border-blue-400 hover:bg-blue-50 dark:bg-blue-950 dark:hover:bg-blue-950 hover:text-blue-700 dark:text-blue-300"
             >
               {label}
             </button>
@@ -294,7 +294,7 @@ export default function DataSizeConverter() {
 
       {/* Error */}
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
@@ -302,13 +302,13 @@ export default function DataSizeConverter() {
       {/* Results table */}
       {conversions && (
         <>
-          <div className="mb-6 overflow-hidden rounded-lg border border-gray-200">
+          <div className="mb-6 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-gray-200 bg-gray-50">
-                  <th className="px-4 py-2 text-left font-semibold text-gray-700">Unit</th>
-                  <th className="px-4 py-2 text-left font-semibold text-gray-700">Abbreviation</th>
-                  <th className="px-4 py-2 text-left font-semibold text-gray-700">Value</th>
+                <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950">
+                  <th className="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-300">Unit</th>
+                  <th className="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-300">Abbreviation</th>
+                  <th className="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-300">Value</th>
                   <th className="px-4 py-2"></th>
                 </tr>
               </thead>
@@ -316,20 +316,20 @@ export default function DataSizeConverter() {
                 {conversions.map((row, i) => (
                   <tr
                     key={row.label}
-                    className={`${i !== 0 ? "border-t border-gray-200" : ""} ${
-                      row.isSource ? "bg-blue-50" : "bg-white hover:bg-gray-50"
+                    className={`${i !== 0 ? "border-t border-gray-200 dark:border-gray-700" : ""} ${
+                      row.isSource ? "bg-blue-50 dark:bg-blue-950" : "bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
                     }`}
                   >
-                    <td className="px-4 py-2 font-medium text-gray-800">
+                    <td className="px-4 py-2 font-medium text-gray-800 dark:text-gray-200">
                       {row.label}
                       {row.isSource && (
-                        <span className="ml-2 rounded-full bg-blue-100 px-1.5 py-0.5 text-xs font-semibold text-blue-700">
+                        <span className="ml-2 rounded-full bg-blue-100 dark:bg-blue-900 px-1.5 py-0.5 text-xs font-semibold text-blue-700 dark:text-blue-300">
                           input
                         </span>
                       )}
                     </td>
-                    <td className="px-4 py-2 font-mono text-gray-500">{row.abbr}</td>
-                    <td className="px-4 py-2 font-mono font-bold text-gray-900">{row.value}</td>
+                    <td className="px-4 py-2 font-mono text-gray-500 dark:text-gray-400">{row.abbr}</td>
+                    <td className="px-4 py-2 font-mono font-bold text-gray-900 dark:text-gray-100">{row.value}</td>
                     <td className="px-4 py-2 text-right">
                       <CopyButton text={row.value} />
                     </td>
@@ -359,8 +359,8 @@ export default function DataSizeConverter() {
       )}
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">About the Data Size Converter</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">About the Data Size Converter</h2>
         <p className="mb-3">
           This free online tool instantly converts data sizes between <strong>bits</strong>,{" "}
           <strong>bytes</strong>, <strong>kilobytes</strong>, <strong>megabytes</strong>,{" "}
@@ -369,7 +369,7 @@ export default function DataSizeConverter() {
           server.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Binary vs. Decimal (1024 vs. 1000)</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Binary vs. Decimal (1024 vs. 1000)</h2>
         <p className="mb-3">
           There are two competing standards for data size prefixes. The <strong>decimal (SI)</strong>{" "}
           standard used by hard drive manufacturers and network equipment defines 1 KB as 1,000 bytes,
@@ -379,7 +379,7 @@ export default function DataSizeConverter() {
           roughly 931 GiB in Windows.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Key Data Size Facts</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Key Data Size Facts</h2>
         <ul className="mb-3 list-disc pl-5 space-y-1">
           <li>1 Byte = 8 Bits — the fundamental unit of digital storage.</li>
           <li>Decimal: 1 KB = 1,000 B | 1 MB = 1,000,000 B | 1 GB = 1,000,000,000 B</li>
@@ -389,7 +389,7 @@ export default function DataSizeConverter() {
           <li>1 Petabyte = 1,000 Terabytes = about 500 billion pages of text.</li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Common Data Size Conversions</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Common Data Size Conversions</h2>
         <ul className="mb-3 list-disc pl-5 space-y-1">
           <li>1 MB = 1,000 KB = 8,000,000 bits (decimal)</li>
           <li>1 GB = 1,024 MB (binary) or 1,000 MB (decimal)</li>
@@ -398,7 +398,7 @@ export default function DataSizeConverter() {
           <li>A typical MP3 song is around 4 MB; a 4K movie can be 50–100 GB.</li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How to Use This Tool</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How to Use This Tool</h2>
         <p>
           Enter any numeric value, choose the source unit from the dropdown, and select either
           Decimal (1000-based) or Binary (1024-based) mode. The table instantly shows the equivalent

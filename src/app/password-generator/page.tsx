@@ -80,7 +80,7 @@ export default function PasswordGenerator() {
       relatedTools={["hash-generator", "uuid-generator", "base64-encode-decode"]}
     >
       {/* Password display */}
-      <div className="mb-2 rounded-lg border border-gray-200 bg-gray-50 p-4">
+      <div className="mb-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
         <div className="flex items-center justify-between">
           <pre className="select-all whitespace-pre-wrap break-all font-mono text-lg">
             {password}
@@ -92,10 +92,10 @@ export default function PasswordGenerator() {
       {/* Strength bar */}
       <div className="mb-6">
         <div className="mb-1 flex items-center justify-between text-xs">
-          <span className="text-gray-500">Strength</span>
-          <span className="font-medium text-gray-700">{strength.label}</span>
+          <span className="text-gray-500 dark:text-gray-400">Strength</span>
+          <span className="font-medium text-gray-700 dark:text-gray-300">{strength.label}</span>
         </div>
-        <div className="h-2 w-full rounded-full bg-gray-200">
+        <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
           <div
             className={`h-2 rounded-full transition-all ${strength.color} ${strength.width}`}
           />
@@ -105,8 +105,8 @@ export default function PasswordGenerator() {
       {/* Length slider */}
       <div className="mb-4">
         <div className="mb-1 flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">Length</label>
-          <span className="rounded bg-blue-50 px-2 py-0.5 text-sm font-bold text-blue-600">
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Length</label>
+          <span className="rounded bg-blue-50 dark:bg-blue-950 px-2 py-0.5 text-sm font-bold text-blue-600 dark:text-blue-400">
             {length}
           </span>
         </div>
@@ -118,7 +118,7 @@ export default function PasswordGenerator() {
           onChange={(e) => setLength(Number(e.target.value))}
           className="w-full"
         />
-        <div className="flex justify-between text-xs text-gray-400">
+        <div className="flex justify-between text-xs text-gray-400 dark:text-gray-500">
           <span>4</span>
           <span>128</span>
         </div>
@@ -131,19 +131,19 @@ export default function PasswordGenerator() {
             key={key}
             className={`flex cursor-pointer items-center gap-2 rounded-lg border p-2.5 text-sm transition-colors ${
               options[key as keyof typeof options]
-                ? "border-blue-300 bg-blue-50"
-                : "border-gray-200 bg-white"
+                ? "border-blue-300 bg-blue-50 dark:bg-blue-950"
+                : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
             }`}
           >
             <input
               type="checkbox"
               checked={options[key as keyof typeof options]}
               onChange={() => toggleOption(key)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             <div>
               <div className="font-medium capitalize">{key}</div>
-              <div className="text-xs text-gray-400">{chars.slice(0, 8)}...</div>
+              <div className="text-xs text-gray-400 dark:text-gray-500">{chars.slice(0, 8)}...</div>
             </div>
           </label>
         ))}
@@ -160,7 +160,7 @@ export default function PasswordGenerator() {
         <select
           value={count}
           onChange={(e) => setCount(Number(e.target.value))}
-          className="rounded-md border border-gray-300 px-2 py-1.5 text-sm"
+          className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1.5 text-sm"
         >
           <option value={1}>1 password</option>
           <option value={5}>5 passwords</option>
@@ -170,20 +170,20 @@ export default function PasswordGenerator() {
       </div>
 
       {/* SEO */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why use a password generator?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why use a password generator?</h2>
         <p className="mb-3">
           Humans are bad at creating random passwords. We tend to use predictable patterns,
           dictionary words, and personal information. A random password generator creates truly
           unpredictable passwords that are much harder to crack.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How long should my password be?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How long should my password be?</h2>
         <p className="mb-3">
           We recommend at least 16 characters with a mix of lowercase, uppercase, numbers, and
           symbols. A 16-character random password would take billions of years to crack with
           current technology.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Is this generator secure?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Is this generator secure?</h2>
         <p>
           Yes. Passwords are generated using the Web Crypto API (crypto.getRandomValues), which
           provides cryptographically secure random numbers. No passwords are stored or sent anywhere.

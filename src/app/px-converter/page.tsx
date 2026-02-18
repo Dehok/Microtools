@@ -47,20 +47,20 @@ export default function PxConverter() {
     >
       <div className="mb-6 grid gap-4 sm:grid-cols-3">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Value</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Value</label>
           <input
             type="number"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">From Unit</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">From Unit</label>
           <select
             value={fromUnit}
             onChange={(e) => setFromUnit(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm"
           >
             <option value="px">Pixels (px)</option>
             <option value="rem">REM</option>
@@ -72,15 +72,15 @@ export default function PxConverter() {
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Base Font Size</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Base Font Size</label>
           <div className="flex gap-1">
             <input
               type="number"
               value={baseFontSize}
               onChange={(e) => setBaseFontSize(parseInt(e.target.value) || 16)}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
-            <span className="flex items-center text-sm text-gray-500">px</span>
+            <span className="flex items-center text-sm text-gray-500 dark:text-gray-400">px</span>
           </div>
         </div>
       </div>
@@ -96,10 +96,10 @@ export default function PxConverter() {
             { label: "Viewport Height (vh)", value: conversions.vh, unit: "vh" },
             { label: "Percent (%)", value: conversions.percent, unit: "%" },
           ].map((row) => (
-            <div key={row.label} className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 p-3">
+            <div key={row.label} className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3">
               <div>
-                <span className="text-xs font-semibold text-gray-500">{row.label}</span>
-                <div className="font-mono text-sm text-gray-900">
+                <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{row.label}</span>
+                <div className="font-mono text-sm text-gray-900 dark:text-gray-100">
                   {row.value}{row.unit}
                 </div>
               </div>
@@ -110,24 +110,24 @@ export default function PxConverter() {
       )}
 
       {/* Quick reference table */}
-      <h3 className="mb-2 text-sm font-semibold text-gray-900">PX to REM Quick Reference (base: {baseFontSize}px)</h3>
+      <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">PX to REM Quick Reference (base: {baseFontSize}px)</h3>
       <div className="mb-4 grid grid-cols-3 gap-1 text-xs sm:grid-cols-6">
         {commonSizes.map((px) => (
-          <div key={px} className="rounded border border-gray-100 bg-gray-50 px-2 py-1.5 text-center">
-            <div className="font-bold text-gray-900">{px}px</div>
-            <div className="font-mono text-gray-500">{(px / baseFontSize).toFixed(4).replace(/\.?0+$/, "")}rem</div>
+          <div key={px} className="rounded border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-2 py-1.5 text-center">
+            <div className="font-bold text-gray-900 dark:text-gray-100">{px}px</div>
+            <div className="font-mono text-gray-500 dark:text-gray-400">{(px / baseFontSize).toFixed(4).replace(/\.?0+$/, "")}rem</div>
           </div>
         ))}
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">PX vs REM vs EM</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">PX vs REM vs EM</h2>
         <p className="mb-3">
           <strong>px</strong> is an absolute unit. <strong>rem</strong> is relative to the root
           font size (html element). <strong>em</strong> is relative to the parent element&apos;s
           font size. Using rem/em makes your designs more accessible and responsive.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why Use REM?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why Use REM?</h2>
         <p>
           REM units respect user browser font-size settings, improving accessibility. If a user
           increases their default font size, rem-based layouts scale proportionally while px-based

@@ -44,64 +44,64 @@ export default function PlaceholderImage() {
         <div className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">Width (px)</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Width (px)</label>
               <input
                 type="number"
                 value={width}
                 onChange={(e) => setWidth(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">Height (px)</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Height (px)</label>
               <input
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">Background</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Background</label>
               <div className="flex gap-2">
                 <input
                   type="color"
                   value={bgColor}
                   onChange={(e) => setBgColor(e.target.value)}
-                  className="h-9 w-9 cursor-pointer rounded border border-gray-300"
+                  className="h-9 w-9 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
                 />
                 <input
                   type="text"
                   value={bgColor}
                   onChange={(e) => setBgColor(e.target.value)}
-                  className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs focus:border-blue-500 focus:outline-none"
+                  className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                 />
               </div>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">Text Color</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Text Color</label>
               <div className="flex gap-2">
                 <input
                   type="color"
                   value={textColor}
                   onChange={(e) => setTextColor(e.target.value)}
-                  className="h-9 w-9 cursor-pointer rounded border border-gray-300"
+                  className="h-9 w-9 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
                 />
                 <input
                   type="text"
                   value={textColor}
                   onChange={(e) => setTextColor(e.target.value)}
-                  className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs focus:border-blue-500 focus:outline-none"
+                  className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                 />
               </div>
             </div>
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">
               Custom Text (empty = dimensions)
             </label>
             <input
@@ -109,16 +109,16 @@ export default function PlaceholderImage() {
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder={`${width}×${height}`}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Font Size</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Font Size</label>
             <select
               value={fontSize}
               onChange={(e) => setFontSize(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm"
             >
               <option value="auto">Auto</option>
               <option value="12">12px</option>
@@ -132,7 +132,7 @@ export default function PlaceholderImage() {
 
           {/* Quick sizes */}
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Quick Sizes</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Quick Sizes</label>
             <div className="flex flex-wrap gap-1">
               {[
                 ["150", "150"],
@@ -147,7 +147,7 @@ export default function PlaceholderImage() {
                 <button
                   key={`${w}x${h}`}
                   onClick={() => { setWidth(w); setHeight(h); }}
-                  className="rounded border border-gray-200 bg-white px-2 py-1 text-[10px] font-mono text-gray-600 hover:bg-gray-50"
+                  className="rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-2 py-1 text-[10px] font-mono text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
                 >
                   {w}×{h}
                 </button>
@@ -158,8 +158,8 @@ export default function PlaceholderImage() {
 
         {/* Preview */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Preview</label>
-          <div className="flex items-center justify-center rounded-lg border border-gray-200 bg-white p-4">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Preview</label>
+          <div className="flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={dataUri}
@@ -174,42 +174,42 @@ export default function PlaceholderImage() {
       <div className="mt-6 space-y-3">
         <div>
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">SVG Code</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">SVG Code</label>
             <CopyButton text={svg} />
           </div>
-          <pre className="mt-1 max-h-24 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-3 font-mono text-xs">
+          <pre className="mt-1 max-h-24 overflow-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs">
             {svg}
           </pre>
         </div>
 
         <div>
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Data URI</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Data URI</label>
             <CopyButton text={dataUri} />
           </div>
-          <div className="mt-1 max-h-16 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-3 font-mono text-xs break-all">
+          <div className="mt-1 max-h-16 overflow-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs break-all">
             {dataUri}
           </div>
         </div>
 
         <div>
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">HTML &lt;img&gt; Tag</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">HTML &lt;img&gt; Tag</label>
             <CopyButton text={imgTag} />
           </div>
-          <div className="mt-1 max-h-16 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-3 font-mono text-xs break-all">
+          <div className="mt-1 max-h-16 overflow-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs break-all">
             {imgTag}
           </div>
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why SVG Placeholders?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why SVG Placeholders?</h2>
         <p className="mb-3">
           SVG placeholder images are lightweight (just a few bytes of text), infinitely scalable,
           and require no external server or service. They work offline and load instantly.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Use Cases</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Use Cases</h2>
         <p>
           Use placeholder images during web development, in mockups and wireframes, as fallback
           images, in documentation, or for testing responsive layouts with different image sizes.

@@ -199,21 +199,21 @@ function DiffTreeNode({
 
   const bgColor =
     node.type === "added"
-      ? "bg-green-50"
+      ? "bg-green-50 dark:bg-green-950"
       : node.type === "removed"
-      ? "bg-red-50"
+      ? "bg-red-50 dark:bg-red-950"
       : node.type === "modified" && !hasChildren
-      ? "bg-yellow-50"
+      ? "bg-yellow-50 dark:bg-yellow-950"
       : "";
 
   const textColor =
     node.type === "added"
-      ? "text-green-700"
+      ? "text-green-700 dark:text-green-300"
       : node.type === "removed"
-      ? "text-red-700"
+      ? "text-red-700 dark:text-red-300"
       : node.type === "modified" && !hasChildren
-      ? "text-yellow-700"
-      : "text-gray-600";
+      ? "text-yellow-700 dark:text-yellow-300"
+      : "text-gray-600 dark:text-gray-400";
 
   const prefix =
     node.type === "added"
@@ -226,12 +226,12 @@ function DiffTreeNode({
 
   const prefixColor =
     node.type === "added"
-      ? "text-green-600"
+      ? "text-green-600 dark:text-green-400"
       : node.type === "removed"
-      ? "text-red-600"
+      ? "text-red-600 dark:text-red-400"
       : node.type === "modified" && !hasChildren
-      ? "text-yellow-600"
-      : "text-gray-400";
+      ? "text-yellow-600 dark:text-yellow-400"
+      : "text-gray-400 dark:text-gray-500";
 
   const filteredChildren = hasChildren
     ? node.children!.filter(
@@ -242,7 +242,7 @@ function DiffTreeNode({
   return (
     <div>
       <div
-        className={`flex items-start border-b border-gray-100 font-mono text-sm ${bgColor}`}
+        className={`flex items-start border-b border-gray-100 dark:border-gray-800 font-mono text-sm ${bgColor}`}
         style={{ paddingLeft: `${depth * 20 + 4}px` }}
       >
         <span
@@ -253,7 +253,7 @@ function DiffTreeNode({
         {hasChildren ? (
           <button
             onClick={() => setExpanded(!expanded)}
-            className="mr-1 shrink-0 text-gray-500 hover:text-gray-700 select-none w-4"
+            className="mr-1 shrink-0 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:text-gray-300 select-none w-4"
           >
             {expanded ? "\u25BC" : "\u25B6"}
           </button>
@@ -262,33 +262,33 @@ function DiffTreeNode({
         )}
         <span className={`font-medium ${textColor}`}>{node.key}</span>
         {!hasChildren && node.type === "added" && (
-          <span className="ml-2 text-green-600">
+          <span className="ml-2 text-green-600 dark:text-green-400">
             {formatValue(node.newValue)}
           </span>
         )}
         {!hasChildren && node.type === "removed" && (
-          <span className="ml-2 text-red-600 line-through">
+          <span className="ml-2 text-red-600 dark:text-red-400 line-through">
             {formatValue(node.oldValue)}
           </span>
         )}
         {!hasChildren && node.type === "modified" && (
           <span className="ml-2">
-            <span className="text-red-500 line-through">
+            <span className="text-red-500 dark:text-red-400 line-through">
               {formatValue(node.oldValue)}
             </span>
-            <span className="mx-1 text-gray-400">{"\u2192"}</span>
-            <span className="text-green-600">
+            <span className="mx-1 text-gray-400 dark:text-gray-500">{"\u2192"}</span>
+            <span className="text-green-600 dark:text-green-400">
               {formatValue(node.newValue)}
             </span>
           </span>
         )}
         {!hasChildren && node.type === "unchanged" && (
-          <span className="ml-2 text-gray-400">
+          <span className="ml-2 text-gray-400 dark:text-gray-500">
             {formatValue(node.oldValue)}
           </span>
         )}
         {hasChildren && (
-          <span className="ml-2 text-xs text-gray-400">
+          <span className="ml-2 text-xs text-gray-400 dark:text-gray-500">
             {node.type === "unchanged"
               ? "(no changes)"
               : `(${filteredChildren.length} ${filteredChildren.length === 1 ? "change" : "changes"})`}
@@ -470,26 +470,26 @@ export default function JsonDiff() {
       {/* Textareas side by side */}
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Original JSON
           </label>
           <textarea
             value={original}
             onChange={(e) => setOriginal(e.target.value)}
             placeholder='{"key": "value", ...}'
-            className="h-56 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-56 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Modified JSON
           </label>
           <textarea
             value={modified}
             onChange={(e) => setModified(e.target.value)}
             placeholder='{"key": "newValue", ...}'
-            className="h-56 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-56 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
@@ -497,39 +497,39 @@ export default function JsonDiff() {
 
       {/* Options */}
       <div className="mt-4 flex flex-wrap items-center gap-4">
-        <label className="flex items-center gap-2 text-sm text-gray-600">
+        <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
           <input
             type="checkbox"
             checked={ignoreKeyOrder}
             onChange={(e) => setIgnoreKeyOrder(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Ignore key order
         </label>
-        <label className="flex items-center gap-2 text-sm text-gray-600">
+        <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
           <input
             type="checkbox"
             checked={ignoreWhitespace}
             onChange={(e) => setIgnoreWhitespace(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Ignore whitespace
         </label>
-        <label className="flex items-center gap-2 text-sm text-gray-600">
+        <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
           <input
             type="checkbox"
             checked={showUnchanged}
             onChange={(e) => setShowUnchanged(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Show unchanged
         </label>
-        <label className="flex items-center gap-2 text-sm text-gray-600">
+        <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
           <input
             type="checkbox"
             checked={expandAll}
             onChange={(e) => setExpandAll(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Expand all
         </label>
@@ -545,13 +545,13 @@ export default function JsonDiff() {
         </button>
         <button
           onClick={handleSwap}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Swap
         </button>
         <button
           onClick={handleClear}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
@@ -560,7 +560,7 @@ export default function JsonDiff() {
 
       {/* Error */}
       {result.error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {result.error}
         </div>
       )}
@@ -568,16 +568,16 @@ export default function JsonDiff() {
       {/* Stats bar */}
       {result.diff !== null && (
         <div className="mb-4 flex flex-wrap gap-3 text-sm">
-          <span className="rounded-full bg-green-100 px-3 py-1 font-medium text-green-700">
+          <span className="rounded-full bg-green-100 dark:bg-green-900 px-3 py-1 font-medium text-green-700 dark:text-green-300">
             +{result.stats.added} added
           </span>
-          <span className="rounded-full bg-red-100 px-3 py-1 font-medium text-red-700">
+          <span className="rounded-full bg-red-100 dark:bg-red-900 px-3 py-1 font-medium text-red-700 dark:text-red-300">
             -{result.stats.removed} removed
           </span>
-          <span className="rounded-full bg-yellow-100 px-3 py-1 font-medium text-yellow-700">
+          <span className="rounded-full bg-yellow-100 dark:bg-yellow-900 px-3 py-1 font-medium text-yellow-700 dark:text-yellow-300">
             ~{result.stats.modified} modified
           </span>
-          <span className="rounded-full bg-gray-100 px-3 py-1 font-medium text-gray-500">
+          <span className="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 font-medium text-gray-500 dark:text-gray-400">
             {result.stats.unchanged} unchanged
           </span>
         </div>
@@ -585,13 +585,13 @@ export default function JsonDiff() {
 
       {/* Diff tree */}
       {result.diff !== null && result.diff.length === 0 && (
-        <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-center text-sm text-green-700">
+        <div className="rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950 p-4 text-center text-sm text-green-700 dark:text-green-300">
           Both JSON objects are identical. No differences found.
         </div>
       )}
 
       {result.diff !== null && result.diff.length > 0 && (
-        <div className="rounded-lg border border-gray-200 overflow-hidden">
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
           <div className="max-h-[500px] overflow-y-auto">
             {result.diff.map((node, i) => (
               <DiffTreeNode
@@ -604,7 +604,7 @@ export default function JsonDiff() {
             ))}
           </div>
           {totalChanges > 0 && (
-            <div className="border-t border-gray-200 bg-gray-50 px-4 py-2 text-xs text-gray-500">
+            <div className="border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 px-4 py-2 text-xs text-gray-500 dark:text-gray-400">
               {totalChanges} {totalChanges === 1 ? "difference" : "differences"} found
             </div>
           )}
@@ -612,8 +612,8 @@ export default function JsonDiff() {
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is JSON Diff?
         </h2>
         <p className="mb-3">
@@ -624,7 +624,7 @@ export default function JsonDiff() {
           comparing API responses, configuration files, database records, and
           any other JSON data.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How does the comparison work?
         </h2>
         <p className="mb-3">
@@ -635,7 +635,7 @@ export default function JsonDiff() {
           is displayed as an interactive tree view with color-coded differences:
           green for added, red for removed, and yellow for modified values.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Options explained
         </h2>
         <ul className="mb-3 list-disc pl-5 space-y-1">
@@ -656,7 +656,7 @@ export default function JsonDiff() {
             default for a full overview.
           </li>
         </ul>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Common use cases
         </h2>
         <p className="mb-3">
@@ -665,7 +665,7 @@ export default function JsonDiff() {
           transformations, verifying database migration results, and tracking
           changes in JSON-based settings files.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">FAQ</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">FAQ</h2>
         <p className="mb-1 font-medium">Is my data safe?</p>
         <p className="mb-3">
           Yes. All comparison happens entirely in your browser. No data is

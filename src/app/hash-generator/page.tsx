@@ -49,14 +49,14 @@ export default function HashGenerator() {
       relatedTools={["password-generator", "base64-encode-decode", "uuid-generator"]}
     >
       {/* Input */}
-      <label className="mb-1 block text-sm font-medium text-gray-700">
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
         Enter text to hash
       </label>
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Type or paste text here..."
-        className="mb-4 h-32 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+        className="mb-4 h-32 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
         spellCheck={false}
       />
 
@@ -69,16 +69,16 @@ export default function HashGenerator() {
         </button>
         <button
           onClick={handleClear}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
-        <label className="ml-auto flex items-center gap-1.5 text-sm text-gray-600">
+        <label className="ml-auto flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
           <input
             type="checkbox"
             checked={uppercase}
             onChange={(e) => setUppercase(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Uppercase
         </label>
@@ -90,15 +90,15 @@ export default function HashGenerator() {
           {ALGORITHMS.map((algo) => (
             <div
               key={algo.id}
-              className="rounded-lg border border-gray-200 bg-gray-50 p-3"
+              className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3"
             >
               <div className="mb-1 flex items-center justify-between">
-                <span className="text-sm font-semibold text-gray-700">
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                   {algo.label}
                 </span>
                 <CopyButton text={hashes[algo.id] || ""} />
               </div>
-              <div className="select-all break-all font-mono text-sm text-gray-800">
+              <div className="select-all break-all font-mono text-sm text-gray-800 dark:text-gray-200">
                 {hashes[algo.id]}
               </div>
             </div>
@@ -107,20 +107,20 @@ export default function HashGenerator() {
       )}
 
       {/* SEO */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is a Hash?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is a Hash?</h2>
         <p className="mb-3">
           A hash function takes input data of any size and produces a fixed-size string of
           characters (the hash). Hashes are one-way — you cannot reverse them to get the
           original text. They are used for data integrity, password storage, and digital signatures.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Which algorithm should I use?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Which algorithm should I use?</h2>
         <p className="mb-3">
           <strong>SHA-256</strong> is the most commonly used and recommended for most purposes.
           SHA-1 is considered weak and should not be used for security. SHA-512 provides the
           highest security but produces longer hashes.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Is this tool secure?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Is this tool secure?</h2>
         <p>
           Yes. All hashing happens locally in your browser using the Web Crypto API. No data
           is sent to any server.

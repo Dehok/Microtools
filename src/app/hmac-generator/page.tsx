@@ -112,19 +112,19 @@ export default function HmacGenerator() {
       relatedTools={["hash-generator", "jwt-generator", "password-strength-checker"]}
     >
       {/* Message */}
-      <label className="mb-1 block text-sm font-medium text-gray-700">
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
         Message
       </label>
       <textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Enter the message to sign..."
-        className="mb-4 h-28 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+        className="mb-4 h-28 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
         spellCheck={false}
       />
 
       {/* Secret Key */}
-      <label className="mb-1 block text-sm font-medium text-gray-700">
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
         Secret Key
       </label>
       <input
@@ -132,20 +132,20 @@ export default function HmacGenerator() {
         value={secretKey}
         onChange={(e) => setSecretKey(e.target.value)}
         placeholder="Enter the secret key..."
-        className="mb-4 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+        className="mb-4 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
         spellCheck={false}
       />
 
       {/* Algorithm + Output Format */}
       <div className="mb-4 flex flex-wrap gap-4">
         <div className="flex-1 min-w-[160px]">
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Algorithm
           </label>
           <select
             value={algorithm}
             onChange={(e) => setAlgorithm(e.target.value as Algorithm)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-2.5 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             {ALGORITHMS.map((a) => (
               <option key={a.id} value={a.id}>
@@ -156,13 +156,13 @@ export default function HmacGenerator() {
         </div>
 
         <div className="flex-1 min-w-[160px]">
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Output Format
           </label>
           <select
             value={outputFormat}
             onChange={(e) => setOutputFormat(e.target.value as OutputFormat)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-2.5 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             {OUTPUT_FORMATS.map((f) => (
               <option key={f.id} value={f.id}>
@@ -174,7 +174,7 @@ export default function HmacGenerator() {
       </div>
 
       {/* Algorithm Info Badge */}
-      <div className="mb-4 inline-flex items-center gap-2 rounded-md border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs text-blue-700">
+      <div className="mb-4 inline-flex items-center gap-2 rounded-md border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950 px-3 py-1.5 text-xs text-blue-700 dark:text-blue-300">
         <span className="font-semibold">{selectedAlgo.label}</span>
         <span>— output length: {selectedAlgo.bits} bits ({selectedAlgo.bits / 8} bytes)</span>
       </div>
@@ -190,7 +190,7 @@ export default function HmacGenerator() {
         </button>
         <button
           onClick={handleClear}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
@@ -198,24 +198,24 @@ export default function HmacGenerator() {
 
       {/* Error */}
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 p-3 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
 
       {/* Result */}
       {result && (
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-sm font-semibold text-gray-700">
+            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               HMAC-{algorithm} Result
             </span>
             <CopyButton text={result} />
           </div>
-          <div className="select-all break-all font-mono text-sm text-gray-800">
+          <div className="select-all break-all font-mono text-sm text-gray-800 dark:text-gray-200">
             {result}
           </div>
-          <div className="mt-2 text-xs text-gray-500">
+          <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
             Format: {OUTPUT_FORMATS.find((f) => f.id === outputFormat)?.label} &middot;{" "}
             Length: {result.length} characters
           </div>
@@ -223,13 +223,13 @@ export default function HmacGenerator() {
       )}
 
       {/* Privacy note */}
-      <p className="mt-4 text-xs text-gray-400">
+      <p className="mt-4 text-xs text-gray-400 dark:text-gray-500">
         Everything runs in your browser using the Web Crypto API. No message or key is ever sent to a server.
       </p>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is HMAC?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is HMAC?</h2>
         <p className="mb-3">
           HMAC (Hash-based Message Authentication Code) is a cryptographic mechanism that combines
           a secret key with a hash function (such as SHA-256) to produce an authentication code.
@@ -238,7 +238,7 @@ export default function HmacGenerator() {
           resistant to forgery.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Which HMAC algorithm should I use?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Which HMAC algorithm should I use?</h2>
         <p className="mb-3">
           <strong>HMAC-SHA-256</strong> is the industry standard and is suitable for the vast
           majority of applications, including API authentication (e.g., AWS Signature v4, JWT HS256)
@@ -247,7 +247,7 @@ export default function HmacGenerator() {
           considered legacy — avoid it in new systems unless required for compatibility.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Common uses of HMAC</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Common uses of HMAC</h2>
         <ul className="mb-3 list-disc pl-5 space-y-1">
           <li>API request signing (e.g., AWS, Stripe webhook verification)</li>
           <li>JWT signing with HS256, HS384, or HS512 algorithms</li>
@@ -256,7 +256,7 @@ export default function HmacGenerator() {
           <li>Message integrity checks in secure messaging protocols</li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Output formats explained</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Output formats explained</h2>
         <p className="mb-3">
           <strong>Hex (lowercase / uppercase)</strong> represents each byte as two hexadecimal
           digits (0–9, a–f). This is the most common format for displaying hashes and HMACs.
@@ -266,10 +266,10 @@ export default function HmacGenerator() {
           and JWT tokens.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Is this tool secure?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Is this tool secure?</h2>
         <p>
           Yes. This HMAC Generator runs entirely in your browser using the native Web Crypto API
-          (<code className="rounded bg-gray-100 px-1">crypto.subtle</code>). Your message and
+          (<code className="rounded bg-gray-100 dark:bg-gray-800 px-1">crypto.subtle</code>). Your message and
           secret key are never transmitted over the network or stored anywhere. You can even use
           this tool offline after the page has loaded.
         </p>

@@ -69,7 +69,7 @@ export default function MorseCode() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "encode"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           Text → Morse
@@ -79,7 +79,7 @@ export default function MorseCode() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "decode"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           Morse → Text
@@ -88,20 +88,20 @@ export default function MorseCode() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             {mode === "encode" ? "Text Input" : "Morse Code Input"}
           </label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={mode === "encode" ? "Type text here..." : "Enter Morse code (use . and -)..."}
-            className="h-32 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-32 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {mode === "encode" ? "Morse Code" : "Decoded Text"}
             </label>
             <CopyButton text={output} />
@@ -109,37 +109,37 @@ export default function MorseCode() {
           <textarea
             value={output}
             readOnly
-            className="h-32 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+            className="h-32 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
           />
         </div>
       </div>
 
       {/* Reference chart */}
-      <div className="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-4">
-        <h3 className="mb-3 text-sm font-semibold text-gray-900">Morse Code Reference</h3>
+      <div className="mt-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
+        <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">Morse Code Reference</h3>
         <div className="grid grid-cols-4 gap-1 text-xs sm:grid-cols-6 md:grid-cols-9">
           {Object.entries(CHAR_TO_MORSE)
             .slice(0, 36)
             .map(([char, morse]) => (
               <div
                 key={char}
-                className="flex items-center gap-1 rounded bg-white px-2 py-1 border border-gray-100"
+                className="flex items-center gap-1 rounded bg-white dark:bg-gray-900 px-2 py-1 border border-gray-100 dark:border-gray-800"
               >
-                <span className="font-bold text-gray-900">{char}</span>
-                <span className="font-mono text-gray-500">{morse}</span>
+                <span className="font-bold text-gray-900 dark:text-gray-100">{char}</span>
+                <span className="font-mono text-gray-500 dark:text-gray-400">{morse}</span>
               </div>
             ))}
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is Morse Code?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is Morse Code?</h2>
         <p className="mb-3">
           Morse code is a character encoding scheme that represents letters and numbers as
           sequences of dots (.) and dashes (-). Invented in the 1830s for telegraph communication,
           it is still used in aviation, amateur radio, and emergency signaling.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Morse Code Format</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Morse Code Format</h2>
         <p>
           Each character is separated by a space. Words are separated by a forward slash (/).
           A dot represents a short signal and a dash represents a long signal (3x the dot duration).

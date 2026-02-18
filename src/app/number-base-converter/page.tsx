@@ -34,12 +34,12 @@ export default function NumberBaseConverter() {
     >
       {/* Input */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">Input Number</label>
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Input Number</label>
         <div className="flex gap-2">
           <select
             value={inputBase}
             onChange={(e) => setInputBase(Number(e.target.value))}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            className="rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm"
           >
             {BASES.map((b) => (
               <option key={b.id} value={b.id}>{b.label} (base {b.id})</option>
@@ -50,14 +50,14 @@ export default function NumberBaseConverter() {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder={BASES.find((b) => b.id === inputBase)?.placeholder}
-            className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
       </div>
 
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">{error}</div>
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">{error}</div>
       )}
 
       {/* Output */}
@@ -70,14 +70,14 @@ export default function NumberBaseConverter() {
               <div
                 key={base.id}
                 className={`flex items-center justify-between rounded-lg border p-3 ${
-                  base.id === inputBase ? "border-blue-200 bg-blue-50" : "border-gray-200 bg-gray-50"
+                  base.id === inputBase ? "border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950" : "border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950"
                 }`}
               >
                 <div>
-                  <span className="text-xs font-semibold text-gray-500">{base.label}</span>
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{base.label}</span>
                   <div className="font-mono text-lg">
-                    <span className="text-gray-400">{base.prefix}</span>
-                    <span className="font-bold text-gray-900">{display}</span>
+                    <span className="text-gray-400 dark:text-gray-500">{base.prefix}</span>
+                    <span className="font-bold text-gray-900 dark:text-gray-100">{display}</span>
                   </div>
                 </div>
                 <CopyButton text={base.prefix + display} />
@@ -89,21 +89,21 @@ export default function NumberBaseConverter() {
 
       {/* Bit info */}
       {parsed !== null && (
-        <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-500">
+        <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400">
           <span>Value: <strong>{parsed}</strong></span>
           <span>Bits: <strong>{parsed.toString(2).length}</strong></span>
           <span>Bytes: <strong>{Math.ceil(parsed.toString(2).length / 8)}</strong></span>
         </div>
       )}
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Number Base Systems</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Number Base Systems</h2>
         <p className="mb-3">
           Computers use different number systems: <strong>binary</strong> (base 2) for machine code,
           <strong> octal</strong> (base 8) for Unix file permissions, <strong>decimal</strong> (base 10)
           for everyday math, and <strong>hexadecimal</strong> (base 16) for memory addresses and colors.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Common Conversions</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Common Conversions</h2>
         <p>
           Decimal 255 = Binary 11111111 = Hex FF = Octal 377. Hexadecimal is especially common
           in web development for CSS colors (e.g., #FF5733).

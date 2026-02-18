@@ -236,7 +236,7 @@ export default function ColorBlindnessSimulator() {
       {/* ── Input ── */}
       <div className="flex flex-wrap items-end gap-4">
         <div className="flex-1 min-w-[220px]">
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Input Colour (Hex)
           </label>
           <div className="flex items-center gap-3">
@@ -244,7 +244,7 @@ export default function ColorBlindnessSimulator() {
               type="color"
               value={isValid ? hex : "#E63946"}
               onChange={handleColorPicker}
-              className="h-10 w-14 cursor-pointer rounded border border-gray-300 bg-white p-0.5"
+              className="h-10 w-14 cursor-pointer rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 p-0.5"
             />
             <input
               type="text"
@@ -253,77 +253,77 @@ export default function ColorBlindnessSimulator() {
               placeholder="#E63946"
               maxLength={7}
               spellCheck={false}
-              className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
             <CopyButton text={hex} />
           </div>
           {!isValid && hex.length > 1 && (
-            <p className="mt-1 text-xs text-red-500">Invalid HEX colour</p>
+            <p className="mt-1 text-xs text-red-500 dark:text-red-400">Invalid HEX colour</p>
           )}
         </div>
 
         {/* Original swatch */}
         <div className="flex flex-col items-center gap-1">
-          <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+          <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
             Original
           </span>
           <div
-            className="h-14 w-24 rounded-lg border border-gray-200 shadow-sm"
+            className="h-14 w-24 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm"
             style={{ backgroundColor: safeHex }}
           />
-          <span className="font-mono text-xs text-gray-600">{safeHex}</span>
+          <span className="font-mono text-xs text-gray-600 dark:text-gray-400">{safeHex}</span>
         </div>
       </div>
 
       {/* ── Simulations Grid ── */}
       {simulations && (
         <div className="mt-8">
-          <h2 className="mb-4 text-base font-semibold text-gray-900">
+          <h2 className="mb-4 text-base font-semibold text-gray-900 dark:text-gray-100">
             Simulated Views
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {simulations.map((sim) => (
               <div
                 key={sim.id}
-                className="rounded-xl border border-gray-200 bg-gray-50 p-4 flex flex-col gap-3"
+                className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4 flex flex-col gap-3"
               >
                 {/* Colour swatches side by side */}
                 <div className="flex gap-2 justify-center">
                   <div className="flex flex-col items-center gap-1">
                     <div
-                      className="h-12 w-12 rounded-lg border border-gray-200 shadow-sm"
+                      className="h-12 w-12 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm"
                       style={{ backgroundColor: safeHex }}
                       title="Original"
                     />
-                    <span className="text-[10px] text-gray-400">original</span>
+                    <span className="text-[10px] text-gray-400 dark:text-gray-500">original</span>
                   </div>
                   <div className="flex items-center text-gray-300 self-center">→</div>
                   <div className="flex flex-col items-center gap-1">
                     <div
-                      className="h-12 w-12 rounded-lg border border-gray-200 shadow-sm"
+                      className="h-12 w-12 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm"
                       style={{ backgroundColor: sim.simulatedHex }}
                       title={sim.name}
                     />
-                    <span className="text-[10px] text-gray-400">simulated</span>
+                    <span className="text-[10px] text-gray-400 dark:text-gray-500">simulated</span>
                   </div>
                 </div>
 
                 {/* Info */}
                 <div>
-                  <p className="font-semibold text-gray-900 text-sm">
+                  <p className="font-semibold text-gray-900 dark:text-gray-100 text-sm">
                     {sim.name}
                   </p>
-                  <p className="text-xs text-blue-600 font-medium">
+                  <p className="text-xs text-blue-600 dark:text-blue-400 font-medium">
                     {sim.shortName}
                   </p>
-                  <p className="mt-1 text-xs text-gray-500 leading-relaxed">
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
                     {sim.description}
                   </p>
                 </div>
 
                 {/* Hex value */}
                 <div className="flex items-center gap-2 mt-auto">
-                  <span className="flex-1 font-mono text-xs bg-white border border-gray-200 rounded px-2 py-1 text-gray-700">
+                  <span className="flex-1 font-mono text-xs bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded px-2 py-1 text-gray-700 dark:text-gray-300">
                     {sim.simulatedHex}
                   </span>
                   <CopyButton text={sim.simulatedHex} />
@@ -337,13 +337,13 @@ export default function ColorBlindnessSimulator() {
       {/* ── Compare strip ── */}
       {simulations && (
         <div className="mt-8">
-          <h2 className="mb-3 text-base font-semibold text-gray-900">
+          <h2 className="mb-3 text-base font-semibold text-gray-900 dark:text-gray-100">
             Colour Comparison Strip
           </h2>
-          <p className="mb-3 text-sm text-gray-500">
+          <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">
             Original and all simulated colours displayed side by side for quick visual comparison.
           </p>
-          <div className="flex overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+          <div className="flex overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
             {/* Original */}
             <div className="flex flex-col flex-shrink-0">
               <div
@@ -351,24 +351,24 @@ export default function ColorBlindnessSimulator() {
                 style={{ backgroundColor: safeHex }}
                 title="Original"
               />
-              <div className="bg-white px-1 py-1 text-center border-t border-gray-100">
-                <p className="text-[9px] font-semibold text-gray-700 leading-tight">Original</p>
-                <p className="font-mono text-[9px] text-gray-500">{safeHex}</p>
+              <div className="bg-white dark:bg-gray-900 px-1 py-1 text-center border-t border-gray-100 dark:border-gray-800">
+                <p className="text-[9px] font-semibold text-gray-700 dark:text-gray-300 leading-tight">Original</p>
+                <p className="font-mono text-[9px] text-gray-500 dark:text-gray-400">{safeHex}</p>
               </div>
             </div>
 
             {simulations.map((sim) => (
               <div key={sim.id} className="flex flex-col flex-shrink-0">
                 <div
-                  className="h-20 w-20 border-l border-gray-200"
+                  className="h-20 w-20 border-l border-gray-200 dark:border-gray-700"
                   style={{ backgroundColor: sim.simulatedHex }}
                   title={sim.name}
                 />
-                <div className="bg-white px-1 py-1 text-center border-t border-l border-gray-100">
-                  <p className="text-[9px] font-semibold text-gray-700 leading-tight">
+                <div className="bg-white dark:bg-gray-900 px-1 py-1 text-center border-t border-l border-gray-100 dark:border-gray-800">
+                  <p className="text-[9px] font-semibold text-gray-700 dark:text-gray-300 leading-tight">
                     {sim.name}
                   </p>
-                  <p className="font-mono text-[9px] text-gray-500">
+                  <p className="font-mono text-[9px] text-gray-500 dark:text-gray-400">
                     {sim.simulatedHex}
                   </p>
                 </div>
@@ -379,8 +379,8 @@ export default function ColorBlindnessSimulator() {
       )}
 
       {/* ── SEO Content ── */}
-      <div className="mt-10 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-10 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What Is Colour Blindness?
         </h2>
         <p className="mb-3">
@@ -396,7 +396,7 @@ export default function ColorBlindnessSimulator() {
           deuteranopia), which are X-linked genetic conditions.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Types of Colour Vision Deficiency
         </h2>
         <ul className="mb-3 list-inside list-disc space-y-2">
@@ -427,7 +427,7 @@ export default function ColorBlindnessSimulator() {
           </li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How This Simulator Works
         </h2>
         <p className="mb-3">
@@ -442,7 +442,7 @@ export default function ColorBlindnessSimulator() {
           <li>Apply gamma compression (sRGB encoding) and convert back to a hex value.</li>
         </ol>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Why Design for Colour Blindness?
         </h2>
         <p className="mb-3">

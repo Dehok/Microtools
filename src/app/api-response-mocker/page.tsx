@@ -143,10 +143,10 @@ console.log(data);`;
     >
       {/* Presets */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">Presets</label>
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Presets</label>
         <div className="flex flex-wrap gap-2">
           {Object.entries(PRESETS).map(([key, p]) => (
-            <button key={key} onClick={() => loadPreset(key)} className="rounded-lg bg-gray-100 px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-200">
+            <button key={key} onClick={() => loadPreset(key)} className="rounded-lg bg-gray-100 dark:bg-gray-800 px-3 py-1.5 text-xs text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700">
               {p.status} {p.method} {p.endpoint.split("?")[0]}
             </button>
           ))}
@@ -156,18 +156,18 @@ console.log(data);`;
       {/* Method, Endpoint, Status */}
       <div className="mb-4 grid gap-3 sm:grid-cols-3">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Method</label>
-          <select value={method} onChange={(e) => setMethod(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Method</label>
+          <select value={method} onChange={(e) => setMethod(e.target.value)} className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none">
             {["GET", "POST", "PUT", "PATCH", "DELETE"].map((m) => <option key={m}>{m}</option>)}
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Endpoint</label>
-          <input value={endpoint} onChange={(e) => setEndpoint(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none" />
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Endpoint</label>
+          <input value={endpoint} onChange={(e) => setEndpoint(e.target.value)} className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Status Code</label>
-          <select value={status} onChange={(e) => setStatus(Number(e.target.value))} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Status Code</label>
+          <select value={status} onChange={(e) => setStatus(Number(e.target.value))} className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none">
             {Object.entries(STATUS_CODES).map(([code, text]) => <option key={code} value={code}>{code} {text}</option>)}
           </select>
         </div>
@@ -176,15 +176,15 @@ console.log(data);`;
       {/* Headers */}
       <div className="mb-4">
         <div className="mb-1 flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">Response Headers</label>
-          <button onClick={addHeader} className="text-xs text-blue-600 hover:text-blue-700">+ Add Header</button>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Response Headers</label>
+          <button onClick={addHeader} className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:text-blue-300">+ Add Header</button>
         </div>
         <div className="space-y-2">
           {headers.map((h, i) => (
             <div key={i} className="flex gap-2">
-              <input value={h.key} onChange={(e) => updateHeader(i, "key", e.target.value)} placeholder="Header name" className="w-1/3 rounded-lg border border-gray-300 px-3 py-1.5 font-mono text-sm focus:border-blue-500 focus:outline-none" />
-              <input value={h.value} onChange={(e) => updateHeader(i, "value", e.target.value)} placeholder="Value" className="flex-1 rounded-lg border border-gray-300 px-3 py-1.5 font-mono text-sm focus:border-blue-500 focus:outline-none" />
-              <button onClick={() => removeHeader(i)} className="px-2 text-red-400 hover:text-red-600">&times;</button>
+              <input value={h.key} onChange={(e) => updateHeader(i, "key", e.target.value)} placeholder="Header name" className="w-1/3 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-1.5 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
+              <input value={h.value} onChange={(e) => updateHeader(i, "value", e.target.value)} placeholder="Value" className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-1.5 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
+              <button onClick={() => removeHeader(i)} className="px-2 text-red-400 hover:text-red-600 dark:text-red-400">&times;</button>
             </div>
           ))}
         </div>
@@ -193,17 +193,17 @@ console.log(data);`;
       {/* Body */}
       <div className="mb-4">
         <div className="mb-1 flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">Response Body (JSON)</label>
-          <button onClick={generateMockData} className="text-xs text-blue-600 hover:text-blue-700">Generate Mock Data</button>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Response Body (JSON)</label>
+          <button onClick={generateMockData} className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:text-blue-300">Generate Mock Data</button>
         </div>
-        <textarea value={body} onChange={(e) => setBody(e.target.value)} className={`h-48 w-full rounded-lg border p-3 font-mono text-sm focus:outline-none ${bodyError ? "border-red-300 focus:border-red-500" : "border-gray-300 focus:border-blue-500"}`} spellCheck={false} />
-        {bodyError && <p className="mt-1 text-xs text-red-500">{bodyError}</p>}
+        <textarea value={body} onChange={(e) => setBody(e.target.value)} className={`h-48 w-full rounded-lg border p-3 font-mono text-sm focus:outline-none ${bodyError ? "border-red-300 dark:border-red-700 focus:border-red-500" : "border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:border-blue-400"}`} spellCheck={false} />
+        {bodyError && <p className="mt-1 text-xs text-red-500 dark:text-red-400">{bodyError}</p>}
       </div>
 
       {/* HTTP Response */}
       <div className="mb-4">
         <div className="mb-1 flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">Full HTTP Response</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Full HTTP Response</label>
           <CopyButton text={httpResponse} />
         </div>
         <pre className="max-h-64 overflow-auto rounded-lg bg-gray-900 p-4 font-mono text-sm text-green-400">{httpResponse}</pre>
@@ -213,14 +213,14 @@ console.log(data);`;
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">JavaScript fetch()</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">JavaScript fetch()</label>
             <CopyButton text={fetchSnippet} />
           </div>
           <pre className="max-h-48 overflow-auto rounded-lg bg-gray-900 p-4 font-mono text-xs text-blue-300">{fetchSnippet}</pre>
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Express.js Route</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Express.js Route</label>
             <CopyButton text={expressSnippet} />
           </div>
           <pre className="max-h-48 overflow-auto rounded-lg bg-gray-900 p-4 font-mono text-xs text-blue-300">{expressSnippet}</pre>
@@ -228,20 +228,20 @@ console.log(data);`;
       </div>
 
       {/* SEO Content */}
-      <section className="mt-12 space-y-6 text-gray-700">
-        <h2 className="text-2xl font-bold text-gray-900">What is API Mocking?</h2>
+      <section className="mt-12 space-y-6 text-gray-700 dark:text-gray-300">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">What is API Mocking?</h2>
         <p>
           API mocking creates simulated API responses for development and testing. Instead of relying on a real backend,
           frontend developers can use mock responses to build and test their applications. This speeds up development
           and enables parallel work between frontend and backend teams.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900">How to Use This Tool</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Tool</h2>
         <p>
           Select a preset template or build your mock response from scratch. Choose the HTTP method, endpoint URL,
           status code, and response headers. Edit the JSON body directly or generate random mock data.
           Copy the full HTTP response or use the generated code snippets for JavaScript fetch() or Express.js.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900">Common Use Cases</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Common Use Cases</h2>
         <p>
           Use mock API responses for frontend prototyping, unit testing, integration testing, API documentation examples,
           and demo applications. Mock different scenarios including success responses, error responses, pagination,

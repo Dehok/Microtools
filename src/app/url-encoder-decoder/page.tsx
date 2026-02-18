@@ -56,7 +56,7 @@ export default function UrlEncoderDecoder() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "encode"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           Encode
@@ -66,7 +66,7 @@ export default function UrlEncoderDecoder() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "decode"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           Decode
@@ -74,7 +74,7 @@ export default function UrlEncoderDecoder() {
         <select
           value={encodeType}
           onChange={(e) => setEncodeType(e.target.value as "component" | "full")}
-          className="ml-auto rounded-md border border-gray-300 px-2 py-1 text-sm"
+          className="ml-auto rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
         >
           <option value="component">encodeURIComponent</option>
           <option value="full">encodeURI (full URL)</option>
@@ -82,13 +82,13 @@ export default function UrlEncoderDecoder() {
       </div>
 
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
 
       {/* Input */}
-      <label className="mb-1 block text-sm font-medium text-gray-700">
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
         {mode === "encode" ? "Text / URL to encode" : "Encoded URL to decode"}
       </label>
       <textarea
@@ -99,7 +99,7 @@ export default function UrlEncoderDecoder() {
             ? "hello world & foo=bar"
             : "hello%20world%20%26%20foo%3Dbar"
         }
-        className="mb-4 h-32 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+        className="mb-4 h-32 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
         spellCheck={false}
       />
 
@@ -113,38 +113,38 @@ export default function UrlEncoderDecoder() {
         <button
           onClick={handleSwap}
           disabled={!output}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:opacity-40"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 disabled:opacity-40"
         >
           Swap
         </button>
         <button
           onClick={() => { setInput(""); setOutput(""); setError(""); }}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
       </div>
 
       <div className="mb-1 flex items-center justify-between">
-        <label className="text-sm font-medium text-gray-700">Result</label>
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Result</label>
         <CopyButton text={output} />
       </div>
       <textarea
         value={output}
         readOnly
         placeholder="Result will appear here..."
-        className="h-32 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+        className="h-32 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
       />
 
       {/* SEO */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is URL Encoding?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is URL Encoding?</h2>
         <p className="mb-3">
           URL encoding (percent-encoding) replaces unsafe characters with a &quot;%&quot; followed by
           two hexadecimal digits. For example, a space becomes %20 and an ampersand becomes %26.
           This ensures URLs are transmitted correctly over the internet.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">encodeURI vs encodeURIComponent</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">encodeURI vs encodeURIComponent</h2>
         <p>
           <strong>encodeURIComponent</strong> encodes everything except letters, digits, and a few
           special characters. Use it for query string values. <strong>encodeURI</strong> preserves

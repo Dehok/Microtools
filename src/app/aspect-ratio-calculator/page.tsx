@@ -66,7 +66,7 @@ export default function AspectRatioCalculator() {
       {/* Main dimensions */}
       <div className="mb-4 grid grid-cols-2 gap-4">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Width</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Width</label>
           <input
             type="number"
             value={width}
@@ -77,11 +77,11 @@ export default function AspectRatioCalculator() {
                 if (w > 0) setHeight(Math.round(w / (ratio.x / ratio.y)).toString());
               }
             }}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Height</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Height</label>
           <input
             type="number"
             value={height}
@@ -92,63 +92,63 @@ export default function AspectRatioCalculator() {
                 if (h > 0) setWidth(Math.round(h * (ratio.x / ratio.y)).toString());
               }
             }}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
       </div>
 
-      <label className="mb-4 flex items-center gap-2 text-sm text-gray-600">
+      <label className="mb-4 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
         <input
           type="checkbox"
           checked={lockRatio}
           onChange={(e) => setLockRatio(e.target.checked)}
-          className="rounded border-gray-300"
+          className="rounded border-gray-300 dark:border-gray-600"
         />
         Lock aspect ratio when changing dimensions
       </label>
 
       {/* Result */}
       {ratio && (
-        <div className="mb-6 rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
-          <div className="mb-1 text-sm font-medium text-blue-600">Aspect Ratio</div>
+        <div className="mb-6 rounded-lg border border-blue-100 bg-blue-50 dark:bg-blue-950 p-4 text-center">
+          <div className="mb-1 text-sm font-medium text-blue-600 dark:text-blue-400">Aspect Ratio</div>
           <div className="flex items-center justify-center gap-2">
-            <span className="text-3xl font-bold text-blue-800">
+            <span className="text-3xl font-bold text-blue-800 dark:text-blue-200">
               {ratio.x}:{ratio.y}
             </span>
             <CopyButton text={`${ratio.x}:${ratio.y}`} />
           </div>
-          <div className="mt-1 text-sm text-blue-600">Decimal: {ratio.decimal}</div>
+          <div className="mt-1 text-sm text-blue-600 dark:text-blue-400">Decimal: {ratio.decimal}</div>
         </div>
       )}
 
       {/* Scale calculator */}
       {ratio && (
         <div className="mb-6">
-          <h3 className="mb-2 text-sm font-semibold text-gray-900">Scale to New Size</h3>
+          <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Scale to New Size</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs text-gray-500">New width</label>
+              <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">New width</label>
               <input
                 type="number"
                 value={targetW}
                 onChange={(e) => handleTargetW(e.target.value)}
                 placeholder="Enter width..."
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-gray-500">New height</label>
+              <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">New height</label>
               <input
                 type="number"
                 value={targetH}
                 onChange={(e) => handleTargetH(e.target.value)}
                 placeholder="Enter height..."
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               />
             </div>
           </div>
           {scaled && (
-            <div className="mt-2 flex items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-4 py-2 text-sm text-green-700">
+            <div className="mt-2 flex items-center gap-2 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950 px-4 py-2 text-sm text-green-700 dark:text-green-300">
               <span>
                 Scaled size: <strong>{scaled.w} × {scaled.h}</strong>
               </span>
@@ -159,7 +159,7 @@ export default function AspectRatioCalculator() {
       )}
 
       {/* Presets */}
-      <h3 className="mb-2 text-sm font-semibold text-gray-900">Common Ratios</h3>
+      <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Common Ratios</h3>
       <div className="mb-4 flex flex-wrap gap-2">
         {PRESETS.map((p) => (
           <button
@@ -168,21 +168,21 @@ export default function AspectRatioCalculator() {
               setWidth(p.w.toString());
               setHeight(p.h.toString());
             }}
-            className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50"
+            className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           >
             {p.label}
           </button>
         ))}
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is Aspect Ratio?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is Aspect Ratio?</h2>
         <p className="mb-3">
           Aspect ratio is the proportional relationship between width and height. It is expressed
           as two numbers separated by a colon (e.g., 16:9). Maintaining aspect ratio when resizing
           prevents images and videos from being stretched or distorted.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Common Aspect Ratios</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Common Aspect Ratios</h2>
         <p>
           <strong>16:9</strong> is standard for HD video and monitors. <strong>4:3</strong> is the classic
           TV/monitor format. <strong>1:1</strong> is square (Instagram posts). <strong>9:16</strong> is

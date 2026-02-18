@@ -172,28 +172,28 @@ export default function XmlToJson() {
         </button>
         <button
           onClick={handleClear}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
 
         <div className="ml-auto flex flex-wrap items-center gap-4">
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-700">
+          <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
             <input
               type="checkbox"
               checked={compact}
               onChange={(e) => setCompact(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600"
+              className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400"
             />
             Compact mode
           </label>
 
           <div className="flex items-center gap-2">
-            <label className="text-sm text-gray-600">Indent:</label>
+            <label className="text-sm text-gray-600 dark:text-gray-400">Indent:</label>
             <select
               value={indent}
               onChange={(e) => setIndent(Number(e.target.value) as 2 | 4)}
-              className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+              className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
             >
               <option value={2}>2 spaces</option>
               <option value={4}>4 spaces</option>
@@ -204,14 +204,14 @@ export default function XmlToJson() {
 
       {/* Compact mode info */}
       {compact && (
-        <div className="mb-4 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-sm text-blue-700">
+        <div className="mb-4 rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950 px-4 py-2 text-sm text-blue-700 dark:text-blue-300">
           Compact mode: simple text-only elements are returned as plain strings instead of objects with a <code className="font-mono">#text</code> key.
         </div>
       )}
 
       {/* Error */}
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           <span className="font-medium">XML Error:</span> {error}
         </div>
       )}
@@ -220,10 +220,10 @@ export default function XmlToJson() {
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               XML Input
             </label>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-400 dark:text-gray-500">
               {input.length} characters
             </span>
           </div>
@@ -231,14 +231,14 @@ export default function XmlToJson() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={"<root>\n  <element>value</element>\n</root>"}
-            className="h-80 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-80 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
 
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               JSON Output
             </label>
             <CopyButton text={json} />
@@ -247,7 +247,7 @@ export default function XmlToJson() {
             value={json}
             readOnly
             placeholder="Converted JSON will appear here..."
-            className="h-80 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+            className="h-80 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
             spellCheck={false}
           />
         </div>
@@ -255,15 +255,15 @@ export default function XmlToJson() {
 
       {/* Stats row */}
       {json && (
-        <div className="mt-3 flex gap-4 text-xs text-gray-500">
+        <div className="mt-3 flex gap-4 text-xs text-gray-500 dark:text-gray-400">
           <span>Input: {input.length} chars</span>
           <span>Output: {json.length} chars</span>
         </div>
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is an XML to JSON Converter?
         </h2>
         <p className="mb-3">
@@ -273,20 +273,20 @@ export default function XmlToJson() {
           JavaScript, and more human-readable than XML for most use cases.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How the Conversion Works
         </h2>
         <p className="mb-2">
-          This tool uses the browser&apos;s built-in <code className="rounded bg-gray-100 px-1 font-mono">DOMParser</code> to
+          This tool uses the browser&apos;s built-in <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">DOMParser</code> to
           parse your XML client-side and then recursively walks the DOM tree to produce
           a JSON representation:
         </p>
         <ul className="mb-3 ml-4 list-disc space-y-1">
           <li>
-            <strong>Element attributes</strong> are stored under an <code className="rounded bg-gray-100 px-1 font-mono">@attributes</code> key.
+            <strong>Element attributes</strong> are stored under an <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">@attributes</code> key.
           </li>
           <li>
-            <strong>Text content</strong> of leaf elements is stored under a <code className="rounded bg-gray-100 px-1 font-mono">#text</code> key
+            <strong>Text content</strong> of leaf elements is stored under a <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">#text</code> key
             (or as a bare string in compact mode).
           </li>
           <li>
@@ -298,18 +298,18 @@ export default function XmlToJson() {
           </li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Compact Mode Explained
         </h2>
         <p className="mb-3">
           When <strong>Compact mode</strong> is enabled, simple text-only elements
           (elements that have no attributes and contain only text) are represented
-          as plain strings instead of <code className="rounded bg-gray-100 px-1 font-mono">{"{ \"#text\": \"...\" }"}</code> objects.
+          as plain strings instead of <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">{"{ \"#text\": \"...\" }"}</code> objects.
           This produces cleaner, smaller JSON for typical data files but may lose
           precision for documents with mixed content.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Common Use Cases
         </h2>
         <ul className="mb-3 ml-4 list-disc space-y-1">
@@ -320,7 +320,7 @@ export default function XmlToJson() {
           <li>Transforming SVG or other XML-based data for processing</li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">FAQ</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">FAQ</h2>
         <p className="mb-1 font-medium">Is my XML data sent to a server?</p>
         <p className="mb-3">
           No. All conversion happens entirely in your browser using the built-in
@@ -338,7 +338,7 @@ export default function XmlToJson() {
           What happens to XML processing instructions and comments?
         </p>
         <p>
-          XML comments and processing instructions (such as <code className="rounded bg-gray-100 px-1 font-mono">&lt;?xml ...?&gt;</code>)
+          XML comments and processing instructions (such as <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">&lt;?xml ...?&gt;</code>)
           are ignored during conversion. Only element nodes, their attributes, and
           text content are included in the JSON output.
         </p>

@@ -85,24 +85,24 @@ export default function JsonPathFinder() {
     >
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">JSON Input</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">JSON Input</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your JSON here..."
-            className="h-80 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+            className="h-80 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setInput(SAMPLE)}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Sample
             </button>
             <button
               onClick={() => setInput("")}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Clear
             </button>
@@ -111,7 +111,7 @@ export default function JsonPathFinder() {
 
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Paths ({filtered.length})
             </label>
             <CopyButton
@@ -124,39 +124,39 @@ export default function JsonPathFinder() {
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             placeholder="Filter paths..."
-            className="mb-2 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm focus:border-blue-500 focus:outline-none"
+            className="mb-2 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
 
           {error && (
-            <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
+            <div className="mb-2 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-3 py-2 text-xs text-red-700 dark:text-red-300">
               {error}
             </div>
           )}
 
-          <div className="h-[280px] overflow-y-auto rounded-lg border border-gray-300 bg-white">
+          <div className="h-[280px] overflow-y-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900">
             {filtered.map((entry, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between border-b border-gray-100 px-3 py-1.5 text-xs hover:bg-gray-50"
+                className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 px-3 py-1.5 text-xs hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               >
                 <div className="min-w-0 flex-1">
-                  <span className="font-mono text-blue-700">{entry.path}</span>
+                  <span className="font-mono text-blue-700 dark:text-blue-300">{entry.path}</span>
                   {entry.type !== "object" && entry.type !== "array" && (
-                    <span className="ml-2 text-gray-500">→ {entry.value}</span>
+                    <span className="ml-2 text-gray-500 dark:text-gray-400">→ {entry.value}</span>
                   )}
                 </div>
                 <div className="ml-2 flex items-center gap-1">
                   <span
                     className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${
                       entry.type === "string"
-                        ? "bg-green-100 text-green-700"
+                        ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
                         : entry.type === "number"
-                        ? "bg-blue-100 text-blue-700"
+                        ? "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300"
                         : entry.type === "boolean"
-                        ? "bg-yellow-100 text-yellow-700"
+                        ? "bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300"
                         : entry.type === "null"
-                        ? "bg-gray-100 text-gray-500"
-                        : "bg-purple-100 text-purple-700"
+                        ? "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+                        : "bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300"
                     }`}
                   >
                     {entry.type}
@@ -169,14 +169,14 @@ export default function JsonPathFinder() {
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is JSONPath?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is JSONPath?</h2>
         <p className="mb-3">
           JSONPath is an expression language for navigating JSON structures. The root is represented
           by <code>$</code>, object properties by dot notation (<code>.key</code>), and array elements
           by bracket notation (<code>[0]</code>).
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Use Cases</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Use Cases</h2>
         <p>
           JSONPath is used in API testing (Postman, REST Assured), data transformation (jq),
           configuration files, and log analysis. This tool helps you find the exact path to any

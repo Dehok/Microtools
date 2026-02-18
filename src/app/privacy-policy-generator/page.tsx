@@ -440,48 +440,48 @@ export default function PrivacyPolicyGenerator() {
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Form */}
         <div className="space-y-4">
-          <h3 className="text-sm font-semibold text-gray-800">Website Details</h3>
+          <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">Website Details</h3>
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Website Name</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Website Name</label>
             <input
               type="text"
               value={websiteName}
               onChange={(e) => setWebsiteName(e.target.value)}
               placeholder="My Website"
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Website URL</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Website URL</label>
             <input
               type="text"
               value={websiteUrl}
               onChange={(e) => setWebsiteUrl(e.target.value)}
               placeholder="https://example.com"
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm font-mono focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm font-mono focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Contact Email</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Contact Email</label>
             <input
               type="email"
               value={contactEmail}
               onChange={(e) => setContactEmail(e.target.value)}
               placeholder="contact@example.com"
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm font-mono focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm font-mono focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-gray-700">Effective Date</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Effective Date</label>
             <input
               type="date"
               value={effectiveDate}
               onChange={(e) => setEffectiveDate(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
 
-          <h3 className="pt-2 text-sm font-semibold text-gray-800">What applies to your site?</h3>
+          <h3 className="pt-2 text-sm font-semibold text-gray-800 dark:text-gray-200">What applies to your site?</h3>
           <div className="space-y-2">
             {[
               { label: "Collects Personal Data", checked: collectsPersonalData, onChange: setCollectsPersonalData },
@@ -493,12 +493,12 @@ export default function PrivacyPolicyGenerator() {
               { label: "GDPR Compliance", checked: gdprCompliance, onChange: setGdprCompliance },
               { label: "Children's Privacy (COPPA)", checked: childrenPrivacy, onChange: setChildrenPrivacy },
             ].map((item) => (
-              <label key={item.label} className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+              <label key={item.label} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={item.checked}
                   onChange={(e) => item.onChange(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400 focus:ring-blue-500"
                 />
                 {item.label}
               </label>
@@ -509,7 +509,7 @@ export default function PrivacyPolicyGenerator() {
         {/* Preview & Output */}
         <div>
           <div className="mb-2 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-800">Generated Privacy Policy</h3>
+            <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">Generated Privacy Policy</h3>
             <div className="flex gap-2">
               <CopyButton text={policy} />
               <button
@@ -520,7 +520,7 @@ export default function PrivacyPolicyGenerator() {
               </button>
             </div>
           </div>
-          <div className="max-h-[600px] overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="max-h-[600px] overflow-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
             {policy.split("\n").map((line, i) => {
               // Section headers (lines that are all text, not starting with -, not empty, and followed/preceded by empty lines)
               const isTitle = i === 0;
@@ -537,28 +537,28 @@ export default function PrivacyPolicyGenerator() {
 
               if (isTitle) {
                 return (
-                  <h2 key={i} className="mb-1 text-lg font-bold text-gray-900">
+                  <h2 key={i} className="mb-1 text-lg font-bold text-gray-900 dark:text-gray-100">
                     {line}
                   </h2>
                 );
               }
               if (isHeading) {
                 return (
-                  <h3 key={i} className="mb-1 mt-4 text-sm font-bold text-gray-800">
+                  <h3 key={i} className="mb-1 mt-4 text-sm font-bold text-gray-800 dark:text-gray-200">
                     {line}
                   </h3>
                 );
               }
               if (line.startsWith("- ")) {
                 return (
-                  <p key={i} className="ml-4 text-xs text-gray-700 leading-relaxed">
+                  <p key={i} className="ml-4 text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
                     {line}
                   </p>
                 );
               }
               if (line.startsWith("Effective Date:")) {
                 return (
-                  <p key={i} className="mb-3 text-xs text-gray-500 italic">
+                  <p key={i} className="mb-3 text-xs text-gray-500 dark:text-gray-400 italic">
                     {line}
                   </p>
                 );
@@ -567,7 +567,7 @@ export default function PrivacyPolicyGenerator() {
                 return <div key={i} className="h-2" />;
               }
               return (
-                <p key={i} className="text-xs text-gray-700 leading-relaxed">
+                <p key={i} className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
                   {line}
                 </p>
               );
@@ -577,22 +577,22 @@ export default function PrivacyPolicyGenerator() {
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is a Privacy Policy?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is a Privacy Policy?</h2>
         <p className="mb-3">
           A privacy policy is a legal document that discloses how a website or application collects, uses,
           stores, and protects user data. It is required by law in most jurisdictions, including under the
           GDPR (General Data Protection Regulation) in Europe, CCPA (California Consumer Privacy Act) in
           the United States, and many other data protection regulations worldwide.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why Do You Need a Privacy Policy?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why Do You Need a Privacy Policy?</h2>
         <p className="mb-3">
           If your website collects any form of personal data — including email addresses, names, cookies,
           or analytics data — you are legally required to have a privacy policy. Third-party services like
           Google Analytics, Google AdSense, and most advertising networks also require websites to display
           a privacy policy. Without one, you risk fines, legal action, and removal from advertising programs.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How to Use This Generator</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How to Use This Generator</h2>
         <p>
           Fill in your website details and select the checkboxes that apply to your site. The generator
           will create a comprehensive privacy policy tailored to your needs. You can copy the result as

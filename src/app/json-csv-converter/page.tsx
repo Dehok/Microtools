@@ -86,7 +86,7 @@ export default function JsonCsvConverter() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "json-to-csv"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           JSON → CSV
@@ -96,41 +96,41 @@ export default function JsonCsvConverter() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "csv-to-json"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           CSV → JSON
         </button>
         <button
           onClick={() => { setInput(SAMPLE_JSON); setMode("json-to-csv"); }}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Sample
         </button>
       </div>
 
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             {mode === "json-to-csv" ? "JSON Input" : "CSV Input"}
           </label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={mode === "json-to-csv" ? '[{"key": "value"}]' : "name,age,city\nAlice,30,Prague"}
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {mode === "json-to-csv" ? "CSV Output" : "JSON Output"}
             </label>
             <CopyButton text={output} />
@@ -139,7 +139,7 @@ export default function JsonCsvConverter() {
             value={output}
             readOnly
             placeholder="Result will appear here..."
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
           />
         </div>
       </div>
@@ -153,20 +153,20 @@ export default function JsonCsvConverter() {
         </button>
         <button
           onClick={() => { setInput(""); setOutput(""); setError(""); }}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">JSON to CSV Conversion</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">JSON to CSV Conversion</h2>
         <p className="mb-3">
           This tool converts JSON arrays of objects into CSV (Comma-Separated Values) format.
           Object keys become CSV column headers, and each object becomes a row. It handles
           special characters, commas in values, and nested objects.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">CSV to JSON</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">CSV to JSON</h2>
         <p>
           The reverse conversion takes CSV data with a header row and converts each row into
           a JSON object, producing a JSON array of objects.

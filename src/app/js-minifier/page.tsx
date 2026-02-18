@@ -81,26 +81,26 @@ export default function JsMinifier() {
     >
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             JavaScript Input ({input.length} bytes)
           </label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your JavaScript code here..."
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setInput(SAMPLE)}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Sample
             </button>
             <button
               onClick={() => setInput("")}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Clear
             </button>
@@ -109,7 +109,7 @@ export default function JsMinifier() {
 
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Minified ({minified.length} bytes)
             </label>
             <CopyButton text={minified} />
@@ -118,30 +118,30 @@ export default function JsMinifier() {
             value={minified}
             readOnly
             placeholder="Minified output will appear here..."
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs"
           />
         </div>
       </div>
 
       {/* Stats */}
       {input.trim() && (
-        <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-500">
+        <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400">
           <span>
-            Saved: <strong className="text-green-600">{savedBytes} bytes ({savedPercent}%)</strong>
+            Saved: <strong className="text-green-600 dark:text-green-400">{savedBytes} bytes ({savedPercent}%)</strong>
           </span>
           <span>Original: <strong>{input.length}</strong> bytes</span>
           <span>Minified: <strong>{minified.length}</strong> bytes</span>
         </div>
       )}
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why Minify JavaScript?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why Minify JavaScript?</h2>
         <p className="mb-3">
           Minification reduces file size by removing comments, whitespace, and unnecessary characters.
           This leads to faster page loads, reduced bandwidth usage, and better user experience.
           Minified files are harder to read but functionally identical.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What This Tool Does</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What This Tool Does</h2>
         <p>
           This tool removes single-line and multi-line comments, collapses whitespace, and removes
           unnecessary newlines. For production use, consider build tools like Terser, esbuild, or

@@ -109,15 +109,15 @@ export default function HexRgbConverter() {
     >
       <div className="grid gap-6 md:grid-cols-2">
         {/* HEX to RGB */}
-        <div className="rounded-lg border border-gray-200 p-4">
-          <h3 className="mb-3 text-sm font-semibold text-gray-900">HEX → RGB</h3>
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">HEX → RGB</h3>
           <div className="flex gap-2">
             <input
               type="text"
               value={hexInput}
               onChange={(e) => setHexInput(e.target.value)}
               placeholder="#3498DB"
-              className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               spellCheck={false}
             />
             <button
@@ -130,18 +130,18 @@ export default function HexRgbConverter() {
           {fromHex && (
             <div className="mt-3 space-y-2">
               <div
-                className="h-16 rounded-lg border border-gray-200"
+                className="h-16 rounded-lg border border-gray-200 dark:border-gray-700"
                 style={{ backgroundColor: fromHex.hex }}
               />
-              <div className="flex items-center justify-between rounded bg-gray-50 px-3 py-1.5 text-sm">
-                <span className="text-gray-500">RGB:</span>
+              <div className="flex items-center justify-between rounded bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm">
+                <span className="text-gray-500 dark:text-gray-400">RGB:</span>
                 <span className="flex items-center gap-1 font-mono">
                   rgb({fromHex.r}, {fromHex.g}, {fromHex.b})
                   <CopyButton text={`rgb(${fromHex.r}, ${fromHex.g}, ${fromHex.b})`} />
                 </span>
               </div>
-              <div className="flex items-center justify-between rounded bg-gray-50 px-3 py-1.5 text-sm">
-                <span className="text-gray-500">HSL:</span>
+              <div className="flex items-center justify-between rounded bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm">
+                <span className="text-gray-500 dark:text-gray-400">HSL:</span>
                 <span className="flex items-center gap-1 font-mono">
                   hsl({fromHex.h}, {fromHex.s}%, {fromHex.l}%)
                   <CopyButton text={`hsl(${fromHex.h}, ${fromHex.s}%, ${fromHex.l}%)`} />
@@ -152,37 +152,37 @@ export default function HexRgbConverter() {
         </div>
 
         {/* RGB to HEX */}
-        <div className="rounded-lg border border-gray-200 p-4">
-          <h3 className="mb-3 text-sm font-semibold text-gray-900">RGB → HEX</h3>
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">RGB → HEX</h3>
           <div className="grid grid-cols-3 gap-2">
             <div>
-              <label className="mb-0.5 block text-xs text-gray-500">R (0-255)</label>
+              <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">R (0-255)</label>
               <input
                 type="number"
                 min="0" max="255"
                 value={rInput}
                 onChange={(e) => setRInput(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-2 py-2 text-center font-mono text-sm focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-2 text-center font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-0.5 block text-xs text-gray-500">G (0-255)</label>
+              <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">G (0-255)</label>
               <input
                 type="number"
                 min="0" max="255"
                 value={gInput}
                 onChange={(e) => setGInput(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-2 py-2 text-center font-mono text-sm focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-2 text-center font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-0.5 block text-xs text-gray-500">B (0-255)</label>
+              <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">B (0-255)</label>
               <input
                 type="number"
                 min="0" max="255"
                 value={bInput}
                 onChange={(e) => setBInput(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-2 py-2 text-center font-mono text-sm focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-2 text-center font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               />
             </div>
           </div>
@@ -195,18 +195,18 @@ export default function HexRgbConverter() {
           {fromRgb && (
             <div className="mt-3 space-y-2">
               <div
-                className="h-16 rounded-lg border border-gray-200"
+                className="h-16 rounded-lg border border-gray-200 dark:border-gray-700"
                 style={{ backgroundColor: fromRgb.hex }}
               />
-              <div className="flex items-center justify-between rounded bg-gray-50 px-3 py-1.5 text-sm">
-                <span className="text-gray-500">HEX:</span>
+              <div className="flex items-center justify-between rounded bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm">
+                <span className="text-gray-500 dark:text-gray-400">HEX:</span>
                 <span className="flex items-center gap-1 font-mono">
                   {fromRgb.hex}
                   <CopyButton text={fromRgb.hex} />
                 </span>
               </div>
-              <div className="flex items-center justify-between rounded bg-gray-50 px-3 py-1.5 text-sm">
-                <span className="text-gray-500">HSL:</span>
+              <div className="flex items-center justify-between rounded bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm">
+                <span className="text-gray-500 dark:text-gray-400">HSL:</span>
                 <span className="flex items-center gap-1 font-mono">
                   hsl({fromRgb.h}, {fromRgb.s}%, {fromRgb.l}%)
                   <CopyButton text={`hsl(${fromRgb.h}, ${fromRgb.s}%, ${fromRgb.l}%)`} />
@@ -219,13 +219,13 @@ export default function HexRgbConverter() {
 
       {/* Color presets */}
       <div className="mt-6">
-        <h3 className="mb-2 text-sm font-semibold text-gray-900">Quick Colors</h3>
+        <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Quick Colors</h3>
         <div className="flex flex-wrap gap-2">
           {PRESETS.map((p) => (
             <button
               key={p.hex}
               onClick={() => { setHexInput(p.hex); const rgb = hexToRgb(p.hex); if (rgb) { setRInput(rgb.r.toString()); setGInput(rgb.g.toString()); setBInput(rgb.b.toString()); } }}
-              className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2 py-1 text-xs hover:bg-gray-50"
+              className="flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-2 py-1 text-xs hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               title={p.name}
             >
               <span className="inline-block h-4 w-4 rounded" style={{ backgroundColor: p.hex }} />
@@ -235,14 +235,14 @@ export default function HexRgbConverter() {
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">HEX vs RGB Color Formats</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">HEX vs RGB Color Formats</h2>
         <p className="mb-3">
           <strong>HEX</strong> colors use a 6-digit hexadecimal code (e.g., #3498DB). Each pair of digits
           represents Red, Green, and Blue intensity (00-FF). <strong>RGB</strong> uses decimal values
           (0-255) for each channel, e.g., rgb(52, 152, 219).
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">When to Use Each</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to Use Each</h2>
         <p>
           HEX is most common in CSS and web design. RGB is common in graphic design tools and programmatic
           color manipulation. HSL (Hue, Saturation, Lightness) is more intuitive for adjusting colors.

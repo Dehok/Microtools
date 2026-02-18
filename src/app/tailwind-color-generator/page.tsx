@@ -98,13 +98,13 @@ export default function TailwindColorGenerator() {
       {/* Controls */}
       <div className="mb-6 flex flex-wrap items-end gap-4">
         <div>
-          <label className="mb-1 block text-sm text-gray-600">Base Color</label>
+          <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Base Color</label>
           <div className="flex items-center gap-2">
             <input
               type="color"
               value={baseColor}
               onChange={(e) => setBaseColor(e.target.value)}
-              className="h-10 w-10 cursor-pointer rounded border border-gray-300"
+              className="h-10 w-10 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
             />
             <input
               type="text"
@@ -113,18 +113,18 @@ export default function TailwindColorGenerator() {
                 const v = e.target.value;
                 if (/^#[0-9a-fA-F]{6}$/.test(v)) setBaseColor(v);
               }}
-              className="w-24 rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm"
+              className="w-24 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm"
               placeholder="#3b82f6"
             />
           </div>
         </div>
         <div>
-          <label className="mb-1 block text-sm text-gray-600">Color Name</label>
+          <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Color Name</label>
           <input
             type="text"
             value={colorName}
             onChange={(e) => setColorName(e.target.value.replace(/\s/g, "-").toLowerCase())}
-            className="w-32 rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            className="w-32 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm"
             placeholder="primary"
           />
         </div>
@@ -132,13 +132,13 @@ export default function TailwindColorGenerator() {
 
       {/* Presets */}
       <div className="mb-6">
-        <label className="mb-2 block text-sm text-gray-600">Presets:</label>
+        <label className="mb-2 block text-sm text-gray-600 dark:text-gray-400">Presets:</label>
         <div className="flex flex-wrap gap-2">
           {PRESETS.map((preset) => (
             <button
               key={preset.name}
               onClick={() => setBaseColor(preset.hex)}
-              className="flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-sm transition-colors hover:border-blue-300"
+              className="flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 px-3 py-1 text-sm transition-colors hover:border-blue-300 dark:hover:border-blue-700"
             >
               <span
                 className="inline-block h-4 w-4 rounded-full"
@@ -152,7 +152,7 @@ export default function TailwindColorGenerator() {
 
       {/* Palette visualization */}
       <div className="mb-6">
-        <h3 className="mb-2 text-sm font-medium text-gray-700">Color Palette</h3>
+        <h3 className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Color Palette</h3>
         <div className="flex overflow-hidden rounded-lg">
           {palette.map((p) => (
             <div
@@ -171,28 +171,28 @@ export default function TailwindColorGenerator() {
       <div className="space-y-4">
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Tailwind Config</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Tailwind Config</label>
             <CopyButton text={tailwindConfig} />
           </div>
-          <pre className="overflow-x-auto rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm">
+          <pre className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm">
             {tailwindConfig}
           </pre>
         </div>
 
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">CSS Variables</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">CSS Variables</label>
             <CopyButton text={`:root {\n${cssVars}\n}`} />
           </div>
-          <pre className="overflow-x-auto rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm">
+          <pre className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm">
             {`:root {\n${cssVars}\n}`}
           </pre>
         </div>
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is a Tailwind Color Palette?
         </h2>
         <p className="mb-3">
@@ -201,7 +201,7 @@ export default function TailwindColorGenerator() {
           generator creates a complete palette from any base color, matching
           Tailwind&apos;s conventions.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to use
         </h2>
         <p>

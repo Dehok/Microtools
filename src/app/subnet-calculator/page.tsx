@@ -141,7 +141,7 @@ export default function SubnetCalculator() {
       {/* Inputs */}
       <div className="mb-4 grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             IP Address
           </label>
           <input
@@ -149,18 +149,18 @@ export default function SubnetCalculator() {
             value={ip}
             onChange={(e) => setIp(e.target.value)}
             placeholder="192.168.1.0"
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             CIDR Prefix
           </label>
           <select
             value={cidr}
             onChange={(e) => setCidr(Number(e.target.value))}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             {Array.from({ length: 33 }, (_, i) => (
               <option key={i} value={i}>
@@ -188,8 +188,8 @@ export default function SubnetCalculator() {
             }}
             className={`rounded-lg border px-3 py-1 text-xs font-mono transition-colors ${
               ip.trim() === preset.ip && cidr === preset.cidr
-                ? "border-blue-300 bg-blue-50 text-blue-700"
-                : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+                ? "border-blue-300 bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+                : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             {preset.label}
@@ -199,7 +199,7 @@ export default function SubnetCalculator() {
 
       {/* Error */}
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
@@ -208,7 +208,7 @@ export default function SubnetCalculator() {
       {results && (
         <>
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-900">Results</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Results</h3>
             <CopyButton text={allResultsText} />
           </div>
 
@@ -227,13 +227,13 @@ export default function SubnetCalculator() {
             ].map((row) => (
               <div
                 key={row.label}
-                className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 p-3"
+                className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3"
               >
                 <div>
-                  <span className="text-xs font-semibold text-gray-500">
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">
                     {row.label}
                   </span>
-                  <div className="font-mono text-sm text-gray-900">
+                  <div className="font-mono text-sm text-gray-900 dark:text-gray-100">
                     {row.value}
                   </div>
                 </div>
@@ -245,8 +245,8 @@ export default function SubnetCalculator() {
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is Subnetting?
         </h2>
         <p className="mb-3">
@@ -255,7 +255,7 @@ export default function SubnetCalculator() {
           defined by a <strong>network address</strong> and a <strong>subnet mask</strong>. Subnetting
           improves network performance, security, and IP address management.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Understanding CIDR Notation
         </h2>
         <p className="mb-3">
@@ -265,7 +265,7 @@ export default function SubnetCalculator() {
           for host addresses (256 total, 254 usable). Smaller prefix numbers mean larger networks:
           /8 provides over 16 million addresses, while /30 provides only 4.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Key Subnet Terms
         </h2>
         <p>

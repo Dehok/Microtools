@@ -271,13 +271,13 @@ export default function CssAnimationGenerator() {
 
       {/* Preset animations */}
       <div className="mb-6">
-        <h3 className="mb-2 text-sm font-semibold text-gray-900">Preset Animations</h3>
+        <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Preset Animations</h3>
         <div className="flex flex-wrap gap-2">
           {PRESETS.map((preset) => (
             <button
               key={preset.name}
               onClick={() => applyPreset(preset)}
-              className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700"
+              className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors hover:border-blue-400 hover:bg-blue-50 dark:bg-blue-950 dark:hover:bg-blue-950 hover:text-blue-700 dark:text-blue-300"
             >
               {preset.name}
             </button>
@@ -288,15 +288,15 @@ export default function CssAnimationGenerator() {
       {/* Live preview */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-sm font-semibold text-gray-900">Live Preview</h3>
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Live Preview</h3>
           <button
             onClick={replayAnimation}
-            className="rounded border border-gray-300 bg-white px-3 py-1 text-xs text-gray-700 hover:bg-gray-50"
+            className="rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1 text-xs text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           >
             Replay
           </button>
         </div>
-        <div className="flex h-40 items-center justify-center rounded-lg border border-gray-200 bg-gray-50">
+        <div className="flex h-40 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950">
           <div
             key={animationKey}
             className="h-16 w-16 rounded-lg"
@@ -309,23 +309,23 @@ export default function CssAnimationGenerator() {
       <div className="mb-6 grid gap-4 sm:grid-cols-2">
         {/* Animation name */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Animation Name</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Animation Name</label>
           <input
             type="text"
             value={animationName}
             onChange={(e) => setAnimationName(e.target.value)}
             placeholder="my-animation"
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 font-mono text-sm focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1.5 font-mono text-sm focus:border-blue-400 focus:outline-none"
           />
         </div>
 
         {/* Timing function */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Timing Function</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Timing Function</label>
           <select
             value={timingFunction}
             onChange={(e) => setTimingFunction(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm focus:border-blue-400 focus:outline-none"
           >
             {TIMING_FUNCTIONS.map((tf) => (
               <option key={tf} value={tf}>{tf}</option>
@@ -335,8 +335,8 @@ export default function CssAnimationGenerator() {
 
         {/* Duration */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">
-            Duration: <span className="font-mono text-blue-600">{duration.toFixed(1)}s</span>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">
+            Duration: <span className="font-mono text-blue-600 dark:text-blue-400">{duration.toFixed(1)}s</span>
           </label>
           <input
             type="range"
@@ -351,8 +351,8 @@ export default function CssAnimationGenerator() {
 
         {/* Delay */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">
-            Delay: <span className="font-mono text-blue-600">{delay.toFixed(1)}s</span>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">
+            Delay: <span className="font-mono text-blue-600 dark:text-blue-400">{delay.toFixed(1)}s</span>
           </label>
           <input
             type="range"
@@ -367,7 +367,7 @@ export default function CssAnimationGenerator() {
 
         {/* Iteration count */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Iteration Count</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Iteration Count</label>
           <div className="flex items-center gap-2">
             <input
               type="number"
@@ -376,9 +376,9 @@ export default function CssAnimationGenerator() {
               value={isInfinite ? 1 : parseInt(iterationCount) || 1}
               onChange={(e) => setIterationCount(e.target.value)}
               disabled={isInfinite}
-              className="w-20 rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm focus:border-blue-400 focus:outline-none disabled:opacity-50"
+              className="w-20 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm focus:border-blue-400 focus:outline-none disabled:opacity-50"
             />
-            <label className="flex items-center gap-1.5 text-xs text-gray-700 cursor-pointer">
+            <label className="flex items-center gap-1.5 text-xs text-gray-700 dark:text-gray-300 cursor-pointer">
               <input
                 type="checkbox"
                 checked={isInfinite}
@@ -392,11 +392,11 @@ export default function CssAnimationGenerator() {
 
         {/* Direction */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Direction</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Direction</label>
           <select
             value={direction}
             onChange={(e) => setDirection(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm focus:border-blue-400 focus:outline-none"
           >
             {DIRECTIONS.map((d) => (
               <option key={d} value={d}>{d}</option>
@@ -406,11 +406,11 @@ export default function CssAnimationGenerator() {
 
         {/* Fill mode */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Fill Mode</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Fill Mode</label>
           <select
             value={fillMode}
             onChange={(e) => setFillMode(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm focus:border-blue-400 focus:outline-none"
           >
             {FILL_MODES.map((fm) => (
               <option key={fm} value={fm}>{fm}</option>
@@ -422,11 +422,11 @@ export default function CssAnimationGenerator() {
       {/* Keyframe editor */}
       <div className="mb-6">
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-900">Keyframes</h3>
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Keyframes</h3>
           <button
             onClick={addKeyframe}
             disabled={keyframes.length >= 8}
-            className="rounded border border-gray-300 bg-white px-2 py-1 text-xs text-gray-700 hover:bg-gray-50 disabled:opacity-40"
+            className="rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 disabled:opacity-40"
           >
             + Add Keyframe
           </button>
@@ -437,24 +437,24 @@ export default function CssAnimationGenerator() {
             .map((kf, originalIndex) => ({ kf, originalIndex }))
             .sort((a, b) => a.kf.percentage - b.kf.percentage)
             .map(({ kf, originalIndex }) => (
-              <div key={originalIndex} className="rounded-lg border border-gray-200 bg-gray-50 p-3">
+              <div key={originalIndex} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3">
                 <div className="mb-2 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold text-gray-600">At</span>
+                    <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">At</span>
                     <input
                       type="number"
                       min="0"
                       max="100"
                       value={kf.percentage}
                       onChange={(e) => updateKeyframe(originalIndex, "percentage", parseInt(e.target.value) || 0)}
-                      className="w-16 rounded border border-gray-300 bg-white px-2 py-0.5 text-center font-mono text-xs focus:border-blue-400 focus:outline-none"
+                      className="w-16 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-0.5 text-center font-mono text-xs focus:border-blue-400 focus:outline-none"
                     />
-                    <span className="text-xs text-gray-600">%</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400">%</span>
                   </div>
                   {keyframes.length > 2 && (
                     <button
                       onClick={() => removeKeyframe(originalIndex)}
-                      className="rounded px-1.5 py-0.5 text-xs text-red-500 hover:bg-red-50"
+                      className="rounded px-1.5 py-0.5 text-xs text-red-500 dark:text-red-400 hover:bg-red-50 dark:bg-red-950 dark:hover:bg-red-950"
                     >
                       Remove
                     </button>
@@ -463,34 +463,34 @@ export default function CssAnimationGenerator() {
 
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3">
                   <div>
-                    <label className="mb-0.5 block text-xs text-gray-500">Translate X (px)</label>
+                    <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">Translate X (px)</label>
                     <input
                       type="number"
                       value={kf.translateX}
                       onChange={(e) => updateKeyframe(originalIndex, "translateX", parseInt(e.target.value) || 0)}
-                      className="w-full rounded border border-gray-300 bg-white px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
+                      className="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="mb-0.5 block text-xs text-gray-500">Translate Y (px)</label>
+                    <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">Translate Y (px)</label>
                     <input
                       type="number"
                       value={kf.translateY}
                       onChange={(e) => updateKeyframe(originalIndex, "translateY", parseInt(e.target.value) || 0)}
-                      className="w-full rounded border border-gray-300 bg-white px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
+                      className="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="mb-0.5 block text-xs text-gray-500">Rotate (deg)</label>
+                    <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">Rotate (deg)</label>
                     <input
                       type="number"
                       value={kf.rotate}
                       onChange={(e) => updateKeyframe(originalIndex, "rotate", parseInt(e.target.value) || 0)}
-                      className="w-full rounded border border-gray-300 bg-white px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
+                      className="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="mb-0.5 block text-xs text-gray-500">Scale</label>
+                    <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">Scale</label>
                     <input
                       type="number"
                       step="0.1"
@@ -498,11 +498,11 @@ export default function CssAnimationGenerator() {
                       max="10"
                       value={kf.scale}
                       onChange={(e) => updateKeyframe(originalIndex, "scale", parseFloat(e.target.value) || 1)}
-                      className="w-full rounded border border-gray-300 bg-white px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
+                      className="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="mb-0.5 block text-xs text-gray-500">Opacity (0–1)</label>
+                    <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">Opacity (0–1)</label>
                     <input
                       type="number"
                       step="0.1"
@@ -510,23 +510,23 @@ export default function CssAnimationGenerator() {
                       max="1"
                       value={kf.opacity}
                       onChange={(e) => updateKeyframe(originalIndex, "opacity", parseFloat(e.target.value))}
-                      className="w-full rounded border border-gray-300 bg-white px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
+                      className="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="mb-0.5 block text-xs text-gray-500">Background Color</label>
+                    <label className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">Background Color</label>
                     <div className="flex items-center gap-1">
                       <input
                         type="color"
                         value={kf.backgroundColor}
                         onChange={(e) => updateKeyframe(originalIndex, "backgroundColor", e.target.value)}
-                        className="h-6 w-6 cursor-pointer rounded border border-gray-300"
+                        className="h-6 w-6 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
                       />
                       <input
                         type="text"
                         value={kf.backgroundColor}
                         onChange={(e) => updateKeyframe(originalIndex, "backgroundColor", e.target.value)}
-                        className="flex-1 rounded border border-gray-300 bg-white px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
+                        className="flex-1 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-0.5 font-mono text-xs focus:border-blue-400 focus:outline-none"
                       />
                     </div>
                   </div>
@@ -539,24 +539,24 @@ export default function CssAnimationGenerator() {
       {/* Generated CSS */}
       <div className="mb-4">
         <div className="mb-1 flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">Generated CSS</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Generated CSS</label>
           <CopyButton text={generatedCSS} />
         </div>
-        <pre className="overflow-x-auto rounded-lg border border-gray-200 bg-gray-900 p-4 font-mono text-xs leading-relaxed text-green-400">
+        <pre className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-900 p-4 font-mono text-xs leading-relaxed text-green-400">
           {generatedCSS}
         </pre>
       </div>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is a CSS Animation?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is a CSS Animation?</h2>
         <p className="mb-3">
           CSS animations allow elements to transition between styles over a defined period using <strong>@keyframes</strong> rules.
           Unlike CSS transitions (which only move between two states), animations support multiple keyframes and loop
           indefinitely — making them ideal for loading spinners, attention effects, and decorative motion.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How to Use This Generator</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How to Use This Generator</h2>
         <p className="mb-3">
           Choose a preset to start quickly, or configure every property manually. Add keyframes at any percentage point
           and define the <strong>transform</strong> (translate, rotate, scale), <strong>opacity</strong>, and{" "}
@@ -564,7 +564,7 @@ export default function CssAnimationGenerator() {
           &ldquo;Replay&rdquo; button restarts the animation so you can evaluate it from the beginning.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Key Animation Properties</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Key Animation Properties</h2>
         <ul className="mb-3 list-disc pl-5 space-y-1">
           <li><strong>animation-duration</strong> — how long one cycle takes (in seconds).</li>
           <li><strong>animation-timing-function</strong> — easing curve (ease, linear, ease-in-out, etc.).</li>
@@ -574,7 +574,7 @@ export default function CssAnimationGenerator() {
           <li><strong>animation-fill-mode</strong> — what styles are applied before/after the animation runs.</li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Browser Support</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Browser Support</h2>
         <p>
           CSS animations with <code>@keyframes</code> are supported in all modern browsers (Chrome, Firefox, Safari,
           Edge) without vendor prefixes. They are hardware-accelerated when using <strong>transform</strong> and{" "}

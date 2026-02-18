@@ -53,7 +53,7 @@ function extractClasses(input: string): string {
   return input;
 }
 
-const EXAMPLE = `p-4 flex bg-red-500 text-white items-center mt-2 hover:bg-red-600 rounded-lg shadow-md w-full justify-between font-bold text-lg mb-4 border border-gray-200 transition duration-200 cursor-pointer relative z-10 overflow-hidden`;
+const EXAMPLE = `p-4 flex bg-red-500 text-white items-center mt-2 hover:bg-red-600 rounded-lg shadow-md w-full justify-between font-bold text-lg mb-4 border border-gray-200 dark:border-gray-700 transition duration-200 cursor-pointer relative z-10 overflow-hidden`;
 
 export default function TailwindClassSorterPage() {
   const [input, setInput] = useState("");
@@ -104,18 +104,18 @@ export default function TailwindClassSorterPage() {
     >
       {/* Buttons */}
       <div className="mb-4 flex gap-2">
-        <button onClick={() => setInput(EXAMPLE)} className="rounded-lg bg-gray-100 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-200">Load Example</button>
-        <button onClick={() => setInput("")} className="rounded-lg bg-gray-100 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-200">Clear</button>
+        <button onClick={() => setInput(EXAMPLE)} className="rounded-lg bg-gray-100 dark:bg-gray-800 px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700">Load Example</button>
+        <button onClick={() => setInput("")} className="rounded-lg bg-gray-100 dark:bg-gray-800 px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700">Clear</button>
       </div>
 
       {/* Input */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">Input (class string, className=&quot;...&quot;, or class=&quot;...&quot;)</label>
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Input (class string, className=&quot;...&quot;, or class=&quot;...&quot;)</label>
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder='p-4 flex bg-red-500 text-white items-center mt-2 hover:bg-red-600 rounded-lg'
-          className="h-32 w-full rounded-lg border border-gray-300 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="h-32 w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
           spellCheck={false}
         />
       </div>
@@ -125,10 +125,10 @@ export default function TailwindClassSorterPage() {
         <>
           <div className="mb-4">
             <div className="mb-1 flex items-center justify-between">
-              <label className="text-sm font-medium text-gray-700">Sorted Output</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Sorted Output</label>
               <CopyButton text={result.sorted} />
             </div>
-            <div className="rounded-lg border border-green-200 bg-green-50 p-3 font-mono text-sm text-gray-800">
+            <div className="rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950 p-3 font-mono text-sm text-gray-800 dark:text-gray-200">
               {result.classes.map((cls, i) => (
                 <span key={i}>
                   <span className={movedClasses.has(cls) ? "rounded bg-yellow-200 px-0.5" : ""}>{cls}</span>
@@ -140,30 +140,30 @@ export default function TailwindClassSorterPage() {
 
           {/* Stats */}
           <div className="mb-4 flex flex-wrap gap-3">
-            <div className="rounded-lg bg-blue-50 px-3 py-2 text-sm">
-              <span className="font-medium text-blue-700">{result.classes.length}</span>{" "}
-              <span className="text-blue-600">classes</span>
+            <div className="rounded-lg bg-blue-50 dark:bg-blue-950 px-3 py-2 text-sm">
+              <span className="font-medium text-blue-700 dark:text-blue-300">{result.classes.length}</span>{" "}
+              <span className="text-blue-600 dark:text-blue-400">classes</span>
             </div>
-            <div className="rounded-lg bg-purple-50 px-3 py-2 text-sm">
-              <span className="font-medium text-purple-700">{result.categories.size}</span>{" "}
-              <span className="text-purple-600">categories</span>
+            <div className="rounded-lg bg-purple-50 dark:bg-purple-950 px-3 py-2 text-sm">
+              <span className="font-medium text-purple-700 dark:text-purple-300">{result.categories.size}</span>{" "}
+              <span className="text-purple-600 dark:text-purple-400">categories</span>
             </div>
-            <div className="rounded-lg bg-yellow-50 px-3 py-2 text-sm">
-              <span className="font-medium text-yellow-700">{movedClasses.size}</span>{" "}
-              <span className="text-yellow-600">moved</span>
+            <div className="rounded-lg bg-yellow-50 dark:bg-yellow-950 px-3 py-2 text-sm">
+              <span className="font-medium text-yellow-700 dark:text-yellow-300">{movedClasses.size}</span>{" "}
+              <span className="text-yellow-600 dark:text-yellow-400">moved</span>
             </div>
           </div>
 
           {/* Categories Breakdown */}
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium text-gray-700">Category Breakdown</label>
+            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Category Breakdown</label>
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {Array.from(result.categories.entries()).map(([cat, classes]) => (
-                <div key={cat} className="rounded-lg border border-gray-200 p-3">
-                  <div className="mb-1 text-xs font-medium text-gray-500">{cat}</div>
+                <div key={cat} className="rounded-lg border border-gray-200 dark:border-gray-700 p-3">
+                  <div className="mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">{cat}</div>
                   <div className="flex flex-wrap gap-1">
                     {classes.map((cls, i) => (
-                      <span key={i} className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-xs text-gray-700">{cls}</span>
+                      <span key={i} className="rounded bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 font-mono text-xs text-gray-700 dark:text-gray-300">{cls}</span>
                     ))}
                   </div>
                 </div>
@@ -174,22 +174,22 @@ export default function TailwindClassSorterPage() {
       )}
 
       {/* SEO Content */}
-      <section className="mt-12 space-y-6 text-gray-700">
-        <h2 className="text-2xl font-bold text-gray-900">Why Sort Tailwind CSS Classes?</h2>
+      <section className="mt-12 space-y-6 text-gray-700 dark:text-gray-300">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Why Sort Tailwind CSS Classes?</h2>
         <p>
           Sorting Tailwind CSS classes in a consistent order improves code readability and maintainability.
           The recommended order follows the &ldquo;outside-in&rdquo; principle: layout first, then spacing, sizing,
           typography, visual styles, and finally state variants. This is the same order used by
           prettier-plugin-tailwindcss, the official Prettier plugin.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900">How Does the Sorting Work?</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How Does the Sorting Work?</h2>
         <p>
           Classes are grouped into categories: Layout, Flexbox/Grid, Spacing, Sizing, Typography, Backgrounds,
           Borders, Effects, Filters, Transitions, Transforms, and Interactivity. Within each category, classes
           maintain their relative order. Responsive and state variants (hover:, focus:, sm:, md:) are sorted
           after their base classes.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900">How to Use This Tool</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Tool</h2>
         <p>
           Paste your Tailwind class string, a className=&ldquo;...&rdquo; attribute from JSX, or a class=&ldquo;...&rdquo;
           from HTML. The tool extracts and sorts the classes automatically. Yellow-highlighted classes in the output

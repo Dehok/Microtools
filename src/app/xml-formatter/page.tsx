@@ -88,11 +88,11 @@ export default function XmlFormatter() {
       {/* Options */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Mode:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Mode:</label>
           <select
             value={mode}
             onChange={(e) => setMode(e.target.value as "format" | "minify")}
-            className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           >
             <option value="format">Format / Beautify</option>
             <option value="minify">Minify</option>
@@ -100,11 +100,11 @@ export default function XmlFormatter() {
         </div>
         {mode === "format" && (
           <div className="flex items-center gap-2">
-            <label className="text-sm text-gray-600">Indent:</label>
+            <label className="text-sm text-gray-600 dark:text-gray-400">Indent:</label>
             <select
               value={indentSize}
               onChange={(e) => setIndentSize(Number(e.target.value))}
-              className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+              className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
             >
               <option value={2}>2 spaces</option>
               <option value={4}>4 spaces</option>
@@ -118,8 +118,8 @@ export default function XmlFormatter() {
           <span
             className={`rounded-full px-3 py-1 text-xs font-medium ${
               result.validation.valid
-                ? "bg-green-100 text-green-700"
-                : "bg-red-100 text-red-700"
+                ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
+                : "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300"
             }`}
           >
             {result.validation.valid ? "Valid XML" : "Invalid XML"}
@@ -130,14 +130,14 @@ export default function XmlFormatter() {
       <div className="grid gap-4 md:grid-cols-2">
         {/* Input */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Input XML
           </label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             rows={16}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             spellCheck={false}
             placeholder="Paste your XML here..."
           />
@@ -146,7 +146,7 @@ export default function XmlFormatter() {
         {/* Output */}
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Output
             </label>
             <CopyButton text={result.output} />
@@ -155,7 +155,7 @@ export default function XmlFormatter() {
             value={result.output}
             readOnly
             rows={16}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm"
             spellCheck={false}
           />
         </div>
@@ -163,14 +163,14 @@ export default function XmlFormatter() {
 
       {/* Error message */}
       {result.validation.error && (
-        <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="mt-3 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 p-3 text-sm text-red-700 dark:text-red-300">
           {result.validation.error}
         </div>
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is XML?
         </h2>
         <p className="mb-3">
@@ -178,7 +178,7 @@ export default function XmlFormatter() {
           and transport data. It is widely used in web services (SOAP, RSS),
           configuration files, and data interchange between systems.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to format XML
         </h2>
         <p>

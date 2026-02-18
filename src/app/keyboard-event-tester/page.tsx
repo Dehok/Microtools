@@ -86,8 +86,8 @@ export default function KeyboardEventTesterPage() {
           onBlur={() => setIsFocused(false)}
           className={`w-full rounded-xl border-2 cursor-pointer select-none transition-all duration-150 outline-none flex flex-col items-center justify-center py-10 px-4 min-h-[160px]
             ${isFocused
-              ? "border-blue-500 bg-blue-50 dark:bg-blue-950/30 shadow-lg shadow-blue-100 dark:shadow-blue-900/20"
-              : "border-dashed border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/40 hover:border-blue-400"
+              ? "border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-950/30 shadow-lg shadow-blue-100 dark:shadow-blue-900/20"
+              : "border-dashed border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 dark:bg-gray-800/40 hover:border-blue-400"
             }`}
           aria-label="Keyboard event capture area. Click to focus, then press any key."
         >
@@ -141,7 +141,7 @@ export default function KeyboardEventTesterPage() {
                       className={`px-4 py-1.5 rounded-full font-mono font-semibold text-sm border transition-colors
                         ${active
                           ? "bg-blue-600 text-white border-blue-600 shadow"
-                          : "bg-white dark:bg-gray-800 text-gray-400 dark:text-gray-500 border-gray-200 dark:border-gray-700"
+                          : "bg-white dark:bg-gray-900 dark:bg-gray-800 text-gray-400 dark:text-gray-500 border-gray-200 dark:border-gray-700"
                         }`}
                     >
                       {mod}
@@ -162,76 +162,76 @@ export default function KeyboardEventTesterPage() {
               <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-                      <th className="text-left px-4 py-2 font-semibold text-gray-600 dark:text-gray-300 w-1/3">Property</th>
-                      <th className="text-left px-4 py-2 font-semibold text-gray-600 dark:text-gray-300">Value</th>
+                    <tr className="bg-gray-50 dark:bg-gray-950 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                      <th className="text-left px-4 py-2 font-semibold text-gray-600 dark:text-gray-400 dark:text-gray-300 w-1/3">Property</th>
+                      <th className="text-left px-4 py-2 font-semibold text-gray-600 dark:text-gray-400 dark:text-gray-300">Value</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-400">event.key</td>
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
+                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-300 dark:text-blue-400">event.key</td>
                       <td className="px-4 py-2.5 font-mono text-gray-800 dark:text-gray-200 font-semibold">
                         &quot;{formatKey(currentEvent.key)}&quot;
                       </td>
                     </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-400">event.code</td>
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
+                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-300 dark:text-blue-400">event.code</td>
                       <td className="px-4 py-2.5 font-mono text-gray-800 dark:text-gray-200">
                         &quot;{currentEvent.code}&quot;
                       </td>
                     </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
                       <td className="px-4 py-2.5 font-mono text-orange-600 dark:text-orange-400">
                         event.keyCode
-                        <span className="ml-1 text-xs text-gray-400">(deprecated)</span>
+                        <span className="ml-1 text-xs text-gray-400 dark:text-gray-500">(deprecated)</span>
                       </td>
                       <td className="px-4 py-2.5 font-mono text-gray-800 dark:text-gray-200">
                         {currentEvent.keyCode}
                       </td>
                     </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
                       <td className="px-4 py-2.5 font-mono text-orange-600 dark:text-orange-400">
                         event.which
-                        <span className="ml-1 text-xs text-gray-400">(deprecated)</span>
+                        <span className="ml-1 text-xs text-gray-400 dark:text-gray-500">(deprecated)</span>
                       </td>
                       <td className="px-4 py-2.5 font-mono text-gray-800 dark:text-gray-200">
                         {currentEvent.which}
                       </td>
                     </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-400">event.location</td>
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
+                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-300 dark:text-blue-400">event.location</td>
                       <td className="px-4 py-2.5 font-mono text-gray-800 dark:text-gray-200">
                         {LOCATION_LABELS[currentEvent.location] ?? currentEvent.location}
                       </td>
                     </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-400">event.shiftKey</td>
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
+                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-300 dark:text-blue-400">event.shiftKey</td>
                       <td className="px-4 py-2.5 font-mono">
-                        <span className={currentEvent.shiftKey ? "text-green-600 dark:text-green-400 font-semibold" : "text-gray-400"}>
+                        <span className={currentEvent.shiftKey ? "text-green-600 dark:text-green-400 font-semibold" : "text-gray-400 dark:text-gray-500"}>
                           {String(currentEvent.shiftKey)}
                         </span>
                       </td>
                     </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-400">event.ctrlKey</td>
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
+                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-300 dark:text-blue-400">event.ctrlKey</td>
                       <td className="px-4 py-2.5 font-mono">
-                        <span className={currentEvent.ctrlKey ? "text-green-600 dark:text-green-400 font-semibold" : "text-gray-400"}>
+                        <span className={currentEvent.ctrlKey ? "text-green-600 dark:text-green-400 font-semibold" : "text-gray-400 dark:text-gray-500"}>
                           {String(currentEvent.ctrlKey)}
                         </span>
                       </td>
                     </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-400">event.altKey</td>
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
+                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-300 dark:text-blue-400">event.altKey</td>
                       <td className="px-4 py-2.5 font-mono">
-                        <span className={currentEvent.altKey ? "text-green-600 dark:text-green-400 font-semibold" : "text-gray-400"}>
+                        <span className={currentEvent.altKey ? "text-green-600 dark:text-green-400 font-semibold" : "text-gray-400 dark:text-gray-500"}>
                           {String(currentEvent.altKey)}
                         </span>
                       </td>
                     </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-400">event.metaKey</td>
+                    <tr className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50">
+                      <td className="px-4 py-2.5 font-mono text-blue-700 dark:text-blue-300 dark:text-blue-400">event.metaKey</td>
                       <td className="px-4 py-2.5 font-mono">
-                        <span className={currentEvent.metaKey ? "text-green-600 dark:text-green-400 font-semibold" : "text-gray-400"}>
+                        <span className={currentEvent.metaKey ? "text-green-600 dark:text-green-400 font-semibold" : "text-gray-400 dark:text-gray-500"}>
                           {String(currentEvent.metaKey)}
                         </span>
                       </td>
@@ -260,7 +260,7 @@ export default function KeyboardEventTesterPage() {
             <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Key History
               {history.length > 0 && (
-                <span className="ml-2 text-xs font-normal normal-case text-gray-400">
+                <span className="ml-2 text-xs font-normal normal-case text-gray-400 dark:text-gray-500">
                   (last {history.length})
                 </span>
               )}
@@ -268,7 +268,7 @@ export default function KeyboardEventTesterPage() {
             {history.length > 0 && (
               <button
                 onClick={clearHistory}
-                className="text-xs px-3 py-1 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-red-50 hover:border-red-200 hover:text-red-600 dark:hover:bg-red-950/30 dark:hover:border-red-800 dark:hover:text-red-400 transition-colors"
+                className="text-xs px-3 py-1 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-red-50 dark:bg-red-950 hover:border-red-200 dark:border-red-800 hover:text-red-600 dark:text-red-400 dark:hover:bg-red-950/30 dark:hover:border-red-800 dark:hover:text-red-400 transition-colors"
               >
                 Clear History
               </button>
@@ -276,7 +276,7 @@ export default function KeyboardEventTesterPage() {
           </div>
 
           {history.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-gray-200 dark:border-gray-700 px-4 py-8 text-center text-gray-400 dark:text-gray-600 text-sm">
+            <div className="rounded-xl border border-dashed border-gray-200 dark:border-gray-700 px-4 py-8 text-center text-gray-400 dark:text-gray-500 dark:text-gray-600 text-sm">
               No key events recorded yet
             </div>
           ) : (
@@ -284,7 +284,7 @@ export default function KeyboardEventTesterPage() {
               <div className="overflow-x-auto max-h-72 overflow-y-auto">
                 <table className="w-full text-xs min-w-[520px]">
                   <thead className="sticky top-0 z-10">
-                    <tr className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                    <tr className="bg-gray-50 dark:bg-gray-950 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                       <th className="text-left px-3 py-2 font-semibold text-gray-500 dark:text-gray-400">#</th>
                       <th className="text-left px-3 py-2 font-semibold text-gray-500 dark:text-gray-400">Key</th>
                       <th className="text-left px-3 py-2 font-semibold text-gray-500 dark:text-gray-400">Code</th>
@@ -297,12 +297,12 @@ export default function KeyboardEventTesterPage() {
                     {history.map((event, idx) => (
                       <tr
                         key={event.timestamp + "-" + idx}
-                        className={`transition-colors ${idx === 0 ? "bg-blue-50 dark:bg-blue-950/20" : "hover:bg-gray-50 dark:hover:bg-gray-800/50"}`}
+                        className={`transition-colors ${idx === 0 ? "bg-blue-50 dark:bg-blue-950/20" : "hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800/50"}`}
                       >
                         <td className="px-3 py-2 text-gray-300 dark:text-gray-600">
                           {history.length - idx}
                         </td>
-                        <td className="px-3 py-2 font-mono font-bold text-blue-700 dark:text-blue-400">
+                        <td className="px-3 py-2 font-mono font-bold text-blue-700 dark:text-blue-300 dark:text-blue-400">
                           {formatKey(event.key)}
                         </td>
                         <td className="px-3 py-2 font-mono text-gray-700 dark:text-gray-300">

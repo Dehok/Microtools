@@ -207,7 +207,7 @@ export default function EmailValidator() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "single"
               ? "bg-blue-600 text-white"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700"
           }`}
         >
           Single Email
@@ -217,7 +217,7 @@ export default function EmailValidator() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "bulk"
               ? "bg-blue-600 text-white"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700"
           }`}
         >
           Bulk Validation
@@ -227,7 +227,7 @@ export default function EmailValidator() {
       {/* Single mode */}
       {mode === "single" && (
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Email Address
           </label>
           <input
@@ -235,7 +235,7 @@ export default function EmailValidator() {
             value={singleEmail}
             onChange={(e) => setSingleEmail(e.target.value)}
             placeholder="example@domain.com"
-            className="mb-4 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="mb-4 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
             autoComplete="off"
           />
@@ -246,8 +246,8 @@ export default function EmailValidator() {
               <div
                 className={`mb-4 flex items-center gap-2 rounded-lg border px-4 py-3 ${
                   singleResult.isValid
-                    ? "border-green-200 bg-green-50 text-green-800"
-                    : "border-red-200 bg-red-50 text-red-800"
+                    ? "border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950 text-green-800"
+                    : "border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 text-red-800"
                 }`}
               >
                 <span className="text-lg">
@@ -270,8 +270,8 @@ export default function EmailValidator() {
               )}
 
               {/* Checks list */}
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                <div className="mb-2 text-sm font-medium text-gray-700">Validation Checks</div>
+              <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
+                <div className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Validation Checks</div>
                 <div className="space-y-2">
                   {CHECK_LABELS.map(({ key, label }) => {
                     const passed = key === "typoSuggestion" ? true : singleResult.checks[key];
@@ -281,13 +281,13 @@ export default function EmailValidator() {
                         <span
                           className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold ${
                             passed
-                              ? "bg-green-100 text-green-700"
-                              : "bg-red-100 text-red-700"
+                              ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
+                              : "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300"
                           }`}
                         >
                           {passed ? "✓" : "✗"}
                         </span>
-                        <span className={passed ? "text-gray-700" : "text-red-700"}>
+                        <span className={passed ? "text-gray-700 dark:text-gray-300" : "text-red-700 dark:text-red-300"}>
                           {label}
                         </span>
                       </div>
@@ -299,7 +299,7 @@ export default function EmailValidator() {
           )}
 
           {!singleEmail.trim() && (
-            <p className="text-sm text-gray-400">Enter an email address to validate it.</p>
+            <p className="text-sm text-gray-400 dark:text-gray-500">Enter an email address to validate it.</p>
           )}
         </div>
       )}
@@ -307,14 +307,14 @@ export default function EmailValidator() {
       {/* Bulk mode */}
       {mode === "bulk" && (
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Email Addresses (one per line)
           </label>
           <textarea
             value={bulkInput}
             onChange={(e) => setBulkInput(e.target.value)}
             placeholder={"user@example.com\nhello@domain.org\nbad-email@\n..."}
-            className="mb-4 h-36 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="mb-4 h-36 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
 
@@ -322,17 +322,17 @@ export default function EmailValidator() {
             <div>
               {/* Stats */}
               <div className="mb-4 grid grid-cols-3 gap-3">
-                <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-center">
-                  <div className="text-2xl font-bold text-gray-800">{bulkStats.total}</div>
-                  <div className="text-xs text-gray-500">Total</div>
+                <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 text-center">
+                  <div className="text-2xl font-bold text-gray-800 dark:text-gray-200">{bulkStats.total}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Total</div>
                 </div>
-                <div className="rounded-lg border border-green-200 bg-green-50 p-3 text-center">
-                  <div className="text-2xl font-bold text-green-700">{bulkStats.valid}</div>
-                  <div className="text-xs text-green-600">Valid</div>
+                <div className="rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950 p-3 text-center">
+                  <div className="text-2xl font-bold text-green-700 dark:text-green-300">{bulkStats.valid}</div>
+                  <div className="text-xs text-green-600 dark:text-green-400">Valid</div>
                 </div>
-                <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-center">
-                  <div className="text-2xl font-bold text-red-700">{bulkStats.invalid}</div>
-                  <div className="text-xs text-red-600">Invalid</div>
+                <div className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 p-3 text-center">
+                  <div className="text-2xl font-bold text-red-700 dark:text-red-300">{bulkStats.invalid}</div>
+                  <div className="text-xs text-red-600 dark:text-red-400">Invalid</div>
                 </div>
               </div>
 
@@ -340,53 +340,53 @@ export default function EmailValidator() {
               <div className="mb-4 flex flex-wrap gap-2">
                 {validEmailsText && (
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-600">Valid ({bulkStats.valid}):</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400">Valid ({bulkStats.valid}):</span>
                     <CopyButton text={validEmailsText} />
                   </div>
                 )}
                 {invalidEmailsText && (
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-600">Invalid ({bulkStats.invalid}):</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400">Invalid ({bulkStats.invalid}):</span>
                     <CopyButton text={invalidEmailsText} />
                   </div>
                 )}
               </div>
 
               {/* Results table */}
-              <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-gray-200 bg-gray-50">
-                      <th className="px-3 py-2 text-left font-medium text-gray-700">#</th>
-                      <th className="px-3 py-2 text-left font-medium text-gray-700">Email</th>
-                      <th className="px-3 py-2 text-left font-medium text-gray-700">Status</th>
-                      <th className="px-3 py-2 text-left font-medium text-gray-700">Issue / Note</th>
+                    <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950">
+                      <th className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-300">#</th>
+                      <th className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-300">Email</th>
+                      <th className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-300">Status</th>
+                      <th className="px-3 py-2 text-left font-medium text-gray-700 dark:text-gray-300">Issue / Note</th>
                     </tr>
                   </thead>
                   <tbody>
                     {bulkResults.map((result, i) => (
                       <tr
                         key={i}
-                        className={`border-b border-gray-100 last:border-0 ${
-                          result.isValid ? "bg-white" : "bg-red-50"
+                        className={`border-b border-gray-100 dark:border-gray-800 last:border-0 ${
+                          result.isValid ? "bg-white dark:bg-gray-900" : "bg-red-50 dark:bg-red-950"
                         }`}
                       >
-                        <td className="px-3 py-2 text-gray-400">{i + 1}</td>
-                        <td className="px-3 py-2 font-mono text-gray-800 break-all">
+                        <td className="px-3 py-2 text-gray-400 dark:text-gray-500">{i + 1}</td>
+                        <td className="px-3 py-2 font-mono text-gray-800 dark:text-gray-200 break-all">
                           {result.email}
                         </td>
                         <td className="px-3 py-2">
                           <span
                             className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${
                               result.isValid
-                                ? "bg-green-100 text-green-700"
-                                : "bg-red-100 text-red-700"
+                                ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
+                                : "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300"
                             }`}
                           >
                             {result.isValid ? "✓ Valid" : "✗ Invalid"}
                           </span>
                         </td>
-                        <td className="px-3 py-2 text-gray-500">
+                        <td className="px-3 py-2 text-gray-500 dark:text-gray-400">
                           {result.checks.typoSuggestion ? (
                             <span className="text-amber-700">
                               Did you mean: <span className="font-mono">{result.checks.typoSuggestion}</span>?
@@ -394,7 +394,7 @@ export default function EmailValidator() {
                           ) : result.issue ? (
                             result.issue
                           ) : (
-                            <span className="text-green-600">—</span>
+                            <span className="text-green-600 dark:text-green-400">—</span>
                           )}
                         </td>
                       </tr>
@@ -406,14 +406,14 @@ export default function EmailValidator() {
           )}
 
           {!bulkInput.trim() && (
-            <p className="text-sm text-gray-400">Paste email addresses above, one per line.</p>
+            <p className="text-sm text-gray-400 dark:text-gray-500">Paste email addresses above, one per line.</p>
           )}
         </div>
       )}
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is Email Validation?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is Email Validation?</h2>
         <p className="mb-3">
           Email validation is the process of checking whether an email address is correctly
           formatted according to internet standards (RFC 5321 and RFC 5322). A valid email
@@ -422,7 +422,7 @@ export default function EmailValidator() {
           requests or confirm whether a mailbox actually exists.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What Gets Validated?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What Gets Validated?</h2>
         <p className="mb-3">
           The validator checks eight rules for each email: presence of exactly one @ symbol,
           absence of spaces, no consecutive dots, a total length of at most 254 characters,
@@ -431,7 +431,7 @@ export default function EmailValidator() {
           TLD of at least two alphabetic characters.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Typo Detection</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Typo Detection</h2>
         <p className="mb-3">
           A common source of invalid emails is a simple domain typo — for example typing
           <strong> gmial.com</strong> instead of gmail.com, or <strong>hotmal.com</strong>{" "}
@@ -439,7 +439,7 @@ export default function EmailValidator() {
           suggests the correct spelling so users can fix their address before submitting a form.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Bulk Email Validation</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Bulk Email Validation</h2>
         <p>
           Switch to Bulk mode to validate entire mailing lists at once. Paste up to hundreds
           of addresses (one per line), and the tool instantly shows a results table with the

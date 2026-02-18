@@ -164,28 +164,28 @@ export default function JsonSchemaValidator() {
       <div className="grid gap-4 md:grid-cols-2">
         {/* JSON Input */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             JSON Data
           </label>
           <textarea
             value={json}
             onChange={(e) => setJson(e.target.value)}
             rows={14}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             spellCheck={false}
           />
         </div>
 
         {/* Schema Input */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             JSON Schema
           </label>
           <textarea
             value={schema}
             onChange={(e) => setSchema(e.target.value)}
             rows={14}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             spellCheck={false}
           />
         </div>
@@ -194,7 +194,7 @@ export default function JsonSchemaValidator() {
       {/* Result */}
       <div className="mt-4">
         <div className="flex items-center justify-between">
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Validation Result
           </label>
           <CopyButton text={resultText} />
@@ -202,10 +202,10 @@ export default function JsonSchemaValidator() {
         <div
           className={`rounded-lg border p-3 text-sm font-mono ${
             result.error
-              ? "border-red-300 bg-red-50 text-red-700"
+              ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-300"
               : result.errors.length === 0
-                ? "border-green-300 bg-green-50 text-green-700"
-                : "border-yellow-300 bg-yellow-50 text-yellow-700"
+                ? "border-green-300 bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-300"
+                : "border-yellow-300 bg-yellow-50 dark:bg-yellow-950 text-yellow-700 dark:text-yellow-300"
           }`}
         >
           {result.error ? (
@@ -225,8 +225,8 @@ export default function JsonSchemaValidator() {
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is JSON Schema?
         </h2>
         <p className="mb-3">
@@ -235,7 +235,7 @@ export default function JsonSchemaValidator() {
           JSON data, making it useful for API validation, configuration files,
           and data exchange.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Supported validations
         </h2>
         <p>

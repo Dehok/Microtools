@@ -57,14 +57,14 @@ export default function QrCodeGenerator() {
     >
       {/* Input */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
           Text or URL
         </label>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={3}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
           placeholder="Enter text or URL..."
         />
       </div>
@@ -72,11 +72,11 @@ export default function QrCodeGenerator() {
       {/* Options */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Size:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Size:</label>
           <select
             value={size}
             onChange={(e) => setSize(Number(e.target.value))}
-            className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           >
             {[128, 256, 512, 1024].map((s) => (
               <option key={s} value={s}>
@@ -86,21 +86,21 @@ export default function QrCodeGenerator() {
           </select>
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Foreground:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Foreground:</label>
           <input
             type="color"
             value={fgColor}
             onChange={(e) => setFgColor(e.target.value)}
-            className="h-8 w-8 cursor-pointer rounded border border-gray-300"
+            className="h-8 w-8 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
           />
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Background:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Background:</label>
           <input
             type="color"
             value={bgColor}
             onChange={(e) => setBgColor(e.target.value)}
-            className="h-8 w-8 cursor-pointer rounded border border-gray-300"
+            className="h-8 w-8 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
           />
         </div>
       </div>
@@ -117,13 +117,13 @@ export default function QrCodeGenerator() {
           <>
             <button
               onClick={handleDownloadPNG}
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Download PNG
             </button>
             <button
               onClick={handleDownloadSVG}
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Download SVG
             </button>
@@ -132,13 +132,13 @@ export default function QrCodeGenerator() {
       </div>
 
       {/* Canvas */}
-      <div className="flex justify-center rounded-lg border border-gray-200 bg-gray-50 p-6">
+      <div className="flex justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-6">
         <canvas ref={canvasRef} />
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is a QR Code?
         </h2>
         <p className="mb-3">
@@ -147,7 +147,7 @@ export default function QrCodeGenerator() {
           codes can be scanned by any smartphone camera to quickly access the
           encoded information.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to use this QR Code Generator
         </h2>
         <p className="mb-3">

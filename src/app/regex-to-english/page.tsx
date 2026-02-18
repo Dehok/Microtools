@@ -31,11 +31,11 @@ function explainRegex(pattern: string): { tokens: Token[]; summary: string } {
 
     // Anchors
     if (c === "^" && (i === 0 || pattern[i - 1] !== "[")) {
-      tokens.push({ raw: "^", description: "Start of string", color: "text-red-600" });
+      tokens.push({ raw: "^", description: "Start of string", color: "text-red-600 dark:text-red-400" });
       i++; continue;
     }
     if (c === "$") {
-      tokens.push({ raw: "$", description: "End of string", color: "text-red-600" });
+      tokens.push({ raw: "$", description: "End of string", color: "text-red-600 dark:text-red-400" });
       i++; continue;
     }
 
@@ -50,9 +50,9 @@ function explainRegex(pattern: string): { tokens: Token[]; summary: string } {
         "1": "Back-reference to group 1", "2": "Back-reference to group 2", "3": "Back-reference to group 3",
       };
       if (escapes[next]) {
-        tokens.push({ raw: `\\${next}`, description: escapes[next], color: "text-blue-600" });
+        tokens.push({ raw: `\\${next}`, description: escapes[next], color: "text-blue-600 dark:text-blue-400" });
       } else {
-        tokens.push({ raw: `\\${next}`, description: `Literal '${next}'`, color: "text-gray-600" });
+        tokens.push({ raw: `\\${next}`, description: `Literal '${next}'`, color: "text-gray-600 dark:text-gray-400" });
       }
       i += 2; continue;
     }
@@ -87,54 +87,54 @@ function explainRegex(pattern: string): { tokens: Token[]; summary: string } {
         }
       }
       desc += parts.join(", ");
-      tokens.push({ raw: cls, description: desc, color: "text-green-600" });
+      tokens.push({ raw: cls, description: desc, color: "text-green-600 dark:text-green-400" });
       i = end + 1; continue;
     }
 
     // Groups
     if (c === "(") {
       if (pattern.slice(i, i + 3) === "(?:") {
-        tokens.push({ raw: "(?:", description: "Start non-capturing group", color: "text-purple-600" });
+        tokens.push({ raw: "(?:", description: "Start non-capturing group", color: "text-purple-600 dark:text-purple-400" });
         i += 3; continue;
       }
       if (pattern.slice(i, i + 3) === "(?=") {
-        tokens.push({ raw: "(?=", description: "Start positive lookahead (followed by...)", color: "text-purple-600" });
+        tokens.push({ raw: "(?=", description: "Start positive lookahead (followed by...)", color: "text-purple-600 dark:text-purple-400" });
         i += 3; continue;
       }
       if (pattern.slice(i, i + 3) === "(?!") {
-        tokens.push({ raw: "(?!", description: "Start negative lookahead (NOT followed by...)", color: "text-purple-600" });
+        tokens.push({ raw: "(?!", description: "Start negative lookahead (NOT followed by...)", color: "text-purple-600 dark:text-purple-400" });
         i += 3; continue;
       }
       if (pattern.slice(i, i + 4) === "(?<=") {
-        tokens.push({ raw: "(?<=", description: "Start positive lookbehind (preceded by...)", color: "text-purple-600" });
+        tokens.push({ raw: "(?<=", description: "Start positive lookbehind (preceded by...)", color: "text-purple-600 dark:text-purple-400" });
         i += 4; continue;
       }
       if (pattern.slice(i, i + 4) === "(?<!") {
-        tokens.push({ raw: "(?<!", description: "Start negative lookbehind (NOT preceded by...)", color: "text-purple-600" });
+        tokens.push({ raw: "(?<!", description: "Start negative lookbehind (NOT preceded by...)", color: "text-purple-600 dark:text-purple-400" });
         i += 4; continue;
       }
       groupCount++;
-      tokens.push({ raw: "(", description: `Start capturing group #${groupCount}`, color: "text-purple-600" });
+      tokens.push({ raw: "(", description: `Start capturing group #${groupCount}`, color: "text-purple-600 dark:text-purple-400" });
       i++; continue;
     }
     if (c === ")") {
-      tokens.push({ raw: ")", description: "End group", color: "text-purple-600" });
+      tokens.push({ raw: ")", description: "End group", color: "text-purple-600 dark:text-purple-400" });
       i++; continue;
     }
 
     // Quantifiers
     if (c === "*") {
       const lazy = pattern[i + 1] === "?";
-      tokens.push({ raw: lazy ? "*?" : "*", description: `Zero or more times${lazy ? " (lazy)" : ""}`, color: "text-orange-600" });
+      tokens.push({ raw: lazy ? "*?" : "*", description: `Zero or more times${lazy ? " (lazy)" : ""}`, color: "text-orange-600 dark:text-orange-400" });
       i += lazy ? 2 : 1; continue;
     }
     if (c === "+") {
       const lazy = pattern[i + 1] === "?";
-      tokens.push({ raw: lazy ? "+?" : "+", description: `One or more times${lazy ? " (lazy)" : ""}`, color: "text-orange-600" });
+      tokens.push({ raw: lazy ? "+?" : "+", description: `One or more times${lazy ? " (lazy)" : ""}`, color: "text-orange-600 dark:text-orange-400" });
       i += lazy ? 2 : 1; continue;
     }
     if (c === "?" && (i === 0 || (pattern[i - 1] !== "*" && pattern[i - 1] !== "+" && pattern[i - 1] !== "}"))) {
-      tokens.push({ raw: "?", description: "Zero or one time (optional)", color: "text-orange-600" });
+      tokens.push({ raw: "?", description: "Zero or one time (optional)", color: "text-orange-600 dark:text-orange-400" });
       i++; continue;
     }
     if (c === "{") {
@@ -149,25 +149,25 @@ function explainRegex(pattern: string): { tokens: Token[]; summary: string } {
         } else {
           desc = `Exactly ${inner} times`;
         }
-        tokens.push({ raw: quant, description: desc, color: "text-orange-600" });
+        tokens.push({ raw: quant, description: desc, color: "text-orange-600 dark:text-orange-400" });
         i = end + 1; continue;
       }
     }
 
     // Alternation
     if (c === "|") {
-      tokens.push({ raw: "|", description: "OR", color: "text-red-600" });
+      tokens.push({ raw: "|", description: "OR", color: "text-red-600 dark:text-red-400" });
       i++; continue;
     }
 
     // Dot
     if (c === ".") {
-      tokens.push({ raw: ".", description: "Any character (except newline)", color: "text-blue-600" });
+      tokens.push({ raw: ".", description: "Any character (except newline)", color: "text-blue-600 dark:text-blue-400" });
       i++; continue;
     }
 
     // Literal character
-    tokens.push({ raw: c, description: `Literal '${c}'`, color: "text-gray-600" });
+    tokens.push({ raw: c, description: `Literal '${c}'`, color: "text-gray-600 dark:text-gray-400" });
     i++;
   }
 
@@ -217,10 +217,10 @@ export default function RegexToEnglishPage() {
     >
       {/* Examples */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">Example Patterns</label>
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Example Patterns</label>
         <div className="flex flex-wrap gap-2">
           {Object.entries(EXAMPLES).map(([name, pattern]) => (
-            <button key={name} onClick={() => setInput(pattern)} className="rounded-lg bg-gray-100 px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-200">
+            <button key={name} onClick={() => setInput(pattern)} className="rounded-lg bg-gray-100 dark:bg-gray-800 px-3 py-1.5 text-xs text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700">
               {name}
             </button>
           ))}
@@ -230,57 +230,57 @@ export default function RegexToEnglishPage() {
       {/* Input */}
       <div className="mb-4 flex gap-2">
         <div className="flex-1">
-          <label className="mb-1 block text-sm font-medium text-gray-700">Regular Expression</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Regular Expression</label>
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Enter regex pattern, e.g. ^[a-zA-Z0-9]+$"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             spellCheck={false}
           />
         </div>
         <div className="w-24">
-          <label className="mb-1 block text-sm font-medium text-gray-700">Flags</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Flags</label>
           <input
             value={flags}
             onChange={(e) => setFlags(e.target.value.replace(/[^gimsuy]/g, ""))}
             placeholder="gi"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
       </div>
 
       {/* Error */}
       {result.error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 p-3 text-sm text-red-600 dark:text-red-400">
           Invalid regex: {result.error}
         </div>
       )}
 
       {/* Summary */}
       {result.summary && (
-        <div className="mb-4 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-800">
+        <div className="mb-4 rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950 p-3 text-sm text-blue-800 dark:text-blue-200">
           {result.summary}
         </div>
       )}
 
       {/* Flags explanation */}
       {flags && (
-        <div className="mb-4 rounded-lg bg-gray-50 p-3 text-sm text-gray-700">
+        <div className="mb-4 rounded-lg bg-gray-50 dark:bg-gray-950 p-3 text-sm text-gray-700 dark:text-gray-300">
           <span className="font-medium">Flags:</span>{" "}
-          {flags.includes("g") && <span className="mr-2 rounded bg-gray-200 px-1.5 py-0.5 text-xs">g — global (find all matches)</span>}
-          {flags.includes("i") && <span className="mr-2 rounded bg-gray-200 px-1.5 py-0.5 text-xs">i — case-insensitive</span>}
-          {flags.includes("m") && <span className="mr-2 rounded bg-gray-200 px-1.5 py-0.5 text-xs">m — multiline (^ and $ match line boundaries)</span>}
-          {flags.includes("s") && <span className="mr-2 rounded bg-gray-200 px-1.5 py-0.5 text-xs">s — dotAll (. matches newlines)</span>}
-          {flags.includes("u") && <span className="mr-2 rounded bg-gray-200 px-1.5 py-0.5 text-xs">u — unicode</span>}
-          {flags.includes("y") && <span className="mr-2 rounded bg-gray-200 px-1.5 py-0.5 text-xs">y — sticky</span>}
+          {flags.includes("g") && <span className="mr-2 rounded bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 text-xs">g — global (find all matches)</span>}
+          {flags.includes("i") && <span className="mr-2 rounded bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 text-xs">i — case-insensitive</span>}
+          {flags.includes("m") && <span className="mr-2 rounded bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 text-xs">m — multiline (^ and $ match line boundaries)</span>}
+          {flags.includes("s") && <span className="mr-2 rounded bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 text-xs">s — dotAll (. matches newlines)</span>}
+          {flags.includes("u") && <span className="mr-2 rounded bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 text-xs">u — unicode</span>}
+          {flags.includes("y") && <span className="mr-2 rounded bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 text-xs">y — sticky</span>}
         </div>
       )}
 
       {/* Color-coded regex */}
       {result.tokens.length > 0 && (
-        <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4">
-          <div className="mb-2 text-xs font-medium text-gray-500">Color-coded Pattern</div>
+        <div className="mb-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+          <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">Color-coded Pattern</div>
           <div className="font-mono text-lg">
             {result.tokens.map((t, i) => (
               <span key={i} className={`${t.color} font-medium`} title={t.description}>{t.raw}</span>
@@ -293,15 +293,15 @@ export default function RegexToEnglishPage() {
       {result.tokens.length > 0 && (
         <div className="mb-4">
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Breakdown ({result.tokens.length} tokens)</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Breakdown ({result.tokens.length} tokens)</label>
             <CopyButton text={fullText} />
           </div>
-          <div className="rounded-lg border border-gray-200">
+          <div className="rounded-lg border border-gray-200 dark:border-gray-700">
             {result.tokens.map((t, i) => (
-              <div key={i} className={`flex items-start gap-3 px-4 py-2 ${i > 0 ? "border-t border-gray-100" : ""}`}>
-                <span className="mt-0.5 min-w-[24px] text-right text-xs text-gray-400">{i + 1}.</span>
+              <div key={i} className={`flex items-start gap-3 px-4 py-2 ${i > 0 ? "border-t border-gray-100 dark:border-gray-800" : ""}`}>
+                <span className="mt-0.5 min-w-[24px] text-right text-xs text-gray-400 dark:text-gray-500">{i + 1}.</span>
                 <code className={`min-w-[80px] font-mono text-sm font-bold ${t.color}`}>{t.raw}</code>
-                <span className="text-sm text-gray-600">{t.description}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">{t.description}</span>
               </div>
             ))}
           </div>
@@ -309,20 +309,20 @@ export default function RegexToEnglishPage() {
       )}
 
       {/* SEO Content */}
-      <section className="mt-12 space-y-6 text-gray-700">
-        <h2 className="text-2xl font-bold text-gray-900">What is Regex to English?</h2>
+      <section className="mt-12 space-y-6 text-gray-700 dark:text-gray-300">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">What is Regex to English?</h2>
         <p>
           This tool translates regular expressions (regex) into plain English descriptions. Instead of trying to
-          decipher complex patterns like <code className="rounded bg-gray-100 px-1 font-mono text-sm">^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{"{2,}"}$</code>,
+          decipher complex patterns like <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-sm">^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{"{2,}"}$</code>,
           you get a step-by-step breakdown explaining what each part of the regex does.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900">Understanding Regex Patterns</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Understanding Regex Patterns</h2>
         <p>
           Regular expressions use special characters and syntax to define search patterns. Character classes like
           [a-z] match ranges, quantifiers like + and * control repetition, anchors like ^ and $ mark boundaries,
           and groups ( ) capture or organize parts of the pattern. This tool explains all of these elements.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900">How to Use This Tool</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Tool</h2>
         <p>
           Enter your regex pattern in the input field. The tool instantly breaks it down into individual tokens
           with color-coded explanations. Try one of the example patterns to see how common regex patterns work.

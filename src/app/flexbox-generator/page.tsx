@@ -112,7 +112,7 @@ export default function FlexboxGenerator() {
       {/* Preview */}
       <div className="mb-6">
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-900">Preview</h3>
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Preview</h3>
           <div className="flex gap-2">
             <button
               onClick={addChild}
@@ -124,7 +124,7 @@ export default function FlexboxGenerator() {
           </div>
         </div>
         <div
-          className="min-h-[200px] rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-4"
+          className="min-h-[200px] rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-4"
           style={{
             display: "flex",
             flexDirection: flexDirection as React.CSSProperties["flexDirection"],
@@ -155,21 +155,21 @@ export default function FlexboxGenerator() {
             </div>
           ))}
         </div>
-        <p className="mt-1 text-xs text-gray-500">Click an item to edit its individual properties.</p>
+        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Click an item to edit its individual properties.</p>
       </div>
 
       {/* Controls */}
       <div className="mb-6 grid gap-6 md:grid-cols-2">
         {/* Container Controls */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-gray-900">Container Properties</h3>
+          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">Container Properties</h3>
           <div className="space-y-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">flex-direction</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">flex-direction</label>
               <select
                 value={flexDirection}
                 onChange={(e) => setFlexDirection(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
               >
                 {FLEX_DIRECTION_OPTIONS.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
@@ -178,11 +178,11 @@ export default function FlexboxGenerator() {
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">justify-content</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">justify-content</label>
               <select
                 value={justifyContent}
                 onChange={(e) => setJustifyContent(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
               >
                 {JUSTIFY_CONTENT_OPTIONS.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
@@ -191,11 +191,11 @@ export default function FlexboxGenerator() {
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">align-items</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">align-items</label>
               <select
                 value={alignItems}
                 onChange={(e) => setAlignItems(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
               >
                 {ALIGN_ITEMS_OPTIONS.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
@@ -204,11 +204,11 @@ export default function FlexboxGenerator() {
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-700">flex-wrap</label>
+              <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">flex-wrap</label>
               <select
                 value={flexWrap}
                 onChange={(e) => setFlexWrap(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
               >
                 {FLEX_WRAP_OPTIONS.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
@@ -217,9 +217,9 @@ export default function FlexboxGenerator() {
             </div>
 
             <div>
-              <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+              <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                 gap
-                <span className="font-mono text-gray-500">{gap}px</span>
+                <span className="font-mono text-gray-500 dark:text-gray-400">{gap}px</span>
               </label>
               <input
                 type="range"
@@ -235,10 +235,10 @@ export default function FlexboxGenerator() {
 
         {/* Child Item Controls */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-gray-900">
+          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">
             Item Properties
             {selectedChildData && (
-              <span className="ml-2 font-normal text-gray-500">
+              <span className="ml-2 font-normal text-gray-500 dark:text-gray-400">
                 — Item {children.findIndex((c) => c.id === selectedChild) + 1}
               </span>
             )}
@@ -247,9 +247,9 @@ export default function FlexboxGenerator() {
           {selectedChildData ? (
             <div className="space-y-3">
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                   flex-grow
-                  <span className="font-mono text-gray-500">{selectedChildData.flexGrow}</span>
+                  <span className="font-mono text-gray-500 dark:text-gray-400">{selectedChildData.flexGrow}</span>
                 </label>
                 <input
                   type="range"
@@ -262,9 +262,9 @@ export default function FlexboxGenerator() {
               </div>
 
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                   flex-shrink
-                  <span className="font-mono text-gray-500">{selectedChildData.flexShrink}</span>
+                  <span className="font-mono text-gray-500 dark:text-gray-400">{selectedChildData.flexShrink}</span>
                 </label>
                 <input
                   type="range"
@@ -277,20 +277,20 @@ export default function FlexboxGenerator() {
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-medium text-gray-700">flex-basis</label>
+                <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">flex-basis</label>
                 <input
                   type="text"
                   value={selectedChildData.flexBasis}
                   onChange={(e) => updateChild(selectedChildData.id, "flexBasis", e.target.value)}
                   placeholder="auto, 100px, 50%, etc."
-                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>
 
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+                <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                   order
-                  <span className="font-mono text-gray-500">{selectedChildData.order}</span>
+                  <span className="font-mono text-gray-500 dark:text-gray-400">{selectedChildData.order}</span>
                 </label>
                 <input
                   type="range"
@@ -303,11 +303,11 @@ export default function FlexboxGenerator() {
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-medium text-gray-700">align-self</label>
+                <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">align-self</label>
                 <select
                   value={selectedChildData.alignSelf}
                   onChange={(e) => updateChild(selectedChildData.id, "alignSelf", e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 >
                   {ALIGN_SELF_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>{opt}</option>
@@ -318,13 +318,13 @@ export default function FlexboxGenerator() {
               <button
                 onClick={() => removeChild(selectedChildData.id)}
                 disabled={children.length <= 1}
-                className="mt-2 w-full rounded-lg border border-red-300 bg-white px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 disabled:opacity-40"
+                className="mt-2 w-full rounded-lg border border-red-300 dark:border-red-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:bg-red-950 dark:hover:bg-red-950 disabled:opacity-40"
               >
                 Remove Item
               </button>
             </div>
           ) : (
-            <div className="flex h-48 items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 text-sm text-gray-500">
+            <div className="flex h-48 items-center justify-center rounded-lg border border-dashed border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 text-sm text-gray-500 dark:text-gray-400">
               Click an item in the preview to edit its properties.
             </div>
           )}
@@ -334,46 +334,46 @@ export default function FlexboxGenerator() {
       {/* CSS output */}
       <div className="mb-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">CSS Code</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">CSS Code</label>
           <CopyButton text={css} />
         </div>
-        <pre className="mt-1 overflow-x-auto rounded-lg border border-gray-200 bg-gray-900 p-3 font-mono text-sm text-green-400">
+        <pre className="mt-1 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-900 p-3 font-mono text-sm text-green-400">
           {css}
         </pre>
       </div>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">CSS Flexbox Layout</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">CSS Flexbox Layout</h2>
         <p className="mb-3">
           <strong>CSS Flexbox</strong> (Flexible Box Layout) is a one-dimensional layout model that
           distributes space among items in a container. It excels at aligning items horizontally or
           vertically, handling dynamic sizing, and reordering elements without changing the HTML.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Container Properties</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Container Properties</h2>
         <p className="mb-3">
-          The <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">flex-direction</code> property
-          sets the main axis direction (<code className="rounded bg-gray-100 px-1 py-0.5 text-xs">row</code>,{" "}
-          <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">column</code>, or their reverse
-          variants). Use <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">justify-content</code>{" "}
+          The <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">flex-direction</code> property
+          sets the main axis direction (<code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">row</code>,{" "}
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">column</code>, or their reverse
+          variants). Use <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">justify-content</code>{" "}
           to distribute items along the main axis, and{" "}
-          <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">align-items</code> for cross-axis
-          alignment. The <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">gap</code> property
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">align-items</code> for cross-axis
+          alignment. The <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">gap</code> property
           adds consistent spacing between items.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Item Properties</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Item Properties</h2>
         <p className="mb-3">
           Each flex item can override container alignment with{" "}
-          <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">align-self</code>. The{" "}
-          <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">flex-grow</code> property controls
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">align-self</code>. The{" "}
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">flex-grow</code> property controls
           how much an item grows to fill available space, while{" "}
-          <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">flex-shrink</code> determines how
-          it shrinks. Use <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">flex-basis</code>{" "}
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">flex-shrink</code> determines how
+          it shrinks. Use <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">flex-basis</code>{" "}
           to set the initial size before growing or shrinking, and{" "}
-          <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">order</code> to rearrange items
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">order</code> to rearrange items
           visually.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Flexbox vs Grid</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Flexbox vs Grid</h2>
         <p>
           Flexbox is ideal for <strong>one-dimensional</strong> layouts (a single row or column),
           while CSS Grid handles <strong>two-dimensional</strong> layouts (rows and columns

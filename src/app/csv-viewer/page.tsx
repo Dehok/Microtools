@@ -201,14 +201,14 @@ export default function CsvViewer() {
       {/* Input */}
       <div className="mb-4">
         <div className="mb-1 flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">CSV Data</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">CSV Data</label>
           <CopyButton text={input} />
         </div>
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Paste your CSV data here..."
-          className="h-40 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+          className="h-40 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           spellCheck={false}
         />
       </div>
@@ -216,11 +216,11 @@ export default function CsvViewer() {
       {/* Options */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm font-medium text-gray-700">Delimiter:</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Delimiter:</label>
           <select
             value={delimiter}
             onChange={(e) => setDelimiter(e.target.value)}
-            className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm focus:border-blue-500 focus:outline-none"
+            className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             {Object.entries(delimiterLabel).map(([val, label]) => (
               <option key={val} value={val}>
@@ -230,12 +230,12 @@ export default function CsvViewer() {
           </select>
         </div>
 
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
           <input
             type="checkbox"
             checked={hasHeader}
             onChange={(e) => setHasHeader(e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400 focus:ring-blue-500"
           />
           <span className="font-medium">First row is header</span>
         </label>
@@ -243,7 +243,7 @@ export default function CsvViewer() {
 
       {/* Error */}
       {parsed.error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {parsed.error}
         </div>
       )}
@@ -252,14 +252,14 @@ export default function CsvViewer() {
       {parsed.headers.length > 0 && (
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-3">
-            <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+            <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950 px-3 py-1 text-xs font-medium text-blue-700 dark:text-blue-300">
               {parsed.rows.length} row{parsed.rows.length !== 1 ? "s" : ""}
             </span>
-            <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+            <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950 px-3 py-1 text-xs font-medium text-blue-700 dark:text-blue-300">
               {parsed.headers.length} column{parsed.headers.length !== 1 ? "s" : ""}
             </span>
             {search.trim() && filteredRows.length !== parsed.rows.length && (
-              <span className="inline-flex items-center rounded-full bg-yellow-50 px-3 py-1 text-xs font-medium text-yellow-700">
+              <span className="inline-flex items-center rounded-full bg-yellow-50 dark:bg-yellow-950 px-3 py-1 text-xs font-medium text-yellow-700 dark:text-yellow-300">
                 {filteredRows.length} match{filteredRows.length !== 1 ? "es" : ""}
               </span>
             )}
@@ -269,14 +269,14 @@ export default function CsvViewer() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search rows..."
-            className="w-full max-w-xs rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full max-w-xs rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
       )}
 
       {/* Table */}
       {parsed.headers.length > 0 && (
-        <div className="overflow-x-auto rounded-lg border border-gray-200">
+        <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-blue-600 text-white">
@@ -300,7 +300,7 @@ export default function CsvViewer() {
                 <tr>
                   <td
                     colSpan={parsed.headers.length + 1}
-                    className="px-3 py-6 text-center text-gray-400"
+                    className="px-3 py-6 text-center text-gray-400 dark:text-gray-500"
                   >
                     {search.trim() ? "No matching rows found." : "No data rows."}
                   </td>
@@ -309,17 +309,17 @@ export default function CsvViewer() {
                 sortedRows.map((row, rIdx) => (
                   <tr
                     key={rIdx}
-                    className={`border-t border-gray-100 transition-colors hover:bg-blue-50 ${
-                      rIdx % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    className={`border-t border-gray-100 dark:border-gray-800 transition-colors hover:bg-blue-50 dark:bg-blue-950 dark:hover:bg-blue-950 ${
+                      rIdx % 2 === 0 ? "bg-white dark:bg-gray-900" : "bg-gray-50 dark:bg-gray-950"
                     }`}
                   >
-                    <td className="whitespace-nowrap px-3 py-2 text-xs text-gray-400 font-mono">
+                    <td className="whitespace-nowrap px-3 py-2 text-xs text-gray-400 dark:text-gray-500 font-mono">
                       {rIdx + 1}
                     </td>
                     {row.map((cell, cIdx) => (
                       <td
                         key={cIdx}
-                        className="whitespace-nowrap px-3 py-2 text-gray-700"
+                        className="whitespace-nowrap px-3 py-2 text-gray-700 dark:text-gray-300"
                       >
                         {cell}
                       </td>
@@ -340,15 +340,15 @@ export default function CsvViewer() {
             setSearch("");
             setSort(null);
           }}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Online CSV Viewer & Table Viewer
         </h2>
         <p className="mb-3">
@@ -356,7 +356,7 @@ export default function CsvViewer() {
           rendered as a clean, readable table. It supports comma, semicolon, tab, and pipe
           delimiters, and correctly handles quoted fields containing delimiters or line breaks.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Sortable & Searchable
         </h2>
         <p className="mb-3">
@@ -364,7 +364,7 @@ export default function CsvViewer() {
           search box to filter rows instantly -- it matches against all columns. Row numbers
           help you keep track of your position in large datasets.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           CSV Format
         </h2>
         <p>

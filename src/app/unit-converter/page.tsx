@@ -227,7 +227,7 @@ export default function UnitConverter() {
             className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
               activeCategory === cat
                 ? "bg-blue-600 text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700"
             }`}
           >
             {cat}
@@ -238,22 +238,22 @@ export default function UnitConverter() {
       {/* Input row */}
       <div className="mb-5 flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-[140px]">
-          <label className="mb-1 block text-sm font-medium text-gray-700">Value</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Value</label>
           <input
             type="number"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             placeholder="Enter value"
           />
         </div>
 
         <div className="flex-1 min-w-[180px]">
-          <label className="mb-1 block text-sm font-medium text-gray-700">From Unit</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">From Unit</label>
           <select
             value={fromUnit}
             onChange={(e) => handleFromUnitChange(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             {currentUnits.map((u) => (
               <option key={u.label} value={u.label}>
@@ -267,7 +267,7 @@ export default function UnitConverter() {
           <button
             onClick={handleSwap}
             title="Swap units"
-            className="rounded-lg border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100"
+            className="rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
           >
             ⇄ Swap
           </button>
@@ -276,7 +276,7 @@ export default function UnitConverter() {
 
       {/* Error */}
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
@@ -291,13 +291,13 @@ export default function UnitConverter() {
                 key={row.label}
                 className={`flex items-center justify-between rounded-lg border p-3 ${
                   isSource
-                    ? "border-blue-200 bg-blue-50"
-                    : "border-gray-200 bg-gray-50"
+                    ? "border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950"
+                    : "border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950"
                 }`}
               >
                 <div className="min-w-0 flex-1 pr-2">
-                  <div className="text-xs font-semibold text-gray-500">{row.label}</div>
-                  <div className="truncate font-mono text-sm font-bold text-gray-900">
+                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400">{row.label}</div>
+                  <div className="truncate font-mono text-sm font-bold text-gray-900 dark:text-gray-100">
                     {row.value}
                   </div>
                 </div>
@@ -309,8 +309,8 @@ export default function UnitConverter() {
       )}
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">About Unit Converter</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">About Unit Converter</h2>
         <p className="mb-3">
           This free online unit converter handles 8 measurement categories: <strong>Length</strong>,{" "}
           <strong>Weight</strong>, <strong>Temperature</strong>, <strong>Speed</strong>,{" "}
@@ -319,7 +319,7 @@ export default function UnitConverter() {
           values are computed instantly in your browser — no server required.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How Unit Conversion Works</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How Unit Conversion Works</h2>
         <p className="mb-3">
           Each unit within a category is defined by a conversion factor relative to a common base
           unit (e.g., meters for length, kilograms for weight). To convert from unit A to unit B, the
@@ -328,7 +328,7 @@ export default function UnitConverter() {
           multiplication.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Common Conversions</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Common Conversions</h2>
         <ul className="mb-3 list-disc pl-5 space-y-1">
           <li>1 mile = 1.60934 km | 1 inch = 2.54 cm | 1 foot = 30.48 cm</li>
           <li>1 pound = 453.592 g | 1 ounce = 28.3495 g | 1 metric ton = 1000 kg</li>
@@ -337,7 +337,7 @@ export default function UnitConverter() {
           <li>1 US gallon = 3.78541 liters | 1 liter = 33.814 fl oz</li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Digital Storage Units</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Digital Storage Units</h2>
         <p>
           Digital storage uses binary prefixes: 1 KB = 1024 bytes (not 1000). This tool follows the
           traditional binary convention used by operating systems. 1 MB = 1,048,576 bytes, 1 GB =

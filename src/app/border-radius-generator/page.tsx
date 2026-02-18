@@ -82,7 +82,7 @@ export default function BorderRadiusGenerator() {
       relatedTools={["box-shadow-generator", "css-gradient-generator", "css-minifier"]}
     >
       {/* Preview */}
-      <div className="mb-6 flex items-center justify-center rounded-lg border border-gray-200 bg-gray-100 p-8">
+      <div className="mb-6 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-8">
         <div
           className="h-52 w-52 transition-all duration-200"
           style={{
@@ -98,8 +98,8 @@ export default function BorderRadiusGenerator() {
         {/* Corner sliders */}
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-900">Corner Radii</h3>
-            <label className="flex items-center gap-2 text-sm text-gray-600">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Corner Radii</h3>
+            <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
               <input
                 type="checkbox"
                 checked={linked}
@@ -110,7 +110,7 @@ export default function BorderRadiusGenerator() {
                     setCorners({ topLeft: val, topRight: val, bottomRight: val, bottomLeft: val });
                   }
                 }}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600"
+                className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400"
               />
               Link corners
             </label>
@@ -119,7 +119,7 @@ export default function BorderRadiusGenerator() {
           <div className="space-y-3">
             {cornerKeys.map(({ key, label }) => (
               <div key={key} className="flex items-center gap-3">
-                <label className="w-28 text-sm text-gray-600">{label}</label>
+                <label className="w-28 text-sm text-gray-600 dark:text-gray-400">{label}</label>
                 <input
                   type="range"
                   min="0"
@@ -128,7 +128,7 @@ export default function BorderRadiusGenerator() {
                   onChange={(e) => updateCorner(key, parseInt(e.target.value))}
                   className="flex-1"
                 />
-                <span className="w-14 text-right font-mono text-sm text-gray-700">
+                <span className="w-14 text-right font-mono text-sm text-gray-700 dark:text-gray-300">
                   {corners[key]}{unit}
                 </span>
               </div>
@@ -137,13 +137,13 @@ export default function BorderRadiusGenerator() {
 
           {/* Unit toggle */}
           <div className="mt-4 flex items-center gap-2">
-            <span className="text-sm text-gray-600">Unit:</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">Unit:</span>
             <button
               onClick={() => setUnit("px")}
               className={`rounded-lg px-4 py-1.5 text-sm font-medium transition-colors ${
                 unit === "px"
                   ? "bg-blue-600 text-white"
-                  : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+                  : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               }`}
             >
               px
@@ -153,7 +153,7 @@ export default function BorderRadiusGenerator() {
               className={`rounded-lg px-4 py-1.5 text-sm font-medium transition-colors ${
                 unit === "%"
                   ? "bg-blue-600 text-white"
-                  : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+                  : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               }`}
             >
               %
@@ -163,42 +163,42 @@ export default function BorderRadiusGenerator() {
 
         {/* Style controls */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-gray-900">Style</h3>
+          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">Style</h3>
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <label className="w-28 text-sm text-gray-600">Background</label>
+              <label className="w-28 text-sm text-gray-600 dark:text-gray-400">Background</label>
               <input
                 type="color"
                 value={bgColor}
                 onChange={(e) => setBgColor(e.target.value)}
-                className="h-8 w-8 cursor-pointer rounded border border-gray-300"
+                className="h-8 w-8 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
               />
               <input
                 type="text"
                 value={bgColor}
                 onChange={(e) => setBgColor(e.target.value)}
-                className="w-24 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs"
+                className="w-24 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs"
               />
             </div>
 
             <div className="flex items-center gap-3">
-              <label className="w-28 text-sm text-gray-600">Border Color</label>
+              <label className="w-28 text-sm text-gray-600 dark:text-gray-400">Border Color</label>
               <input
                 type="color"
                 value={borderColor}
                 onChange={(e) => setBorderColor(e.target.value)}
-                className="h-8 w-8 cursor-pointer rounded border border-gray-300"
+                className="h-8 w-8 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
               />
               <input
                 type="text"
                 value={borderColor}
                 onChange={(e) => setBorderColor(e.target.value)}
-                className="w-24 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs"
+                className="w-24 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs"
               />
             </div>
 
             <div className="flex items-center gap-3">
-              <label className="w-28 text-sm text-gray-600">Border Width</label>
+              <label className="w-28 text-sm text-gray-600 dark:text-gray-400">Border Width</label>
               <input
                 type="range"
                 min="0"
@@ -207,20 +207,20 @@ export default function BorderRadiusGenerator() {
                 onChange={(e) => setBorderWidth(parseInt(e.target.value))}
                 className="flex-1"
               />
-              <span className="w-14 text-right font-mono text-sm text-gray-700">{borderWidth}px</span>
+              <span className="w-14 text-right font-mono text-sm text-gray-700 dark:text-gray-300">{borderWidth}px</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Presets */}
-      <h3 className="mb-2 text-sm font-semibold text-gray-900">Presets</h3>
+      <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Presets</h3>
       <div className="mb-6 flex flex-wrap gap-2">
         {PRESETS.map((preset) => (
           <button
             key={preset.name}
             onClick={() => applyPreset(preset)}
-            className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50"
+            className="flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           >
             <span
               className="inline-block h-4 w-4 bg-blue-500"
@@ -236,29 +236,29 @@ export default function BorderRadiusGenerator() {
       {/* CSS output */}
       <div className="mb-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">CSS Code</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">CSS Code</label>
           <CopyButton text={css} />
         </div>
-        <pre className="mt-1 rounded-lg border border-gray-200 bg-gray-900 p-3 font-mono text-sm text-green-400">
+        <pre className="mt-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-900 p-3 font-mono text-sm text-green-400">
           {css}
         </pre>
       </div>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">CSS Border Radius</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">CSS Border Radius</h2>
         <p className="mb-3">
           The <strong>border-radius</strong> CSS property rounds the corners of an element. You can
           set all four corners to the same value for uniform rounding, or specify each corner
-          individually: <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">border-radius: top-left top-right bottom-right bottom-left</code>.
+          individually: <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">border-radius: top-left top-right bottom-right bottom-left</code>.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Pixels vs Percentages</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Pixels vs Percentages</h2>
         <p className="mb-3">
           Use <strong>px</strong> for a fixed radius regardless of element size. Use <strong>%</strong> for
-          a radius relative to the element dimensions -- setting <code className="rounded bg-gray-100 px-1 py-0.5 text-xs">border-radius: 50%</code> on
+          a radius relative to the element dimensions -- setting <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 py-0.5 text-xs">border-radius: 50%</code> on
           a square element creates a perfect circle.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Common Shapes</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Common Shapes</h2>
         <p>
           <strong>Circle:</strong> 50% on all corners (square element). <strong>Pill:</strong> a large
           px value (e.g., 100px) on a rectangle. <strong>Leaf/Drop:</strong> mix 0 and 50% on

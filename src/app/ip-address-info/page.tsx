@@ -146,13 +146,13 @@ export default function IpAddressInfo() {
       description="Analyze IP addresses: class, scope (private/public), binary & hex representation. Supports IPv4 and IPv6."
       relatedTools={["number-base-converter", "hash-generator", "chmod-calculator"]}
     >
-      <label className="mb-1 block text-sm font-medium text-gray-700">IP Address</label>
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">IP Address</label>
       <input
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="192.168.1.1 or ::1"
-        className="mb-4 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+        className="mb-4 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
         spellCheck={false}
       />
 
@@ -163,8 +163,8 @@ export default function IpAddressInfo() {
             onClick={() => setInput(sample)}
             className={`rounded-lg border px-3 py-1 text-xs font-mono transition-colors ${
               input.trim() === sample
-                ? "border-blue-300 bg-blue-50 text-blue-700"
-                : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+                ? "border-blue-300 bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+                : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             {sample}
@@ -173,7 +173,7 @@ export default function IpAddressInfo() {
       </div>
 
       {!result && input.trim() && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           Invalid IP address format.
         </div>
       )}
@@ -194,11 +194,11 @@ export default function IpAddressInfo() {
             {rows.map((row) => (
               <div
                 key={row.label}
-                className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 p-3"
+                className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3"
               >
                 <div>
-                  <span className="text-xs font-semibold text-gray-500">{row.label}</span>
-                  <div className="font-mono text-sm text-gray-900">{row.value}</div>
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{row.label}</span>
+                  <div className="font-mono text-sm text-gray-900 dark:text-gray-100">{row.value}</div>
                 </div>
                 <CopyButton text={row.value} />
               </div>
@@ -220,11 +220,11 @@ export default function IpAddressInfo() {
             {rows.map((row) => (
               <div
                 key={row.label}
-                className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 p-3"
+                className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3"
               >
                 <div>
-                  <span className="text-xs font-semibold text-gray-500">{row.label}</span>
-                  <div className="font-mono text-sm text-gray-900">{row.value}</div>
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{row.label}</span>
+                  <div className="font-mono text-sm text-gray-900 dark:text-gray-100">{row.value}</div>
                 </div>
                 <CopyButton text={row.value} />
               </div>
@@ -233,14 +233,14 @@ export default function IpAddressInfo() {
         );
       })()}
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">IPv4 Address Classes</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">IPv4 Address Classes</h2>
         <p className="mb-3">
           IPv4 addresses are divided into classes: <strong>Class A</strong> (1-127, large networks),
           <strong> Class B</strong> (128-191, medium networks), <strong>Class C</strong> (192-223, small networks),
           <strong> Class D</strong> (224-239, multicast), and <strong>Class E</strong> (240-255, reserved).
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Private vs Public IPs</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Private vs Public IPs</h2>
         <p>
           Private ranges (10.x, 172.16-31.x, 192.168.x) are for local networks and cannot be
           routed on the internet. Public IPs are globally unique and internet-routable.

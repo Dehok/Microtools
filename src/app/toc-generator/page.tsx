@@ -101,7 +101,7 @@ export default function TocGenerator() {
     >
       {/* Input */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
           Markdown Input
         </label>
         <textarea
@@ -109,7 +109,7 @@ export default function TocGenerator() {
           onChange={(e) => setInput(e.target.value)}
           rows={14}
           placeholder="Paste your markdown content here..."
-          className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           spellCheck={false}
         />
       </div>
@@ -117,11 +117,11 @@ export default function TocGenerator() {
       {/* Options */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Max depth:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Max depth:</label>
           <select
             value={maxDepth}
             onChange={(e) => setMaxDepth(Number(e.target.value))}
-            className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           >
             {[1, 2, 3, 4, 5, 6].map((d) => (
               <option key={d} value={d}>
@@ -132,23 +132,23 @@ export default function TocGenerator() {
         </div>
 
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">List style:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">List style:</label>
           <select
             value={ordered ? "ordered" : "unordered"}
             onChange={(e) => setOrdered(e.target.value === "ordered")}
-            className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           >
             <option value="unordered">Unordered (-)</option>
             <option value="ordered">Ordered (1.)</option>
           </select>
         </div>
 
-        <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+        <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
           <input
             type="checkbox"
             checked={skipH1}
             onChange={(e) => setSkipH1(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Skip H1
         </label>
@@ -156,7 +156,7 @@ export default function TocGenerator() {
 
       {/* Error */}
       {result.error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 p-3 text-sm text-red-700 dark:text-red-300">
           {result.error}
         </div>
       )}
@@ -166,22 +166,22 @@ export default function TocGenerator() {
         <>
           <div className="mb-4">
             <div className="mb-1 flex items-center justify-between">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Generated TOC (Markdown)
               </label>
               <CopyButton text={result.toc} />
             </div>
-            <pre className="rounded-lg border border-gray-200 bg-gray-50 p-3 font-mono text-xs overflow-x-auto whitespace-pre-wrap">
+            <pre className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs overflow-x-auto whitespace-pre-wrap">
               {result.toc}
             </pre>
           </div>
 
           {/* Rendered Preview */}
           <div className="mb-4">
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
               Preview
             </label>
-            <div className="rounded-lg border border-gray-200 bg-white p-4 text-sm">
+            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 text-sm">
               {ordered ? (
                 <ol className="list-decimal space-y-1 pl-5">
                   {result.headings.map((h, i) => {
@@ -193,7 +193,7 @@ export default function TocGenerator() {
                       >
                         <a
                           href={`#${h.slug}`}
-                          className="text-blue-600 hover:underline"
+                          className="text-blue-600 dark:text-blue-400 hover:underline"
                           onClick={(e) => e.preventDefault()}
                         >
                           {h.text}
@@ -213,7 +213,7 @@ export default function TocGenerator() {
                       >
                         <a
                           href={`#${h.slug}`}
-                          className="text-blue-600 hover:underline"
+                          className="text-blue-600 dark:text-blue-400 hover:underline"
                           onClick={(e) => e.preventDefault()}
                         >
                           {h.text}
@@ -227,15 +227,15 @@ export default function TocGenerator() {
           </div>
 
           {/* Stats */}
-          <div className="mb-4 text-xs text-gray-400">
+          <div className="mb-4 text-xs text-gray-400 dark:text-gray-500">
             {result.headings.length} heading{result.headings.length !== 1 ? "s" : ""} found
           </div>
         </>
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is a Table of Contents?
         </h2>
         <p className="mb-3">
@@ -244,7 +244,7 @@ export default function TocGenerator() {
           a TOC uses anchor links that let readers jump directly to the section they
           need.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How Does the TOC Generator Work?
         </h2>
         <p className="mb-3">
@@ -254,7 +254,7 @@ export default function TocGenerator() {
           with hyphens, and removing special characters. The result is a ready-to-use
           Markdown TOC you can paste into your README, documentation, or blog post.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           When to Use a Table of Contents
         </h2>
         <p>

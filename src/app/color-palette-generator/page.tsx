@@ -262,13 +262,13 @@ export default function ColorPaletteGenerator() {
       <div className="mb-6 flex flex-wrap items-end gap-4">
         {/* Mode select */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Mode
           </label>
           <select
             value={mode}
             onChange={(e) => setMode(e.target.value as PaletteMode)}
-            className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             {MODES.map((m) => (
               <option key={m.value} value={m.value}>
@@ -281,7 +281,7 @@ export default function ColorPaletteGenerator() {
         {/* Base color picker (shown for non-random modes) */}
         {needsBaseColor && (
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
               Base Color
             </label>
             <div className="flex items-center gap-2">
@@ -289,7 +289,7 @@ export default function ColorPaletteGenerator() {
                 type="color"
                 value={baseColor}
                 onChange={(e) => setBaseColor(e.target.value)}
-                className="h-10 w-10 cursor-pointer rounded border border-gray-300"
+                className="h-10 w-10 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
               />
               <input
                 type="text"
@@ -298,7 +298,7 @@ export default function ColorPaletteGenerator() {
                   const v = e.target.value;
                   if (/^#[0-9a-fA-F]{6}$/.test(v)) setBaseColor(v);
                 }}
-                className="w-24 rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+                className="w-24 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                 placeholder="#3b82f6"
               />
             </div>
@@ -319,7 +319,7 @@ export default function ColorPaletteGenerator() {
         {colors.map((color, index) => (
           <div
             key={index}
-            className="group relative overflow-hidden rounded-xl border border-gray-300 transition-shadow hover:shadow-md"
+            className="group relative overflow-hidden rounded-xl border border-gray-300 dark:border-gray-600 transition-shadow hover:shadow-md"
           >
             {/* Color swatch */}
             <button
@@ -341,7 +341,7 @@ export default function ColorPaletteGenerator() {
               onClick={() => toggleLock(index)}
               className={`absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-sm transition-all ${
                 color.locked
-                  ? "bg-white/90 text-gray-800 shadow-sm"
+                  ? "bg-white dark:bg-gray-900/90 text-gray-800 dark:text-gray-200 shadow-sm"
                   : "bg-black/20 text-white opacity-0 group-hover:opacity-100"
               }`}
               title={color.locked ? "Unlock color" : "Lock color"}
@@ -350,14 +350,14 @@ export default function ColorPaletteGenerator() {
             </button>
 
             {/* Color info */}
-            <div className="bg-white p-3">
+            <div className="bg-white dark:bg-gray-900 p-3">
               <div className="mb-1 flex items-center justify-between">
-                <span className="font-mono text-sm font-semibold text-gray-900">
+                <span className="font-mono text-sm font-semibold text-gray-900 dark:text-gray-100">
                   {colorDetails[index].hex}
                 </span>
                 <CopyButton text={colorDetails[index].hex} />
               </div>
-              <div className="space-y-0.5 text-xs text-gray-500">
+              <div className="space-y-0.5 text-xs text-gray-500 dark:text-gray-400">
                 <div className="font-mono">{colorDetails[index].rgb}</div>
                 <div className="font-mono">{colorDetails[index].hsl}</div>
               </div>
@@ -368,7 +368,7 @@ export default function ColorPaletteGenerator() {
 
       {/* Full palette strip (for quick visual overview) */}
       <div className="mb-6">
-        <h3 className="mb-2 text-sm font-medium text-gray-700">
+        <h3 className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
           Palette Preview
         </h3>
         <div className="flex overflow-hidden rounded-lg">
@@ -392,19 +392,19 @@ export default function ColorPaletteGenerator() {
       {/* CSS Variables export */}
       <div>
         <div className="mb-1 flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
             CSS Variables
           </label>
           <CopyButton text={cssVariablesText} />
         </div>
-        <pre className="overflow-x-auto rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm">
+        <pre className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm">
           {cssVariablesText}
         </pre>
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is a Color Palette Generator?
         </h2>
         <p className="mb-3">
@@ -413,7 +413,7 @@ export default function ColorPaletteGenerator() {
           a brand identity, or working on digital art, a well-chosen color
           palette ensures visual consistency and appeal.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Color Harmony Modes Explained
         </h2>
         <p className="mb-3">
@@ -428,7 +428,7 @@ export default function ColorPaletteGenerator() {
           <strong>Monochromatic</strong> varies the lightness and saturation of a
           single hue for a cohesive, elegant feel.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to Use This Tool
         </h2>
         <p>

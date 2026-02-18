@@ -235,23 +235,23 @@ export default function HtaccessGenerator() {
       <div className="space-y-6">
         {/* Force HTTPS */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-900">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100">
             <input
               type="checkbox"
               checked={forceHttps}
               onChange={(e) => setForceHttps(e.target.checked)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             Force HTTPS
           </label>
-          <p className="ml-6 mt-0.5 text-xs text-gray-500">
+          <p className="ml-6 mt-0.5 text-xs text-gray-500 dark:text-gray-400">
             Redirect all HTTP traffic to HTTPS
           </p>
         </div>
 
         {/* WWW Handling */}
         <div>
-          <span className="block text-sm font-medium text-gray-900 mb-2">
+          <span className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
             WWW Handling
           </span>
           <div className="flex flex-wrap gap-4 ml-1">
@@ -262,7 +262,7 @@ export default function HtaccessGenerator() {
             ].map((opt) => (
               <label
                 key={opt.value}
-                className="flex items-center gap-1.5 text-sm text-gray-600"
+                className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400"
               >
                 <input
                   type="radio"
@@ -270,7 +270,7 @@ export default function HtaccessGenerator() {
                   value={opt.value}
                   checked={wwwOption === opt.value}
                   onChange={() => setWwwOption(opt.value)}
-                  className="border-gray-300"
+                  className="border-gray-300 dark:border-gray-600"
                 />
                 {opt.label}
               </label>
@@ -280,12 +280,12 @@ export default function HtaccessGenerator() {
 
         {/* Custom Error Pages */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-900">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100">
             <input
               type="checkbox"
               checked={customErrorPages}
               onChange={(e) => setCustomErrorPages(e.target.checked)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             Custom Error Pages
           </label>
@@ -298,7 +298,7 @@ export default function HtaccessGenerator() {
                 { code: "500", key: "e500" as const, label: "500 Server Error" },
               ].map((err) => (
                 <div key={err.code}>
-                  <label className="mb-1 block text-xs text-gray-600">
+                  <label className="mb-1 block text-xs text-gray-600 dark:text-gray-400">
                     {err.label}
                   </label>
                   <input
@@ -311,7 +311,7 @@ export default function HtaccessGenerator() {
                       }))
                     }
                     placeholder={`/error-${err.code}.html`}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                   />
                 </div>
               ))}
@@ -321,40 +321,40 @@ export default function HtaccessGenerator() {
 
         {/* GZIP Compression */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-900">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100">
             <input
               type="checkbox"
               checked={gzipCompression}
               onChange={(e) => setGzipCompression(e.target.checked)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             Enable GZIP Compression
           </label>
-          <p className="ml-6 mt-0.5 text-xs text-gray-500">
+          <p className="ml-6 mt-0.5 text-xs text-gray-500 dark:text-gray-400">
             Compress text, CSS, JavaScript, XML, and font files
           </p>
         </div>
 
         {/* Browser Caching */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-900">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100">
             <input
               type="checkbox"
               checked={browserCaching}
               onChange={(e) => setBrowserCaching(e.target.checked)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             Browser Caching
           </label>
           {browserCaching && (
             <div className="ml-6 mt-3">
-              <label className="mb-1 block text-xs text-gray-600">
+              <label className="mb-1 block text-xs text-gray-600 dark:text-gray-400">
                 Cache Expiry Time
               </label>
               <select
                 value={cacheExpiry}
                 onChange={(e) => setCacheExpiry(e.target.value)}
-                className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+                className="rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
               >
                 {CACHE_EXPIRY_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -368,12 +368,12 @@ export default function HtaccessGenerator() {
 
         {/* Security Headers */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-900">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100">
             <input
               type="checkbox"
               checked={securityHeaders}
               onChange={(e) => setSecurityHeaders(e.target.checked)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             Security Headers
           </label>
@@ -388,13 +388,13 @@ export default function HtaccessGenerator() {
               ].map((header) => (
                 <label
                   key={header.label}
-                  className="flex items-center gap-2 text-sm text-gray-600"
+                  className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400"
                 >
                   <input
                     type="checkbox"
                     checked={header.checked}
                     onChange={(e) => header.set(e.target.checked)}
-                    className="rounded border-gray-300"
+                    className="rounded border-gray-300 dark:border-gray-600"
                   />
                   {header.label}
                 </label>
@@ -405,32 +405,32 @@ export default function HtaccessGenerator() {
 
         {/* Block Hotlinking */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-900">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100">
             <input
               type="checkbox"
               checked={blockHotlinking}
               onChange={(e) => setBlockHotlinking(e.target.checked)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             Block Hotlinking
           </label>
-          <p className="ml-6 mt-0.5 text-xs text-gray-500">
+          <p className="ml-6 mt-0.5 text-xs text-gray-500 dark:text-gray-400">
             Prevent other sites from embedding your images (update &quot;yourdomain.com&quot; in the output)
           </p>
         </div>
 
         {/* Disable Directory Listing */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-900">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100">
             <input
               type="checkbox"
               checked={disableDirectoryListing}
               onChange={(e) => setDisableDirectoryListing(e.target.checked)}
-              className="rounded border-gray-300"
+              className="rounded border-gray-300 dark:border-gray-600"
             />
             Disable Directory Listing
           </label>
-          <p className="ml-6 mt-0.5 text-xs text-gray-500">
+          <p className="ml-6 mt-0.5 text-xs text-gray-500 dark:text-gray-400">
             Prevent Apache from showing a list of files in directories
           </p>
         </div>
@@ -438,7 +438,7 @@ export default function HtaccessGenerator() {
         {/* Custom Redirects */}
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <span className="text-sm font-medium text-gray-900">
+            <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
               Custom Redirects
             </span>
             <button
@@ -449,7 +449,7 @@ export default function HtaccessGenerator() {
             </button>
           </div>
           {redirects.length === 0 && (
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-400 dark:text-gray-500">
               No custom redirects added yet. Click &quot;+ Add Redirect&quot; to begin.
             </p>
           )}
@@ -457,10 +457,10 @@ export default function HtaccessGenerator() {
             {redirects.map((r) => (
               <div
                 key={r.id}
-                className="flex flex-wrap items-end gap-2 rounded-lg border border-gray-200 bg-gray-50 p-3"
+                className="flex flex-wrap items-end gap-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3"
               >
                 <div className="flex-1 min-w-[140px]">
-                  <label className="mb-1 block text-xs text-gray-600">
+                  <label className="mb-1 block text-xs text-gray-600 dark:text-gray-400">
                     Source Path
                   </label>
                   <input
@@ -468,11 +468,11 @@ export default function HtaccessGenerator() {
                     value={r.source}
                     onChange={(e) => updateRedirect(r.id, "source", e.target.value)}
                     placeholder="/old-page"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                   />
                 </div>
                 <div className="flex-1 min-w-[180px]">
-                  <label className="mb-1 block text-xs text-gray-600">
+                  <label className="mb-1 block text-xs text-gray-600 dark:text-gray-400">
                     Destination URL
                   </label>
                   <input
@@ -482,11 +482,11 @@ export default function HtaccessGenerator() {
                       updateRedirect(r.id, "destination", e.target.value)
                     }
                     placeholder="https://example.com/new-page"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                   />
                 </div>
                 <div className="w-24">
-                  <label className="mb-1 block text-xs text-gray-600">
+                  <label className="mb-1 block text-xs text-gray-600 dark:text-gray-400">
                     Type
                   </label>
                   <select
@@ -494,7 +494,7 @@ export default function HtaccessGenerator() {
                     onChange={(e) =>
                       updateRedirect(r.id, "type", e.target.value)
                     }
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                   >
                     <option value="301">301</option>
                     <option value="302">302</option>
@@ -502,7 +502,7 @@ export default function HtaccessGenerator() {
                 </div>
                 <button
                   onClick={() => removeRedirect(r.id)}
-                  className="rounded-lg border border-red-200 bg-white px-3 py-2 text-sm text-red-600 transition-colors hover:bg-red-50"
+                  className="rounded-lg border border-red-200 dark:border-red-800 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-red-600 dark:text-red-400 transition-colors hover:bg-red-50 dark:bg-red-950 dark:hover:bg-red-950"
                 >
                   Remove
                 </button>
@@ -512,22 +512,22 @@ export default function HtaccessGenerator() {
         </div>
 
         {/* Generated Output */}
-        <div className="border-t border-gray-200 pt-6">
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
           <div className="mb-2 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-900">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
               Generated .htaccess
             </h3>
             <CopyButton text={htaccessContent} />
           </div>
-          <pre className="overflow-x-auto rounded-lg border border-gray-300 bg-gray-50 p-4 text-sm leading-relaxed">
+          <pre className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-4 text-sm leading-relaxed">
             <code>{htaccessContent || "# Select options above to generate .htaccess rules"}</code>
           </pre>
         </div>
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is an .htaccess File?
         </h2>
         <p className="mb-3">
@@ -536,7 +536,7 @@ export default function HtaccessGenerator() {
           rules, authentication, caching, compression, and security settings on a
           per-directory basis without modifying the main server configuration.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Common .htaccess Use Cases
         </h2>
         <p className="mb-3">
@@ -547,7 +547,7 @@ export default function HtaccessGenerator() {
           against XSS and clickjacking attacks, blocking hotlinking of images,
           and disabling directory listing to prevent unauthorized file browsing.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to Use This Generator
         </h2>
         <p>

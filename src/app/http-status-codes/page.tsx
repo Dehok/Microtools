@@ -26,21 +26,21 @@ const CATEGORIES: Record<string, CategoryInfo> = {
   "1xx": {
     label: "1xx Informational",
     range: "1",
-    color: "text-blue-700",
-    bgColor: "bg-blue-50",
-    borderColor: "border-blue-200",
-    badgeBg: "bg-blue-100",
-    badgeText: "text-blue-800",
+    color: "text-blue-700 dark:text-blue-300",
+    bgColor: "bg-blue-50 dark:bg-blue-950",
+    borderColor: "border-blue-200 dark:border-blue-800",
+    badgeBg: "bg-blue-100 dark:bg-blue-900",
+    badgeText: "text-blue-800 dark:text-blue-200",
     headerBg: "bg-blue-600",
     headerText: "text-white",
   },
   "2xx": {
     label: "2xx Success",
     range: "2",
-    color: "text-green-700",
-    bgColor: "bg-green-50",
-    borderColor: "border-green-200",
-    badgeBg: "bg-green-100",
+    color: "text-green-700 dark:text-green-300",
+    bgColor: "bg-green-50 dark:bg-green-950",
+    borderColor: "border-green-200 dark:border-green-800",
+    badgeBg: "bg-green-100 dark:bg-green-900",
     badgeText: "text-green-800",
     headerBg: "bg-green-600",
     headerText: "text-white",
@@ -48,10 +48,10 @@ const CATEGORIES: Record<string, CategoryInfo> = {
   "3xx": {
     label: "3xx Redirection",
     range: "3",
-    color: "text-yellow-700",
-    bgColor: "bg-yellow-50",
-    borderColor: "border-yellow-200",
-    badgeBg: "bg-yellow-100",
+    color: "text-yellow-700 dark:text-yellow-300",
+    bgColor: "bg-yellow-50 dark:bg-yellow-950",
+    borderColor: "border-yellow-200 dark:border-yellow-800",
+    badgeBg: "bg-yellow-100 dark:bg-yellow-900",
     badgeText: "text-yellow-800",
     headerBg: "bg-yellow-500",
     headerText: "text-white",
@@ -60,7 +60,7 @@ const CATEGORIES: Record<string, CategoryInfo> = {
     label: "4xx Client Error",
     range: "4",
     color: "text-orange-700",
-    bgColor: "bg-orange-50",
+    bgColor: "bg-orange-50 dark:bg-orange-950",
     borderColor: "border-orange-200",
     badgeBg: "bg-orange-100",
     badgeText: "text-orange-800",
@@ -70,10 +70,10 @@ const CATEGORIES: Record<string, CategoryInfo> = {
   "5xx": {
     label: "5xx Server Error",
     range: "5",
-    color: "text-red-700",
-    bgColor: "bg-red-50",
-    borderColor: "border-red-200",
-    badgeBg: "bg-red-100",
+    color: "text-red-700 dark:text-red-300",
+    bgColor: "bg-red-50 dark:bg-red-950",
+    borderColor: "border-red-200 dark:border-red-800",
+    badgeBg: "bg-red-100 dark:bg-red-900",
     badgeText: "text-red-800",
     headerBg: "bg-red-600",
     headerText: "text-white",
@@ -481,12 +481,12 @@ export default function HttpStatusCodes() {
   }, [filteredCodes]);
 
   const categoryButtons = [
-    { key: "all", label: "All", className: "bg-gray-100 text-gray-800 hover:bg-gray-200" },
-    { key: "1xx", label: "1xx", className: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
-    { key: "2xx", label: "2xx", className: "bg-green-100 text-green-800 hover:bg-green-200" },
-    { key: "3xx", label: "3xx", className: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200" },
+    { key: "all", label: "All", className: "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:bg-gray-700" },
+    { key: "1xx", label: "1xx", className: "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 hover:bg-blue-200" },
+    { key: "2xx", label: "2xx", className: "bg-green-100 dark:bg-green-900 text-green-800 hover:bg-green-200" },
+    { key: "3xx", label: "3xx", className: "bg-yellow-100 dark:bg-yellow-900 text-yellow-800 hover:bg-yellow-200" },
     { key: "4xx", label: "4xx", className: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
-    { key: "5xx", label: "5xx", className: "bg-red-100 text-red-800 hover:bg-red-200" },
+    { key: "5xx", label: "5xx", className: "bg-red-100 dark:bg-red-900 text-red-800 hover:bg-red-200" },
   ];
 
   return (
@@ -496,7 +496,7 @@ export default function HttpStatusCodes() {
       relatedTools={["url-parser", "meta-tag-generator", "robots-txt-generator"]}
     >
       {/* Search */}
-      <label className="mb-1 block text-sm font-medium text-gray-700">
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
         Search Status Codes
       </label>
       <input
@@ -504,7 +504,7 @@ export default function HttpStatusCodes() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search by code, name, or description... (e.g. 404, Not Found, timeout)"
-        className="mb-4 w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+        className="mb-4 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
         spellCheck={false}
       />
 
@@ -530,14 +530,14 @@ export default function HttpStatusCodes() {
 
       {/* Results count */}
       {search.trim() && (
-        <div className="mb-4 text-sm text-gray-500">
+        <div className="mb-4 text-sm text-gray-500 dark:text-gray-400">
           Found {filteredCodes.length} status code{filteredCodes.length !== 1 ? "s" : ""} matching &quot;{search}&quot;
         </div>
       )}
 
       {/* No results */}
       {filteredCodes.length === 0 && (
-        <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-8 text-center text-sm text-gray-500">
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 px-4 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
           No status codes found matching your search.
         </div>
       )}
@@ -556,7 +556,7 @@ export default function HttpStatusCodes() {
               </div>
 
               {/* Status code list */}
-              <div className="divide-y divide-gray-100">
+              <div className="divide-y divide-gray-100 dark:divide-gray-800">
                 {codes.map((sc) => {
                   const isExpanded = expandedCode === sc.code;
 
@@ -566,8 +566,8 @@ export default function HttpStatusCodes() {
                         onClick={() =>
                           setExpandedCode(isExpanded ? null : sc.code)
                         }
-                        className={`flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-gray-50 ${
-                          isExpanded ? "bg-gray-50" : ""
+                        className={`flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 ${
+                          isExpanded ? "bg-gray-50 dark:bg-gray-950" : ""
                         }`}
                       >
                         {/* Code badge */}
@@ -584,13 +584,13 @@ export default function HttpStatusCodes() {
                               {sc.name}
                             </span>
                           </div>
-                          <p className="mt-0.5 text-sm text-gray-600">
+                          <p className="mt-0.5 text-sm text-gray-600 dark:text-gray-400">
                             {sc.description}
                           </p>
                         </div>
 
                         {/* Expand indicator */}
-                        <span className="mt-1 shrink-0 text-gray-400">
+                        <span className="mt-1 shrink-0 text-gray-400 dark:text-gray-500">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className={`h-4 w-4 transition-transform ${
@@ -614,14 +614,14 @@ export default function HttpStatusCodes() {
                       {isExpanded && (
                         <div className={`${cat.bgColor} border-t ${cat.borderColor} px-4 py-3`}>
                           <div className="ml-11">
-                            <p className="text-sm text-gray-700 leading-relaxed">
+                            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                               {sc.details}
                             </p>
                             <div className="mt-2 flex flex-wrap gap-2">
                               <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${cat.badgeBg} ${cat.badgeText}`}>
                                 {getCategoryKey(sc.code).toUpperCase()} {CATEGORIES[getCategoryKey(sc.code)].label.split(" ").slice(1).join(" ")}
                               </span>
-                              <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700">
+                              <span className="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-300">
                                 HTTP/1.1
                               </span>
                             </div>
@@ -638,8 +638,8 @@ export default function HttpStatusCodes() {
       </div>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Understanding HTTP Status Codes
         </h2>
         <p className="mb-3">
@@ -649,7 +649,7 @@ export default function HttpStatusCodes() {
           network issues.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Status Code Categories
         </h2>
         <ul className="mb-3 list-inside list-disc space-y-1">
@@ -674,7 +674,7 @@ export default function HttpStatusCodes() {
           </li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Most Common Status Codes
         </h2>
         <p className="mb-3">
@@ -686,7 +686,7 @@ export default function HttpStatusCodes() {
           <strong>500 Internal Server Error</strong> (server bugs), and <strong>503 Service Unavailable</strong> (downtime).
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           HTTP Status Codes and SEO
         </h2>
         <p>

@@ -15,10 +15,10 @@ export default function Home() {
     <div className="mx-auto max-w-6xl px-4 py-12">
       {/* Hero */}
       <div className="mb-12 text-center">
-        <h1 className="mb-3 text-4xl font-bold text-gray-900 sm:text-5xl">
-          Free Online <span className="text-blue-600">Developer Tools</span>
+        <h1 className="mb-3 text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl">
+          Free Online <span className="text-blue-600 dark:text-blue-400">Developer Tools</span>
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-gray-600">
+        <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
           Fast, free, and private. All tools run directly in your browser — no
           data is ever sent to a server.
         </p>
@@ -28,11 +28,10 @@ export default function Home() {
       <div className="mb-10 flex flex-wrap justify-center gap-3">
         <button
           onClick={() => setActiveCategory(null)}
-          className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-            activeCategory === null
-              ? "border-blue-500 bg-blue-50 text-blue-700"
-              : "border-gray-200 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50"
-          }`}
+          className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${activeCategory === null
+              ? "border-blue-500 bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+              : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-950"
+            }`}
         >
           All Tools
         </button>
@@ -42,11 +41,10 @@ export default function Home() {
             onClick={() =>
               setActiveCategory(activeCategory === cat.id ? null : cat.id)
             }
-            className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-              activeCategory === cat.id
-                ? "border-blue-500 bg-blue-50 text-blue-700"
-                : "border-gray-200 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50"
-            }`}
+            className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${activeCategory === cat.id
+                ? "border-blue-500 bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+                : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-950"
+              }`}
           >
             {cat.icon} {cat.name}
           </button>
@@ -59,23 +57,23 @@ export default function Home() {
           <Link
             key={tool.slug}
             href={`/${tool.slug}`}
-            className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:border-blue-300 hover:shadow-md"
+            className="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md"
           >
             <div className="mb-2 flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 font-mono text-sm font-bold text-blue-600">
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950 font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
                 {tool.icon}
               </span>
-              <h2 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                 {tool.name}
               </h2>
             </div>
-            <p className="text-sm text-gray-500">{tool.description}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{tool.description}</p>
           </Link>
         ))}
       </div>
 
       {/* Bottom SEO text */}
-      <div className="mt-16 text-center text-sm text-gray-400">
+      <div className="mt-16 text-center text-sm text-gray-400 dark:text-gray-500">
         <p>
           CodeUtilo provides free online utilities for developers, designers,
           and content creators. Built with privacy in mind — all processing

@@ -84,8 +84,8 @@ export default function LineSorter() {
             onClick={() => setMode(m.id)}
             className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
               mode === m.id
-                ? "border-blue-300 bg-blue-50 text-blue-700"
-                : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+                ? "border-blue-300 bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+                : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             {m.label}
@@ -94,13 +94,13 @@ export default function LineSorter() {
       </div>
 
       {/* Options */}
-      <div className="mb-4 flex flex-wrap gap-4 text-sm text-gray-600">
+      <div className="mb-4 flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
         <label className="flex items-center gap-1.5">
           <input
             type="checkbox"
             checked={dedupe}
             onChange={(e) => setDedupe(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Remove duplicates
         </label>
@@ -109,7 +109,7 @@ export default function LineSorter() {
             type="checkbox"
             checked={trimLines}
             onChange={(e) => setTrimLines(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Trim whitespace
         </label>
@@ -118,7 +118,7 @@ export default function LineSorter() {
             type="checkbox"
             checked={removeEmpty}
             onChange={(e) => setRemoveEmpty(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Remove empty lines
         </label>
@@ -126,20 +126,20 @@ export default function LineSorter() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Input ({inputCount} lines)
           </label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Enter lines to sort..."
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Output ({outputCount} lines)
             </label>
             <CopyButton text={output} />
@@ -147,18 +147,18 @@ export default function LineSorter() {
           <textarea
             value={output}
             readOnly
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
           />
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why Sort Lines?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why Sort Lines?</h2>
         <p className="mb-3">
           Sorting lines is useful when cleaning up lists, organizing data, preparing CSV files,
           or deduplicating entries. Numeric sort handles numbers correctly (1, 2, 10 instead of 1, 10, 2).
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Use Cases</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Use Cases</h2>
         <p>
           Common uses include sorting configuration files, organizing word lists, cleaning up
           log entries, preparing data for comparison, and removing duplicate entries from lists.

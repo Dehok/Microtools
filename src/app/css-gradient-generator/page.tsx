@@ -59,7 +59,7 @@ export default function CssGradientGenerator() {
     >
       {/* Preview */}
       <div
-        className="mb-6 h-48 rounded-lg border border-gray-200"
+        className="mb-6 h-48 rounded-lg border border-gray-200 dark:border-gray-700"
         style={{
           background:
             type === "linear"
@@ -74,7 +74,7 @@ export default function CssGradientGenerator() {
           <button
             onClick={() => setType("linear")}
             className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-              type === "linear" ? "bg-blue-600 text-white" : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              type === "linear" ? "bg-blue-600 text-white" : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             Linear
@@ -82,7 +82,7 @@ export default function CssGradientGenerator() {
           <button
             onClick={() => setType("radial")}
             className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-              type === "radial" ? "bg-blue-600 text-white" : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              type === "radial" ? "bg-blue-600 text-white" : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             Radial
@@ -91,7 +91,7 @@ export default function CssGradientGenerator() {
 
         {type === "linear" && (
           <div className="flex items-center gap-2">
-            <label className="text-sm text-gray-600">Angle:</label>
+            <label className="text-sm text-gray-600 dark:text-gray-400">Angle:</label>
             <input
               type="range"
               min="0"
@@ -100,7 +100,7 @@ export default function CssGradientGenerator() {
               onChange={(e) => setAngle(parseInt(e.target.value))}
               className="w-32"
             />
-            <span className="w-12 text-sm font-mono text-gray-700">{angle}°</span>
+            <span className="w-12 text-sm font-mono text-gray-700 dark:text-gray-300">{angle}°</span>
           </div>
         )}
       </div>
@@ -108,11 +108,11 @@ export default function CssGradientGenerator() {
       {/* Color stops */}
       <div className="mb-4 space-y-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-900">Color Stops</h3>
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Color Stops</h3>
           <button
             onClick={addStop}
             disabled={stops.length >= 8}
-            className="rounded border border-gray-300 bg-white px-2 py-1 text-xs text-gray-700 hover:bg-gray-50 disabled:opacity-40"
+            className="rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 disabled:opacity-40"
           >
             + Add Stop
           </button>
@@ -123,13 +123,13 @@ export default function CssGradientGenerator() {
               type="color"
               value={stop.color}
               onChange={(e) => updateStop(i, "color", e.target.value)}
-              className="h-8 w-8 cursor-pointer rounded border border-gray-300"
+              className="h-8 w-8 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
             />
             <input
               type="text"
               value={stop.color}
               onChange={(e) => updateStop(i, "color", e.target.value)}
-              className="w-24 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs"
+              className="w-24 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs"
             />
             <input
               type="range"
@@ -139,11 +139,11 @@ export default function CssGradientGenerator() {
               onChange={(e) => updateStop(i, "position", parseInt(e.target.value))}
               className="flex-1"
             />
-            <span className="w-10 text-xs font-mono text-gray-500">{stop.position}%</span>
+            <span className="w-10 text-xs font-mono text-gray-500 dark:text-gray-400">{stop.position}%</span>
             {stops.length > 2 && (
               <button
                 onClick={() => removeStop(i)}
-                className="rounded px-1.5 py-0.5 text-xs text-red-500 hover:bg-red-50"
+                className="rounded px-1.5 py-0.5 text-xs text-red-500 dark:text-red-400 hover:bg-red-50 dark:bg-red-950 dark:hover:bg-red-950"
               >
                 ✕
               </button>
@@ -155,22 +155,22 @@ export default function CssGradientGenerator() {
       {/* CSS output */}
       <div className="mb-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">CSS Code</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">CSS Code</label>
           <CopyButton text={css} />
         </div>
-        <pre className="mt-1 rounded-lg border border-gray-200 bg-gray-900 p-3 font-mono text-sm text-green-400">
+        <pre className="mt-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-900 p-3 font-mono text-sm text-green-400">
           {css}
         </pre>
       </div>
 
       {/* Presets */}
-      <h3 className="mb-2 text-sm font-semibold text-gray-900">Presets</h3>
+      <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Presets</h3>
       <div className="mb-4 flex flex-wrap gap-2">
         {PRESETS.map((p) => (
           <button
             key={p.name}
             onClick={() => { setStops(p.stops); setAngle(p.angle); setType("linear"); }}
-            className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50"
+            className="flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           >
             <span
               className="inline-block h-4 w-4 rounded"
@@ -183,14 +183,14 @@ export default function CssGradientGenerator() {
         ))}
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">CSS Gradients</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">CSS Gradients</h2>
         <p className="mb-3">
           CSS gradients create smooth color transitions. <strong>Linear gradients</strong> flow in
           a straight line at a specified angle. <strong>Radial gradients</strong> radiate outward
           from a center point. Both support multiple color stops.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Browser Support</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Browser Support</h2>
         <p>
           CSS gradients are supported in all modern browsers without vendor prefixes. They render
           at any resolution (vector-based), making them perfect for backgrounds, buttons, and

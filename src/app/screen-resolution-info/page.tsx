@@ -66,16 +66,16 @@ function InfoCard({
     <div
       className={`rounded-lg border p-3 ${
         highlight
-          ? "border-blue-200 bg-blue-50"
-          : "border-gray-200 bg-gray-50"
+          ? "border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950"
+          : "border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950"
       }`}
     >
-      <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
+      <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
         {label}
       </div>
       <div
         className={`break-all font-mono text-sm ${
-          highlight ? "font-bold text-blue-800" : "text-gray-800"
+          highlight ? "font-bold text-blue-800 dark:text-blue-200" : "text-gray-800 dark:text-gray-200"
         }`}
       >
         {displayValue}
@@ -161,31 +161,31 @@ export default function ScreenResolutionInfo() {
     return (
       <div className="flex flex-col items-center gap-2">
         <div
-          className="relative rounded border-2 border-gray-400 bg-gray-200"
+          className="relative rounded border-2 border-gray-400 bg-gray-200 dark:bg-gray-700"
           style={{ width: screenW, height: screenH }}
           title={`Screen: ${info.screenWidth} x ${info.screenHeight}`}
         >
           <div
-            className="absolute left-0 top-0 rounded border-2 border-blue-500 bg-blue-200 opacity-70"
+            className="absolute left-0 top-0 rounded border-2 border-blue-500 dark:border-blue-400 bg-blue-200 opacity-70"
             style={{ width: viewW, height: viewH }}
             title={`Viewport: ${info.viewportWidth} x ${info.viewportHeight}`}
           />
-          <span className="absolute bottom-1 right-1 text-[9px] font-bold text-gray-600">
+          <span className="absolute bottom-1 right-1 text-[9px] font-bold text-gray-600 dark:text-gray-400">
             Screen
           </span>
           {viewW > 30 && viewH > 14 && (
-            <span className="absolute left-1 top-1 text-[9px] font-bold text-blue-700">
+            <span className="absolute left-1 top-1 text-[9px] font-bold text-blue-700 dark:text-blue-300">
               Viewport
             </span>
           )}
         </div>
-        <div className="flex gap-4 text-xs text-gray-600">
+        <div className="flex gap-4 text-xs text-gray-600 dark:text-gray-400">
           <span className="flex items-center gap-1">
-            <span className="inline-block h-3 w-3 rounded border-2 border-gray-400 bg-gray-200" />
+            <span className="inline-block h-3 w-3 rounded border-2 border-gray-400 bg-gray-200 dark:bg-gray-700" />
             Screen ({info.screenWidth}&times;{info.screenHeight})
           </span>
           <span className="flex items-center gap-1">
-            <span className="inline-block h-3 w-3 rounded border-2 border-blue-500 bg-blue-200" />
+            <span className="inline-block h-3 w-3 rounded border-2 border-blue-500 dark:border-blue-400 bg-blue-200" />
             Viewport ({info.viewportWidth}&times;{info.viewportHeight})
           </span>
         </div>
@@ -200,7 +200,7 @@ export default function ScreenResolutionInfo() {
         description="Instantly detect your screen resolution, viewport size, device pixel ratio, and other display properties."
         relatedTools={["aspect-ratio-calculator", "color-picker", "keyboard-event-tester"]}
       >
-        <div className="py-12 text-center text-gray-500">Loading display info...</div>
+        <div className="py-12 text-center text-gray-500 dark:text-gray-400">Loading display info...</div>
       </ToolLayout>
     );
   }
@@ -212,8 +212,8 @@ export default function ScreenResolutionInfo() {
       relatedTools={["aspect-ratio-calculator", "color-picker", "keyboard-event-tester"]}
     >
       {/* Visual representation */}
-      <div className="mb-6 flex flex-col items-center gap-2 rounded-xl border border-gray-200 bg-gray-50 p-4">
-        <h2 className="mb-2 text-sm font-semibold text-gray-700">
+      <div className="mb-6 flex flex-col items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
+        <h2 className="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
           Screen vs Viewport (scaled)
         </h2>
         <VisualRepresentation />
@@ -225,7 +225,7 @@ export default function ScreenResolutionInfo() {
           onClick={handleCopyAll}
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             copied
-              ? "bg-green-100 text-green-700 border border-green-300"
+              ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 border border-green-300"
               : "bg-blue-600 text-white hover:bg-blue-700"
           }`}
         >
@@ -235,7 +235,7 @@ export default function ScreenResolutionInfo() {
 
       {/* Display info */}
       <div className="mb-4">
-        <h2 className="mb-3 text-sm font-semibold text-gray-700 uppercase tracking-wide">
+        <h2 className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">
           Display
         </h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -283,7 +283,7 @@ export default function ScreenResolutionInfo() {
 
       {/* Browser / System info */}
       <div className="mb-4">
-        <h2 className="mb-3 text-sm font-semibold text-gray-700 uppercase tracking-wide">
+        <h2 className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">
           Browser &amp; System
         </h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -296,56 +296,56 @@ export default function ScreenResolutionInfo() {
 
       {/* User Agent */}
       <div className="mb-2">
-        <h2 className="mb-3 text-sm font-semibold text-gray-700 uppercase tracking-wide">
+        <h2 className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">
           User Agent
         </h2>
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
-          <p className="break-all font-mono text-xs text-gray-700">{info.userAgent}</p>
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3">
+          <p className="break-all font-mono text-xs text-gray-700 dark:text-gray-300">{info.userAgent}</p>
         </div>
       </div>
 
       {/* Live update notice */}
-      <p className="mt-3 text-right text-xs text-gray-400">
+      <p className="mt-3 text-right text-xs text-gray-400 dark:text-gray-500">
         Values update automatically on window resize.
       </p>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600 space-y-4">
-        <h2 className="text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400 space-y-4">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is Screen Resolution?
         </h2>
         <p>
           Screen resolution refers to the total number of pixels displayed on your monitor,
           expressed as width &times; height (e.g., 1920&times;1080). A higher resolution means
           more pixels are packed into the display, resulting in sharper and more detailed images.
-          This tool reads the value directly from <code className="font-mono bg-gray-100 px-1 rounded">screen.width</code> and{" "}
-          <code className="font-mono bg-gray-100 px-1 rounded">screen.height</code> via the browser&rsquo;s Web API.
+          This tool reads the value directly from <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">screen.width</code> and{" "}
+          <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">screen.height</code> via the browser&rsquo;s Web API.
         </p>
 
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
           Screen Resolution vs Viewport Size
         </h2>
         <p>
           The <strong>screen resolution</strong> is the physical resolution of your entire monitor.
           The <strong>viewport size</strong> is the visible area of the browser window (
-          <code className="font-mono bg-gray-100 px-1 rounded">window.innerWidth</code> &times;{" "}
-          <code className="font-mono bg-gray-100 px-1 rounded">window.innerHeight</code>), which changes when you resize
+          <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">window.innerWidth</code> &times;{" "}
+          <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">window.innerHeight</code>), which changes when you resize
           the browser or open developer tools. Web developers use the viewport size to design
           responsive layouts that adapt to different screen sizes.
         </p>
 
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is Device Pixel Ratio (DPR)?
         </h2>
         <p>
           Device Pixel Ratio (DPR) is the ratio of physical pixels to CSS logical pixels on your
           screen. A DPR of 2 (common on Retina/HiDPI displays) means one CSS pixel maps to a 2&times;2
           block of physical pixels, making text and images appear sharper. DPR is important for
-          serving correctly scaled images (using <code className="font-mono bg-gray-100 px-1 rounded">srcset</code>) and
+          serving correctly scaled images (using <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">srcset</code>) and
           for canvas-based rendering.
         </p>
 
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
           Why Check Your Display Info?
         </h2>
         <p>

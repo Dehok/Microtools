@@ -108,12 +108,12 @@ export default function TextCaseConverter() {
       description="Convert text between uppercase, lowercase, title case, camelCase, snake_case, kebab-case, and more. Free online tool."
       relatedTools={["word-counter", "slug-generator", "lorem-ipsum-generator"]}
     >
-      <label className="mb-1 block text-sm font-medium text-gray-700">Input Text</label>
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Input Text</label>
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Type or paste your text here..."
-        className="mb-4 h-28 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm focus:border-blue-500 focus:outline-none"
+        className="mb-4 h-28 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
         spellCheck={false}
       />
 
@@ -124,11 +124,11 @@ export default function TextCaseConverter() {
             return (
               <div
                 key={conv.id}
-                className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 p-3"
+                className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3"
               >
                 <div className="min-w-0 flex-1">
-                  <span className="text-xs font-semibold text-gray-500">{conv.label}</span>
-                  <div className="truncate font-mono text-sm text-gray-900">{result}</div>
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{conv.label}</span>
+                  <div className="truncate font-mono text-sm text-gray-900 dark:text-gray-100">{result}</div>
                 </div>
                 <CopyButton text={result} />
               </div>
@@ -137,15 +137,15 @@ export default function TextCaseConverter() {
         </div>
       )}
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Text Case Styles</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Text Case Styles</h2>
         <p className="mb-3">
           Different naming conventions are used in programming and writing. <strong>camelCase</strong> and
           <strong> PascalCase</strong> are common in JavaScript and TypeScript. <strong>snake_case</strong> is
           standard in Python and Ruby. <strong>kebab-case</strong> is used in CSS and URL slugs.
           <strong> CONSTANT_CASE</strong> is used for constants in many languages.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">When to Use Each Case</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to Use Each Case</h2>
         <p>
           Use <strong>Title Case</strong> for headings, <strong>UPPERCASE</strong> for emphasis or constants,
           <strong> Sentence case</strong> for regular text, and language-specific conventions (camelCase,

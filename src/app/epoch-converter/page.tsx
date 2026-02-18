@@ -53,28 +53,28 @@ export default function EpochConverter() {
       relatedTools={["json-formatter", "uuid-generator", "hash-generator"]}
     >
       {/* Live clock */}
-      <div className="mb-6 rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
-        <div className="text-sm text-blue-600 font-medium mb-1">Current Unix Timestamp</div>
-        <div className="text-3xl font-bold font-mono text-blue-700">{currentEpoch}</div>
+      <div className="mb-6 rounded-lg border border-blue-100 bg-blue-50 dark:bg-blue-950 p-4 text-center">
+        <div className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-1">Current Unix Timestamp</div>
+        <div className="text-3xl font-bold font-mono text-blue-700 dark:text-blue-300">{currentEpoch}</div>
         <div className="text-sm text-blue-500 mt-1">{nowDate.toUTCString()}</div>
       </div>
 
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Epoch → Date */}
-        <div className="rounded-lg border border-gray-200 p-4">
-          <h3 className="mb-3 text-sm font-semibold text-gray-900">Timestamp → Date</h3>
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">Timestamp → Date</h3>
           <input
             type="text"
             value={epoch}
             onChange={(e) => setEpoch(e.target.value)}
             placeholder="e.g. 1708099200"
-            className="mb-3 w-full rounded-md border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="mb-3 w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
           <div className="flex gap-2">
             <button
@@ -85,7 +85,7 @@ export default function EpochConverter() {
             </button>
             <button
               onClick={handleNow}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Now
             </button>
@@ -93,14 +93,14 @@ export default function EpochConverter() {
         </div>
 
         {/* Date → Epoch */}
-        <div className="rounded-lg border border-gray-200 p-4">
-          <h3 className="mb-3 text-sm font-semibold text-gray-900">Date → Timestamp</h3>
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">Date → Timestamp</h3>
           <input
             type="text"
             value={dateStr}
             onChange={(e) => setDateStr(e.target.value)}
             placeholder="e.g. 2026-02-16T12:00:00Z"
-            className="mb-3 w-full rounded-md border border-gray-300 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="mb-3 w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
           <div className="flex gap-2">
             <button
@@ -116,27 +116,27 @@ export default function EpochConverter() {
 
       {/* Quick reference */}
       {epoch && dateStr && !error && (
-        <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
-          <h3 className="mb-2 text-sm font-semibold text-gray-900">Converted Values</h3>
+        <div className="mt-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
+          <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Converted Values</h3>
           <div className="grid gap-2 text-sm sm:grid-cols-2">
-            <div><span className="text-gray-500">Unix (seconds):</span> <code className="font-mono">{epoch}</code></div>
-            <div><span className="text-gray-500">Unix (ms):</span> <code className="font-mono">{Number(epoch) * 1000}</code></div>
-            <div><span className="text-gray-500">ISO 8601:</span> <code className="font-mono">{dateStr}</code></div>
-            <div><span className="text-gray-500">UTC:</span> <code className="font-mono">{new Date(Number(epoch) * 1000).toUTCString()}</code></div>
-            <div><span className="text-gray-500">Local:</span> <code className="font-mono">{new Date(Number(epoch) * 1000).toLocaleString()}</code></div>
-            <div><span className="text-gray-500">Relative:</span> <code className="font-mono">{Math.abs(currentEpoch - Number(epoch))} seconds {Number(epoch) > currentEpoch ? "from now" : "ago"}</code></div>
+            <div><span className="text-gray-500 dark:text-gray-400">Unix (seconds):</span> <code className="font-mono">{epoch}</code></div>
+            <div><span className="text-gray-500 dark:text-gray-400">Unix (ms):</span> <code className="font-mono">{Number(epoch) * 1000}</code></div>
+            <div><span className="text-gray-500 dark:text-gray-400">ISO 8601:</span> <code className="font-mono">{dateStr}</code></div>
+            <div><span className="text-gray-500 dark:text-gray-400">UTC:</span> <code className="font-mono">{new Date(Number(epoch) * 1000).toUTCString()}</code></div>
+            <div><span className="text-gray-500 dark:text-gray-400">Local:</span> <code className="font-mono">{new Date(Number(epoch) * 1000).toLocaleString()}</code></div>
+            <div><span className="text-gray-500 dark:text-gray-400">Relative:</span> <code className="font-mono">{Math.abs(currentEpoch - Number(epoch))} seconds {Number(epoch) > currentEpoch ? "from now" : "ago"}</code></div>
           </div>
         </div>
       )}
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is a Unix Timestamp?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is a Unix Timestamp?</h2>
         <p className="mb-3">
           A Unix timestamp (epoch time) is the number of seconds that have elapsed since
           January 1, 1970, 00:00:00 UTC. It is widely used in programming, databases, and APIs
           to represent points in time as a single number.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Seconds vs Milliseconds</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Seconds vs Milliseconds</h2>
         <p>
           Some systems use seconds (10 digits, e.g. 1708099200) while others use milliseconds
           (13 digits, e.g. 1708099200000). This tool auto-detects the format based on the

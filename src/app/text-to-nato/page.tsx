@@ -116,7 +116,7 @@ export default function TextToNato() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "encode"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           Text &#8594; NATO
@@ -126,7 +126,7 @@ export default function TextToNato() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "decode"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           NATO &#8594; Text
@@ -136,7 +136,7 @@ export default function TextToNato() {
       {/* Output format selector (encode mode only) */}
       {mode === "encode" && (
         <div className="mb-4 flex flex-wrap items-center gap-2">
-          <span className="text-sm font-medium text-gray-700">Output format:</span>
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Output format:</span>
           {(
             [
               { value: "newline", label: "One per line" },
@@ -150,7 +150,7 @@ export default function TextToNato() {
               className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
                 format === value
                   ? "bg-indigo-100 text-indigo-700 border border-indigo-300"
-                  : "border border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+                  : "border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               }`}
             >
               {label}
@@ -162,7 +162,7 @@ export default function TextToNato() {
       {/* Input / Output */}
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             {mode === "encode" ? "Text Input" : "NATO Words Input"}
           </label>
           <textarea
@@ -173,13 +173,13 @@ export default function TextToNato() {
                 ? "Type text here..."
                 : "Paste NATO words separated by newlines, dashes, or commas..."
             }
-            className="h-40 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-40 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {mode === "encode" ? "NATO Phonetic Output" : "Decoded Text"}
             </label>
             <CopyButton text={output} />
@@ -187,14 +187,14 @@ export default function TextToNato() {
           <textarea
             value={output}
             readOnly
-            className="h-40 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+            className="h-40 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
           />
         </div>
       </div>
 
       {/* NATO Alphabet Reference Table */}
-      <div className="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-4">
-        <h3 className="mb-3 text-sm font-semibold text-gray-900">
+      <div className="mt-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
+        <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">
           NATO Phonetic Alphabet Reference
         </h3>
 
@@ -202,10 +202,10 @@ export default function TextToNato() {
           {LETTERS.map((letter) => (
             <div
               key={letter}
-              className="flex items-center gap-1.5 rounded bg-white px-2 py-1.5 border border-gray-100 shadow-sm"
+              className="flex items-center gap-1.5 rounded bg-white dark:bg-gray-900 px-2 py-1.5 border border-gray-100 dark:border-gray-800 shadow-sm"
             >
-              <span className="w-5 shrink-0 text-center font-bold text-blue-700">{letter}</span>
-              <span className="text-xs text-gray-600">{NATO_ALPHABET[letter]}</span>
+              <span className="w-5 shrink-0 text-center font-bold text-blue-700 dark:text-blue-300">{letter}</span>
+              <span className="text-xs text-gray-600 dark:text-gray-400">{NATO_ALPHABET[letter]}</span>
             </div>
           ))}
         </div>
@@ -214,18 +214,18 @@ export default function TextToNato() {
           {DIGITS.map((digit) => (
             <div
               key={digit}
-              className="flex items-center gap-1.5 rounded bg-white px-2 py-1.5 border border-gray-100 shadow-sm"
+              className="flex items-center gap-1.5 rounded bg-white dark:bg-gray-900 px-2 py-1.5 border border-gray-100 dark:border-gray-800 shadow-sm"
             >
               <span className="w-4 shrink-0 text-center font-bold text-indigo-700">{digit}</span>
-              <span className="text-xs text-gray-600">{NATO_ALPHABET[digit]}</span>
+              <span className="text-xs text-gray-600 dark:text-gray-400">{NATO_ALPHABET[digit]}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is the NATO Phonetic Alphabet?
         </h2>
         <p className="mb-3">
@@ -235,7 +235,7 @@ export default function TextToNato() {
           letters (such as B and D, or M and N) during voice communications over radio, telephone,
           and other noisy channels.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Common Uses of the NATO Alphabet
         </h2>
         <p className="mb-3">
@@ -244,7 +244,7 @@ export default function TextToNato() {
           teams reading out account numbers or addresses over the phone. It dramatically reduces the
           chance of mishearing a letter in critical situations.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to Use This Converter
         </h2>
         <p className="mb-3">

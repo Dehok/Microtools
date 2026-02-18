@@ -329,21 +329,21 @@ export default function TextToAsciiArt() {
     >
       {/* Input */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
           Input Text
         </label>
         <textarea
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Type text here…"
-          className="h-24 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+          className="h-24 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           spellCheck={false}
         />
       </div>
 
       {/* Font selector */}
       <div className="mb-5">
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
           Font Style
         </label>
         <div className="flex flex-wrap gap-2">
@@ -353,8 +353,8 @@ export default function TextToAsciiArt() {
               onClick={() => setSelectedFont(font)}
               className={`rounded-lg border px-4 py-1.5 text-sm font-medium transition-colors ${
                 selectedFont === font
-                  ? "border-blue-500 bg-blue-500 text-white"
-                  : "border-gray-300 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50"
+                  ? "border-blue-500 dark:border-blue-400 bg-blue-500 text-white"
+                  : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50 dark:bg-blue-950 dark:hover:bg-blue-950"
               }`}
             >
               {font}
@@ -365,16 +365,16 @@ export default function TextToAsciiArt() {
 
       {/* Output */}
       <div className="mb-2 flex items-center justify-between">
-        <label className="text-sm font-medium text-gray-700">ASCII Art Output</label>
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">ASCII Art Output</label>
         {asciiOutput && <CopyButton text={asciiOutput} />}
       </div>
       <div className="relative">
         <pre
-          className="min-h-[8rem] w-full overflow-x-auto rounded-lg border border-gray-200 bg-gray-950 p-4 font-mono text-sm leading-tight text-green-400"
+          className="min-h-[8rem] w-full overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-950 p-4 font-mono text-sm leading-tight text-green-400"
           aria-label="ASCII art output"
         >
           {asciiOutput || (
-            <span className="text-gray-500">
+            <span className="text-gray-500 dark:text-gray-400">
               Your ASCII art will appear here…
             </span>
           )}
@@ -382,8 +382,8 @@ export default function TextToAsciiArt() {
       </div>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is ASCII Art?
         </h2>
         <p className="mb-4">
@@ -394,7 +394,7 @@ export default function TextToAsciiArt() {
           code comments to add visual flair without relying on images.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Available Font Styles
         </h2>
         <ul className="mb-4 list-disc pl-5 space-y-1">
@@ -420,7 +420,7 @@ export default function TextToAsciiArt() {
           </li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Common Uses for ASCII Art
         </h2>
         <p className="mb-4">
@@ -430,7 +430,7 @@ export default function TextToAsciiArt() {
           serves as a lightweight alternative to images in plain-text environments.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to Use This Tool
         </h2>
         <p>

@@ -183,24 +183,24 @@ export default function JsonToXml() {
       {/* Options */}
       <div className="mb-4 flex flex-wrap items-end gap-4">
         <div>
-          <label className="mb-1 block text-xs text-gray-500">Root element</label>
+          <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Root element</label>
           <input
             type="text"
             value={rootName}
             onChange={(e) => setRootName(e.target.value)}
             placeholder="root"
-            className="w-32 rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-32 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-1.5 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs text-gray-500">Indent</label>
+          <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Indent</label>
           <div className="flex gap-2">
             <button
               onClick={() => setIndentSize(2)}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 indentSize === 2
                   ? "bg-blue-600 text-white"
-                  : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+                  : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               }`}
             >
               2 spaces
@@ -210,19 +210,19 @@ export default function JsonToXml() {
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 indentSize === 4
                   ? "bg-blue-600 text-white"
-                  : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+                  : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               }`}
             >
               4 spaces
             </button>
           </div>
         </div>
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
           <input
             type="checkbox"
             checked={includeDeclaration}
             onChange={(e) => setIncludeDeclaration(e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400 focus:ring-blue-500"
           />
           XML declaration
         </label>
@@ -230,7 +230,7 @@ export default function JsonToXml() {
 
       {/* Error */}
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
@@ -238,24 +238,24 @@ export default function JsonToXml() {
       {/* Editor columns */}
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">JSON Input</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">JSON Input</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={'{\n  "name": "value",\n  "items": [1, 2, 3]\n}'}
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setInput(SAMPLE)}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Sample
             </button>
             <button
               onClick={() => setInput("")}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Clear
             </button>
@@ -263,35 +263,35 @@ export default function JsonToXml() {
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">XML Output</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">XML Output</label>
             <CopyButton text={xml} />
           </div>
           <textarea
             value={error ? "" : xml}
             readOnly
             placeholder="XML output will appear here..."
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs"
           />
         </div>
       </div>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">JSON to XML Conversion</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">JSON to XML Conversion</h2>
         <p className="mb-3">
           This tool converts JSON data into well-formed XML. Objects become elements with child
           elements for each key. Arrays are wrapped in a parent element, with each item in a
-          singularized child element (e.g., <code className="rounded bg-gray-100 px-1">&lt;tags&gt;</code>{" "}
-          becomes <code className="rounded bg-gray-100 px-1">&lt;tag&gt;</code> items). Primitive
+          singularized child element (e.g., <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">&lt;tags&gt;</code>{" "}
+          becomes <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">&lt;tag&gt;</code> items). Primitive
           values become text content, and null values produce self-closing empty elements.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Options</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Options</h2>
         <p className="mb-3">
           Customize the root element name, choose between 2 or 4 space indentation, and toggle the
-          XML declaration header (<code className="rounded bg-gray-100 px-1">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code>).
+          XML declaration header (<code className="rounded bg-gray-100 dark:bg-gray-800 px-1">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code>).
           The conversion handles nested objects and arrays recursively to any depth.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">When to Use This</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to Use This</h2>
         <p>
           Use this converter when integrating with APIs or systems that require XML format, migrating
           data between JSON and XML services, or generating XML configuration files from JSON data.

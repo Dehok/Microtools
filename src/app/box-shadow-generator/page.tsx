@@ -40,7 +40,7 @@ export default function BoxShadowGenerator() {
     >
       {/* Preview */}
       <div
-        className="mb-6 flex items-center justify-center rounded-lg border border-gray-200 p-12"
+        className="mb-6 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 p-12"
         style={{ backgroundColor: bgColor }}
       >
         <div
@@ -61,9 +61,9 @@ export default function BoxShadowGenerator() {
           { label: "Spread", value: spread, set: setSpread, min: -50, max: 50 },
         ].map((ctrl) => (
           <div key={ctrl.label}>
-            <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+            <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
               {ctrl.label}
-              <span className="font-mono text-gray-500">{ctrl.value}px</span>
+              <span className="font-mono text-gray-500 dark:text-gray-400">{ctrl.value}px</span>
             </label>
             <input
               type="range"
@@ -79,22 +79,22 @@ export default function BoxShadowGenerator() {
 
       <div className="mb-4 flex flex-wrap gap-4">
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Shadow Color</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Shadow Color</label>
           <div className="flex gap-1">
             <input type="color" value={color.slice(0, 7)} onChange={(e) => setColor(e.target.value + color.slice(7))} className="h-8 w-8 cursor-pointer rounded border" />
-            <input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="w-24 rounded border border-gray-300 bg-gray-50 px-2 py-1 font-mono text-xs" />
+            <input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="w-24 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 font-mono text-xs" />
           </div>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Background</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Background</label>
           <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="h-8 w-8 cursor-pointer rounded border" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">Box Color</label>
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">Box Color</label>
           <input type="color" value={boxColor} onChange={(e) => setBoxColor(e.target.value)} className="h-8 w-8 cursor-pointer rounded border" />
         </div>
-        <label className="flex items-end gap-1.5 pb-1 text-sm text-gray-600">
-          <input type="checkbox" checked={inset} onChange={(e) => setInset(e.target.checked)} className="rounded border-gray-300" />
+        <label className="flex items-end gap-1.5 pb-1 text-sm text-gray-600 dark:text-gray-400">
+          <input type="checkbox" checked={inset} onChange={(e) => setInset(e.target.checked)} className="rounded border-gray-300 dark:border-gray-600" />
           Inset
         </label>
       </div>
@@ -102,34 +102,34 @@ export default function BoxShadowGenerator() {
       {/* CSS output */}
       <div className="mb-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">CSS Code</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">CSS Code</label>
           <CopyButton text={css} />
         </div>
-        <pre className="mt-1 rounded-lg border border-gray-200 bg-gray-900 p-3 font-mono text-sm text-green-400">{css}</pre>
+        <pre className="mt-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-900 p-3 font-mono text-sm text-green-400">{css}</pre>
       </div>
 
       {/* Presets */}
-      <h3 className="mb-2 text-sm font-semibold text-gray-900">Presets</h3>
+      <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Presets</h3>
       <div className="flex flex-wrap gap-2">
         {PRESETS.map((p) => (
           <button
             key={p.name}
             onClick={() => { setX(p.x); setY(p.y); setBlur(p.blur); setSpread(p.spread); setColor(p.color); setInset(p.inset); }}
-            className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50"
+            className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           >
             {p.name}
           </button>
         ))}
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">CSS Box Shadow</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">CSS Box Shadow</h2>
         <p className="mb-3">
           The <code>box-shadow</code> property adds shadow effects to elements. It takes values for
           horizontal offset, vertical offset, blur radius, spread radius, and color. The optional
           <code> inset</code> keyword creates an inner shadow.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Performance Tips</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Performance Tips</h2>
         <p>
           Box shadows with large blur values can impact rendering performance, especially during
           animations. For better performance, use <code>filter: drop-shadow()</code> for simple

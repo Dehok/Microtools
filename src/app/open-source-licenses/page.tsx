@@ -256,22 +256,22 @@ export default function OpenSourceLicenses() {
       {/* Inputs */}
       <div className="mb-4 flex flex-wrap gap-3">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Year:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Year:</label>
           <input
             type="text"
             value={year}
             onChange={(e) => setYear(e.target.value)}
-            className="w-20 rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="w-20 rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           />
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Author:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Author:</label>
           <input
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             placeholder="Your Name"
-            className="w-48 rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="w-48 rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           />
         </div>
       </div>
@@ -284,46 +284,46 @@ export default function OpenSourceLicenses() {
             onClick={() => setSelected(l.id)}
             className={`cursor-pointer rounded-lg border p-3 text-left transition-colors ${
               selected === l.id
-                ? "border-blue-500 bg-blue-50"
-                : "border-gray-200 bg-white hover:border-blue-300"
+                ? "border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-950"
+                : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 hover:border-blue-300 dark:hover:border-blue-700"
             }`}
           >
-            <div className="text-sm font-semibold text-gray-900">{l.name}</div>
+            <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">{l.name}</div>
           </button>
         ))}
       </div>
 
       {/* License details */}
-      <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
-        <h3 className="mb-1 text-lg font-semibold text-gray-900">{license.name}</h3>
-        <p className="mb-3 text-sm text-gray-600">{license.summary}</p>
+      <div className="mb-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
+        <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-gray-100">{license.name}</h3>
+        <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">{license.summary}</p>
         <div className="flex flex-wrap gap-4">
           {license.permissions.length > 0 && (
             <div>
-              <div className="mb-1 text-xs font-semibold uppercase text-green-700">Permissions</div>
+              <div className="mb-1 text-xs font-semibold uppercase text-green-700 dark:text-green-300">Permissions</div>
               <div className="flex flex-wrap gap-1">
                 {license.permissions.map((p) => (
-                  <span key={p} className="rounded bg-green-100 px-2 py-0.5 text-xs text-green-800">{p}</span>
+                  <span key={p} className="rounded bg-green-100 dark:bg-green-900 px-2 py-0.5 text-xs text-green-800">{p}</span>
                 ))}
               </div>
             </div>
           )}
           {license.conditions.length > 0 && (
             <div>
-              <div className="mb-1 text-xs font-semibold uppercase text-blue-700">Conditions</div>
+              <div className="mb-1 text-xs font-semibold uppercase text-blue-700 dark:text-blue-300">Conditions</div>
               <div className="flex flex-wrap gap-1">
                 {license.conditions.map((c) => (
-                  <span key={c} className="rounded bg-blue-100 px-2 py-0.5 text-xs text-blue-800">{c}</span>
+                  <span key={c} className="rounded bg-blue-100 dark:bg-blue-900 px-2 py-0.5 text-xs text-blue-800 dark:text-blue-200">{c}</span>
                 ))}
               </div>
             </div>
           )}
           {license.limitations.length > 0 && (
             <div>
-              <div className="mb-1 text-xs font-semibold uppercase text-red-700">Limitations</div>
+              <div className="mb-1 text-xs font-semibold uppercase text-red-700 dark:text-red-300">Limitations</div>
               <div className="flex flex-wrap gap-1">
                 {license.limitations.map((l) => (
-                  <span key={l} className="rounded bg-red-100 px-2 py-0.5 text-xs text-red-800">{l}</span>
+                  <span key={l} className="rounded bg-red-100 dark:bg-red-900 px-2 py-0.5 text-xs text-red-800">{l}</span>
                 ))}
               </div>
             </div>
@@ -333,18 +333,18 @@ export default function OpenSourceLicenses() {
 
       {/* License text */}
       <div className="mb-2 flex items-center justify-between">
-        <span className="text-sm font-medium text-gray-700">License Text</span>
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">License Text</span>
         <CopyButton text={finalText} />
       </div>
       <textarea
         readOnly
         value={finalText}
-        className="h-64 w-full rounded-lg border border-gray-300 bg-white p-3 font-mono text-sm text-gray-800"
+        className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 p-3 font-mono text-sm text-gray-800 dark:text-gray-200"
       />
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How to Choose an Open Source License</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How to Choose an Open Source License</h2>
         <p className="mb-3">
           Choosing the right license depends on how you want others to use your code.
           <strong> MIT and ISC</strong> are the most permissive — anyone can do almost anything with your code.
@@ -352,7 +352,7 @@ export default function OpenSourceLicenses() {
           <strong> GPL 3.0</strong> requires derivative works to also be open source.
           <strong> The Unlicense</strong> puts your code in the public domain.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Adding a License to Your Project</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Adding a License to Your Project</h2>
         <p>
           Create a file named LICENSE (or LICENSE.md) in your project root and paste the license text.
           Most hosting platforms like GitHub will automatically detect and display your license.

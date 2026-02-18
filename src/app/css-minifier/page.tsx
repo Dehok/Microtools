@@ -76,24 +76,24 @@ export default function CSSMinifier() {
         </button>
         <button
           onClick={handleBeautify}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Beautify
         </button>
         <button
           onClick={() => { setInput(""); setOutput(""); }}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
         <button
           onClick={() => setInput(SAMPLE)}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Sample
         </button>
         {savedBytes > 0 && (
-          <span className="ml-auto text-sm text-green-600 font-medium">
+          <span className="ml-auto text-sm text-green-600 dark:text-green-400 font-medium">
             Saved {savedBytes} bytes ({savedPercent}%)
           </span>
         )}
@@ -102,39 +102,39 @@ export default function CSSMinifier() {
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Input CSS</label>
-            <span className="text-xs text-gray-400">{input.length} chars</span>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Input CSS</label>
+            <span className="text-xs text-gray-400 dark:text-gray-500">{input.length} chars</span>
           </div>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your CSS here..."
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Output</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Output</label>
             <CopyButton text={output} />
           </div>
           <textarea
             value={output}
             readOnly
             placeholder="Result will appear here..."
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
           />
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is CSS Minification?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is CSS Minification?</h2>
         <p className="mb-3">
           CSS minification removes unnecessary whitespace, comments, and formatting from CSS
           code to reduce file size. Smaller CSS files load faster, improving website performance
           and Core Web Vitals scores.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">When to beautify CSS?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to beautify CSS?</h2>
         <p>
           Beautifying (formatting) CSS adds proper indentation and line breaks, making the code
           easier to read and maintain. Use it when debugging or reviewing minified stylesheets.

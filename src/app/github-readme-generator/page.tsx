@@ -129,83 +129,83 @@ export default function GithubReadmeGenerator() {
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Form */}
         <div className="space-y-4">
-          <h3 className="font-semibold text-gray-900">Profile Info</h3>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100">Profile Info</h3>
 
           <div>
-            <label className="mb-1 block text-sm text-gray-600">Name</label>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Name</label>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-gray-600">Subtitle</label>
-            <input type="text" value={subtitle} onChange={(e) => setSubtitle(e.target.value)} placeholder="Full Stack Developer | Open Source Enthusiast" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Subtitle</label>
+            <input type="text" value={subtitle} onChange={(e) => setSubtitle(e.target.value)} placeholder="Full Stack Developer | Open Source Enthusiast" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-gray-600">About</label>
-            <textarea value={about} onChange={(e) => setAbout(e.target.value)} rows={2} placeholder="A short bio about yourself..." className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">About</label>
+            <textarea value={about} onChange={(e) => setAbout(e.target.value)} rows={2} placeholder="A short bio about yourself..." className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
 
-          <h3 className="font-semibold text-gray-900">Details</h3>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100">Details</h3>
           <div>
-            <label className="mb-1 block text-sm text-gray-600">Currently working on</label>
-            <input type="text" value={currentWork} onChange={(e) => setCurrentWork(e.target.value)} placeholder="My awesome project" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Currently working on</label>
+            <input type="text" value={currentWork} onChange={(e) => setCurrentWork(e.target.value)} placeholder="My awesome project" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-gray-600">Currently learning</label>
-            <input type="text" value={learning} onChange={(e) => setLearning(e.target.value)} placeholder="Rust, Kubernetes" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Currently learning</label>
+            <input type="text" value={learning} onChange={(e) => setLearning(e.target.value)} placeholder="Rust, Kubernetes" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-gray-600">Looking to collaborate on</label>
-            <input type="text" value={collaborate} onChange={(e) => setCollaborate(e.target.value)} placeholder="Open source projects" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Looking to collaborate on</label>
+            <input type="text" value={collaborate} onChange={(e) => setCollaborate(e.target.value)} placeholder="Open source projects" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-gray-600">Contact</label>
-            <input type="text" value={contact} onChange={(e) => setContact(e.target.value)} placeholder="john@example.com" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Contact</label>
+            <input type="text" value={contact} onChange={(e) => setContact(e.target.value)} placeholder="john@example.com" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-gray-600">Fun fact</label>
-            <input type="text" value={funFact} onChange={(e) => setFunFact(e.target.value)} placeholder="I love coffee ☕" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Fun fact</label>
+            <input type="text" value={funFact} onChange={(e) => setFunFact(e.target.value)} placeholder="I love coffee ☕" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
 
-          <h3 className="font-semibold text-gray-900">Social Links</h3>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100">Social Links</h3>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-sm text-gray-600">GitHub username</label>
-              <input type="text" value={github} onChange={(e) => setGithub(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+              <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">GitHub username</label>
+              <input type="text" value={github} onChange={(e) => setGithub(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
             </div>
             <div>
-              <label className="mb-1 block text-sm text-gray-600">Twitter/X handle</label>
-              <input type="text" value={twitter} onChange={(e) => setTwitter(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+              <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Twitter/X handle</label>
+              <input type="text" value={twitter} onChange={(e) => setTwitter(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
             </div>
             <div>
-              <label className="mb-1 block text-sm text-gray-600">LinkedIn username</label>
-              <input type="text" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+              <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">LinkedIn username</label>
+              <input type="text" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} placeholder="johndoe" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
             </div>
             <div>
-              <label className="mb-1 block text-sm text-gray-600">Website URL</label>
-              <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://example.com" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+              <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">Website URL</label>
+              <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://example.com" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
             </div>
           </div>
 
-          <h3 className="font-semibold text-gray-900">Languages & Tools</h3>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100">Languages & Tools</h3>
           <div>
-            <label className="mb-1 block text-sm text-gray-600">
+            <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">
               Comma-separated (e.g. JavaScript, React, Python)
             </label>
-            <input type="text" value={languages} onChange={(e) => setLanguages(e.target.value)} placeholder="JavaScript, TypeScript, React, Node.js, Python" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" />
+            <input type="text" value={languages} onChange={(e) => setLanguages(e.target.value)} placeholder="JavaScript, TypeScript, React, Node.js, Python" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none" />
           </div>
 
-          <h3 className="font-semibold text-gray-900">GitHub Stats</h3>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100">GitHub Stats</h3>
           <div className="flex flex-wrap gap-4">
-            <label className="flex items-center gap-1.5 text-sm text-gray-600">
-              <input type="checkbox" checked={showStats} onChange={(e) => setShowStats(e.target.checked)} className="rounded border-gray-300" />
+            <label className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
+              <input type="checkbox" checked={showStats} onChange={(e) => setShowStats(e.target.checked)} className="rounded border-gray-300 dark:border-gray-600" />
               Stats card
             </label>
-            <label className="flex items-center gap-1.5 text-sm text-gray-600">
-              <input type="checkbox" checked={showStreak} onChange={(e) => setShowStreak(e.target.checked)} className="rounded border-gray-300" />
+            <label className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
+              <input type="checkbox" checked={showStreak} onChange={(e) => setShowStreak(e.target.checked)} className="rounded border-gray-300 dark:border-gray-600" />
               Streak stats
             </label>
-            <label className="flex items-center gap-1.5 text-sm text-gray-600">
-              <input type="checkbox" checked={showTopLangs} onChange={(e) => setShowTopLangs(e.target.checked)} className="rounded border-gray-300" />
+            <label className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
+              <input type="checkbox" checked={showTopLangs} onChange={(e) => setShowTopLangs(e.target.checked)} className="rounded border-gray-300 dark:border-gray-600" />
               Top languages
             </label>
           </div>
@@ -214,7 +214,7 @@ export default function GithubReadmeGenerator() {
         {/* Output */}
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Generated Markdown
             </label>
             <CopyButton text={markdown} />
@@ -223,15 +223,15 @@ export default function GithubReadmeGenerator() {
             value={markdown}
             readOnly
             rows={30}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm"
             spellCheck={false}
           />
         </div>
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is a GitHub Profile README?
         </h2>
         <p className="mb-3">
@@ -239,7 +239,7 @@ export default function GithubReadmeGenerator() {
           as your username) that appears on your GitHub profile page. It allows
           you to showcase your skills, projects, and personality using Markdown.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to set up your GitHub README
         </h2>
         <p>

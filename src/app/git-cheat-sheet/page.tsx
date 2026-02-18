@@ -246,7 +246,7 @@ export default function GitCheatSheet() {
       <div className="mb-4">
         <div className="relative">
           <svg
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -263,13 +263,13 @@ export default function GitCheatSheet() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search commands, descriptions, or examples..."
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 py-2.5 pl-10 pr-4 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 py-2.5 pl-10 pr-4 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             spellCheck={false}
           />
           {search && (
             <button
               onClick={() => setSearch("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:text-gray-400"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -278,7 +278,7 @@ export default function GitCheatSheet() {
           )}
         </div>
         <div className="mt-2 flex items-center justify-between">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             {search
               ? `${totalMatches} ${totalMatches === 1 ? "result" : "results"} found`
               : `${totalCommands} commands across ${sections.length} categories`}
@@ -286,14 +286,14 @@ export default function GitCheatSheet() {
           <div className="flex gap-2">
             <button
               onClick={expandAll}
-              className="text-xs text-blue-600 hover:text-blue-800"
+              className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:text-blue-200"
             >
               Expand all
             </button>
             <span className="text-xs text-gray-300">|</span>
             <button
               onClick={collapseAll}
-              className="text-xs text-blue-600 hover:text-blue-800"
+              className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:text-blue-200"
             >
               Collapse all
             </button>
@@ -303,7 +303,7 @@ export default function GitCheatSheet() {
 
       {/* No results */}
       {filteredSections.length === 0 && (
-        <div className="py-12 text-center text-gray-500">
+        <div className="py-12 text-center text-gray-500 dark:text-gray-400">
           <p className="text-lg font-medium">No commands found</p>
           <p className="mt-1 text-sm">Try a different search term</p>
         </div>
@@ -317,24 +317,24 @@ export default function GitCheatSheet() {
           return (
             <div
               key={section.title}
-              className="overflow-hidden rounded-lg border border-gray-200"
+              className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700"
             >
               {/* Section header */}
               <button
                 onClick={() => toggleSection(section.title)}
-                className="flex w-full items-center justify-between bg-gray-50 px-4 py-3 text-left transition-colors hover:bg-gray-100"
+                className="flex w-full items-center justify-between bg-gray-50 dark:bg-gray-950 px-4 py-3 text-left transition-colors hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
               >
                 <div className="flex items-center gap-2">
-                  <h2 className="text-sm font-semibold text-gray-900">
+                  <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                     {section.title}
                   </h2>
-                  <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700">
+                  <span className="rounded-full bg-blue-100 dark:bg-blue-900 px-2 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300">
                     {section.entries.length}
                   </span>
                 </div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className={`h-4 w-4 text-gray-400 transition-transform ${
+                  className={`h-4 w-4 text-gray-400 dark:text-gray-500 transition-transform ${
                     isExpanded ? "rotate-180" : ""
                   }`}
                   fill="none"
@@ -357,46 +357,46 @@ export default function GitCheatSheet() {
                   <div className="hidden sm:block">
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="border-t border-gray-200 bg-gray-50/50">
-                          <th className="px-4 py-2 text-left font-medium text-gray-600">
+                        <tr className="border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950/50">
+                          <th className="px-4 py-2 text-left font-medium text-gray-600 dark:text-gray-400">
                             Command
                           </th>
-                          <th className="px-4 py-2 text-left font-medium text-gray-600">
+                          <th className="px-4 py-2 text-left font-medium text-gray-600 dark:text-gray-400">
                             Description
                           </th>
-                          <th className="px-4 py-2 text-left font-medium text-gray-600">
+                          <th className="px-4 py-2 text-left font-medium text-gray-600 dark:text-gray-400">
                             Example
                           </th>
                           <th className="w-16 px-4 py-2"></th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-gray-100">
+                      <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                         {section.entries.map((entry, idx) => (
                           <tr
                             key={idx}
-                            className="group transition-colors hover:bg-blue-50/50"
+                            className="group transition-colors hover:bg-blue-50 dark:bg-blue-950 dark:hover:bg-blue-950/50"
                           >
                             <td className="px-4 py-2.5">
-                              <code className="rounded bg-blue-50 px-2 py-0.5 font-mono text-sm font-medium text-blue-600">
+                              <code className="rounded bg-blue-50 dark:bg-blue-950 px-2 py-0.5 font-mono text-sm font-medium text-blue-600 dark:text-blue-400">
                                 {entry.command}
                               </code>
                             </td>
-                            <td className="px-4 py-2.5 text-gray-700">
+                            <td className="px-4 py-2.5 text-gray-700 dark:text-gray-300">
                               {entry.description}
                             </td>
                             <td className="px-4 py-2.5">
-                              <code className="font-mono text-xs text-gray-500">
+                              <code className="font-mono text-xs text-gray-500 dark:text-gray-400">
                                 {entry.example}
                               </code>
                             </td>
                             <td className="px-4 py-2.5">
                               <button
                                 onClick={() => handleCopy(entry.command)}
-                                className="rounded px-2 py-1 text-xs text-gray-400 opacity-0 transition-all hover:bg-blue-100 hover:text-blue-600 group-hover:opacity-100"
+                                className="rounded px-2 py-1 text-xs text-gray-400 dark:text-gray-500 opacity-0 transition-all hover:bg-blue-100 dark:bg-blue-900 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-400 group-hover:opacity-100"
                                 title="Copy command"
                               >
                                 {copiedCommand === entry.command ? (
-                                  <span className="text-green-600">Copied!</span>
+                                  <span className="text-green-600 dark:text-green-400">Copied!</span>
                                 ) : (
                                   "Copy"
                                 )}
@@ -409,28 +409,28 @@ export default function GitCheatSheet() {
                   </div>
 
                   {/* Mobile cards */}
-                  <div className="divide-y divide-gray-100 sm:hidden">
+                  <div className="divide-y divide-gray-100 dark:divide-gray-800 sm:hidden">
                     {section.entries.map((entry, idx) => (
                       <div key={idx} className="px-4 py-3">
                         <div className="flex items-start justify-between gap-2">
-                          <code className="rounded bg-blue-50 px-2 py-0.5 font-mono text-sm font-medium text-blue-600">
+                          <code className="rounded bg-blue-50 dark:bg-blue-950 px-2 py-0.5 font-mono text-sm font-medium text-blue-600 dark:text-blue-400">
                             {entry.command}
                           </code>
                           <button
                             onClick={() => handleCopy(entry.command)}
-                            className="shrink-0 rounded px-2 py-1 text-xs text-gray-400 hover:bg-blue-100 hover:text-blue-600"
+                            className="shrink-0 rounded px-2 py-1 text-xs text-gray-400 dark:text-gray-500 hover:bg-blue-100 dark:bg-blue-900 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-400"
                           >
                             {copiedCommand === entry.command ? (
-                              <span className="text-green-600">Copied!</span>
+                              <span className="text-green-600 dark:text-green-400">Copied!</span>
                             ) : (
                               "Copy"
                             )}
                           </button>
                         </div>
-                        <p className="mt-1.5 text-sm text-gray-700">
+                        <p className="mt-1.5 text-sm text-gray-700 dark:text-gray-300">
                           {entry.description}
                         </p>
-                        <code className="mt-1 block font-mono text-xs text-gray-500">
+                        <code className="mt-1 block font-mono text-xs text-gray-500 dark:text-gray-400">
                           {entry.example}
                         </code>
                       </div>
@@ -444,8 +444,8 @@ export default function GitCheatSheet() {
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What Is Git?
         </h2>
         <p className="mb-3">
@@ -456,7 +456,7 @@ export default function GitCheatSheet() {
           and Bitbucket.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to Use This Git Cheat Sheet
         </h2>
         <p className="mb-3">
@@ -467,22 +467,22 @@ export default function GitCheatSheet() {
           commands you need.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Git Workflow Basics
         </h2>
         <p className="mb-3">
           A typical Git workflow involves creating a branch for a new feature
-          (<code className="rounded bg-gray-100 px-1 font-mono">git checkout -b feature</code>),
+          (<code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">git checkout -b feature</code>),
           making changes, staging them
-          (<code className="rounded bg-gray-100 px-1 font-mono">git add .</code>),
+          (<code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">git add .</code>),
           committing
-          (<code className="rounded bg-gray-100 px-1 font-mono">git commit -m &quot;message&quot;</code>),
+          (<code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">git commit -m &quot;message&quot;</code>),
           pushing to a remote
-          (<code className="rounded bg-gray-100 px-1 font-mono">git push</code>),
+          (<code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">git push</code>),
           and then creating a pull request to merge your changes back into the main branch.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Git Branching Strategies
         </h2>
         <p className="mb-3">
@@ -493,7 +493,7 @@ export default function GitCheatSheet() {
           team size and release cadence.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Tips for Using Git Effectively
         </h2>
         <ul className="mb-3 list-disc space-y-1 pl-5">
@@ -501,10 +501,10 @@ export default function GitCheatSheet() {
           <li>Commit early and commit often &mdash; small commits are easier to review and revert.</li>
           <li>Use branches for every feature, bugfix, or experiment.</li>
           <li>Pull frequently to stay up to date and reduce merge conflicts.</li>
-          <li>Use <code className="rounded bg-gray-100 px-1 font-mono">git stash</code> to save work in progress before switching branches.</li>
-          <li>Always review changes with <code className="rounded bg-gray-100 px-1 font-mono">git diff</code> before committing.</li>
-          <li>Use <code className="rounded bg-gray-100 px-1 font-mono">.gitignore</code> to exclude build artifacts, dependencies, and sensitive files.</li>
-          <li>Learn <code className="rounded bg-gray-100 px-1 font-mono">git reflog</code> &mdash; it can save you when things go wrong.</li>
+          <li>Use <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">git stash</code> to save work in progress before switching branches.</li>
+          <li>Always review changes with <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">git diff</code> before committing.</li>
+          <li>Use <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">.gitignore</code> to exclude build artifacts, dependencies, and sensitive files.</li>
+          <li>Learn <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">git reflog</code> &mdash; it can save you when things go wrong.</li>
         </ul>
       </div>
     </ToolLayout>

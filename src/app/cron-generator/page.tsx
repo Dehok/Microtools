@@ -86,13 +86,13 @@ export default function CronGenerator() {
       relatedTools={["epoch-converter", "json-formatter", "uuid-generator"]}
     >
       {/* Cron display */}
-      <div className="mb-4 rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
-        <div className="mb-1 text-sm text-blue-600 font-medium">Cron Expression</div>
+      <div className="mb-4 rounded-lg border border-blue-100 bg-blue-50 dark:bg-blue-950 p-4 text-center">
+        <div className="mb-1 text-sm text-blue-600 dark:text-blue-400 font-medium">Cron Expression</div>
         <div className="flex items-center justify-center gap-2">
-          <code className="text-2xl font-bold font-mono text-blue-800">{cron}</code>
+          <code className="text-2xl font-bold font-mono text-blue-800 dark:text-blue-200">{cron}</code>
           <CopyButton text={cron} />
         </div>
-        <div className="mt-2 text-sm text-blue-600">{description}</div>
+        <div className="mt-2 text-sm text-blue-600 dark:text-blue-400">{description}</div>
       </div>
 
       {/* Fields */}
@@ -105,20 +105,20 @@ export default function CronGenerator() {
           { label: "Day (week)", value: dow, set: setDow, hint: "0-6 (Sun=0)" },
         ].map((field) => (
           <div key={field.label}>
-            <label className="mb-1 block text-xs font-medium text-gray-700">{field.label}</label>
+            <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">{field.label}</label>
             <input
               type="text"
               value={field.value}
               onChange={(e) => field.set(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-center font-mono text-sm focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1.5 text-center font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
-            <div className="mt-0.5 text-center text-xs text-gray-400">{field.hint}</div>
+            <div className="mt-0.5 text-center text-xs text-gray-400 dark:text-gray-500">{field.hint}</div>
           </div>
         ))}
       </div>
 
       {/* Presets */}
-      <h3 className="mb-2 text-sm font-semibold text-gray-900">Quick Presets</h3>
+      <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Quick Presets</h3>
       <div className="mb-4 flex flex-wrap gap-2">
         {PRESETS.map((p) => (
           <button
@@ -126,8 +126,8 @@ export default function CronGenerator() {
             onClick={() => applyPreset(p.cron)}
             className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
               cron === p.cron
-                ? "border-blue-300 bg-blue-50 text-blue-700"
-                : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+                ? "border-blue-300 bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+                : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             }`}
           >
             {p.label}
@@ -136,9 +136,9 @@ export default function CronGenerator() {
       </div>
 
       {/* Syntax reference */}
-      <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm">
-        <h3 className="mb-2 font-semibold text-gray-900">Syntax Reference</h3>
-        <div className="grid grid-cols-2 gap-1 font-mono text-xs text-gray-600 sm:grid-cols-3">
+      <div className="mt-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4 text-sm">
+        <h3 className="mb-2 font-semibold text-gray-900 dark:text-gray-100">Syntax Reference</h3>
+        <div className="grid grid-cols-2 gap-1 font-mono text-xs text-gray-600 dark:text-gray-400 sm:grid-cols-3">
           <span><strong>*</strong> — any value</span>
           <span><strong>5</strong> — exact value</span>
           <span><strong>1-5</strong> — range</span>
@@ -148,14 +148,14 @@ export default function CronGenerator() {
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is a Cron Expression?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is a Cron Expression?</h2>
         <p className="mb-3">
           A cron expression is a string of five fields that defines a schedule for running
           commands or scripts automatically. It is used in Unix/Linux cron jobs, CI/CD pipelines,
           cloud schedulers (AWS CloudWatch, Google Cloud Scheduler), and task automation.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Cron Format</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Cron Format</h2>
         <p>
           The five fields are: minute (0-59), hour (0-23), day of month (1-31), month (1-12),
           and day of week (0-6, where 0 is Sunday).

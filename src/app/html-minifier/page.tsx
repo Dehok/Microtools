@@ -188,7 +188,7 @@ export default function HTMLMinifier() {
         </button>
         <button
           onClick={handleBeautify}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Beautify
         </button>
@@ -197,7 +197,7 @@ export default function HTMLMinifier() {
         <select
           value={indentStyle}
           onChange={(e) => setIndentStyle(e.target.value as IndentStyle)}
-          className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 focus:border-blue-500 focus:outline-none"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           title="Indent style for Beautify"
         >
           <option value="2">2 spaces</option>
@@ -207,19 +207,19 @@ export default function HTMLMinifier() {
 
         <button
           onClick={handleClear}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
         <button
           onClick={handleSample}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Sample
         </button>
 
         {stats.saved > 0 && (
-          <span className="ml-auto text-sm font-medium text-green-600">
+          <span className="ml-auto text-sm font-medium text-green-600 dark:text-green-400">
             Saved {stats.saved} bytes ({stats.percent}%)
           </span>
         )}
@@ -227,16 +227,16 @@ export default function HTMLMinifier() {
 
       {/* Stats bar */}
       {(stats.orig > 0 || stats.out > 0) && (
-        <div className="mb-4 flex flex-wrap gap-4 rounded-lg bg-gray-50 px-4 py-2 text-sm text-gray-600">
+        <div className="mb-4 flex flex-wrap gap-4 rounded-lg bg-gray-50 dark:bg-gray-950 px-4 py-2 text-sm text-gray-600 dark:text-gray-400">
           <span>
-            Original: <strong className="text-gray-900">{stats.orig.toLocaleString()} chars</strong>
+            Original: <strong className="text-gray-900 dark:text-gray-100">{stats.orig.toLocaleString()} chars</strong>
           </span>
           <span>
-            Output: <strong className="text-gray-900">{stats.out.toLocaleString()} chars</strong>
+            Output: <strong className="text-gray-900 dark:text-gray-100">{stats.out.toLocaleString()} chars</strong>
           </span>
           {stats.saved > 0 && (
             <span>
-              Reduction: <strong className="text-green-700">{stats.percent}%</strong>
+              Reduction: <strong className="text-green-700 dark:text-green-300">{stats.percent}%</strong>
             </span>
           )}
           {stats.out > stats.orig && stats.orig > 0 && (
@@ -251,56 +251,56 @@ export default function HTMLMinifier() {
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Input HTML</label>
-            <span className="text-xs text-gray-400">{input.length} chars</span>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Input HTML</label>
+            <span className="text-xs text-gray-400 dark:text-gray-500">{input.length} chars</span>
           </div>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your HTML here..."
-            className="h-80 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-80 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Output</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Output</label>
             <CopyButton text={output} />
           </div>
           <textarea
             value={output}
             readOnly
             placeholder="Result will appear here..."
-            className="h-80 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+            className="h-80 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
             spellCheck={false}
           />
         </div>
       </div>
 
       {/* SEO content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is HTML Minification?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is HTML Minification?</h2>
         <p className="mb-3">
           HTML minification is the process of removing unnecessary characters from HTML source
           code without changing its functionality. This includes stripping whitespace, line
           breaks, comments, and other non-essential characters. The result is a smaller file
           that browsers download faster, directly improving page load time and Core Web Vitals scores.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What does this tool remove?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What does this tool remove?</h2>
         <p className="mb-3">
           The minifier removes HTML comments, collapses consecutive whitespace between tags,
           and trims leading/trailing spaces from each line. IE conditional comments
-          (<code className="rounded bg-gray-100 px-1 font-mono">{"<!--[if IE]>...<![endif]-->"}</code>)
+          (<code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">{"<!--[if IE]>...<![endif]-->"}</code>)
           are preserved since they affect browser behavior.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">When to use HTML Beautify?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to use HTML Beautify?</h2>
         <p className="mb-3">
           Beautifying HTML adds proper indentation and line breaks, making the markup much
           easier to read and maintain. It is useful when you receive a minified HTML file
           and need to understand or debug its structure. You can choose between 2-space,
           4-space, or tab indentation to match your coding style.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">How much can HTML be compressed?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How much can HTML be compressed?</h2>
         <p>
           Typical HTML files can be reduced by 10–30% through minification alone, depending
           on how much whitespace and how many comments the original file contains.

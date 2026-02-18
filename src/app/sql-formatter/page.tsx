@@ -90,31 +90,31 @@ export default function SqlFormatter() {
     >
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">SQL Input</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">SQL Input</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your SQL query here..."
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setInput(SAMPLE)}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Sample
             </button>
             <button
               onClick={() => setInput("")}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Clear
             </button>
             <select
               value={indentSize}
               onChange={(e) => setIndentSize(e.target.value)}
-              className="rounded-lg border border-gray-300 px-2 py-1.5 text-xs"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 px-2 py-1.5 text-xs"
             >
               <option value="  ">2 spaces</option>
               <option value="    ">4 spaces</option>
@@ -125,14 +125,14 @@ export default function SqlFormatter() {
 
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Formatted</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Formatted</label>
             <CopyButton text={formatted} />
           </div>
           <textarea
             value={formatted}
             readOnly
             placeholder="Formatted SQL will appear here..."
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs"
           />
         </div>
       </div>
@@ -141,22 +141,22 @@ export default function SqlFormatter() {
       {minified && (
         <div className="mt-4">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Minified</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Minified</label>
             <CopyButton text={minified} />
           </div>
-          <div className="mt-1 rounded-lg border border-gray-200 bg-gray-50 p-3 font-mono text-xs text-gray-700 break-all">
+          <div className="mt-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs text-gray-700 dark:text-gray-300 break-all">
             {minified}
           </div>
         </div>
       )}
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why Format SQL?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why Format SQL?</h2>
         <p className="mb-3">
           Formatted SQL is easier to read, debug, and maintain. Proper indentation highlights
           the query structure, making JOINs, WHERE clauses, and subqueries immediately visible.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">SQL Formatting Best Practices</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">SQL Formatting Best Practices</h2>
         <p>
           Place each major clause (SELECT, FROM, WHERE, JOIN) on its own line. Indent sub-clauses
           (AND, OR, ON). Use uppercase for SQL keywords. Align column lists and conditions for

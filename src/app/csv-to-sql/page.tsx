@@ -192,13 +192,13 @@ export default function CsvToSqlConverter() {
       <div className="mb-4 flex flex-wrap gap-2">
         <button
           onClick={() => setCsvInput(SAMPLE_CSV)}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 transition-colors"
         >
           Load Example
         </button>
         <button
           onClick={() => setCsvInput("")}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 transition-colors"
         >
           Clear
         </button>
@@ -207,22 +207,22 @@ export default function CsvToSqlConverter() {
       {/* Options */}
       <div className="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Table Name</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Table Name</label>
           <input
             type="text"
             value={tableName}
             onChange={(e) => setTableName(e.target.value)}
             placeholder="my_table"
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Delimiter</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Delimiter</label>
           <select
             value={delimiter}
             onChange={(e) => setDelimiter(e.target.value as DelimiterKey)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             <option value="comma">Comma ( , )</option>
             <option value="semicolon">Semicolon ( ; )</option>
@@ -232,11 +232,11 @@ export default function CsvToSqlConverter() {
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Quote Character</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Quote Character</label>
           <select
             value={quoteChar}
             onChange={(e) => setQuoteChar(e.target.value as QuoteChar)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             <option value="double">Double Quote ( " )</option>
             <option value="single">Single Quote ( &#39; )</option>
@@ -245,11 +245,11 @@ export default function CsvToSqlConverter() {
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Output Format</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Output Format</label>
           <select
             value={outputFormat}
             onChange={(e) => setOutputFormat(e.target.value as OutputFormat)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
             <option value="insert">INSERT Statements Only</option>
             <option value="create-insert">CREATE TABLE + INSERT</option>
@@ -263,9 +263,9 @@ export default function CsvToSqlConverter() {
             type="checkbox"
             checked={hasHeader}
             onChange={(e) => setHasHeader(e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400 focus:ring-blue-500"
           />
-          <label htmlFor="has-header" className="text-sm font-medium text-gray-700">
+          <label htmlFor="has-header" className="text-sm font-medium text-gray-700 dark:text-gray-300">
             First row is header
           </label>
         </div>
@@ -274,26 +274,26 @@ export default function CsvToSqlConverter() {
       {/* Input + Output */}
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">CSV Input</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">CSV Input</label>
           <textarea
             value={csvInput}
             onChange={(e) => setCsvInput(e.target.value)}
             placeholder={"id,name,age\n1,Alice,30\n2,Bob,25"}
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
 
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">SQL Output</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">SQL Output</label>
             <CopyButton text={result.sql} />
           </div>
           <textarea
             value={result.sql}
             readOnly
             placeholder="SQL will appear here..."
-            className="h-72 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs"
+            className="h-72 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs"
             spellCheck={false}
           />
         </div>
@@ -301,7 +301,7 @@ export default function CsvToSqlConverter() {
 
       {/* Error */}
       {result.error && (
-        <div className="mt-3 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mt-3 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {result.error}
         </div>
       )}
@@ -309,7 +309,7 @@ export default function CsvToSqlConverter() {
       {/* Column Preview */}
       {result.columns.length > 0 && (
         <div className="mt-4">
-          <h3 className="mb-2 text-sm font-semibold text-gray-700">
+          <h3 className="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
             Detected Columns &mdash; {result.rowCount} data row{result.rowCount !== 1 ? "s" : ""}
           </h3>
           <div className="flex flex-wrap gap-2">
@@ -318,10 +318,10 @@ export default function CsvToSqlConverter() {
                 key={col.name}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${
                   col.type === "INTEGER"
-                    ? "bg-blue-100 text-blue-800"
+                    ? "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
                     : col.type === "REAL"
-                    ? "bg-green-100 text-green-800"
-                    : "bg-gray-100 text-gray-700"
+                    ? "bg-green-100 dark:bg-green-900 text-green-800"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
                 }`}
               >
                 <span>{col.name}</span>
@@ -333,29 +333,29 @@ export default function CsvToSqlConverter() {
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">CSV to SQL Converter</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">CSV to SQL Converter</h2>
         <p className="mb-3">
           This tool converts CSV (Comma-Separated Values) data into SQL statements ready to use
           with any relational database such as MySQL, PostgreSQL, SQLite, or SQL Server. Paste
           your CSV, configure the options, and get INSERT and CREATE TABLE statements instantly
           without writing a single line of code.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Automatic Type Detection</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Automatic Type Detection</h2>
         <p className="mb-3">
           The converter inspects all values in each column and automatically assigns the most
           appropriate SQL data type. Columns containing only whole numbers are typed as INTEGER,
           columns with decimal numbers become REAL, and everything else defaults to TEXT. This
           saves time when creating database schemas from spreadsheet exports.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Supported Options</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Supported Options</h2>
         <p className="mb-3">
           You can choose from four delimiters (comma, semicolon, tab, pipe) to match your file
           format. Fields wrapped in double or single quotes are correctly parsed, including
           quoted fields that contain the delimiter character. Single quotes inside string values
           are automatically escaped by doubling them (the standard SQL escaping method).
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Output Formats</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Output Formats</h2>
         <p>
           Choose between three output modes: INSERT only (for inserting data into an existing
           table), CREATE TABLE + INSERT (generates both the schema and the data), or CREATE

@@ -84,7 +84,7 @@ export default function ColorPicker() {
         <div>
           {/* Native color picker */}
           <div className="mb-4">
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
               Pick a color
             </label>
             <div className="flex items-center gap-3">
@@ -92,10 +92,10 @@ export default function ColorPicker() {
                 type="color"
                 value={hex}
                 onChange={handleColorInput}
-                className="h-12 w-20 cursor-pointer rounded border border-gray-300"
+                className="h-12 w-20 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
               />
               <div
-                className="h-12 flex-1 rounded-lg border border-gray-200"
+                className="h-12 flex-1 rounded-lg border border-gray-200 dark:border-gray-700"
                 style={{ backgroundColor: hex }}
               />
             </div>
@@ -103,7 +103,7 @@ export default function ColorPicker() {
 
           {/* HEX input */}
           <div className="mb-3">
-            <label className="mb-1 block text-sm font-medium text-gray-700">HEX</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">HEX</label>
             <div className="flex gap-2">
               <input
                 type="text"
@@ -114,7 +114,7 @@ export default function ColorPicker() {
                   const rgb = hexToRgb(val);
                   if (rgb) { setR(rgb.r); setG(rgb.g); setB(rgb.b); }
                 }}
-                className="w-full rounded-md border border-gray-300 px-3 py-1.5 font-mono text-sm focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-1.5 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                 maxLength={7}
               />
               <CopyButton text={hexString} />
@@ -123,7 +123,7 @@ export default function ColorPicker() {
 
           {/* RGB inputs */}
           <div className="mb-3">
-            <label className="mb-1 block text-sm font-medium text-gray-700">RGB</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">RGB</label>
             <div className="flex gap-2">
               {[
                 { label: "R", value: r, set: (v: number) => updateFromRgb(v, g, b) },
@@ -131,14 +131,14 @@ export default function ColorPicker() {
                 { label: "B", value: b, set: (v: number) => updateFromRgb(r, g, v) },
               ].map((ch) => (
                 <div key={ch.label} className="flex-1">
-                  <span className="text-xs text-gray-400">{ch.label}</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">{ch.label}</span>
                   <input
                     type="number"
                     min={0}
                     max={255}
                     value={ch.value}
                     onChange={(e) => ch.set(Math.min(255, Math.max(0, Number(e.target.value))))}
-                    className="w-full rounded-md border border-gray-300 px-2 py-1.5 font-mono text-sm focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1.5 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                   />
                 </div>
               ))}
@@ -151,7 +151,7 @@ export default function ColorPicker() {
 
         {/* Right: values */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-gray-900">CSS Values</h3>
+          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">CSS Values</h3>
           <div className="space-y-2">
             {[
               { label: "HEX", value: hexString },
@@ -160,10 +160,10 @@ export default function ColorPicker() {
             ].map((row) => (
               <div
                 key={row.label}
-                className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-3 py-2"
+                className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 px-3 py-2"
               >
-                <span className="text-xs font-semibold text-gray-500 w-10">{row.label}</span>
-                <code className="select-all font-mono text-sm text-gray-800">
+                <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 w-10">{row.label}</span>
+                <code className="select-all font-mono text-sm text-gray-800 dark:text-gray-200">
                   {row.value}
                 </code>
                 <CopyButton text={row.value} />
@@ -172,7 +172,7 @@ export default function ColorPicker() {
           </div>
 
           {/* Color preview swatches */}
-          <h3 className="mb-2 mt-6 text-sm font-semibold text-gray-900">
+          <h3 className="mb-2 mt-6 text-sm font-semibold text-gray-900 dark:text-gray-100">
             Shades
           </h3>
           <div className="flex gap-1 overflow-hidden rounded-lg">
@@ -186,7 +186,7 @@ export default function ColorPicker() {
             ))}
           </div>
 
-          <h3 className="mb-2 mt-4 text-sm font-semibold text-gray-900">
+          <h3 className="mb-2 mt-4 text-sm font-semibold text-gray-900 dark:text-gray-100">
             With black & white text
           </h3>
           <div className="grid grid-cols-2 gap-2">
@@ -207,14 +207,14 @@ export default function ColorPicker() {
       </div>
 
       {/* SEO */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is a Color Picker?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is a Color Picker?</h2>
         <p className="mb-3">
           A color picker lets you select colors visually and get their values in different
           formats (HEX, RGB, HSL). These values can be used directly in CSS, design tools,
           and image editors.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">HEX vs RGB vs HSL</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">HEX vs RGB vs HSL</h2>
         <p>
           <strong>HEX</strong> is the most common format in web design (#FF5733).
           <strong> RGB</strong> defines colors by red, green, and blue components (0-255).

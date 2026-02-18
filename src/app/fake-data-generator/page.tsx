@@ -270,20 +270,20 @@ export default function FakeDataGenerator() {
     >
       {/* Field selection */}
       <div className="mb-4">
-        <label className="mb-2 block text-sm font-medium text-gray-700">
+        <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
           Select fields to generate:
         </label>
         <div className="flex flex-wrap gap-3">
           {FIELD_OPTIONS.map((field) => (
             <label
               key={field.key}
-              className="flex items-center gap-1.5 text-sm text-gray-600"
+              className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400"
             >
               <input
                 type="checkbox"
                 checked={selectedFields.has(field.key)}
                 onChange={() => toggleField(field.key)}
-                className="rounded border-gray-300"
+                className="rounded border-gray-300 dark:border-gray-600"
               />
               {field.label}
             </label>
@@ -294,7 +294,7 @@ export default function FakeDataGenerator() {
       {/* Count + format */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Rows:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Rows:</label>
           <input
             type="number"
             min={1}
@@ -303,15 +303,15 @@ export default function FakeDataGenerator() {
             onChange={(e) =>
               setCount(Math.max(1, Math.min(100, Number(e.target.value))))
             }
-            className="w-20 rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="w-20 rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           />
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Format:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Format:</label>
           <select
             value={format}
             onChange={(e) => setFormat(e.target.value as "json" | "csv")}
-            className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           >
             <option value="json">JSON</option>
             <option value="csv">CSV</option>
@@ -333,9 +333,9 @@ export default function FakeDataGenerator() {
 
       {/* Table preview */}
       {rows.length > 0 && (
-        <div className="mb-4 overflow-x-auto rounded-lg border border-gray-300">
+        <div className="mb-4 overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600">
           <table className="w-full text-left text-sm">
-            <thead className="bg-gray-100 text-xs uppercase text-gray-600">
+            <thead className="bg-gray-100 dark:bg-gray-800 text-xs uppercase text-gray-600 dark:text-gray-400">
               <tr>
                 <th className="px-3 py-2 font-medium">#</th>
                 {headers.map((h) => (
@@ -345,10 +345,10 @@ export default function FakeDataGenerator() {
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {rows.map((row, i) => (
-                <tr key={i} className="hover:bg-gray-50">
-                  <td className="px-3 py-2 text-gray-400">{i + 1}</td>
+                <tr key={i} className="hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800">
+                  <td className="px-3 py-2 text-gray-400 dark:text-gray-500">{i + 1}</td>
                   {headers.map((h) => (
                     <td key={h} className="px-3 py-2 whitespace-nowrap">
                       {row[h]}
@@ -364,20 +364,20 @@ export default function FakeDataGenerator() {
       {/* Raw output */}
       {rawOutput && (
         <div className="mb-4">
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Raw Output ({format.toUpperCase()})
           </label>
           <textarea
             value={rawOutput}
             readOnly
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs"
           />
         </div>
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is Fake Data?
         </h2>
         <p className="mb-3">
@@ -386,7 +386,7 @@ export default function FakeDataGenerator() {
           applications, and prototype user interfaces without using real personal
           information.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Why Use a Fake Data Generator?
         </h2>
         <p className="mb-3">
@@ -395,7 +395,7 @@ export default function FakeDataGenerator() {
           emails, addresses, and other fields without relying on production data or
           external APIs.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Features
         </h2>
         <ul className="list-disc pl-5 space-y-1">

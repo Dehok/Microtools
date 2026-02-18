@@ -39,11 +39,11 @@ export default function UuidGenerator() {
       {/* Options */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Count:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Count:</label>
           <select
             value={count}
             onChange={(e) => setCount(Number(e.target.value))}
-            className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           >
             {[1, 5, 10, 25, 50, 100].map((n) => (
               <option key={n} value={n}>
@@ -52,21 +52,21 @@ export default function UuidGenerator() {
             ))}
           </select>
         </div>
-        <label className="flex items-center gap-1.5 text-sm text-gray-600">
+        <label className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
           <input
             type="checkbox"
             checked={uppercase}
             onChange={(e) => setUppercase(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Uppercase
         </label>
-        <label className="flex items-center gap-1.5 text-sm text-gray-600">
+        <label className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
           <input
             type="checkbox"
             checked={noDashes}
             onChange={(e) => setNoDashes(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           No dashes
         </label>
@@ -84,11 +84,11 @@ export default function UuidGenerator() {
       </div>
 
       {/* Results */}
-      <div className="rounded-lg border border-gray-300 bg-gray-50 p-3">
+      <div className="rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3">
         {uuids.map((uuid, i) => (
           <div
             key={i}
-            className="flex items-center justify-between border-b border-gray-200 py-1.5 font-mono text-sm last:border-0"
+            className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 py-1.5 font-mono text-sm last:border-0"
           >
             <span className="select-all">{uuid}</span>
           </div>
@@ -96,8 +96,8 @@ export default function UuidGenerator() {
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is a UUID?
         </h2>
         <p className="mb-3">
@@ -105,7 +105,7 @@ export default function UuidGenerator() {
           uniquely identify objects in computer systems. UUID v4 is generated
           using random numbers and is the most commonly used version.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           UUID format
         </h2>
         <p>

@@ -78,9 +78,9 @@ export default function CSSGridGenerator() {
       <div className="mb-6 grid gap-4 sm:grid-cols-2">
         {/* Columns slider */}
         <div>
-          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
             Columns
-            <span className="font-mono text-gray-500">{columns}</span>
+            <span className="font-mono text-gray-500 dark:text-gray-400">{columns}</span>
           </label>
           <input
             type="range"
@@ -98,9 +98,9 @@ export default function CSSGridGenerator() {
 
         {/* Rows slider */}
         <div>
-          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
             Rows
-            <span className="font-mono text-gray-500">{rows}</span>
+            <span className="font-mono text-gray-500 dark:text-gray-400">{rows}</span>
           </label>
           <input
             type="range"
@@ -118,9 +118,9 @@ export default function CSSGridGenerator() {
 
         {/* Column Gap */}
         <div>
-          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
             Column Gap
-            <span className="font-mono text-gray-500">{columnGap}px</span>
+            <span className="font-mono text-gray-500 dark:text-gray-400">{columnGap}px</span>
           </label>
           <input
             type="range"
@@ -134,9 +134,9 @@ export default function CSSGridGenerator() {
 
         {/* Row Gap */}
         <div>
-          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700">
+          <label className="mb-1 flex items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
             Row Gap
-            <span className="font-mono text-gray-500">{rowGap}px</span>
+            <span className="font-mono text-gray-500 dark:text-gray-400">{rowGap}px</span>
           </label>
           <input
             type="range"
@@ -151,14 +151,14 @@ export default function CSSGridGenerator() {
 
       {/* Template Columns */}
       <div className="mb-4">
-        <label className="mb-1 block text-xs font-medium text-gray-700">
+        <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">
           grid-template-columns
         </label>
         <input
           type="text"
           value={templateColumns}
           onChange={(e) => setTemplateColumns(e.target.value)}
-          className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
           placeholder="e.g. 1fr 2fr 1fr"
         />
         <div className="mt-2 flex flex-wrap gap-2">
@@ -179,14 +179,14 @@ export default function CSSGridGenerator() {
 
       {/* Template Rows */}
       <div className="mb-4">
-        <label className="mb-1 block text-xs font-medium text-gray-700">
+        <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">
           grid-template-rows
         </label>
         <input
           type="text"
           value={templateRows}
           onChange={(e) => setTemplateRows(e.target.value)}
-          className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
           placeholder="e.g. auto 1fr auto"
         />
         <div className="mt-2 flex flex-wrap gap-2">
@@ -208,13 +208,13 @@ export default function CSSGridGenerator() {
       {/* Justify & Align */}
       <div className="mb-6 grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">
             justify-items
           </label>
           <select
             value={justifyItems}
             onChange={(e) => setJustifyItems(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
           >
             {JUSTIFY_OPTIONS.map((o) => (
               <option key={o} value={o}>
@@ -224,13 +224,13 @@ export default function CSSGridGenerator() {
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-700">
+          <label className="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">
             align-items
           </label>
           <select
             value={alignItems}
             onChange={(e) => setAlignItems(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
           >
             {ALIGN_OPTIONS.map((o) => (
               <option key={o} value={o}>
@@ -243,9 +243,9 @@ export default function CSSGridGenerator() {
 
       {/* Grid Preview */}
       <div className="mb-6">
-        <h3 className="mb-2 text-sm font-semibold text-gray-900">Preview</h3>
+        <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-gray-100">Preview</h3>
         <div
-          className="overflow-auto rounded-lg border border-gray-200 bg-gray-100 p-4"
+          className="overflow-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-4"
           style={{ minHeight: "200px" }}
         >
           <div
@@ -263,7 +263,7 @@ export default function CSSGridGenerator() {
             {Array.from({ length: totalCells }, (_, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center rounded-md border border-gray-300 text-sm font-semibold text-gray-700"
+                className="flex items-center justify-center rounded-md border border-gray-300 dark:border-gray-600 text-sm font-semibold text-gray-700 dark:text-gray-300"
                 style={{
                   minHeight: "48px",
                   minWidth: "48px",
@@ -280,17 +280,17 @@ export default function CSSGridGenerator() {
       {/* CSS Output */}
       <div className="mb-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">Generated CSS</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Generated CSS</label>
           <CopyButton text={css} />
         </div>
-        <pre className="mt-1 overflow-x-auto rounded-lg border border-gray-200 bg-gray-900 p-4 font-mono text-sm text-green-400">
+        <pre className="mt-1 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-900 p-4 font-mono text-sm text-green-400">
           {css}
         </pre>
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is CSS Grid?
         </h2>
         <p className="mb-3">
@@ -299,7 +299,7 @@ export default function CSSGridGenerator() {
           building complex page layouts. Unlike Flexbox which handles one axis at a time,
           Grid gives you full control over both horizontal and vertical placement.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Key Grid Properties
         </h2>
         <p className="mb-3">
@@ -309,7 +309,7 @@ export default function CSSGridGenerator() {
           space), <code>auto</code> for content-based sizing, or{" "}
           <code>minmax(min, max)</code> for responsive ranges.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Common Grid Patterns
         </h2>
         <p className="mb-3">
@@ -320,7 +320,7 @@ export default function CSSGridGenerator() {
           with <code>grid-template-columns: 200px 1fr 200px</code> for a classic
           header-sidebar-content-footer layout.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Grid vs Flexbox
         </h2>
         <p>

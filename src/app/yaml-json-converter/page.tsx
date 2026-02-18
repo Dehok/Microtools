@@ -188,7 +188,7 @@ export default function YamlJsonConverter() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "yaml-to-json"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           YAML → JSON
@@ -198,7 +198,7 @@ export default function YamlJsonConverter() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === "json-to-yaml"
               ? "bg-blue-600 text-white"
-              : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              : "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           }`}
         >
           JSON → YAML
@@ -207,20 +207,20 @@ export default function YamlJsonConverter() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             {mode === "yaml-to-json" ? "YAML Input" : "JSON Input"}
           </label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={mode === "yaml-to-json" ? "Paste YAML here..." : "Paste JSON here..."}
-            className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+            className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {mode === "yaml-to-json" ? "JSON Output" : "YAML Output"}
             </label>
             <CopyButton text={output} />
@@ -230,8 +230,8 @@ export default function YamlJsonConverter() {
             readOnly
             className={`h-64 w-full rounded-lg border p-3 font-mono text-xs ${
               error
-                ? "border-red-300 bg-red-50 text-red-700"
-                : "border-gray-300 bg-gray-50"
+                ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-300"
+                : "border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950"
             }`}
           />
         </div>
@@ -240,20 +240,20 @@ export default function YamlJsonConverter() {
       <div className="mt-4 flex gap-2">
         <button
           onClick={() => setInput("")}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">YAML vs JSON</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">YAML vs JSON</h2>
         <p className="mb-3">
           YAML (YAML Ain&apos;t Markup Language) uses indentation for structure and is more
           human-readable. JSON (JavaScript Object Notation) uses braces and brackets and is
           more widely supported by APIs and programming languages. Both represent the same data.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">When to Use Each</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to Use Each</h2>
         <p>
           Use YAML for configuration files (Docker Compose, Kubernetes, CI/CD pipelines).
           Use JSON for APIs, data exchange, and JavaScript/TypeScript code. Convert between

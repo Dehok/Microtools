@@ -125,8 +125,8 @@ export default function TextReverserPage() {
                 onClick={() => setMode(m.value)}
                 className={`text-left px-4 py-3 rounded-lg border-2 transition-all duration-150 ${
                   mode === m.value
-                    ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30 dark:border-blue-400"
-                    : "border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 bg-white dark:bg-gray-800"
+                    ? "border-blue-500 bg-blue-50 dark:bg-blue-950 dark:bg-blue-900/30 dark:border-blue-400"
+                    : "border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 dark:hover:border-blue-600 bg-white dark:bg-gray-900 dark:bg-gray-800"
                 }`}
               >
                 <div className={`text-sm font-semibold ${mode === m.value ? "text-blue-700 dark:text-blue-300" : "text-gray-800 dark:text-gray-200"}`}>
@@ -156,7 +156,7 @@ export default function TextReverserPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type or paste your text here..."
-              className="w-full h-52 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm font-mono resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-500"
+              className="w-full h-52 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm font-mono resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-500"
             />
             {/* Palindrome badge */}
             {input.trim().length > 0 && (
@@ -164,7 +164,7 @@ export default function TextReverserPage() {
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold w-fit ${
                   result.isPalindrome
                     ? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
-                    : "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:bg-gray-700 dark:text-gray-400"
                 }`}
               >
                 <span
@@ -191,14 +191,14 @@ export default function TextReverserPage() {
               value={result.output}
               readOnly
               placeholder="Reversed output will appear here..."
-              className="w-full h-52 px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-sm font-mono resize-y focus:outline-none cursor-default placeholder-gray-400 dark:placeholder-gray-500"
+              className="w-full h-52 px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-sm font-mono resize-y focus:outline-none cursor-default placeholder-gray-400 dark:placeholder-gray-500"
             />
             <div className="flex gap-2">
               <CopyButton text={result.output} />
               <button
                 onClick={handleSwap}
                 disabled={!result.output}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +218,7 @@ export default function TextReverserPage() {
               <button
                 onClick={() => setInput("")}
                 disabled={!input}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:bg-red-950 dark:hover:bg-red-950 hover:text-red-600 dark:text-red-400 dark:hover:bg-red-900/20 dark:hover:text-red-400 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 Clear
               </button>
@@ -241,7 +241,7 @@ export default function TextReverserPage() {
               <button
                 key={ex.label}
                 onClick={() => setInput(ex.value)}
-                className="px-3 py-1.5 rounded-full text-xs border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="px-3 py-1.5 rounded-full text-xs border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:border-blue-400 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-400 transition-colors"
               >
                 {ex.label}
               </button>

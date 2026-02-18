@@ -114,7 +114,7 @@ export default function ColorContrastChecker() {
       <div className="grid gap-6 md:grid-cols-2">
         {/* Text Color */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Text Color
           </label>
           <div className="flex items-center gap-3">
@@ -122,7 +122,7 @@ export default function ColorContrastChecker() {
               type="color"
               value={validTextHex ? textColor : "#000000"}
               onChange={handleTextColorPicker}
-              className="h-10 w-14 cursor-pointer rounded border border-gray-300"
+              className="h-10 w-14 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
             />
             <input
               type="text"
@@ -131,18 +131,18 @@ export default function ColorContrastChecker() {
               placeholder="#000000"
               maxLength={7}
               spellCheck={false}
-              className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
             <CopyButton text={textColor} />
           </div>
           {!validTextHex && textColor.length > 1 && (
-            <p className="mt-1 text-xs text-red-500">Invalid HEX color</p>
+            <p className="mt-1 text-xs text-red-500 dark:text-red-400">Invalid HEX color</p>
           )}
         </div>
 
         {/* Background Color */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Background Color
           </label>
           <div className="flex items-center gap-3">
@@ -150,7 +150,7 @@ export default function ColorContrastChecker() {
               type="color"
               value={validBgHex ? bgColor : "#FFFFFF"}
               onChange={handleBgColorPicker}
-              className="h-10 w-14 cursor-pointer rounded border border-gray-300"
+              className="h-10 w-14 cursor-pointer rounded border border-gray-300 dark:border-gray-600"
             />
             <input
               type="text"
@@ -159,12 +159,12 @@ export default function ColorContrastChecker() {
               placeholder="#FFFFFF"
               maxLength={7}
               spellCheck={false}
-              className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
             <CopyButton text={bgColor} />
           </div>
           {!validBgHex && bgColor.length > 1 && (
-            <p className="mt-1 text-xs text-red-500">Invalid HEX color</p>
+            <p className="mt-1 text-xs text-red-500 dark:text-red-400">Invalid HEX color</p>
           )}
         </div>
       </div>
@@ -173,7 +173,7 @@ export default function ColorContrastChecker() {
       <div className="mt-4 flex justify-center">
         <button
           onClick={handleSwap}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 active:bg-gray-100"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 active:bg-gray-100 dark:bg-gray-800 dark:active:bg-gray-800"
         >
           Swap Colors
         </button>
@@ -183,15 +183,15 @@ export default function ColorContrastChecker() {
       {contrastData && (
         <div className="mt-6">
           <div className="mb-4 text-center">
-            <p className="text-sm text-gray-500">Contrast Ratio</p>
-            <p className="text-5xl font-bold text-gray-900">
+            <p className="text-sm text-gray-500 dark:text-gray-400">Contrast Ratio</p>
+            <p className="text-5xl font-bold text-gray-900 dark:text-gray-100">
               {contrastData.ratio.toFixed(2)}
-              <span className="text-2xl text-gray-400">:1</span>
+              <span className="text-2xl text-gray-400 dark:text-gray-500">:1</span>
             </p>
           </div>
 
           {/* Live Preview */}
-          <div className="mb-6 overflow-hidden rounded-lg border border-gray-200">
+          <div className="mb-6 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
             <div
               className="p-6"
               style={{ backgroundColor: safeBgColor }}
@@ -227,23 +227,23 @@ export default function ColorContrastChecker() {
                 key={result.label}
                 className={`flex items-center justify-between rounded-lg border px-4 py-3 ${
                   result.pass
-                    ? "border-green-200 bg-green-50"
-                    : "border-red-200 bg-red-50"
+                    ? "border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950"
+                    : "border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950"
                 }`}
               >
                 <div>
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
                     {result.label}
                   </p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     Requires {result.requiredRatio}:1
                   </p>
                 </div>
                 <span
                   className={`rounded-full px-3 py-1 text-sm font-bold ${
                     result.pass
-                      ? "bg-green-100 text-green-700"
-                      : "bg-red-100 text-red-700"
+                      ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
+                      : "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300"
                   }`}
                 >
                   {result.pass ? "PASS" : "FAIL"}
@@ -255,8 +255,8 @@ export default function ColorContrastChecker() {
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is WCAG Color Contrast?
         </h2>
         <p className="mb-3">
@@ -267,7 +267,7 @@ export default function ColorContrastChecker() {
           21:1 (maximum contrast, black on white).
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           WCAG 2.1 Contrast Requirements
         </h2>
         <ul className="mb-3 list-inside list-disc space-y-1">
@@ -289,7 +289,7 @@ export default function ColorContrastChecker() {
           </li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How is Contrast Ratio Calculated?
         </h2>
         <p className="mb-3">
@@ -301,7 +301,7 @@ export default function ColorContrastChecker() {
           otherwise, raise ((value + 0.055) / 1.055) to the power of 2.4.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Why Accessibility Matters
         </h2>
         <p>

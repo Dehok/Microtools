@@ -27,20 +27,20 @@ export default function TextRepeater() {
       relatedTools={["lorem-ipsum-generator", "word-counter", "text-case-converter"]}
     >
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">Text to Repeat</label>
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Text to Repeat</label>
         <input
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Enter text..."
-          className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           spellCheck={false}
         />
       </div>
 
       <div className="mb-4 grid grid-cols-2 gap-4">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Repeat Count: {count}
           </label>
           <input
@@ -57,15 +57,15 @@ export default function TextRepeater() {
             max="1000"
             value={count}
             onChange={(e) => setCount(Math.max(1, Math.min(1000, parseInt(e.target.value) || 1)))}
-            className="mt-1 w-20 rounded-lg border border-gray-300 bg-gray-50 px-2 py-1 text-center text-sm"
+            className="mt-1 w-20 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-2 py-1 text-center text-sm"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Separator</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Separator</label>
           <select
             value={separator}
             onChange={(e) => setSeparator(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm"
           >
             <option value="newline">New Line</option>
             <option value="space">Space</option>
@@ -77,7 +77,7 @@ export default function TextRepeater() {
 
       <div>
         <div className="mb-1 flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Output ({output.length} chars)
           </label>
           <CopyButton text={output} />
@@ -85,18 +85,18 @@ export default function TextRepeater() {
         <textarea
           value={output}
           readOnly
-          className="h-48 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+          className="h-48 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
         />
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why Repeat Text?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why Repeat Text?</h2>
         <p className="mb-3">
           Text repetition is useful for generating test data, creating padding, building
           templates, stress-testing input fields, filling content areas in mockups, and
           generating bulk data for development purposes.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Use Cases</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Use Cases</h2>
         <p>
           Developers use text repetition to test input validation, UI overflow behavior,
           database field limits, and email template rendering. Designers use it to fill

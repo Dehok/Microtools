@@ -183,26 +183,26 @@ export default function MarkdownToHtml() {
         {/* Markdown Input */}
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Markdown Input</label>
-            <span className="text-xs text-gray-400">{markdown.length} chars</span>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Markdown Input</label>
+            <span className="text-xs text-gray-400 dark:text-gray-500">{markdown.length} chars</span>
           </div>
           <textarea
             value={markdown}
             onChange={(e) => setMarkdown(e.target.value)}
             placeholder="# Write your Markdown here&#10;&#10;Supports **bold**, *italic*, [links](url), `code`, lists, and more..."
-            className="h-[500px] w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none"
+            className="h-[500px] w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             spellCheck={false}
           />
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setMarkdown(SAMPLE)}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Load Sample
             </button>
             <button
               onClick={() => setMarkdown("")}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
             >
               Clear
             </button>
@@ -216,7 +216,7 @@ export default function MarkdownToHtml() {
               <button
                 onClick={() => setTab("html")}
                 className={`text-sm font-medium ${
-                  tab === "html" ? "text-blue-600" : "text-gray-400 hover:text-gray-600"
+                  tab === "html" ? "text-blue-600 dark:text-blue-400" : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:text-gray-400"
                 }`}
               >
                 HTML Code
@@ -224,7 +224,7 @@ export default function MarkdownToHtml() {
               <button
                 onClick={() => setTab("preview")}
                 className={`text-sm font-medium ${
-                  tab === "preview" ? "text-blue-600" : "text-gray-400 hover:text-gray-600"
+                  tab === "preview" ? "text-blue-600 dark:text-blue-400" : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:text-gray-400"
                 }`}
               >
                 Preview
@@ -237,11 +237,11 @@ export default function MarkdownToHtml() {
               value={html}
               readOnly
               placeholder="HTML output will appear here..."
-              className="h-[500px] w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs focus:outline-none"
+              className="h-[500px] w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs focus:outline-none"
             />
           ) : (
             <div
-              className="prose prose-sm h-[500px] max-w-none overflow-y-auto rounded-lg border border-gray-300 bg-white p-4"
+              className="prose prose-sm h-[500px] max-w-none overflow-y-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 p-4"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           )}
@@ -249,22 +249,22 @@ export default function MarkdownToHtml() {
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is Markdown?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is Markdown?</h2>
         <p className="mb-3">
           Markdown is a lightweight markup language created by John Gruber in 2004. It allows you to
           write formatted text using a plain-text syntax that is easy to read and write. Markdown is
           widely used for README files, documentation, blogs, forums, and messaging applications.
           Files typically use the <strong>.md</strong> or <strong>.markdown</strong> extension.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Why Convert Markdown to HTML?</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why Convert Markdown to HTML?</h2>
         <p className="mb-3">
           While Markdown is great for writing, browsers render HTML. Converting Markdown to HTML lets
           you use your content on websites, in emails, CMS platforms, or any environment that accepts
           HTML. This converter produces clean, semantic HTML without any inline styles or framework-specific
           classes, making it suitable for any project.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Supported Markdown Syntax</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Supported Markdown Syntax</h2>
         <p>
           This converter handles all common Markdown elements: headings (<strong>#</strong> through{" "}
           <strong>######</strong>), <strong>**bold**</strong>, <strong>*italic*</strong>,{" "}

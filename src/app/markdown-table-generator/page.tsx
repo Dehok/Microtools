@@ -96,16 +96,16 @@ export default function MarkdownTableGenerator() {
     >
       {/* Controls */}
       <div className="mb-4 flex flex-wrap gap-2">
-        <button onClick={addRow} className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50">
+        <button onClick={addRow} className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800">
           + Row
         </button>
-        <button onClick={removeRow} disabled={rows <= 2} className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-40">
+        <button onClick={removeRow} disabled={rows <= 2} className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 disabled:opacity-40">
           - Row
         </button>
-        <button onClick={addCol} className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50">
+        <button onClick={addCol} className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800">
           + Column
         </button>
-        <button onClick={removeCol} disabled={cols <= 1} className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-40">
+        <button onClick={removeCol} disabled={cols <= 1} className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 disabled:opacity-40">
           - Column
         </button>
       </div>
@@ -125,7 +125,7 @@ export default function MarkdownTableGenerator() {
                       next[c] = e.target.value as "left" | "center" | "right";
                       setAlignment(next);
                     }}
-                    className="w-full rounded border border-gray-200 px-1 py-0.5 text-[10px] text-gray-500"
+                    className="w-full rounded border border-gray-200 dark:border-gray-700 px-1 py-0.5 text-[10px] text-gray-500 dark:text-gray-400"
                   >
                     <option value="left">Left</option>
                     <option value="center">Center</option>
@@ -138,7 +138,7 @@ export default function MarkdownTableGenerator() {
           <tbody>
             {Array.from({ length: rows }, (_, r) => (
               <tr key={r}>
-                <td className="pr-1 text-center text-xs text-gray-400">
+                <td className="pr-1 text-center text-xs text-gray-400 dark:text-gray-500">
                   {r === 0 ? "H" : r}
                 </td>
                 {Array.from({ length: cols }, (_, c) => (
@@ -147,10 +147,10 @@ export default function MarkdownTableGenerator() {
                       type="text"
                       value={data[r]?.[c] || ""}
                       onChange={(e) => updateCell(r, c, e.target.value)}
-                      className={`w-full rounded border px-2 py-1 text-sm focus:border-blue-500 focus:outline-none ${
+                      className={`w-full rounded border px-2 py-1 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none ${
                         r === 0
-                          ? "border-blue-200 bg-blue-50 font-semibold"
-                          : "border-gray-200 bg-gray-50"
+                          ? "border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950 font-semibold"
+                          : "border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950"
                       }`}
                       placeholder={r === 0 ? `Header ${c + 1}` : ""}
                     />
@@ -165,22 +165,22 @@ export default function MarkdownTableGenerator() {
       {/* Markdown output */}
       <div>
         <div className="flex items-center justify-between mb-1">
-          <label className="text-sm font-medium text-gray-700">Markdown Output</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Markdown Output</label>
           <CopyButton text={markdown} />
         </div>
-        <pre className="rounded-lg border border-gray-200 bg-gray-50 p-3 font-mono text-xs overflow-x-auto">
+        <pre className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs overflow-x-auto">
           {markdown}
         </pre>
       </div>
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Markdown Table Syntax</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Markdown Table Syntax</h2>
         <p className="mb-3">
           Markdown tables use pipes (|) to separate columns and hyphens (-) to separate the header
           from data rows. Column alignment is set with colons: <code>:---</code> (left),
           <code> :---:</code> (center), <code>---:</code> (right).
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Where Tables Work</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Where Tables Work</h2>
         <p>
           Markdown tables are supported on GitHub, GitLab, Reddit, Stack Overflow, Notion,
           and most documentation tools. They are commonly used in README files, documentation,

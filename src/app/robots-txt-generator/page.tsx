@@ -178,21 +178,21 @@ export default function RobotsTxtGenerator() {
   const highlightedLines = useMemo(() => {
     return output.split("\n").map((line) => {
       if (line.startsWith("User-agent:")) {
-        return { text: line, color: "text-purple-600 font-semibold" };
+        return { text: line, color: "text-purple-600 dark:text-purple-400 font-semibold" };
       }
       if (line.startsWith("Allow:")) {
-        return { text: line, color: "text-green-600" };
+        return { text: line, color: "text-green-600 dark:text-green-400" };
       }
       if (line.startsWith("Disallow:")) {
-        return { text: line, color: "text-red-600" };
+        return { text: line, color: "text-red-600 dark:text-red-400" };
       }
       if (line.startsWith("Crawl-delay:")) {
-        return { text: line, color: "text-yellow-600" };
+        return { text: line, color: "text-yellow-600 dark:text-yellow-400" };
       }
       if (line.startsWith("Sitemap:")) {
-        return { text: line, color: "text-blue-600" };
+        return { text: line, color: "text-blue-600 dark:text-blue-400" };
       }
-      return { text: line, color: "text-gray-500" };
+      return { text: line, color: "text-gray-500 dark:text-gray-400" };
     });
   }, [output]);
 
@@ -204,7 +204,7 @@ export default function RobotsTxtGenerator() {
     >
       {/* Preset buttons */}
       <div className="mb-6">
-        <label className="mb-2 block text-sm font-medium text-gray-700">
+        <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
           Presets
         </label>
         <div className="flex flex-wrap gap-2">
@@ -232,7 +232,7 @@ export default function RobotsTxtGenerator() {
       {/* Global settings */}
       <div className="mb-6 grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Sitemap URL
           </label>
           <input
@@ -240,11 +240,11 @@ export default function RobotsTxtGenerator() {
             value={sitemapUrl}
             onChange={(e) => setSitemapUrl(e.target.value)}
             placeholder="https://example.com/sitemap.xml"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Crawl Delay (seconds)
           </label>
           <input
@@ -253,19 +253,19 @@ export default function RobotsTxtGenerator() {
             onChange={(e) => setCrawlDelay(e.target.value)}
             placeholder="e.g. 10"
             min="0"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           />
         </div>
       </div>
 
       {/* Bot rules */}
       <div className="mb-6">
-        <h3 className="mb-3 text-sm font-semibold text-gray-900">Bot Rules</h3>
+        <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">Bot Rules</h3>
         <div className="space-y-4">
           {bots.map((bot, botIndex) => (
             <div
               key={`${bot.name}-${botIndex}`}
-              className="rounded-lg border border-gray-300 p-4"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 p-4"
             >
               <div className="mb-3 flex items-center justify-between">
                 <label className="flex items-center gap-2">
@@ -275,9 +275,9 @@ export default function RobotsTxtGenerator() {
                     onChange={(e) =>
                       updateBot(botIndex, { enabled: e.target.checked })
                     }
-                    className="rounded border-gray-300"
+                    className="rounded border-gray-300 dark:border-gray-600"
                   />
-                  <span className="text-sm font-medium text-gray-900">
+                  <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
                     {bot.name === "*" ? "All Bots (*)" : bot.name}
                   </span>
                 </label>
@@ -286,7 +286,7 @@ export default function RobotsTxtGenerator() {
                     onClick={() =>
                       setBots((prev) => prev.filter((_, i) => i !== botIndex))
                     }
-                    className="text-sm text-red-500 hover:text-red-700"
+                    className="text-sm text-red-500 dark:text-red-400 hover:text-red-700 dark:text-red-300"
                   >
                     Remove
                   </button>
@@ -297,7 +297,7 @@ export default function RobotsTxtGenerator() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   {/* Allow paths */}
                   <div>
-                    <label className="mb-1 block text-sm text-gray-600">
+                    <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">
                       Allow paths
                     </label>
                     <div className="space-y-1">
@@ -306,14 +306,14 @@ export default function RobotsTxtGenerator() {
                           key={pathIndex}
                           className="flex items-center gap-1"
                         >
-                          <span className="flex-1 rounded border border-green-200 bg-green-50 px-2 py-1 font-mono text-xs text-green-700">
+                          <span className="flex-1 rounded border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950 px-2 py-1 font-mono text-xs text-green-700 dark:text-green-300">
                             {path}
                           </span>
                           <button
                             onClick={() =>
                               removeAllowPath(botIndex, pathIndex)
                             }
-                            className="rounded px-1.5 py-1 text-xs text-red-400 hover:bg-red-50 hover:text-red-600"
+                            className="rounded px-1.5 py-1 text-xs text-red-400 hover:bg-red-50 dark:bg-red-950 dark:hover:bg-red-950 hover:text-red-600 dark:text-red-400"
                           >
                             x
                           </button>
@@ -336,7 +336,7 @@ export default function RobotsTxtGenerator() {
                             if (e.key === "Enter") addAllowPath(botIndex);
                           }}
                           placeholder="/path"
-                          className="flex-1 rounded-lg border border-gray-300 px-2 py-1 font-mono text-xs focus:border-blue-500 focus:outline-none"
+                          className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-2 py-1 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                         />
                         <button
                           onClick={() => addAllowPath(botIndex)}
@@ -350,7 +350,7 @@ export default function RobotsTxtGenerator() {
 
                   {/* Disallow paths */}
                   <div>
-                    <label className="mb-1 block text-sm text-gray-600">
+                    <label className="mb-1 block text-sm text-gray-600 dark:text-gray-400">
                       Disallow paths
                     </label>
                     <div className="space-y-1">
@@ -359,14 +359,14 @@ export default function RobotsTxtGenerator() {
                           key={pathIndex}
                           className="flex items-center gap-1"
                         >
-                          <span className="flex-1 rounded border border-red-200 bg-red-50 px-2 py-1 font-mono text-xs text-red-700">
+                          <span className="flex-1 rounded border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-2 py-1 font-mono text-xs text-red-700 dark:text-red-300">
                             {path}
                           </span>
                           <button
                             onClick={() =>
                               removeDisallowPath(botIndex, pathIndex)
                             }
-                            className="rounded px-1.5 py-1 text-xs text-red-400 hover:bg-red-50 hover:text-red-600"
+                            className="rounded px-1.5 py-1 text-xs text-red-400 hover:bg-red-50 dark:bg-red-950 dark:hover:bg-red-950 hover:text-red-600 dark:text-red-400"
                           >
                             x
                           </button>
@@ -390,7 +390,7 @@ export default function RobotsTxtGenerator() {
                               addDisallowPath(botIndex);
                           }}
                           placeholder="/private"
-                          className="flex-1 rounded-lg border border-gray-300 px-2 py-1 font-mono text-xs focus:border-blue-500 focus:outline-none"
+                          className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-2 py-1 font-mono text-xs focus:border-blue-500 dark:border-blue-400 focus:outline-none"
                         />
                         <button
                           onClick={() => addDisallowPath(botIndex)}
@@ -411,15 +411,15 @@ export default function RobotsTxtGenerator() {
       {/* Output */}
       <div className="mb-2">
         <div className="mb-1 flex items-center justify-between">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Generated robots.txt
           </label>
           <CopyButton text={output} />
         </div>
-        <div className="overflow-x-auto rounded-lg border border-gray-300 bg-gray-900 p-4">
+        <div className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-900 p-4">
           <pre className="font-mono text-sm leading-relaxed">
             {highlightedLines.map((line, i) => (
-              <div key={i} className={line.color || "text-gray-500"}>
+              <div key={i} className={line.color || "text-gray-500 dark:text-gray-400"}>
                 {line.text || "\u00A0"}
               </div>
             ))}
@@ -428,8 +428,8 @@ export default function RobotsTxtGenerator() {
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is a robots.txt File?
         </h2>
         <p className="mb-3">
@@ -440,7 +440,7 @@ export default function RobotsTxtGenerator() {
           a standard used by all major search engines including Google, Bing,
           Yahoo, and others.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Why Do You Need a robots.txt?
         </h2>
         <p className="mb-3">
@@ -450,7 +450,7 @@ export default function RobotsTxtGenerator() {
           essential part of technical SEO and is one of the first files search
           engines look for when crawling your website.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to Use This Generator
         </h2>
         <p className="mb-3">
@@ -461,7 +461,7 @@ export default function RobotsTxtGenerator() {
           Once configured, copy the generated output and save it as
           &quot;robots.txt&quot; in the root directory of your website.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Blocking AI Crawlers
         </h2>
         <p>

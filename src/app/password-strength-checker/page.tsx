@@ -114,7 +114,7 @@ function analyzePassword(password: string): Analysis {
 
   if (len === 0) {
     label = "";
-    barColor = "bg-gray-200";
+    barColor = "bg-gray-200 dark:bg-gray-700";
     barWidth = "w-0";
   } else if (score < 20) {
     label = "Very Weak";
@@ -190,16 +190,16 @@ export default function PasswordStrengthChecker() {
 
   const scoreColor =
     analysis.score === 0
-      ? "text-gray-400"
+      ? "text-gray-400 dark:text-gray-500"
       : analysis.score < 20
-      ? "text-red-600"
+      ? "text-red-600 dark:text-red-400"
       : analysis.score < 40
-      ? "text-orange-600"
+      ? "text-orange-600 dark:text-orange-400"
       : analysis.score < 60
-      ? "text-yellow-600"
+      ? "text-yellow-600 dark:text-yellow-400"
       : analysis.score < 80
-      ? "text-blue-600"
-      : "text-green-600";
+      ? "text-blue-600 dark:text-blue-400"
+      : "text-green-600 dark:text-green-400";
 
   return (
     <ToolLayout
@@ -208,7 +208,7 @@ export default function PasswordStrengthChecker() {
       relatedTools={["password-generator", "hash-generator", "hmac-generator"]}
     >
       {/* Privacy notice */}
-      <div className="mb-5 flex items-start gap-2 rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-800">
+      <div className="mb-5 flex items-start gap-2 rounded-lg border border-blue-100 bg-blue-50 dark:bg-blue-950 px-4 py-3 text-sm text-blue-800 dark:text-blue-200">
         <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M10 1a9 9 0 100 18A9 9 0 0010 1zm.75 4.75a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5zm-.75 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
         </svg>
@@ -219,7 +219,7 @@ export default function PasswordStrengthChecker() {
 
       {/* Password input */}
       <div className="mb-6">
-        <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
           Enter your password
         </label>
         <div className="relative flex items-center">
@@ -228,7 +228,7 @@ export default function PasswordStrengthChecker() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Type or paste your password here..."
-            className="w-full rounded-lg border border-gray-300 bg-white py-3 pl-4 pr-24 font-mono text-base shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 py-3 pl-4 pr-24 font-mono text-base shadow-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200"
             autoComplete="off"
             spellCheck={false}
           />
@@ -236,7 +236,7 @@ export default function PasswordStrengthChecker() {
             <button
               type="button"
               onClick={() => setShowPassword((v) => !v)}
-              className="rounded-md border border-gray-200 bg-white px-2 py-1 text-xs font-medium text-gray-600 hover:bg-gray-50"
+              className="rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-2 py-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? "Hide" : "Show"}
@@ -251,7 +251,7 @@ export default function PasswordStrengthChecker() {
         <>
           <div className="mb-6">
             <div className="mb-2 flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700">Strength</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Strength</span>
               <div className="flex items-center gap-3">
                 <span className={`text-sm font-semibold ${scoreColor}`}>
                   {analysis.label}
@@ -261,7 +261,7 @@ export default function PasswordStrengthChecker() {
                 </span>
               </div>
             </div>
-            <div className="h-3 w-full overflow-hidden rounded-full bg-gray-200">
+            <div className="h-3 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
               <div
                 className={`h-3 rounded-full transition-all duration-500 ${analysis.barColor} ${analysis.barWidth}`}
               />
@@ -270,43 +270,43 @@ export default function PasswordStrengthChecker() {
 
           {/* Stats row */}
           <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-center">
-              <div className="text-xs text-gray-500">Length</div>
-              <div className="mt-0.5 text-xl font-bold text-gray-800">{password.length}</div>
-              <div className="text-xs text-gray-400">characters</div>
+            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 text-center">
+              <div className="text-xs text-gray-500 dark:text-gray-400">Length</div>
+              <div className="mt-0.5 text-xl font-bold text-gray-800 dark:text-gray-200">{password.length}</div>
+              <div className="text-xs text-gray-400 dark:text-gray-500">characters</div>
             </div>
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-center">
-              <div className="text-xs text-gray-500">Entropy</div>
-              <div className="mt-0.5 text-xl font-bold text-gray-800">
+            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 text-center">
+              <div className="text-xs text-gray-500 dark:text-gray-400">Entropy</div>
+              <div className="mt-0.5 text-xl font-bold text-gray-800 dark:text-gray-200">
                 {analysis.entropy < 1000
                   ? analysis.entropy.toFixed(1)
                   : ">1000"}
               </div>
-              <div className="text-xs text-gray-400">bits</div>
+              <div className="text-xs text-gray-400 dark:text-gray-500">bits</div>
             </div>
-            <div className="col-span-2 rounded-lg border border-gray-200 bg-gray-50 p-3 text-center sm:col-span-1">
-              <div className="text-xs text-gray-500">Est. crack time</div>
-              <div className="mt-0.5 text-sm font-bold text-gray-800">{analysis.crackTime}</div>
-              <div className="text-xs text-gray-400">at 10B guesses/sec</div>
+            <div className="col-span-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3 text-center sm:col-span-1">
+              <div className="text-xs text-gray-500 dark:text-gray-400">Est. crack time</div>
+              <div className="mt-0.5 text-sm font-bold text-gray-800 dark:text-gray-200">{analysis.crackTime}</div>
+              <div className="text-xs text-gray-400 dark:text-gray-500">at 10B guesses/sec</div>
             </div>
           </div>
 
           {/* Character composition */}
           <div className="mb-6">
-            <h3 className="mb-2 text-sm font-semibold text-gray-700">Character Composition</h3>
+            <h3 className="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Character Composition</h3>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               {[
-                { label: "Uppercase", value: analysis.composition.uppercase, color: "text-purple-600" },
-                { label: "Lowercase", value: analysis.composition.lowercase, color: "text-blue-600" },
-                { label: "Digits", value: analysis.composition.digits, color: "text-green-600" },
-                { label: "Symbols", value: analysis.composition.symbols, color: "text-orange-600" },
+                { label: "Uppercase", value: analysis.composition.uppercase, color: "text-purple-600 dark:text-purple-400" },
+                { label: "Lowercase", value: analysis.composition.lowercase, color: "text-blue-600 dark:text-blue-400" },
+                { label: "Digits", value: analysis.composition.digits, color: "text-green-600 dark:text-green-400" },
+                { label: "Symbols", value: analysis.composition.symbols, color: "text-orange-600 dark:text-orange-400" },
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-center"
+                  className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-center"
                 >
                   <div className={`text-2xl font-bold ${item.color}`}>{item.value}</div>
-                  <div className="text-xs text-gray-500">{item.label}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">{item.label}</div>
                 </div>
               ))}
             </div>
@@ -314,7 +314,7 @@ export default function PasswordStrengthChecker() {
 
           {/* Criteria checklist */}
           <div className="mb-6">
-            <h3 className="mb-2 text-sm font-semibold text-gray-700">Security Criteria</h3>
+            <h3 className="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Security Criteria</h3>
             <ul className="space-y-1.5">
               {analysis.criteria.map((c) => (
                 <li key={c.label} className="flex items-center gap-2 text-sm">
@@ -327,7 +327,7 @@ export default function PasswordStrengthChecker() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   )}
-                  <span className={c.passed ? "text-gray-700" : "text-gray-500"}>{c.label}</span>
+                  <span className={c.passed ? "text-gray-700 dark:text-gray-300" : "text-gray-500 dark:text-gray-400"}>{c.label}</span>
                 </li>
               ))}
             </ul>
@@ -352,7 +352,7 @@ export default function PasswordStrengthChecker() {
 
       {/* Empty state */}
       {!password && (
-        <div className="flex flex-col items-center py-10 text-center text-gray-400">
+        <div className="flex flex-col items-center py-10 text-center text-gray-400 dark:text-gray-500">
           <svg className="mb-3 h-10 w-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
@@ -361,8 +361,8 @@ export default function PasswordStrengthChecker() {
       )}
 
       {/* SEO section */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What makes a password strong?
         </h2>
         <p className="mb-3">
@@ -372,7 +372,7 @@ export default function PasswordStrengthChecker() {
           combinations exponentially.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How is password entropy calculated?
         </h2>
         <p className="mb-3">
@@ -382,7 +382,7 @@ export default function PasswordStrengthChecker() {
           secure password — aim for at least 60 bits for everyday accounts and 80+ bits for sensitive ones.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How is crack time estimated?
         </h2>
         <p className="mb-3">
@@ -393,7 +393,7 @@ export default function PasswordStrengthChecker() {
           relatively safe with rate limiting and lockouts.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Is my password safe to enter here?
         </h2>
         <p className="mb-3">
@@ -402,7 +402,7 @@ export default function PasswordStrengthChecker() {
           network tab in your browser's developer tools — no requests are made while you type.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Best practices for password security
         </h2>
         <ul className="mb-3 list-disc space-y-1 pl-5">

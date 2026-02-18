@@ -260,13 +260,13 @@ export default function TomlToJsonPage() {
       <div className="mb-4 flex gap-2">
         <button
           onClick={() => { setMode("toml-to-json"); setInput(""); }}
-          className={`rounded-lg px-4 py-2 text-sm font-medium transition ${mode === "toml-to-json" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+          className={`rounded-lg px-4 py-2 text-sm font-medium transition ${mode === "toml-to-json" ? "bg-blue-600 text-white" : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700"}`}
         >
           TOML → JSON
         </button>
         <button
           onClick={() => { setMode("json-to-toml"); setInput(""); }}
-          className={`rounded-lg px-4 py-2 text-sm font-medium transition ${mode === "json-to-toml" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+          className={`rounded-lg px-4 py-2 text-sm font-medium transition ${mode === "json-to-toml" ? "bg-blue-600 text-white" : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700"}`}
         >
           JSON → TOML
         </button>
@@ -274,13 +274,13 @@ export default function TomlToJsonPage() {
 
       {/* Action Buttons */}
       <div className="mb-4 flex gap-2">
-        <button onClick={loadExample} className="rounded-lg bg-gray-100 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-200">
+        <button onClick={loadExample} className="rounded-lg bg-gray-100 dark:bg-gray-800 px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700">
           Load Example
         </button>
-        <button onClick={swap} className="rounded-lg bg-gray-100 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-200" disabled={!result.value}>
+        <button onClick={swap} className="rounded-lg bg-gray-100 dark:bg-gray-800 px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700" disabled={!result.value}>
           ⇄ Swap
         </button>
-        <button onClick={() => setInput("")} className="rounded-lg bg-gray-100 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-200">
+        <button onClick={() => setInput("")} className="rounded-lg bg-gray-100 dark:bg-gray-800 px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:bg-gray-700">
           Clear
         </button>
       </div>
@@ -288,20 +288,20 @@ export default function TomlToJsonPage() {
       {/* Input/Output */}
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             {mode === "toml-to-json" ? "TOML Input" : "JSON Input"}
           </label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={mode === "toml-to-json" ? 'key = "value"\n[section]\nname = "test"' : '{\n  "key": "value"\n}'}
-            className="h-80 w-full rounded-lg border border-gray-300 p-3 font-mono text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="h-80 w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             spellCheck={false}
           />
         </div>
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {mode === "toml-to-json" ? "JSON Output" : "TOML Output"}
             </label>
             {result.value && <CopyButton text={result.value} />}
@@ -309,27 +309,27 @@ export default function TomlToJsonPage() {
           <textarea
             value={result.error || result.value}
             readOnly
-            className={`h-80 w-full rounded-lg border p-3 font-mono text-sm ${result.error ? "border-red-300 bg-red-50 text-red-600" : "border-gray-300 bg-gray-50 text-gray-800"}`}
+            className={`h-80 w-full rounded-lg border p-3 font-mono text-sm ${result.error ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950 text-red-600 dark:text-red-400" : "border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-200"}`}
             spellCheck={false}
           />
         </div>
       </div>
 
       {/* SEO Content */}
-      <section className="mt-12 space-y-6 text-gray-700">
-        <h2 className="text-2xl font-bold text-gray-900">What is TOML?</h2>
+      <section className="mt-12 space-y-6 text-gray-700 dark:text-gray-300">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">What is TOML?</h2>
         <p>
           TOML (Tom&apos;s Obvious, Minimal Language) is a configuration file format designed to be easy to read.
           It is widely used in Rust (Cargo.toml), Go, and Python (pyproject.toml) ecosystems.
           TOML maps directly to a hash table and is designed to be unambiguous.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900">TOML vs JSON</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">TOML vs JSON</h2>
         <p>
           JSON is the universal data interchange format, but TOML is more human-readable for configuration files.
           TOML supports comments, dates natively, and has a cleaner syntax for nested structures.
           Use this converter to translate between the two formats instantly.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900">How to Use This Converter</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Converter</h2>
         <p>
           Select the conversion direction (TOML → JSON or JSON → TOML), paste your input on the left,
           and the converted output appears on the right. Click &ldquo;Load Example&rdquo; to see a sample.

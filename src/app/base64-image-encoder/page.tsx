@@ -125,12 +125,12 @@ export default function Base64ImageEncoder() {
         onDrop={handleDrop}
         className={`mb-4 flex flex-col items-center justify-center rounded-lg border-2 border-dashed p-8 transition-colors ${
           isDragging
-            ? "border-blue-500 bg-blue-50"
-            : "border-gray-300 bg-gray-50 hover:border-gray-400"
+            ? "border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-950"
+            : "border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 hover:border-gray-400"
         }`}
       >
         <svg
-          className="mb-3 h-10 w-10 text-gray-400"
+          className="mb-3 h-10 w-10 text-gray-400 dark:text-gray-500"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -142,12 +142,12 @@ export default function Base64ImageEncoder() {
             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
           />
         </svg>
-        <p className="mb-2 text-sm font-medium text-gray-700">
+        <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
           {isDragging
             ? "Drop image here..."
             : "Drag & drop an image here, or click to browse"}
         </p>
-        <p className="mb-3 text-xs text-gray-500">
+        <p className="mb-3 text-xs text-gray-500 dark:text-gray-400">
           PNG, JPEG, GIF, SVG, WebP supported
         </p>
         <label className="cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700">
@@ -163,7 +163,7 @@ export default function Base64ImageEncoder() {
 
       {/* Error */}
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
@@ -173,7 +173,7 @@ export default function Base64ImageEncoder() {
         <div>
           {/* Image Preview & File Info */}
           <div className="mb-6 grid gap-4 sm:grid-cols-2">
-            <div className="flex items-center justify-center rounded-lg border border-gray-200 bg-white p-4">
+            <div className="flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={imageData.previewUrl}
@@ -181,36 +181,36 @@ export default function Base64ImageEncoder() {
                 className="max-h-48 max-w-full object-contain"
               />
             </div>
-            <div className="space-y-2 rounded-lg border border-gray-200 bg-gray-50 p-4">
-              <h3 className="text-sm font-semibold text-gray-900">File Info</h3>
+            <div className="space-y-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4">
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">File Info</h3>
               <div className="space-y-1 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Name:</span>
-                  <span className="font-medium text-gray-900 truncate ml-2 max-w-[200px]">
+                  <span className="text-gray-500 dark:text-gray-400">Name:</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100 truncate ml-2 max-w-[200px]">
                     {imageData.name}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Type:</span>
-                  <span className="font-medium text-gray-900">
+                  <span className="text-gray-500 dark:text-gray-400">Type:</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
                     {imageData.type}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Original Size:</span>
-                  <span className="font-medium text-gray-900">
+                  <span className="text-gray-500 dark:text-gray-400">Original Size:</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
                     {formatBytes(imageData.size)}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Base64 Length:</span>
-                  <span className="font-medium text-gray-900">
+                  <span className="text-gray-500 dark:text-gray-400">Base64 Length:</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
                     {imageData.base64.length.toLocaleString()} chars
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Base64 Size:</span>
-                  <span className="font-medium text-gray-900">
+                  <span className="text-gray-500 dark:text-gray-400">Base64 Size:</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
                     {formatBytes(
                       Math.ceil(imageData.base64.length * 0.75)
                     )}{" "}
@@ -218,8 +218,8 @@ export default function Base64ImageEncoder() {
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Data URI Size:</span>
-                  <span className="font-medium text-gray-900">
+                  <span className="text-gray-500 dark:text-gray-400">Data URI Size:</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
                     {formatBytes(imageData.dataUri.length)}
                   </span>
                 </div>
@@ -230,7 +230,7 @@ export default function Base64ImageEncoder() {
           {/* Output: Data URI */}
           <div className="mb-4">
             <div className="mb-1 flex items-center justify-between">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Data URI
               </label>
               <CopyButton text={imageData.dataUri} />
@@ -239,14 +239,14 @@ export default function Base64ImageEncoder() {
               value={imageData.dataUri}
               readOnly
               rows={3}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs break-all focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs break-all focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
 
           {/* Output: Raw Base64 */}
           <div className="mb-4">
             <div className="mb-1 flex items-center justify-between">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Raw Base64
               </label>
               <CopyButton text={imageData.base64} />
@@ -255,14 +255,14 @@ export default function Base64ImageEncoder() {
               value={imageData.base64}
               readOnly
               rows={3}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs break-all focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs break-all focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
 
           {/* Output: HTML <img> Tag */}
           <div className="mb-4">
             <div className="mb-1 flex items-center justify-between">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 HTML &lt;img&gt; Tag
               </label>
               <CopyButton text={htmlImgTag} />
@@ -271,14 +271,14 @@ export default function Base64ImageEncoder() {
               value={htmlImgTag}
               readOnly
               rows={3}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs break-all focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs break-all focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
 
           {/* Output: CSS background-image */}
           <div className="mb-4">
             <div className="mb-1 flex items-center justify-between">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 CSS background-image
               </label>
               <CopyButton text={cssBackground} />
@@ -287,14 +287,14 @@ export default function Base64ImageEncoder() {
               value={cssBackground}
               readOnly
               rows={3}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs break-all focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs break-all focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
 
           {/* Clear Button */}
           <button
             onClick={handleClear}
-            className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
           >
             Clear
           </button>
@@ -302,8 +302,8 @@ export default function Base64ImageEncoder() {
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is Base64 Image Encoding?
         </h2>
         <p className="mb-3">
@@ -313,7 +313,7 @@ export default function Base64ImageEncoder() {
           be used as a Data URI in an <code>&lt;img&gt;</code> tag or as a CSS{" "}
           <code>background-image</code> value.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           When Should You Use Base64 Images?
         </h2>
         <p className="mb-3">
@@ -324,7 +324,7 @@ export default function Base64ImageEncoder() {
           Base64 encoding increases file size by approximately 33%, so it is
           not recommended for large images.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Supported Formats
         </h2>
         <p>

@@ -91,33 +91,33 @@ export default function LoremIpsumGenerator() {
       {/* Options */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Generate:</label>
+          <label className="text-sm text-gray-600 dark:text-gray-400">Generate:</label>
           <input
             type="number"
             min={1}
             max={100}
             value={count}
             onChange={(e) => setCount(Math.max(1, Number(e.target.value)))}
-            className="w-16 rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="w-16 rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           />
           <select
             value={unit}
             onChange={(e) =>
               setUnit(e.target.value as "paragraphs" | "sentences" | "words")
             }
-            className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+            className="rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm"
           >
             <option value="paragraphs">Paragraphs</option>
             <option value="sentences">Sentences</option>
             <option value="words">Words</option>
           </select>
         </div>
-        <label className="flex items-center gap-1.5 text-sm text-gray-600">
+        <label className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
           <input
             type="checkbox"
             checked={startWithLorem}
             onChange={(e) => setStartWithLorem(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded border-gray-300 dark:border-gray-600"
           />
           Start with &quot;Lorem ipsum...&quot;
         </label>
@@ -139,12 +139,12 @@ export default function LoremIpsumGenerator() {
         value={output}
         readOnly
         placeholder="Click Generate to create lorem ipsum text..."
-        className="h-64 w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm"
+        className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 text-sm"
       />
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is Lorem Ipsum?
         </h2>
         <p className="mb-3">
@@ -152,7 +152,7 @@ export default function LoremIpsumGenerator() {
           industry since the 1500s. It is used by designers and developers to
           fill layouts with text before the final content is available.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Why use Lorem Ipsum?
         </h2>
         <p>

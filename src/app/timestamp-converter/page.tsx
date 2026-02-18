@@ -61,7 +61,7 @@ export default function TimestampConverter() {
       description="Convert between ISO 8601, Unix timestamps, UTC, and human-readable date formats. Supports seconds and milliseconds."
       relatedTools={["epoch-converter", "cron-generator", "uuid-generator"]}
     >
-      <label className="mb-1 block text-sm font-medium text-gray-700">
+      <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
         Input (ISO, Unix timestamp, or any date string)
       </label>
       <div className="mb-4 flex gap-2">
@@ -70,19 +70,19 @@ export default function TimestampConverter() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="2024-01-15T12:00:00Z or 1705312800"
-          className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 font-mono text-sm focus:border-blue-500 focus:outline-none"
+          className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 font-mono text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           spellCheck={false}
         />
         <button
           onClick={() => setInput(new Date().toISOString())}
-          className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Now
         </button>
       </div>
 
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-2 text-sm text-red-700 dark:text-red-300">
           {error}
         </div>
       )}
@@ -94,11 +94,11 @@ export default function TimestampConverter() {
             return (
               <div
                 key={fmt.id}
-                className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 p-3"
+                className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-3"
               >
                 <div className="min-w-0 flex-1">
-                  <span className="text-xs font-semibold text-gray-500">{fmt.label}</span>
-                  <div className="truncate font-mono text-sm text-gray-900">{value}</div>
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{fmt.label}</span>
+                  <div className="truncate font-mono text-sm text-gray-900 dark:text-gray-100">{value}</div>
                 </div>
                 <CopyButton text={value} />
               </div>
@@ -107,14 +107,14 @@ export default function TimestampConverter() {
         </div>
       )}
 
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">What is ISO 8601?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is ISO 8601?</h2>
         <p className="mb-3">
           ISO 8601 is the international standard for representing dates and times.
           Format: <code>YYYY-MM-DDTHH:mm:ss.sssZ</code>. It is widely used in APIs,
           databases, and log files because it is unambiguous and sortable.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">Unix Timestamp vs ISO 8601</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Unix Timestamp vs ISO 8601</h2>
         <p>
           A Unix timestamp is the number of seconds since January 1, 1970 (UTC). It is compact
           but not human-readable. ISO 8601 is human-readable but longer. Both are commonly used

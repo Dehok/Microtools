@@ -438,20 +438,20 @@ export default function YamlValidator() {
         <div
           className={`mb-4 flex items-center gap-2 rounded-lg border px-4 py-3 text-sm font-medium ${
             result.isValid
-              ? "border-green-300 bg-green-50 text-green-800"
-              : "border-red-300 bg-red-50 text-red-800"
+              ? "border-green-300 bg-green-50 dark:bg-green-950 text-green-800"
+              : "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950 text-red-800"
           }`}
         >
           {result.isValid ? (
             <>
-              <svg className="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="h-5 w-5 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
               <span>Valid YAML</span>
             </>
           ) : (
             <>
-              <svg className="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="h-5 w-5 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
               <span>
@@ -468,13 +468,13 @@ export default function YamlValidator() {
       <div className="mb-4 flex flex-wrap gap-2">
         <button
           onClick={() => setInput(SAMPLE_YAML)}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Sample YAML
         </button>
         <button
           onClick={() => setInput("")}
-          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800"
         >
           Clear
         </button>
@@ -482,13 +482,13 @@ export default function YamlValidator() {
 
       {/* YAML Input with Line Numbers */}
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
           YAML Input
         </label>
-        <div className="flex overflow-hidden rounded-lg border border-gray-300 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+        <div className="flex overflow-hidden rounded-lg border border-gray-300 dark:border-gray-600 focus-within:border-blue-500 dark:border-blue-400 focus-within:ring-1 focus-within:ring-blue-500">
           {/* Line Numbers */}
           <div
-            className="select-none border-r border-gray-200 bg-gray-100 px-2 py-3 text-right font-mono text-xs leading-[1.625] text-gray-400"
+            className="select-none border-r border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 px-2 py-3 text-right font-mono text-xs leading-[1.625] text-gray-400 dark:text-gray-500"
             aria-hidden="true"
           >
             {Array.from({ length: lineCount }, (_, i) => (
@@ -496,7 +496,7 @@ export default function YamlValidator() {
                 key={i}
                 className={
                   result.errorLine === i + 1
-                    ? "text-red-500 font-bold"
+                    ? "text-red-500 dark:text-red-400 font-bold"
                     : ""
                 }
               >
@@ -510,7 +510,7 @@ export default function YamlValidator() {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your YAML here..."
             rows={20}
-            className="w-full resize-none bg-gray-50 p-3 font-mono text-xs leading-[1.625] focus:outline-none"
+            className="w-full resize-none bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs leading-[1.625] focus:outline-none"
             spellCheck={false}
           />
         </div>
@@ -520,20 +520,20 @@ export default function YamlValidator() {
       {result.isValid && result.json && (
         <div className="mt-4">
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Parsed Output (JSON)
             </label>
             <CopyButton text={result.json} />
           </div>
-          <pre className="max-h-96 overflow-auto rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs">
+          <pre className="max-h-96 overflow-auto rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-xs">
             {result.json}
           </pre>
         </div>
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What is YAML?
         </h2>
         <p className="mb-3">
@@ -542,20 +542,20 @@ export default function YamlValidator() {
           as code. It uses indentation to represent structure, making it cleaner and more
           readable than JSON or XML for configuration purposes.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Common YAML Syntax Rules
         </h2>
         <ul className="mb-3 list-inside list-disc space-y-1">
           <li>Indentation must use spaces, not tabs</li>
-          <li>Key-value pairs use <code className="rounded bg-gray-100 px-1">key: value</code> syntax</li>
-          <li>Lists use <code className="rounded bg-gray-100 px-1">- item</code> syntax</li>
-          <li>Comments start with <code className="rounded bg-gray-100 px-1">#</code></li>
+          <li>Key-value pairs use <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">key: value</code> syntax</li>
+          <li>Lists use <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">- item</code> syntax</li>
+          <li>Comments start with <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">#</code></li>
           <li>Strings can be unquoted, single-quoted, or double-quoted</li>
-          <li>Multi-line strings use <code className="rounded bg-gray-100 px-1">|</code> (literal) or <code className="rounded bg-gray-100 px-1">&gt;</code> (folded)</li>
-          <li>Boolean values: <code className="rounded bg-gray-100 px-1">true/false</code>, <code className="rounded bg-gray-100 px-1">yes/no</code></li>
-          <li>Null values: <code className="rounded bg-gray-100 px-1">null</code>, <code className="rounded bg-gray-100 px-1">~</code></li>
+          <li>Multi-line strings use <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">|</code> (literal) or <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">&gt;</code> (folded)</li>
+          <li>Boolean values: <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">true/false</code>, <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">yes/no</code></li>
+          <li>Null values: <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">null</code>, <code className="rounded bg-gray-100 dark:bg-gray-800 px-1">~</code></li>
         </ul>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Where is YAML Used?
         </h2>
         <p>

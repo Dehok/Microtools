@@ -146,7 +146,7 @@ export default function RegexCheatSheet() {
       <div className="mb-6">
         <div className="relative">
           <svg
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -163,12 +163,12 @@ export default function RegexCheatSheet() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search patterns, descriptions, or examples..."
-            className="w-full rounded-lg border border-gray-300 bg-gray-50 py-2.5 pl-10 pr-4 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 py-2.5 pl-10 pr-4 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
           {search && (
             <button
               onClick={() => setSearch("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:text-gray-400"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -177,7 +177,7 @@ export default function RegexCheatSheet() {
           )}
         </div>
         {search && (
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
             {totalMatches} {totalMatches === 1 ? "result" : "results"} found
           </p>
         )}
@@ -185,7 +185,7 @@ export default function RegexCheatSheet() {
 
       {/* Sections */}
       {filteredSections.length === 0 && (
-        <div className="py-12 text-center text-gray-500">
+        <div className="py-12 text-center text-gray-500 dark:text-gray-400">
           <p className="text-lg font-medium">No patterns found</p>
           <p className="mt-1 text-sm">Try a different search term</p>
         </div>
@@ -194,39 +194,39 @@ export default function RegexCheatSheet() {
       <div className="space-y-8">
         {filteredSections.map((section) => (
           <div key={section.title}>
-            <h2 className="mb-3 text-lg font-semibold text-gray-900">
+            <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
               {section.title}
             </h2>
 
             {/* Desktop table */}
-            <div className="hidden overflow-hidden rounded-lg border border-gray-200 sm:block">
+            <div className="hidden overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 sm:block">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-50">
-                    <th className="px-4 py-2.5 text-left font-medium text-gray-600">Pattern</th>
-                    <th className="px-4 py-2.5 text-left font-medium text-gray-600">Description</th>
-                    <th className="px-4 py-2.5 text-left font-medium text-gray-600">Example</th>
+                  <tr className="bg-gray-50 dark:bg-gray-950">
+                    <th className="px-4 py-2.5 text-left font-medium text-gray-600 dark:text-gray-400">Pattern</th>
+                    <th className="px-4 py-2.5 text-left font-medium text-gray-600 dark:text-gray-400">Description</th>
+                    <th className="px-4 py-2.5 text-left font-medium text-gray-600 dark:text-gray-400">Example</th>
                     <th className="w-16 px-4 py-2.5"></th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                   {section.entries.map((entry) => (
-                    <tr key={entry.pattern} className="group transition-colors hover:bg-blue-50/50">
+                    <tr key={entry.pattern} className="group transition-colors hover:bg-blue-50 dark:bg-blue-950 dark:hover:bg-blue-950/50">
                       <td className="px-4 py-2.5">
-                        <code className="rounded bg-blue-50 px-2 py-0.5 font-mono text-sm font-medium text-blue-600">
+                        <code className="rounded bg-blue-50 dark:bg-blue-950 px-2 py-0.5 font-mono text-sm font-medium text-blue-600 dark:text-blue-400">
                           {entry.pattern}
                         </code>
                       </td>
-                      <td className="px-4 py-2.5 text-gray-700">{entry.description}</td>
-                      <td className="px-4 py-2.5 font-mono text-xs text-gray-500">{entry.example}</td>
+                      <td className="px-4 py-2.5 text-gray-700 dark:text-gray-300">{entry.description}</td>
+                      <td className="px-4 py-2.5 font-mono text-xs text-gray-500 dark:text-gray-400">{entry.example}</td>
                       <td className="px-4 py-2.5">
                         <button
                           onClick={() => handleCopy(entry.pattern)}
-                          className="rounded px-2 py-1 text-xs text-gray-400 opacity-0 transition-all hover:bg-blue-100 hover:text-blue-600 group-hover:opacity-100"
+                          className="rounded px-2 py-1 text-xs text-gray-400 dark:text-gray-500 opacity-0 transition-all hover:bg-blue-100 dark:bg-blue-900 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-400 group-hover:opacity-100"
                           title="Copy pattern"
                         >
                           {copiedPattern === entry.pattern ? (
-                            <span className="text-green-600">Copied!</span>
+                            <span className="text-green-600 dark:text-green-400">Copied!</span>
                           ) : (
                             "Copy"
                           )}
@@ -243,25 +243,25 @@ export default function RegexCheatSheet() {
               {section.entries.map((entry) => (
                 <div
                   key={entry.pattern}
-                  className="rounded-lg border border-gray-200 p-3"
+                  className="rounded-lg border border-gray-200 dark:border-gray-700 p-3"
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <code className="rounded bg-blue-50 px-2 py-0.5 font-mono text-sm font-medium text-blue-600">
+                    <code className="rounded bg-blue-50 dark:bg-blue-950 px-2 py-0.5 font-mono text-sm font-medium text-blue-600 dark:text-blue-400">
                       {entry.pattern}
                     </code>
                     <button
                       onClick={() => handleCopy(entry.pattern)}
-                      className="shrink-0 rounded px-2 py-1 text-xs text-gray-400 hover:bg-blue-100 hover:text-blue-600"
+                      className="shrink-0 rounded px-2 py-1 text-xs text-gray-400 dark:text-gray-500 hover:bg-blue-100 dark:bg-blue-900 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-400"
                     >
                       {copiedPattern === entry.pattern ? (
-                        <span className="text-green-600">Copied!</span>
+                        <span className="text-green-600 dark:text-green-400">Copied!</span>
                       ) : (
                         "Copy"
                       )}
                     </button>
                   </div>
-                  <p className="mt-1.5 text-sm text-gray-700">{entry.description}</p>
-                  <p className="mt-1 font-mono text-xs text-gray-500">{entry.example}</p>
+                  <p className="mt-1.5 text-sm text-gray-700 dark:text-gray-300">{entry.description}</p>
+                  <p className="mt-1 font-mono text-xs text-gray-500 dark:text-gray-400">{entry.example}</p>
                 </div>
               ))}
             </div>
@@ -270,8 +270,8 @@ export default function RegexCheatSheet() {
       </div>
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           What Are Regular Expressions?
         </h2>
         <p className="mb-3">
@@ -280,7 +280,7 @@ export default function RegexCheatSheet() {
           PHP, C#, Go, and Ruby. Regex is essential for form validation, data extraction, log parsing, and
           text processing.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           How to Read This Cheat Sheet
         </h2>
         <p className="mb-3">
@@ -291,26 +291,26 @@ export default function RegexCheatSheet() {
           surrounds a match without consuming characters. <strong>Flags</strong> modify the overall behavior
           of the regex engine.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Greedy vs Lazy Quantifiers
         </h2>
         <p className="mb-3">
-          By default, quantifiers like <code className="rounded bg-gray-100 px-1 font-mono">*</code>,{" "}
-          <code className="rounded bg-gray-100 px-1 font-mono">+</code>, and{" "}
-          <code className="rounded bg-gray-100 px-1 font-mono">?</code> are <em>greedy</em> &mdash; they
+          By default, quantifiers like <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">*</code>,{" "}
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">+</code>, and{" "}
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">?</code> are <em>greedy</em> &mdash; they
           match as much text as possible. Adding a{" "}
-          <code className="rounded bg-gray-100 px-1 font-mono">?</code> after them makes them{" "}
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">?</code> after them makes them{" "}
           <em>lazy</em>, matching as little text as possible. This is especially useful when parsing HTML
           tags or quoted strings.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
           Tips for Writing Better Regex
         </h2>
         <ul className="mb-3 list-disc space-y-1 pl-5">
           <li>Start simple and build up complexity incrementally.</li>
-          <li>Use non-capturing groups <code className="rounded bg-gray-100 px-1 font-mono">(?:...)</code> when you do not need backreferences.</li>
-          <li>Prefer specific character classes over the dot <code className="rounded bg-gray-100 px-1 font-mono">.</code> for better performance.</li>
-          <li>Use anchors <code className="rounded bg-gray-100 px-1 font-mono">^</code> and <code className="rounded bg-gray-100 px-1 font-mono">$</code> to avoid partial matches.</li>
+          <li>Use non-capturing groups <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">(?:...)</code> when you do not need backreferences.</li>
+          <li>Prefer specific character classes over the dot <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">.</code> for better performance.</li>
+          <li>Use anchors <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">^</code> and <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">$</code> to avoid partial matches.</li>
           <li>Test your patterns with a regex tester to verify matches before using them in production code.</li>
         </ul>
       </div>

@@ -180,19 +180,19 @@ export default function TimeZoneConverter() {
         {/* Date/Time Input Row */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
           <div className="flex-1">
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
               Date &amp; Time
             </label>
             <input
               type="datetime-local"
               value={datetimeInput}
               onChange={(e) => setDatetimeInput(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
             />
           </div>
           <button
             onClick={handleNow}
-            className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+            className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 transition-colors"
           >
             Now
           </button>
@@ -201,11 +201,11 @@ export default function TimeZoneConverter() {
         {/* From / Swap / To Row */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
           <div className="flex-1">
-            <label className="mb-1 block text-sm font-medium text-gray-700">From Timezone</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">From Timezone</label>
             <select
               value={fromTz}
               onChange={(e) => setFromTz(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none bg-white"
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none bg-white dark:bg-gray-900"
             >
               {TIME_ZONES.map((tz) => (
                 <option key={tz.value} value={tz.value}>
@@ -218,17 +218,17 @@ export default function TimeZoneConverter() {
           <button
             onClick={handleSwap}
             title="Swap timezones"
-            className="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors sm:mb-0"
+            className="flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800 transition-colors sm:mb-0"
           >
             &#8644; Swap
           </button>
 
           <div className="flex-1">
-            <label className="mb-1 block text-sm font-medium text-gray-700">To Timezone</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">To Timezone</label>
             <select
               value={toTz}
               onChange={(e) => setToTz(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none bg-white"
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none bg-white dark:bg-gray-900"
             >
               {TIME_ZONES.map((tz) => (
                 <option key={tz.value} value={tz.value}>
@@ -244,32 +244,32 @@ export default function TimeZoneConverter() {
       {conversion && (
         <div className="mt-6 space-y-3">
           {conversion.error ? (
-            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <div className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 px-4 py-3 text-sm text-red-700 dark:text-red-300">
               {conversion.error}
             </div>
           ) : (
             <>
               {/* Primary result card */}
-              <div className="rounded-lg border border-blue-100 bg-blue-50 p-4">
+              <div className="rounded-lg border border-blue-100 bg-blue-50 dark:bg-blue-950 p-4">
                 <div className="mb-3 flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-blue-800">Conversion Result</h3>
+                  <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200">Conversion Result</h3>
                   <CopyButton text={resultText} />
                 </div>
 
                 <div className="space-y-3">
                   {/* From */}
-                  <div className="rounded-md border border-blue-200 bg-white px-4 py-3">
-                    <div className="mb-1 text-xs font-medium uppercase tracking-wide text-gray-500">
+                  <div className="rounded-md border border-blue-200 dark:border-blue-800 bg-white dark:bg-gray-900 px-4 py-3">
+                    <div className="mb-1 text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                       From &mdash; {TIME_ZONES.find((t) => t.value === fromTz)?.label ?? fromTz}
                     </div>
-                    <div className="font-mono text-base font-semibold text-gray-900">
+                    <div className="font-mono text-base font-semibold text-gray-900 dark:text-gray-100">
                       {conversion.fromResult}
                     </div>
                   </div>
 
                   {/* To */}
-                  <div className="rounded-md border border-blue-400 bg-white px-4 py-3">
-                    <div className="mb-1 text-xs font-medium uppercase tracking-wide text-blue-600">
+                  <div className="rounded-md border border-blue-400 bg-white dark:bg-gray-900 px-4 py-3">
+                    <div className="mb-1 text-xs font-medium uppercase tracking-wide text-blue-600 dark:text-blue-400">
                       To &mdash; {TIME_ZONES.find((t) => t.value === toTz)?.label ?? toTz}
                     </div>
                     <div className="font-mono text-base font-semibold text-blue-900">
@@ -280,14 +280,14 @@ export default function TimeZoneConverter() {
                   {/* Extra zones */}
                   {conversion.extras && conversion.extras.length > 0 &&
                     conversion.extras.map((extra, i) => (
-                      <div key={i} className="rounded-md border border-gray-200 bg-white px-4 py-3">
+                      <div key={i} className="rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-3">
                         <div className="mb-1 flex items-center justify-between">
-                          <div className="text-xs font-medium uppercase tracking-wide text-gray-500">
+                          <div className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                             Also &mdash;{" "}
                             <select
                               value={extra.tz}
                               onChange={(e) => handleExtraZoneChange(i, e.target.value)}
-                              className="ml-1 rounded border border-gray-200 bg-gray-50 px-1 py-0.5 text-xs text-gray-700 focus:outline-none"
+                              className="ml-1 rounded border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 px-1 py-0.5 text-xs text-gray-700 dark:text-gray-300 focus:outline-none"
                             >
                               {TIME_ZONES.map((tz) => (
                                 <option key={tz.value} value={tz.value}>
@@ -298,13 +298,13 @@ export default function TimeZoneConverter() {
                           </div>
                           <button
                             onClick={() => handleRemoveZone(i)}
-                            className="ml-2 text-xs text-red-400 hover:text-red-600"
+                            className="ml-2 text-xs text-red-400 hover:text-red-600 dark:text-red-400"
                             title="Remove this zone"
                           >
                             Remove
                           </button>
                         </div>
-                        <div className="font-mono text-sm font-semibold text-gray-800">
+                        <div className="font-mono text-sm font-semibold text-gray-800 dark:text-gray-200">
                           {extra.result}
                         </div>
                       </div>
@@ -312,7 +312,7 @@ export default function TimeZoneConverter() {
                 </div>
 
                 {/* UTC ISO */}
-                <div className="mt-3 text-xs text-blue-600">
+                <div className="mt-3 text-xs text-blue-600 dark:text-blue-400">
                   UTC equivalent: <span className="font-mono">{conversion.utcIso}</span>
                 </div>
               </div>
@@ -320,7 +320,7 @@ export default function TimeZoneConverter() {
               {/* Add timezone button */}
               <button
                 onClick={handleAddZone}
-                className="rounded-lg border border-dashed border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors w-full"
+                className="rounded-lg border border-dashed border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:border-blue-400 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-400 transition-colors w-full"
               >
                 + Add timezone to compare
               </button>
@@ -330,18 +330,18 @@ export default function TimeZoneConverter() {
       )}
 
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 pt-6 text-sm text-gray-600 space-y-4">
-        <h2 className="text-lg font-semibold text-gray-900">What Is a Time Zone Converter?</h2>
+      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400 space-y-4">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">What Is a Time Zone Converter?</h2>
         <p>
           A time zone converter lets you instantly translate a date and time from one location to
           another. Whether you are scheduling an international meeting, tracking a flight arrival, or
           coordinating with a remote team, knowing the correct local time in each region is
           essential. This tool uses your browser&apos;s built-in{" "}
-          <code className="rounded bg-gray-100 px-1 font-mono">Intl.DateTimeFormat</code> API, so
+          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">Intl.DateTimeFormat</code> API, so
           no data ever leaves your device.
         </p>
 
-        <h2 className="text-lg font-semibold text-gray-900">How to Use This Tool</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">How to Use This Tool</h2>
         <p>
           Pick a date and time using the date/time picker (or click <strong>Now</strong> to use the
           current moment). Select the source timezone in the <strong>From</strong> dropdown, then
@@ -351,7 +351,7 @@ export default function TimeZoneConverter() {
           side by side.
         </p>
 
-        <h2 className="text-lg font-semibold text-gray-900">Common Time Zone Abbreviations</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Common Time Zone Abbreviations</h2>
         <ul className="list-inside list-disc space-y-1">
           <li><strong>UTC</strong> — Coordinated Universal Time (UTC+0), the global baseline.</li>
           <li><strong>EST / EDT</strong> — Eastern Standard / Daylight Time (UTC-5 / UTC-4), used in New York.</li>
@@ -364,7 +364,7 @@ export default function TimeZoneConverter() {
           <li><strong>AEST / AEDT</strong> — Australian Eastern Standard / Daylight Time (UTC+10 / UTC+11), used in Sydney.</li>
         </ul>
 
-        <h2 className="text-lg font-semibold text-gray-900">Daylight Saving Time (DST)</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Daylight Saving Time (DST)</h2>
         <p>
           Many countries observe Daylight Saving Time, shifting clocks forward in spring and back in
           autumn. The converter automatically accounts for DST because it relies on the IANA timezone
@@ -372,7 +372,7 @@ export default function TimeZoneConverter() {
           date you enter, not just a fixed offset.
         </p>
 
-        <h2 className="text-lg font-semibold text-gray-900">Why UTC Is the Universal Reference</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Why UTC Is the Universal Reference</h2>
         <p>
           Internally, computers store time as an offset from UTC (or as a Unix timestamp). When you
           convert between zones, the tool first resolves your input to a UTC moment, then renders it
