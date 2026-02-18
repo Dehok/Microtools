@@ -308,27 +308,52 @@ export default function RegexToEnglishPage() {
         </div>
       )}
 
+      
       {/* SEO Content */}
-      <section className="mt-12 space-y-6 text-gray-700 dark:text-gray-300">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">What is Regex to English?</h2>
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
         <p>
-          This tool translates regular expressions (regex) into plain English descriptions. Instead of trying to
-          decipher complex patterns like <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-sm">^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{"{2,}"}$</code>,
-          you get a step-by-step breakdown explaining what each part of the regex does.
+          The Regex to English is a free online tool available on CodeUtilo. Translate regular expressions to plain English explanations. Understand any regex pattern. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Understanding Regex Patterns</h2>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All regex to english operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the regex to english as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the regex to english for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
         <p>
-          Regular expressions use special characters and syntax to define search patterns. Character classes like
-          [a-z] match ranges, quantifiers like + and * control repetition, anchors like ^ and $ mark boundaries,
-          and groups ( ) capture or organize parts of the pattern. This tool explains all of these elements.
+          Enter your input in the text area provided and the regex to english will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Tool</h2>
-        <p>
-          Enter your regex pattern in the input field. The tool instantly breaks it down into individual tokens
-          with color-coded explanations. Try one of the example patterns to see how common regex patterns work.
-          Use the flags field to add modifiers like g (global) or i (case-insensitive).
-        </p>
-      </section>
+      </div>
     </ToolLayout>
   );
 }

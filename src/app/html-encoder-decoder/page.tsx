@@ -117,6 +117,52 @@ export default function HtmlEncoderDecoder() {
           XSS attacks, or when you need to show HTML code as text rather than rendered markup.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The HTML Encoder/Decoder converts special characters to their HTML entity equivalents and back. HTML encoding prevents browser rendering issues and cross-site scripting (XSS) vulnerabilities by escaping characters like &lt;, &gt;, &amp;, and quotes that have special meaning in HTML.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Encode HTML</strong> — Converts special characters (&lt;, &gt;, &amp;, &quot;, ') to their corresponding HTML entities.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Decode HTML</strong> — Converts HTML entities back to their original characters for readability.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Named &amp; Numeric Entities</strong> — Supports both named entities (&amp;amp;) and numeric entities (&amp;#38;).
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">XSS Prevention</strong> — Helps sanitize user input by encoding characters that could execute malicious scripts.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Encoding user-generated content before displaying it in web pages to prevent XSS</li>
+          <li>Displaying HTML code snippets in tutorials and documentation without browser rendering</li>
+          <li>Preparing text for safe inclusion in HTML attributes and meta tags</li>
+          <li>Decoding HTML entities from parsed web content or API responses</li>
+          <li>Converting special characters for use in email templates and newsletters</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Select Encode or Decode mode. Paste your text or HTML into the input area. The encoded or decoded result appears instantly. Copy the result to use in your HTML documents.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

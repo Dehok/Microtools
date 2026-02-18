@@ -576,29 +576,50 @@ export default function PrivacyPolicyGenerator() {
         </div>
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">What is a Privacy Policy?</h2>
-        <p className="mb-3">
-          A privacy policy is a legal document that discloses how a website or application collects, uses,
-          stores, and protects user data. It is required by law in most jurisdictions, including under the
-          GDPR (General Data Protection Regulation) in Europe, CCPA (California Consumer Privacy Act) in
-          the United States, and many other data protection regulations worldwide.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Why Do You Need a Privacy Policy?</h2>
-        <p className="mb-3">
-          If your website collects any form of personal data — including email addresses, names, cookies,
-          or analytics data — you are legally required to have a privacy policy. Third-party services like
-          Google Analytics, Google AdSense, and most advertising networks also require websites to display
-          a privacy policy. Without one, you risk fines, legal action, and removal from advertising programs.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How to Use This Generator</h2>
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
         <p>
-          Fill in your website details and select the checkboxes that apply to your site. The generator
-          will create a comprehensive privacy policy tailored to your needs. You can copy the result as
-          plain text to paste into your CMS, or as Markdown for static site generators and README files.
-          Remember to review and customize the generated policy to ensure it accurately reflects your
-          data practices.
+          The Privacy Policy Generator is a free online tool available on CodeUtilo. Generate a free privacy policy for your website. GDPR, cookies, and data collection covered. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All privacy policy generator operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the privacy policy generator as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the privacy policy generator for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the privacy policy generator will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

@@ -342,20 +342,50 @@ export default function OpenSourceLicenses() {
         className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 p-3 font-mono text-sm text-gray-800 dark:text-gray-200"
       />
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">How to Choose an Open Source License</h2>
-        <p className="mb-3">
-          Choosing the right license depends on how you want others to use your code.
-          <strong> MIT and ISC</strong> are the most permissive — anyone can do almost anything with your code.
-          <strong> Apache 2.0</strong> adds patent protection.
-          <strong> GPL 3.0</strong> requires derivative works to also be open source.
-          <strong> The Unlicense</strong> puts your code in the public domain.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Adding a License to Your Project</h2>
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
         <p>
-          Create a file named LICENSE (or LICENSE.md) in your project root and paste the license text.
-          Most hosting platforms like GitHub will automatically detect and display your license.
+          The Open Source Licenses is a free online tool available on CodeUtilo. Compare and copy open source licenses. MIT, Apache, GPL, BSD, ISC, and more. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All open source licenses operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the open source licenses as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the open source licenses for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the open source licenses will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

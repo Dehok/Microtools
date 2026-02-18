@@ -578,25 +578,50 @@ export default function NginxConfigGenerator() {
         </div>
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is an Nginx Server Block?
-        </h2>
-        <p className="mb-3">
-          An Nginx server block (the equivalent of Apache&apos;s virtual host) defines how the Nginx web server handles incoming requests for a specific domain or IP address. Each server block specifies the listening port, domain names, root directory, SSL settings, and request routing rules.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Choosing the Right Server Type
-        </h2>
-        <p className="mb-3">
-          Use <strong>Static Website</strong> to serve HTML, CSS, and JavaScript files directly from disk. Choose <strong>Reverse Proxy</strong> when Nginx sits in front of another server such as a Node.js, Python, or Ruby application running on a local port. Select <strong>PHP (FastCGI)</strong> to process PHP files via PHP-FPM, which is the standard setup for WordPress and other PHP applications. The <strong>SPA</strong> (Single Page Application) mode adds a fallback to <code>index.html</code> so client-side routers like React Router work correctly, and also caches static assets aggressively.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          How to Deploy the Generated Config
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          Copy the generated config and save it to <code>/etc/nginx/sites-available/your-site.conf</code>. Create a symlink with <code>sudo ln -s /etc/nginx/sites-available/your-site.conf /etc/nginx/sites-enabled/</code>, test the configuration with <code>sudo nginx -t</code>, and reload Nginx with <code>sudo systemctl reload nginx</code>. For SSL with Let&apos;s Encrypt, use Certbot after the basic config is working.
+          The Nginx Config Generator is a free online tool available on CodeUtilo. Generate nginx server blocks for static sites, reverse proxy, SSL, and redirects. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All nginx config generator operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the nginx config generator as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the nginx config generator for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the nginx config generator will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

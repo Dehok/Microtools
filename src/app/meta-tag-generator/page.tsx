@@ -295,39 +295,50 @@ export default function MetaTagGenerator() {
         </div>
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What are HTML Meta Tags?
-        </h2>
-        <p className="mb-3">
-          HTML meta tags are snippets of code placed in the{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 text-xs">&lt;head&gt;</code>{" "}
-          section of a web page. They provide metadata about the page to search
-          engines and browsers, including the page title, description, character
-          encoding, viewport settings, and crawling instructions.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Why are Meta Tags Important for SEO?
-        </h2>
-        <p className="mb-3">
-          Meta tags play a crucial role in search engine optimization. The title
-          tag and meta description are displayed directly in search engine
-          results pages (SERPs), influencing click-through rates. The robots meta
-          tag controls whether search engines index your pages and follow your
-          links. A well-crafted title (50-60 characters) and description (150-160
-          characters) can significantly improve your organic traffic.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          How to Use This Generator
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          Fill in your page details in the form on the left. The generator will
-          create the corresponding HTML meta tags in real time. Click the Copy
-          button to copy the generated code, then paste it into the{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 text-xs">&lt;head&gt;</code>{" "}
-          section of your HTML document. For social media previews, also consider
-          using our Open Graph Meta Tag Generator.
+          The Meta Tag Generator is a free online tool available on CodeUtilo. Generate HTML meta tags for SEO. Title, description, viewport, robots, and canonical tags. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All meta tag generator operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the meta tag generator as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the meta tag generator for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the meta tag generator will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

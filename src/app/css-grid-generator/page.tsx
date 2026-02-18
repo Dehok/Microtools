@@ -288,46 +288,50 @@ export default function CSSGridGenerator() {
         </pre>
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is CSS Grid?
-        </h2>
-        <p className="mb-3">
-          CSS Grid Layout is a two-dimensional layout system for the web. It lets you
-          organize content into rows and columns simultaneously, making it ideal for
-          building complex page layouts. Unlike Flexbox which handles one axis at a time,
-          Grid gives you full control over both horizontal and vertical placement.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Key Grid Properties
-        </h2>
-        <p className="mb-3">
-          <code>grid-template-columns</code> and <code>grid-template-rows</code> define
-          the track sizing for columns and rows. You can use fixed units like{" "}
-          <code>px</code>, flexible units like <code>fr</code> (fraction of available
-          space), <code>auto</code> for content-based sizing, or{" "}
-          <code>minmax(min, max)</code> for responsive ranges.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Common Grid Patterns
-        </h2>
-        <p className="mb-3">
-          <strong>Equal columns:</strong> <code>1fr 1fr 1fr</code> creates three
-          equal-width columns. <strong>Sidebar layout:</strong>{" "}
-          <code>250px 1fr</code> creates a fixed sidebar with a fluid main area.{" "}
-          <strong>Holy grail:</strong> combine <code>grid-template-rows: auto 1fr auto</code>{" "}
-          with <code>grid-template-columns: 200px 1fr 200px</code> for a classic
-          header-sidebar-content-footer layout.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Grid vs Flexbox
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          Use CSS Grid for two-dimensional layouts where you need to control both rows
-          and columns together (page layouts, dashboards, card grids). Use Flexbox for
-          one-dimensional layouts where items flow in a single direction (navigation bars,
-          toolbars, centering content). Both can be combined for maximum flexibility.
+          The CSS Grid Generator is a free online tool available on CodeUtilo. Create CSS Grid layouts with a visual editor. Set columns, rows, and gap. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All css grid generator operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the css grid generator as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the css grid generator for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the css grid generator will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

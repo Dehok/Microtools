@@ -114,6 +114,52 @@ export default function SlugGenerator() {
           and help search engines understand the page content.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Slug Generator converts any text into a clean, URL-friendly slug. Slugs are the human-readable portion of a URL that identifies a page, such as &quot;my-blog-post&quot; in &quot;example.com/blog/my-blog-post&quot;. Good slugs improve SEO, readability, and user experience.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Conversion</strong> — Transforms text to a URL-friendly slug in real time as you type.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Special Character Handling</strong> — Removes or transliterates accented characters, symbols, and non-ASCII characters.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Lowercase &amp; Hyphenated</strong> — Converts all text to lowercase and replaces spaces with hyphens for URL compatibility.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Clean Output</strong> — Removes consecutive hyphens, leading/trailing hyphens, and invalid URL characters.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Generating URL slugs for blog posts, product pages, and CMS content</li>
+          <li>Creating SEO-friendly URLs that include target keywords</li>
+          <li>Converting article titles to slugs for static site generators (Next.js, Hugo, Jekyll)</li>
+          <li>Generating file names from titles for content management systems</li>
+          <li>Creating clean permalink structures for web applications</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Type or paste your text (e.g., a blog post title) into the input field. The URL-friendly slug is generated instantly. Copy the slug with the Copy button and use it in your URLs.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

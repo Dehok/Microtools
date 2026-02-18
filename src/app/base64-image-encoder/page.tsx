@@ -301,36 +301,50 @@ export default function Base64ImageEncoder() {
         </div>
       )}
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is Base64 Image Encoding?
-        </h2>
-        <p className="mb-3">
-          Base64 image encoding converts binary image data into an ASCII text
-          string. This allows you to embed images directly in HTML, CSS, or
-          JSON without needing a separate image file. The encoded string can
-          be used as a Data URI in an <code>&lt;img&gt;</code> tag or as a CSS{" "}
-          <code>background-image</code> value.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          When Should You Use Base64 Images?
-        </h2>
-        <p className="mb-3">
-          Base64 encoding is ideal for small images like icons, logos, and
-          thumbnails where reducing HTTP requests improves performance. It is
-          commonly used in email templates (where external images may be
-          blocked), single-page applications, and CSS sprites. Note that
-          Base64 encoding increases file size by approximately 33%, so it is
-          not recommended for large images.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Supported Formats
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          This tool supports PNG, JPEG, GIF, SVG, and WebP image formats.
-          All conversion happens entirely in your browser using the FileReader
-          API — your images are never uploaded to any server.
+          The Base64 Image Encoder is a free online tool available on CodeUtilo. Convert images to Base64 strings. Supports PNG, JPG, GIF, SVG, and WebP formats. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All base64 image encoder operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the base64 image encoder as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the base64 image encoder for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the base64 image encoder will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

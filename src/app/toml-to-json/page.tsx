@@ -315,27 +315,52 @@ export default function TomlToJsonPage() {
         </div>
       </div>
 
+      
       {/* SEO Content */}
-      <section className="mt-12 space-y-6 text-gray-700 dark:text-gray-300">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">What is TOML?</h2>
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
         <p>
-          TOML (Tom&apos;s Obvious, Minimal Language) is a configuration file format designed to be easy to read.
-          It is widely used in Rust (Cargo.toml), Go, and Python (pyproject.toml) ecosystems.
-          TOML maps directly to a hash table and is designed to be unambiguous.
+          The TOML ↔ JSON Converter is a free online tool available on CodeUtilo. Convert between TOML and JSON formats. Validate TOML syntax and see parsed output. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">TOML vs JSON</h2>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All toml ↔ json converter operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the toml ↔ json converter as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the toml ↔ json converter for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
         <p>
-          JSON is the universal data interchange format, but TOML is more human-readable for configuration files.
-          TOML supports comments, dates natively, and has a cleaner syntax for nested structures.
-          Use this converter to translate between the two formats instantly.
+          Enter your input in the text area provided and the toml ↔ json converter will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Converter</h2>
-        <p>
-          Select the conversion direction (TOML → JSON or JSON → TOML), paste your input on the left,
-          and the converted output appears on the right. Click &ldquo;Load Example&rdquo; to see a sample.
-          Use &ldquo;Swap&rdquo; to reverse the conversion with the current output.
-        </p>
-      </section>
+      </div>
     </ToolLayout>
   );
 }

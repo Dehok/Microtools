@@ -142,38 +142,50 @@ export default function JsonFormatter() {
         </div>
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is JSON?
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
-        <p className="mb-3">
-          JSON (JavaScript Object Notation) is a lightweight data interchange
-          format that is easy for humans to read and write, and easy for machines
-          to parse and generate. It is widely used in web APIs, configuration
-          files, and data storage.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          How to use this JSON Formatter
-        </h2>
-        <p className="mb-3">
-          Paste your JSON data into the input field and click &quot;Format /
-          Beautify&quot; to prettify it with proper indentation. Use
-          &quot;Minify&quot; to compress JSON by removing whitespace. The tool
-          also validates your JSON and shows errors if the syntax is invalid.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">FAQ</h2>
-        <p className="mb-1 font-medium">Is my data safe?</p>
-        <p className="mb-3">
-          Yes. All processing happens directly in your browser. No data is sent
-          to any server.
-        </p>
-        <p className="mb-1 font-medium">
-          What JSON errors can this tool detect?
-        </p>
         <p>
-          This tool detects syntax errors like missing brackets, incorrect
-          commas, unquoted keys, and other invalid JSON structures.
+          The JSON Formatter is a free online tool that helps you format, beautify, validate, and minify JSON data instantly. Whether you are debugging API responses, cleaning up configuration files, or preparing JSON for documentation, this tool makes it easy to work with JSON without installing any software.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Format &amp; Beautify</strong> — Automatically indents and formats JSON with customizable spacing (2 or 4 spaces, or tabs) for maximum readability.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Validate JSON</strong> — Instantly detects and highlights syntax errors such as missing brackets, trailing commas, unquoted keys, and mismatched braces.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Minify JSON</strong> — Compresses JSON by removing all unnecessary whitespace and line breaks, reducing file size for production use.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Syntax Highlighting</strong> — Color-coded output makes it easy to distinguish between keys, values, strings, numbers, booleans, and null values.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Debugging REST API responses by formatting raw JSON payloads</li>
+          <li>Cleaning up and validating JSON configuration files (package.json, tsconfig.json, etc.)</li>
+          <li>Preparing JSON data for documentation, presentations, or code reviews</li>
+          <li>Minifying JSON before embedding it in scripts or sending over the network</li>
+          <li>Validating JSON syntax before importing data into databases or applications</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Paste your JSON data into the input area or type it directly. Click &quot;Format / Beautify&quot; to prettify the JSON with proper indentation, or click &quot;Minify&quot; to compress it into a single line. If your JSON contains errors, the tool will display the error message with the location of the problem. You can copy the formatted output to your clipboard with one click.
         </p>
       </div>
     </ToolLayout>

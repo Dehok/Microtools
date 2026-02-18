@@ -222,6 +222,52 @@ export default function ColorPicker() {
           making it more intuitive for adjusting colors.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Color Picker is a free online tool for selecting colors and converting between HEX, RGB, and HSL formats. Whether you are designing a website, creating a brand identity, or choosing colors for a project, this tool lets you pick colors visually and get CSS-ready values instantly.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Visual Color Picker</strong> — Click anywhere on the color spectrum to select your desired color with precision.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Format Conversion</strong> — Instantly converts between HEX, RGB, and HSL color formats with accurate values.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">CSS-Ready Output</strong> — Copies color values in CSS-compatible format, ready to paste into your stylesheets.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Color Preview</strong> — Large preview area shows the selected color alongside its various format representations.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Choosing colors for web design projects and CSS styling</li>
+          <li>Converting colors between HEX, RGB, and HSL for different design tools</li>
+          <li>Picking brand colors and generating their various format representations</li>
+          <li>Matching colors from mockups and converting them to code-ready values</li>
+          <li>Experimenting with color variations by adjusting hue, saturation, and lightness</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Use the color picker to select a color visually, or enter a specific color value in any supported format (HEX, RGB, or HSL). The tool instantly converts and displays the color in all formats. Click the Copy button next to any format to copy the color value to your clipboard.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

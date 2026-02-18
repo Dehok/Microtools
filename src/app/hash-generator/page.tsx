@@ -126,6 +126,52 @@ export default function HashGenerator() {
           is sent to any server.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Hash Generator creates cryptographic hash values from any text input using popular algorithms including MD5, SHA-1, SHA-256, and SHA-512. Hashing is a one-way function that converts data into a fixed-length string, widely used for data integrity verification, password storage, and digital signatures.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Multiple Algorithms</strong> — Supports MD5, SHA-1, SHA-256, and SHA-512 hash algorithms for various security requirements.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Hashing</strong> — Generates hash values in real time as you type, with no need to submit a form.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Hex Output</strong> — Displays hash values in standard hexadecimal format, compatible with all programming languages and tools.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">One-Click Copy</strong> — Copy any hash value to your clipboard with a single click for easy use in your projects.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Verifying file integrity by comparing hash values before and after transfer</li>
+          <li>Generating hash values for password storage and authentication systems</li>
+          <li>Creating checksums for data validation and error detection</li>
+          <li>Comparing hash outputs across different algorithms for security analysis</li>
+          <li>Generating deterministic identifiers from text input for caching or deduplication</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter or paste your text into the input area. Hash values for all supported algorithms are generated instantly. Click the Copy button next to any hash to copy it to your clipboard.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

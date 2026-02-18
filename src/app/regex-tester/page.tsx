@@ -169,6 +169,52 @@ export default function RegexTester() {
           <strong> s</strong> (dotall) makes . match newlines.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Regex Tester lets you test regular expressions against sample text with real-time match highlighting. Regular expressions are powerful patterns used for searching, matching, and manipulating text in programming. This tool helps you build, debug, and validate regex patterns before using them in your code.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Real-Time Matching</strong> — Highlights all matches instantly as you type or modify your regex pattern.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Flag Support</strong> — Toggle regex flags including global (g), case-insensitive (i), and multiline (m).
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Match Details</strong> — Shows all matched groups, capture groups, and their positions in the text.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Error Detection</strong> — Highlights syntax errors in your regex pattern with descriptive error messages.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Building and debugging regex patterns for form validation (email, phone, URL)</li>
+          <li>Testing text extraction patterns for web scraping and data parsing</li>
+          <li>Creating search-and-replace patterns for batch text processing</li>
+          <li>Learning regex syntax with immediate visual feedback on matches</li>
+          <li>Validating regex patterns before implementing them in code (JavaScript, Python, etc.)</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your regular expression pattern in the regex input field and set the desired flags (global, case-insensitive, multiline). Then paste or type your test text below. All matches are highlighted in real time. Match details show the matched text, groups, and positions.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

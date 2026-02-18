@@ -161,6 +161,52 @@ export default function CronGenerator() {
           and day of week (0-6, where 0 is Sunday).
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Cron Expression Generator helps you build and understand cron expressions using a visual, interactive editor. Cron expressions define schedules for automated tasks in Linux, macOS, and many server environments. Instead of memorizing the cryptic five-field syntax, this tool lets you select time intervals visually.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Visual Editor</strong> — Select minutes, hours, days, months, and weekdays from dropdown menus instead of writing raw cron syntax.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Expression Preview</strong> — See the generated cron expression update in real time as you adjust the schedule.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Human-Readable Description</strong> — Displays a natural-language description of what the cron expression means.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Common Presets</strong> — Quick-select buttons for common schedules like every minute, hourly, daily, weekly, and monthly.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Setting up scheduled tasks (cron jobs) on Linux and Unix servers</li>
+          <li>Configuring CI/CD pipeline schedules in GitHub Actions, GitLab CI, or Jenkins</li>
+          <li>Scheduling database backups, log rotation, and cleanup tasks</li>
+          <li>Defining schedule expressions for cloud services (AWS CloudWatch, Azure Scheduler)</li>
+          <li>Learning cron syntax with immediate visual feedback</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Use the visual editor to select your desired schedule by choosing values for minutes, hours, days of month, months, and days of week. The cron expression is generated automatically. Use preset buttons for common schedules. Copy the expression and use it in your crontab or scheduling service.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

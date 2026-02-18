@@ -68,25 +68,50 @@ export default function WordCounter() {
         </button>
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Free Online Word Counter
-        </h2>
-        <p className="mb-3">
-          This word counter tool instantly counts words, characters (with and
-          without spaces), sentences, and paragraphs in any text you type or
-          paste. It also estimates reading time (based on 200 words per minute)
-          and speaking time (based on 130 words per minute).
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Who uses a word counter?
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          Students checking essay length, writers tracking word count goals,
-          social media managers verifying character limits, SEO professionals
-          optimizing meta descriptions, and content creators ensuring their
-          articles meet publishing requirements.
+          The Word Counter is a free online text analysis tool that counts words, characters, sentences, and paragraphs in any text. It is essential for writers, students, and content creators who need to meet word count requirements for essays, blog posts, social media captions, or SEO content.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Word Count</strong> — Accurately counts words by splitting text on whitespace while handling multiple spaces and line breaks.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Character Count</strong> — Counts total characters including spaces, and characters without spaces for precise length tracking.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Sentence Count</strong> — Detects sentence boundaries using punctuation marks (periods, question marks, exclamation points).
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Paragraph Count</strong> — Counts paragraphs separated by blank lines for document structure analysis.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Checking word count for essays, assignments, and academic papers</li>
+          <li>Monitoring character limits for social media posts (Twitter, Instagram, LinkedIn)</li>
+          <li>Ensuring SEO content meets recommended word count targets</li>
+          <li>Tracking writing progress for blog posts, articles, and books</li>
+          <li>Analyzing text statistics for readability and content optimization</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Paste or type your text into the input area. All statistics (words, characters, sentences, paragraphs) are calculated instantly in real time. The counts update automatically as you edit the text.
         </p>
       </div>
     </ToolLayout>

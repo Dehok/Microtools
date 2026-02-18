@@ -95,23 +95,50 @@ export default function UuidGenerator() {
         ))}
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is a UUID?
-        </h2>
-        <p className="mb-3">
-          A UUID (Universally Unique Identifier) is a 128-bit label used to
-          uniquely identify objects in computer systems. UUID v4 is generated
-          using random numbers and is the most commonly used version.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          UUID format
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          A standard UUID looks like: 550e8400-e29b-41d4-a716-446655440000. It
-          consists of 32 hexadecimal digits displayed in 5 groups separated by
-          hyphens (8-4-4-4-12).
+          The UUID Generator creates random universally unique identifiers (UUIDs) following the version 4 (v4) standard. UUIDs are 128-bit identifiers used extensively in software development for database records, API keys, session tokens, and distributed systems where unique identification without central coordination is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">UUID v4 Generation</strong> — Creates cryptographically random UUIDs conforming to RFC 4122 version 4 specification.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Bulk Generation</strong> — Generate multiple UUIDs at once for batch operations, database seeding, or test data creation.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">One-Click Copy</strong> — Copy individual UUIDs or all generated UUIDs to your clipboard with a single click.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Generation</strong> — UUIDs are generated using the browser's crypto.getRandomValues() for high-quality randomness.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Creating unique primary keys for database records in PostgreSQL, MongoDB, or other databases</li>
+          <li>Generating unique identifiers for API resources, session tokens, or correlation IDs</li>
+          <li>Seeding test databases with realistic unique identifiers</li>
+          <li>Creating unique filenames or resource identifiers in distributed systems</li>
+          <li>Generating tracking IDs for analytics events, logs, or audit trails</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Click the Generate button to create a new UUID. Use the bulk generation option to create multiple UUIDs at once. Click on any UUID to copy it to your clipboard.
         </p>
       </div>
     </ToolLayout>

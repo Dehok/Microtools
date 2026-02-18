@@ -244,36 +244,50 @@ export default function SubnetCalculator() {
         </>
       )}
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is Subnetting?
-        </h2>
-        <p className="mb-3">
-          <strong>Subnetting</strong> is the process of dividing a larger network into smaller,
-          more manageable sub-networks (subnets). Each subnet has its own range of IP addresses,
-          defined by a <strong>network address</strong> and a <strong>subnet mask</strong>. Subnetting
-          improves network performance, security, and IP address management.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Understanding CIDR Notation
-        </h2>
-        <p className="mb-3">
-          <strong>CIDR</strong> (Classless Inter-Domain Routing) notation uses a slash followed by a
-          number (e.g., /24) to indicate how many bits of the IP address are used for the network
-          portion. A /24 prefix means the first 24 bits are the network address, leaving 8 bits
-          for host addresses (256 total, 254 usable). Smaller prefix numbers mean larger networks:
-          /8 provides over 16 million addresses, while /30 provides only 4.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Key Subnet Terms
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          The <strong>Network Address</strong> is the first address in a subnet, identifying the
-          network itself. The <strong>Broadcast Address</strong> is the last address, used to send
-          data to all hosts. The <strong>Subnet Mask</strong> determines which part of an IP address
-          is the network and which is the host. The <strong>Wildcard Mask</strong> is the inverse of
-          the subnet mask, commonly used in access control lists (ACLs) and routing configurations.
+          The Subnet Calculator is a free online tool available on CodeUtilo. Calculate subnet details from CIDR notation. Network, broadcast, host range, and netmask. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All subnet calculator operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the subnet calculator as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the subnet calculator for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the subnet calculator will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

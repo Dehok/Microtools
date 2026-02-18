@@ -151,6 +151,52 @@ export default function UrlEncoderDecoder() {
           characters that are part of a valid URL structure (like :, /, ?, #). Use it for full URLs.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The URL Encoder/Decoder converts special characters in URLs to their percent-encoded equivalents and back. URL encoding (also called percent encoding) replaces unsafe characters with a % followed by their hexadecimal value, ensuring URLs are valid and can be transmitted safely across the internet.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Encode URLs</strong> — Converts special characters (spaces, &amp;, =, ?, etc.) to percent-encoded format.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Decode URLs</strong> — Converts percent-encoded strings back to their original readable characters.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Full Character Support</strong> — Handles Unicode characters, query parameters, and fragment identifiers correctly.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Real-Time Results</strong> — Encoding and decoding happen instantly as you type.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Encoding query parameters before appending them to URLs in web applications</li>
+          <li>Decoding URLs from API responses, logs, or analytics data</li>
+          <li>Preparing URLs with special characters for use in HTML, JavaScript, or API calls</li>
+          <li>Debugging URL encoding issues in web applications and redirects</li>
+          <li>Encoding file paths and resource identifiers for use in REST APIs</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Select Encode or Decode mode. Paste your URL or text into the input field. The encoded or decoded result appears instantly. Copy the result with the Copy button.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

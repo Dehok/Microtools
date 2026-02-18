@@ -269,50 +269,51 @@ export default function RegexCheatSheet() {
         ))}
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What Are Regular Expressions?
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
-        <p className="mb-3">
-          Regular expressions (regex or regexp) are powerful patterns used to match, search, and manipulate
-          text. They are supported in virtually every programming language including JavaScript, Python, Java,
-          PHP, C#, Go, and Ruby. Regex is essential for form validation, data extraction, log parsing, and
-          text processing.
+        <p>
+          The Regex Cheat Sheet is a free online tool available on CodeUtilo. Quick reference for regular expressions. Character classes, quantifiers, groups, and common patterns. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          How to Read This Cheat Sheet
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
         </h2>
-        <p className="mb-3">
-          Each section covers a fundamental category of regex syntax. <strong>Character classes</strong> define
-          what characters to match. <strong>Quantifiers</strong> specify how many times a pattern repeats.
-          <strong> Anchors</strong> pin matches to specific positions. <strong>Groups</strong> capture
-          subpatterns and enable backreferences. <strong>Lookaheads and lookbehinds</strong> assert what
-          surrounds a match without consuming characters. <strong>Flags</strong> modify the overall behavior
-          of the regex engine.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Greedy vs Lazy Quantifiers
-        </h2>
-        <p className="mb-3">
-          By default, quantifiers like <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">*</code>,{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">+</code>, and{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">?</code> are <em>greedy</em> &mdash; they
-          match as much text as possible. Adding a{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">?</code> after them makes them{" "}
-          <em>lazy</em>, matching as little text as possible. This is especially useful when parsing HTML
-          tags or quoted strings.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Tips for Writing Better Regex
-        </h2>
-        <ul className="mb-3 list-disc space-y-1 pl-5">
-          <li>Start simple and build up complexity incrementally.</li>
-          <li>Use non-capturing groups <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">(?:...)</code> when you do not need backreferences.</li>
-          <li>Prefer specific character classes over the dot <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">.</code> for better performance.</li>
-          <li>Use anchors <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">^</code> and <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono">$</code> to avoid partial matches.</li>
-          <li>Test your patterns with a regex tester to verify matches before using them in production code.</li>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All regex cheat sheet operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the regex cheat sheet as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
         </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the regex cheat sheet for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the regex cheat sheet will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
+        </p>
       </div>
     </ToolLayout>
   );

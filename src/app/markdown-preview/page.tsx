@@ -209,6 +209,52 @@ export default function MarkdownPreview() {
           <strong> --- horizontal rule</strong>.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Markdown Preview tool lets you write Markdown and see the rendered HTML output in real time. Markdown is a lightweight markup language used for README files, documentation, blog posts, and note-taking. This tool supports standard Markdown syntax including headings, lists, links, images, code blocks, and more.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Live Preview</strong> — See your Markdown rendered as HTML instantly as you type, with no delay.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Full Syntax Support</strong> — Supports headings, bold, italic, links, images, lists, blockquotes, code blocks, and tables.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Split View</strong> — Side-by-side editor and preview layout for efficient editing and reviewing.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Clean HTML Output</strong> — Generates clean, semantic HTML that can be copied and used in web pages.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Writing and previewing GitHub README files before committing</li>
+          <li>Drafting blog posts and articles in Markdown format</li>
+          <li>Creating documentation with proper formatting and structure</li>
+          <li>Learning Markdown syntax by seeing instant visual feedback</li>
+          <li>Converting Markdown notes to HTML for web publishing</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Type or paste your Markdown content into the editor on the left. The rendered HTML preview appears instantly on the right. Edit your content and see the changes reflected in real time.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

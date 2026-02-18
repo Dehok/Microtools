@@ -198,40 +198,50 @@ export default function ReadingTimeCalculator() {
         )}
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Free Online Reading Time Calculator
-        </h2>
-        <p className="mb-3">
-          This reading time calculator instantly estimates how long it takes to
-          read or speak any piece of text. Simply paste your content into the
-          text area and the tool calculates reading time and speaking time in
-          real time, along with a full breakdown of word count, character count
-          (with and without spaces), sentence count, paragraph count, and
-          average word length.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          How is reading time calculated?
-        </h2>
-        <p className="mb-3">
-          Reading time is calculated by dividing the total word count by your
-          chosen reading speed in words per minute (WPM). The average adult
-          reads at around 200–250 WPM for general text. Use the slider to
-          adjust between 100 WPM (slow / careful reading) and 400 WPM (fast /
-          speed reading) to match your audience or use case.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Who is this tool for?
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          Bloggers and content writers use it to estimate article reading time
-          before publishing. Presenters and speakers use the speaking time
-          estimate to rehearse talks and match a time slot. Teachers use it to
-          gauge how long reading assignments will take. Podcasters and
-          voice-over artists use it to script episodes to a target length.
-          Anyone writing for Medium, LinkedIn, or newsletters can use it to
-          optimize content length for reader engagement.
+          The Reading Time Calculator is a free online tool available on CodeUtilo. Estimate reading time and speaking time for any text. Word and character stats included. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All reading time calculator operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the reading time calculator as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the reading time calculator for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the reading time calculator will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

@@ -142,23 +142,50 @@ export default function LoremIpsumGenerator() {
         className="h-64 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 text-sm"
       />
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is Lorem Ipsum?
-        </h2>
-        <p className="mb-3">
-          Lorem Ipsum is placeholder text used in the printing and typesetting
-          industry since the 1500s. It is used by designers and developers to
-          fill layouts with text before the final content is available.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Why use Lorem Ipsum?
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          Using placeholder text allows designers to focus on visual elements
-          without being distracted by readable content. It also shows the
-          approximate length and layout of the final text.
+          The Lorem Ipsum Generator creates placeholder text for design mockups, website layouts, and document templates. Lorem Ipsum has been the industry-standard dummy text since the 1500s, providing realistic-looking text without distracting from the visual design.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Multiple Output Types</strong> — Generate paragraphs, sentences, or individual words based on your needs.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Customizable Amount</strong> — Choose exactly how many paragraphs, sentences, or words you want to generate.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Standard Lorem Ipsum</strong> — Uses the classic Lorem Ipsum text that designers and developers have relied on for decades.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">One-Click Copy</strong> — Copy the generated placeholder text to your clipboard instantly.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Filling website mockups and wireframes with realistic placeholder text</li>
+          <li>Testing typography, font sizes, and line spacing in web designs</li>
+          <li>Populating database records with dummy content for development and testing</li>
+          <li>Creating document templates with placeholder text for content management systems</li>
+          <li>Demonstrating layout designs to clients before real content is available</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Select whether you want paragraphs, sentences, or words. Set the desired amount using the controls. The Lorem Ipsum text is generated instantly. Copy it to your clipboard with the Copy button.
         </p>
       </div>
     </ToolLayout>

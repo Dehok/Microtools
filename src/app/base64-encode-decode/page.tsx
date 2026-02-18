@@ -134,23 +134,50 @@ export default function Base64Tool() {
         className="h-36 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 p-3 font-mono text-sm"
       />
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is Base64?
-        </h2>
-        <p className="mb-3">
-          Base64 is a binary-to-text encoding scheme that represents binary data
-          in an ASCII string format. It is commonly used to encode data in URLs,
-          email attachments, and data URIs in HTML/CSS.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          When to use Base64 encoding?
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          Base64 is useful when you need to transmit binary data over channels
-          that only support text, such as embedding images in CSS, sending
-          attachments in emails, or storing binary data in JSON.
+          The Base64 Encoder/Decoder is a free online tool that converts text to Base64-encoded strings and decodes Base64 back to readable text. Base64 encoding is commonly used in web development, email protocols, and data serialization to safely transmit binary data as ASCII text.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Encode to Base64</strong> — Converts any text or string into its Base64-encoded representation using the standard Base64 alphabet.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Decode from Base64</strong> — Converts Base64-encoded strings back into their original readable text format.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Encoding and decoding happen in real time as you type, with no need to click a button.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">UTF-8 Support</strong> — Handles Unicode and special characters correctly by encoding text as UTF-8 before Base64 conversion.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Encoding data for embedding in HTML data URIs (e.g., inline images or fonts)</li>
+          <li>Decoding Base64 strings from API responses, cookies, or authentication tokens</li>
+          <li>Preparing binary data for transmission in JSON, XML, or email attachments</li>
+          <li>Debugging encoded values in URLs, headers, or configuration files</li>
+          <li>Learning and experimenting with Base64 encoding for educational purposes</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Select the mode (Encode or Decode) and paste your text into the input area. The result appears instantly in the output. Use the Copy button to copy the encoded or decoded text to your clipboard.
         </p>
       </div>
     </ToolLayout>

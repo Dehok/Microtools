@@ -233,37 +233,50 @@ export default function TocGenerator() {
         </>
       )}
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is a Table of Contents?
-        </h2>
-        <p className="mb-3">
-          A Table of Contents (TOC) is a navigational aid that lists the headings and
-          subheadings of a document with links to each section. In Markdown documents,
-          a TOC uses anchor links that let readers jump directly to the section they
-          need.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          How Does the TOC Generator Work?
-        </h2>
-        <p className="mb-3">
-          This tool parses Markdown headings (lines starting with #) from your content
-          and generates a structured, linked list. Each heading is converted into an
-          anchor link by slugifying the text: converting to lowercase, replacing spaces
-          with hyphens, and removing special characters. The result is a ready-to-use
-          Markdown TOC you can paste into your README, documentation, or blog post.
-        </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          When to Use a Table of Contents
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
         <p>
-          A TOC is essential for long documents, README files, wikis, and technical
-          documentation. GitHub, GitLab, and most Markdown renderers automatically
-          generate anchor IDs for headings, so the links produced by this tool work
-          out of the box. Adding a TOC improves readability, helps users find
-          information quickly, and is considered a best practice for any document
-          longer than a few sections.
+          The Table of Contents Generator is a free online tool available on CodeUtilo. Generate a table of contents from Markdown headings. Create linked TOC for README files. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All table of contents generator operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the table of contents generator as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the table of contents generator for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the table of contents generator will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

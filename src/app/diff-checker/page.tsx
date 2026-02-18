@@ -184,6 +184,52 @@ export default function DiffChecker() {
           and finding differences between API responses.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Diff Checker compares two texts and highlights the differences between them line by line. It is an essential tool for code reviews, document comparison, and version tracking. The tool shows added, removed, and modified lines with color-coded highlighting for easy identification.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Line-by-Line Comparison</strong> — Compares text line by line and identifies additions, deletions, and modifications.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Color-Coded Output</strong> — Green highlights for added lines, red for removed lines, making differences easy to spot.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Inline Diff</strong> — Shows character-level changes within modified lines for precise difference identification.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Clean Interface</strong> — Side-by-side text input areas with clear labeling for original and modified text.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Comparing code changes before committing or during code reviews</li>
+          <li>Checking differences between configuration file versions</li>
+          <li>Verifying document changes between drafts</li>
+          <li>Debugging by comparing expected vs. actual output</li>
+          <li>Tracking content changes in text files, scripts, or data files</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Paste the original text in the left panel and the modified text in the right panel. The differences are highlighted automatically. Added lines appear in green, removed lines in red, and modified lines show both old and new content.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

@@ -339,54 +339,50 @@ export default function JsonToGo() {
         </div>
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">JSON to Go Struct Converter</h2>
-        <p className="mb-3">
-          This tool parses your JSON data and automatically generates Go struct definitions. It
-          infers the correct Go types from JSON values: strings become{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-xs">string</code>, integers
-          become <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-xs">int64</code>, floats
-          become <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-xs">float64</code>,
-          booleans become{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-xs">bool</code>, and null values
-          become <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-xs">interface{"{}"}</code>.
-          Nested objects and arrays of objects generate their own named types.
-        </p>
-
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Options Explained</h2>
-        <p className="mb-2">
-          <strong>Struct name</strong> — sets the name of the root struct. Nested types are named
-          automatically based on the JSON field name in PascalCase.
-        </p>
-        <p className="mb-2">
-          <strong>json tags</strong> — adds{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-xs">`json:"fieldName"`</code>{" "}
-          struct tags to each field, which are required for proper JSON marshaling/unmarshaling in
-          Go.
-        </p>
-        <p className="mb-2">
-          <strong>omitempty</strong> — appends{" "}
-          <code className="rounded bg-gray-100 dark:bg-gray-800 px-1 font-mono text-xs">,omitempty</code> to json
-          tags, causing fields with zero values to be omitted when marshaling to JSON.
-        </p>
-        <p className="mb-3">
-          <strong>Separate types vs Inline structs</strong> — choose whether nested objects are
-          defined as separate named types (recommended for reuse) or inlined directly inside the
-          parent struct field.
-        </p>
-
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">When to Use This Tool</h2>
-        <p className="mb-3">
-          Working with a REST API, parsing config files, or dealing with JSON data in Go? Paste the
-          JSON response here to instantly get ready-to-use struct definitions. This eliminates
-          tedious manual struct writing and helps avoid type mismatches.
-        </p>
-
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Is My Data Safe?</h2>
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
         <p>
-          Yes. All conversion logic runs entirely in your browser using JavaScript. No data is
-          sent to any server at any point.
+          The JSON to Go Struct is a free online tool available on CodeUtilo. Generate Go struct definitions from JSON data. Handles nested objects and arrays. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All json to go struct operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the json to go struct as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the json to go struct for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your input in the text area provided and the json to go struct will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

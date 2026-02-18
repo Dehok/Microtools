@@ -140,6 +140,52 @@ export default function CSSMinifier() {
           easier to read and maintain. Use it when debugging or reviewing minified stylesheets.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The CSS Minifier removes unnecessary whitespace, comments, and formatting from CSS code to reduce file size. Minified CSS loads faster by reducing the number of bytes transferred over the network. The beautifier mode reformats minified or poorly formatted CSS into a readable, properly indented format.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Minify CSS</strong> — Removes all comments, whitespace, and line breaks while preserving the CSS functionality.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Beautify CSS</strong> — Reformats compressed CSS with proper indentation, line breaks, and spacing for readability.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Size Comparison</strong> — Shows the original and minified file sizes so you can see the space savings.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Error Preservation</strong> — Maintains CSS validity during minification — your styles will work exactly the same.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Minifying CSS files before deploying to production for faster page loads</li>
+          <li>Beautifying minified CSS from third-party libraries for debugging and modification</li>
+          <li>Reducing CSS file size to improve Core Web Vitals and page performance scores</li>
+          <li>Formatting CSS pasted from browser DevTools into readable code</li>
+          <li>Preparing CSS for code reviews by ensuring consistent formatting</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Paste your CSS code into the input area. Click &quot;Minify&quot; to compress the CSS or &quot;Beautify&quot; to format it with proper indentation. The result appears in the output area. Copy the processed CSS with the Copy button.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

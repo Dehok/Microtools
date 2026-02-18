@@ -250,27 +250,52 @@ export default function EnvEditorPage() {
         </>
       )}
 
+      
       {/* SEO Content */}
-      <section className="mt-12 space-y-6 text-gray-700 dark:text-gray-300">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">What is a .env File?</h2>
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
         <p>
-          A .env file stores environment variables as key-value pairs. It is commonly used in Node.js, Python, PHP, and other
-          frameworks to manage configuration like database credentials, API keys, and app settings. The format is simple:
-          one KEY=value per line, with optional comments starting with #.
+          The .env Editor &amp; Validator is a free online tool available on CodeUtilo. Edit and validate .env files. Check for duplicates, empty values, and syntax errors. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Common .env Issues</h2>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All .env editor &amp; validator operations run locally in your browser using JavaScript. Your data never leaves your device.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the .env editor &amp; validator as many times as you need without creating an account or paying anything.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the .env editor &amp; validator for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
         <p>
-          Duplicate keys can cause unexpected behavior — the last value usually wins. Empty values may cause runtime errors.
-          Values with spaces should be quoted. Keys should follow UPPER_SNAKE_CASE convention. This validator catches all
-          these issues and helps you maintain clean environment files.
+          Enter your input in the text area provided and the .env editor &amp; validator will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Tool</h2>
-        <p>
-          Paste your .env file content into the editor. The tool automatically validates each line and reports issues.
-          Use the action buttons to sort, deduplicate, remove comments, or quote values. Everything runs locally
-          in your browser — no data is sent to any server.
-        </p>
-      </section>
+      </div>
     </ToolLayout>
   );
 }

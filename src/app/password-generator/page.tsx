@@ -189,6 +189,52 @@ export default function PasswordGenerator() {
           provides cryptographically secure random numbers. No passwords are stored or sent anywhere.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Password Generator creates strong, random passwords with customizable length and character sets. Using the browser's cryptographic random number generator, it produces passwords that are virtually impossible to guess or crack through brute-force attacks.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Customizable Length</strong> — Set password length from 4 to 128 characters to meet various security requirements.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Character Set Selection</strong> — Choose which character types to include: uppercase letters, lowercase letters, numbers, and special symbols.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Strength Indicator</strong> — Visual password strength meter shows how strong the generated password is based on length and complexity.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Cryptographic Randomness</strong> — Uses crypto.getRandomValues() for true randomness, unlike Math.random() which is predictable.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Creating strong passwords for online accounts, email, and social media</li>
+          <li>Generating secure API keys and secret tokens for applications</li>
+          <li>Creating master passwords for password managers</li>
+          <li>Generating random strings for encryption keys and salts</li>
+          <li>Meeting specific password requirements (minimum length, special characters, etc.)</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Adjust the password length using the slider and select which character types to include (uppercase, lowercase, numbers, symbols). Click Generate to create a new password. The strength indicator shows how secure the password is. Copy the password to your clipboard with the Copy button.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

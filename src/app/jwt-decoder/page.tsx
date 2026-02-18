@@ -136,6 +136,52 @@ export default function JwtDecoder() {
           Never share your tokens with untrusted online tools.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The JWT Decoder lets you decode and inspect JSON Web Tokens (JWTs) without needing the secret key. JWTs are widely used in authentication and authorization systems (OAuth 2.0, OpenID Connect) to securely transmit information between parties. This tool displays the header, payload, and signature sections of any JWT.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Header Inspection</strong> — Decodes and displays the JWT header showing the algorithm and token type.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Payload Display</strong> — Shows all claims in the payload including standard claims (iss, sub, exp, iat) and custom data.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Expiration Check</strong> — Automatically checks if the token has expired based on the exp claim.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Pretty Formatting</strong> — Displays the decoded header and payload as formatted, readable JSON.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Debugging authentication issues by inspecting JWT contents and expiration times</li>
+          <li>Verifying JWT payload data during API development and testing</li>
+          <li>Inspecting tokens received from OAuth 2.0 and OpenID Connect providers</li>
+          <li>Checking token claims for authorization and access control debugging</li>
+          <li>Learning about JWT structure and claims for educational purposes</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Paste your JWT token into the input field. The tool automatically decodes and displays the header, payload, and signature information. The expiration status is shown if the token contains an exp claim.
+        </p>
+      </div>
     </ToolLayout>
   );
 }

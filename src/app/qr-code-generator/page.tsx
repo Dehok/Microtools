@@ -136,25 +136,50 @@ export default function QrCodeGenerator() {
         <canvas ref={canvasRef} />
       </div>
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is a QR Code?
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
-        <p className="mb-3">
-          A QR (Quick Response) code is a two-dimensional barcode that stores
-          information such as URLs, text, email addresses, or phone numbers. QR
-          codes can be scanned by any smartphone camera to quickly access the
-          encoded information.
+        <p>
+          The QR Code Generator creates QR codes from text, URLs, or any data you enter. QR codes are two-dimensional barcodes that can be scanned by smartphone cameras to quickly access links, share contact information, or transmit data. This tool lets you customize colors and download the QR code as PNG or SVG.
         </p>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          How to use this QR Code Generator
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
         </h2>
-        <p className="mb-3">
-          Enter any text or URL in the input field, customize the size and
-          colors, then click &quot;Generate QR Code&quot;. You can download the
-          result as a PNG image or scalable SVG file. All generation happens
-          in your browser — no data is sent to any server.
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Custom Content</strong> — Generate QR codes from URLs, plain text, email addresses, phone numbers, or Wi-Fi credentials.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Color Customization</strong> — Choose custom foreground and background colors to match your brand or design.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Multiple Formats</strong> — Download QR codes as PNG for web use or SVG for print and scalable graphics.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Instant Preview</strong> — See the QR code update in real time as you type or modify the content.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Creating QR codes for business cards, flyers, and marketing materials</li>
+          <li>Generating scannable links for websites, apps, or social media profiles</li>
+          <li>Sharing Wi-Fi network credentials with guests via QR codes</li>
+          <li>Adding QR codes to product packaging for quick access to manuals or support</li>
+          <li>Creating QR codes for event tickets, menus, and promotional campaigns</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter your text or URL in the input field. The QR code is generated instantly. Customize the foreground and background colors if desired. Download the QR code as PNG or SVG using the download buttons.
         </p>
       </div>
     </ToolLayout>

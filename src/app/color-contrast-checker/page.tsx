@@ -254,62 +254,50 @@ export default function ColorContrastChecker() {
         </div>
       )}
 
+      
       {/* SEO Content */}
-      <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-600 dark:text-gray-400">
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          What is WCAG Color Contrast?
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
         </h2>
-        <p className="mb-3">
-          The Web Content Accessibility Guidelines (WCAG) define minimum contrast
-          ratios between text and background colors to ensure readability for
-          people with visual impairments. Contrast ratio is calculated using the
-          relative luminance of the two colors, ranging from 1:1 (no contrast) to
-          21:1 (maximum contrast, black on white).
+        <p>
+          The Color Contrast Checker is a free online tool available on CodeUtilo. Check WCAG 2.1 color contrast ratios. Validate AA and AAA accessibility standards. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
         </p>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          WCAG 2.1 Contrast Requirements
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
         </h2>
-        <ul className="mb-3 list-inside list-disc space-y-1">
+        <ul className="list-disc list-inside space-y-2">
           <li>
-            <strong>AA Normal Text:</strong> Minimum ratio of 4.5:1 for text
-            smaller than 18pt (or 14pt bold).
+            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All color contrast checker operations run locally in your browser using JavaScript. Your data never leaves your device.
           </li>
           <li>
-            <strong>AA Large Text:</strong> Minimum ratio of 3:1 for text 18pt
-            and above (or 14pt bold and above).
+            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
           </li>
           <li>
-            <strong>AAA Normal Text:</strong> Enhanced minimum ratio of 7:1 for
-            normal text.
+            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the color contrast checker as many times as you need without creating an account or paying anything.
           </li>
           <li>
-            <strong>AAA Large Text:</strong> Enhanced minimum ratio of 4.5:1 for
-            large text.
+            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
           </li>
         </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          How is Contrast Ratio Calculated?
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
         </h2>
-        <p className="mb-3">
-          The contrast ratio formula is (L1 + 0.05) / (L2 + 0.05), where L1 is
-          the relative luminance of the lighter color and L2 is the relative
-          luminance of the darker color. Relative luminance is computed by
-          converting each sRGB color channel to linear light using the formula:
-          if the channel value is less than or equal to 0.03928, divide by 12.92;
-          otherwise, raise ((value + 0.055) / 1.055) to the power of 2.4.
-        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Using the color contrast checker for day-to-day development tasks</li>
+          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
+          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
+          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
+          <li>Sharing the tool link with colleagues who need the same functionality</li>
+        </ul>
 
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          Why Accessibility Matters
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
         </h2>
         <p>
-          Approximately 1 in 12 men and 1 in 200 women have some form of color
-          vision deficiency. Ensuring sufficient contrast makes your content
-          readable for the widest possible audience, improves usability in bright
-          sunlight or on low-quality displays, and is often a legal requirement
-          for government and public sector websites.
+          Enter your input in the text area provided and the color contrast checker will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
         </p>
       </div>
     </ToolLayout>

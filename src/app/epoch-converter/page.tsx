@@ -143,6 +143,52 @@ export default function EpochConverter() {
           number of digits.
         </p>
       </div>
+    
+      {/* SEO Content */}
+      <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+          About This Tool
+        </h2>
+        <p>
+          The Epoch Converter transforms Unix timestamps (seconds since January 1, 1970 UTC) into human-readable dates and vice versa. Unix timestamps are the standard way computers track time internally and are used extensively in databases, APIs, log files, and server configurations.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Key Features
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Timestamp to Date</strong> — Converts Unix epoch timestamps (seconds or milliseconds) to human-readable date and time.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Date to Timestamp</strong> — Converts any date and time to its Unix epoch timestamp representation.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Current Timestamp</strong> — Shows the current Unix timestamp updating in real time.
+          </li>
+          <li>
+            <strong className="text-gray-700 dark:text-gray-300">Multiple Formats</strong> — Displays dates in ISO 8601, UTC, and local time zone formats.
+          </li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          Common Use Cases
+        </h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Converting API timestamps to readable dates for debugging and logging</li>
+          <li>Generating Unix timestamps for database queries and data filters</li>
+          <li>Comparing timestamps from different systems or time zones</li>
+          <li>Setting expiration times for tokens, cookies, and cache entries</li>
+          <li>Debugging time-related issues in server logs and application data</li>
+        </ul>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+          How to Use
+        </h2>
+        <p>
+          Enter a Unix timestamp (in seconds or milliseconds) to see it converted to a human-readable date. Or use the date picker to select a date and get the corresponding Unix timestamp. The current timestamp is displayed at the top for reference.
+        </p>
+      </div>
     </ToolLayout>
   );
 }
