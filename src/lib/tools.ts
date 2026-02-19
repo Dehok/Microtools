@@ -1147,6 +1147,41 @@ export const tools: Tool[] = [
     category: "media",
     icon: "VCC",
   },
+  {
+    slug: "pdf-to-jpg",
+    name: "PDF to JPG Converter",
+    description: "Convert PDF pages to JPG images with quality and scale controls in your browser.",
+    category: "converter",
+    icon: "P>J",
+  },
+  {
+    slug: "jpg-to-pdf",
+    name: "JPG to PDF Converter",
+    description: "Merge JPG/JPEG images into one PDF directly in your browser.",
+    category: "converter",
+    icon: "J>P",
+  },
+  {
+    slug: "png-to-pdf",
+    name: "PNG to PDF Converter",
+    description: "Convert PNG images to PDF with optional transparency flattening.",
+    category: "converter",
+    icon: "N>P",
+  },
+  {
+    slug: "base64-to-pdf",
+    name: "Base64 to PDF Converter",
+    description: "Decode Base64 strings or data URLs and download as PDF locally.",
+    category: "converter",
+    icon: "B>P",
+  },
+  {
+    slug: "openai-batch-jsonl-validator",
+    name: "OpenAI Batch JSONL Validator",
+    description: "Validate Batch API JSONL lines, detect errors, and export valid records.",
+    category: "developer",
+    icon: "BJL",
+  },
 ];
 
 
