@@ -1077,4 +1077,43 @@ export const tools: Tool[] = [
     category: "developer",
     icon: "📐",
   },
+  {
+    slug: "webp-to-png",
+    name: "WebP to PNG Converter",
+    description: "Convert WebP images to PNG instantly in your browser. No upload, no tracking.",
+    category: "converter",
+    icon: "W>P",
+  },
+  {
+    slug: "webp-to-jpg",
+    name: "WebP to JPG Converter",
+    description: "Convert WebP to JPG (JPEG) with optional quality settings. Runs fully client-side.",
+    category: "converter",
+    icon: "W>J",
+  },
+  {
+    slug: "exif-viewer",
+    name: "EXIF Metadata Viewer",
+    description: "Read camera and EXIF metadata from JPEG photos directly in your browser.",
+    category: "media",
+    icon: "EXIF",
+  },
+  {
+    slug: "exif-metadata-remover",
+    name: "Image Metadata Remover",
+    description: "Strip EXIF and hidden metadata from photos before sharing. 100% local processing.",
+    category: "media",
+    icon: "META",
+  },
+  {
+    slug: "token-counter",
+    name: "AI Token Counter",
+    description: "Estimate token usage for prompts and texts across AI models. Fast browser-side estimate.",
+    category: "developer",
+    icon: "TOK",
+  },
 ];
+
+
+
+
