@@ -1182,6 +1182,41 @@ export const tools: Tool[] = [
     category: "developer",
     icon: "BJL",
   },
+  {
+    slug: "pdf-to-png",
+    name: "PDF to PNG Converter",
+    description: "Convert PDF pages to PNG images in-browser with adjustable render scale.",
+    category: "converter",
+    icon: "P>N",
+  },
+  {
+    slug: "pdf-to-image",
+    name: "PDF to Image Converter",
+    description: "Convert PDF pages to PNG, JPG, or WebP with page-range and quality controls.",
+    category: "converter",
+    icon: "P>I",
+  },
+  {
+    slug: "pdf-to-word",
+    name: "PDF to Word Converter",
+    description: "Extract text from PDFs and export a Word-compatible DOC file in-browser.",
+    category: "converter",
+    icon: "P>W",
+  },
+  {
+    slug: "c2pa-viewer",
+    name: "C2PA Viewer",
+    description: "Inspect files for Content Credentials/C2PA markers locally in your browser.",
+    category: "media",
+    icon: "C2P",
+  },
+  {
+    slug: "pii-redactor",
+    name: "PII Redactor",
+    description: "Detect and redact emails, phones, cards, IBAN, IPs, and tokens from text.",
+    category: "crypto",
+    icon: "PII",
+  },
 ];
 
 
