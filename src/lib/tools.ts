@@ -1112,6 +1112,41 @@ export const tools: Tool[] = [
     category: "developer",
     icon: "TOK",
   },
+  {
+    slug: "heic-to-jpg",
+    name: "HEIC to JPG Converter",
+    description: "Convert HEIC/HEIF photos to JPG directly in your browser with no server upload.",
+    category: "converter",
+    icon: "H>J",
+  },
+  {
+    slug: "heic-to-png",
+    name: "HEIC to PNG Converter",
+    description: "Convert HEIC/HEIF images to PNG in-browser. Private and batch-friendly.",
+    category: "converter",
+    icon: "H>P",
+  },
+  {
+    slug: "avif-to-jpg",
+    name: "AVIF to JPG Converter",
+    description: "Convert AVIF images to JPG (JPEG) with quality control. Browser-only processing.",
+    category: "converter",
+    icon: "A>J",
+  },
+  {
+    slug: "mp4-to-mp3",
+    name: "MP4 to MP3 Converter",
+    description: "Extract audio from MP4 videos and export MP3 directly in your browser.",
+    category: "converter",
+    icon: "M>3",
+  },
+  {
+    slug: "video-compressor",
+    name: "Video Compressor",
+    description: "Compress videos in your browser by lowering resolution and bitrate. No uploads.",
+    category: "media",
+    icon: "VCC",
+  },
 ];
 
 
