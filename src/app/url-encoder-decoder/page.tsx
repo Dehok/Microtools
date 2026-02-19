@@ -154,87 +154,46 @@ export default function UrlEncoderDecoder() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The URL Encoder/Decoder converts special characters in URLs to their percent-encoded equivalents and back. URL encoding (also called percent encoding) replaces unsafe characters with a % followed by their hexadecimal value, ensuring URLs are valid and can be transmitted safely across the internet.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The URL Encoder/Decoder converts special characters in URLs to their percent-encoded equivalents and decodes percent-encoded strings back to readable text. URL encoding is essential for safely transmitting data through query strings, form submissions, and REST API parameters.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Encode URLs</strong> — Converts special characters (spaces, &amp;, =, ?, etc.) to percent-encoded format.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Decode URLs</strong> — Converts percent-encoded strings back to their original readable characters.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Full Character Support</strong> — Handles Unicode characters, query parameters, and fragment identifiers correctly.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Real-Time Results</strong> — Encoding and decoding happen instantly as you type.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Encode URL Components</strong> &mdash; Converts spaces, special characters, and non-ASCII text to percent-encoded sequences safe for use in query strings and URI components.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Decode Percent-Encoded URLs</strong> &mdash; Converts %XX sequences back to their original characters so you can read the actual content of encoded URLs and query parameters.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Swap Direction</strong> &mdash; Toggle between Encode and Decode mode instantly with the Swap button for quick round-trip testing of URL values.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All operations run locally in your browser. Your data never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Encoding query parameters before appending them to URLs in web applications</li>
-          <li>Decoding URLs from API responses, logs, or analytics data</li>
-          <li>Preparing URLs with special characters for use in HTML, JavaScript, or API calls</li>
-          <li>Debugging URL encoding issues in web applications and redirects</li>
-          <li>Encoding file paths and resource identifiers for use in REST APIs</li>
+          <li>Encoding user-entered search queries before appending them to API request URLs as query parameters</li>
+          <li>Decoding percent-encoded URLs in browser network logs to read the actual parameter values passed</li>
+          <li>Fixing broken URLs containing spaces or special characters in HTML href attributes</li>
+          <li>Encoding OAuth redirect URIs and callback URLs that contain slashes and colons</li>
+          <li>Decoding obfuscated tracking URLs in marketing emails to see the actual destination</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Select Encode or Decode mode. Paste your URL or text into the input field. The encoded or decoded result appears instantly. Copy the result with the Copy button.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Select Encode or Decode mode with the toggle at the top. Paste your URL or text into the input field and click the action button. The encoded or decoded result appears instantly in the output area. Use the Copy button to copy the result to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Why do URLs need encoding?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              URLs can only contain a limited set of ASCII characters. Special characters like spaces, &amp;, =, and non-ASCII characters must be percent-encoded (e.g., space → %20) to be valid in URLs.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between encodeURI and encodeURIComponent?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">encodeURI encodes a full URL, leaving structural characters like /, ?, and # intact. encodeURIComponent encodes every special character, making it suitable for individual query parameter values. This tool uses the component encoding.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the difference between encodeURI and encodeURIComponent?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              encodeURI() encodes a complete URI, preserving characters like :, /, ?, and #. encodeURIComponent() encodes everything except letters, digits, and a few special characters — use it for encoding individual query parameter values.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Why does a space become %20 or +?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">%20 is the standard percent-encoding of a space (RFC 3986). The + sign represents a space in the older application/x-www-form-urlencoded format used by HTML forms. Both decode to a space character.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What does %20 mean in a URL?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              %20 is the percent-encoded representation of a space character. Sometimes you&apos;ll also see + used for spaces in query strings (application/x-www-form-urlencoded), but %20 is the standard URL encoding.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Can I encode an entire URL at once?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">You can paste a full URL but only the parts that need encoding (query values, path segments with special characters) should be encoded. Encoding the entire URL including the protocol and slashes will break it.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is URL encoding reversible?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. URL encoding is a simple, reversible transformation. Any percent-encoded string can be decoded back to its original characters using this tool or the decodeURIComponent() function in JavaScript.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does URL encoding support Unicode characters?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Yes. Non-ASCII characters like accented letters and emoji are first UTF-8 encoded, then each byte is percent-encoded. For example, the euro sign &euro; becomes %E2%82%AC.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

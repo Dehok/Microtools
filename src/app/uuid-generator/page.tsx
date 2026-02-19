@@ -98,87 +98,46 @@ export default function UuidGenerator() {
       
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The UUID Generator creates random universally unique identifiers (UUIDs) following the version 4 (v4) standard. UUIDs are 128-bit identifiers used extensively in software development for database records, API keys, session tokens, and distributed systems where unique identification without central coordination is required.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The UUID Generator creates cryptographically random version 4 UUIDs (Universally Unique Identifiers) following RFC 4122. UUIDs are 128-bit identifiers used as primary keys in databases, API resource IDs, session tokens, and anywhere you need globally unique values without central coordination.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">UUID v4 Generation</strong> — Creates cryptographically random UUIDs conforming to RFC 4122 version 4 specification.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Bulk Generation</strong> — Generate multiple UUIDs at once for batch operations, database seeding, or test data creation.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">One-Click Copy</strong> — Copy individual UUIDs or all generated UUIDs to your clipboard with a single click.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Instant Generation</strong> — UUIDs are generated using the browser's crypto.getRandomValues() for high-quality randomness.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Bulk Generation</strong> &mdash; Generate up to 100 UUIDs in a single click using the Count selector, ideal for database seeding and test data creation.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Uppercase &amp; No-Dash Options</strong> &mdash; Toggle uppercase output or strip dashes for UUID formats required by specific databases or APIs.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Copy All at Once</strong> &mdash; The Copy All button copies every generated UUID to your clipboard as newline-separated values for batch use.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All operations run locally in your browser. Your data never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Creating unique primary keys for database records in PostgreSQL, MongoDB, or other databases</li>
-          <li>Generating unique identifiers for API resources, session tokens, or correlation IDs</li>
-          <li>Seeding test databases with realistic unique identifiers</li>
-          <li>Creating unique filenames or resource identifiers in distributed systems</li>
-          <li>Generating tracking IDs for analytics events, logs, or audit trails</li>
+          <li>Generating unique primary keys for new database records in PostgreSQL, MySQL, or MongoDB</li>
+          <li>Creating unique correlation IDs for distributed system requests and API call tracing</li>
+          <li>Seeding development databases with realistic unique identifiers for testing</li>
+          <li>Generating unique filenames for uploaded files to avoid name collisions in storage systems</li>
+          <li>Creating idempotency keys for payment APIs and other sensitive transactional operations</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Click the Generate button to create a new UUID. Use the bulk generation option to create multiple UUIDs at once. Click on any UUID to copy it to your clipboard.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Select the number of UUIDs to generate from the Count dropdown, then optionally check Uppercase or No Dashes to customize the format. Click Generate to create fresh UUIDs. Click any individual UUID to select it, or use Copy All to copy the entire list to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is a UUID?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              A UUID (Universally Unique Identifier) is a 128-bit identifier that is unique across space and time. It looks like: 550e8400-e29b-41d4-a716-446655440000. UUIDs are used as primary keys in databases, API identifiers, and session tokens.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is UUID v4 and how is it different from v1?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">UUID v4 is fully random (except for a few version bits), providing strong unpredictability. UUID v1 uses a timestamp and MAC address, making it sequential but potentially exposing machine information. This tool generates v4 UUIDs.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the difference between UUID v1 and v4?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              UUID v1 uses a timestamp and MAC address, making it sequential but potentially exposing hardware information. UUID v4 is fully random, providing better privacy and unpredictability. This tool generates v4 UUIDs.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Are UUIDs truly unique?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">In practice, yes. The probability of two v4 UUIDs colliding is approximately 1 in 5.3 &times; 10&sup3;&#8310;. You would need to generate billions per second for decades to have even a small chance of a collision.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Are UUIDs truly unique?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              For all practical purposes, yes. The probability of generating two identical v4 UUIDs is astronomically small — about 1 in 5.3 × 10^36. You&apos;d need to generate 1 billion UUIDs per second for about 85 years to have a 50% chance of one collision.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Can I use UUIDs as primary keys in SQL databases?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Yes. PostgreSQL, MySQL, and SQL Server all support UUID primary keys natively. They enable distributed ID generation without coordination, at the cost of slightly larger indexes compared to sequential integers.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I use UUIDs as database primary keys?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes, UUIDs are commonly used as primary keys in databases like PostgreSQL, MongoDB, and MySQL. They enable distributed systems to generate unique IDs without coordination.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is a GUID? Is it the same as a UUID?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">GUID (Globally Unique Identifier) is Microsoft&apos;s term for the same concept. GUIDs and UUIDs use the same 128-bit format and are fully interchangeable in practice.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

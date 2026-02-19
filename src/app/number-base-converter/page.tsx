@@ -112,87 +112,46 @@ export default function NumberBaseConverter() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Number Base Converter is a free online tool available on CodeUtilo. Convert numbers between decimal, binary, octal, and hexadecimal. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Number Base Converter converts integers between binary (base 2), octal (base 8), decimal (base 10), and hexadecimal (base 16) number systems. It is an essential tool for computer science students, embedded developers, and anyone working with low-level data representations.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All number base converter operations run locally in your browser using JavaScript. Your data never leaves your device.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the number base converter as many times as you need without creating an account or paying anything.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Multi-Base Conversion</strong> &mdash; Converts a number from any supported base to all other bases simultaneously, showing binary, octal, decimal, and hexadecimal results at once.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> &mdash; Conversion happens as you type, with no button to press. Results update in real time for fast exploration.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Input Validation</strong> &mdash; Detects invalid characters for the selected base and shows an error instead of silently producing wrong results.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Copy Buttons</strong> &mdash; Copy any individual result to clipboard with one click for immediate use in your code or documentation.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free and No Signup</strong> &mdash; Convert numbers without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Using the number base converter for day-to-day development tasks</li>
-          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
-          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
-          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
-          <li>Sharing the tool link with colleagues who need the same functionality</li>
+          <li>Converting a decimal memory address to hexadecimal for use in assembly language or debugger output</li>
+          <li>Converting binary bit patterns from CPU registers or network packets to readable decimal or hex values</li>
+          <li>Understanding octal file permission values in Unix and Linux systems such as chmod 755</li>
+          <li>Working with color codes that use hexadecimal notation in web development and graphic design</li>
+          <li>Studying number systems for a computer science course or certification exam</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Enter your input in the text area provided and the number base converter will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Select the input base (binary, octal, decimal, or hexadecimal) from the dropdown. Type or paste your number into the input field. The converted values for all other bases appear instantly below. Use the copy button next to any result to copy it to clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is the Number Base Converter free to use?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes, the Number Base Converter is completely free with no usage limits. There is no signup or registration required. You can use it as many times as you need.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What are the four main number bases used in computing?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Binary (base 2) uses digits 0-1 and represents data at the hardware level. Octal (base 8) uses 0-7 and is common in Unix permissions. Decimal (base 10) is everyday counting. Hexadecimal (base 16) uses 0-9 and A-F and is widely used for memory addresses, color codes, and byte values.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is my data safe when using this tool?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. All processing happens locally in your browser using JavaScript. Your data is never uploaded to any server or stored anywhere. Everything stays on your device.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How do I convert a binary number to decimal by hand?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Multiply each binary digit by 2 raised to its position (counting from right, starting at 0), then add the results. For example, 1011 in binary equals 1x8 + 0x4 + 1x2 + 1x1 = 11 in decimal.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Does this tool work on mobile devices?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. The Number Base Converter is fully responsive and works on smartphones, tablets, and desktop computers. You can use it from any modern browser on any device.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Why is hexadecimal used so often in programming?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">One hexadecimal digit represents exactly four binary bits (a nibble), so two hex digits represent one byte. This makes hex far more compact and readable than binary for memory addresses, color values, and machine code.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Do I need to install anything?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              No. The Number Base Converter runs entirely in your web browser. There is nothing to download or install. Just open the page and start using it immediately.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the maximum integer this tool can convert accurately?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">This tool uses JavaScript numbers internally, which are 64-bit floating point. Integers up to 2^53 - 1 (9007199254740991) are represented exactly. Larger integers may lose precision due to floating-point limitations.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

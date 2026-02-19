@@ -155,87 +155,46 @@ export default function TextCaseConverter() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Text Case Converter is a free online tool available on CodeUtilo. Convert text between uppercase, lowercase, camelCase, snake_case, and more. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Text Case Converter instantly transforms your text between uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case, kebab-case, and more. It is perfect for developers formatting variable names, writers fixing capitalization, and anyone needing consistent text styling.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All text case converter operations run locally in your browser using JavaScript. Your data never leaves your device.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the text case converter as many times as you need without creating an account or paying anything.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Multiple Case Formats</strong> &mdash; Converts text to uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case, kebab-case, and CONSTANT_CASE in one place.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Instant Conversion</strong> &mdash; Results appear immediately as you type or paste text, with no button press needed.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Developer-Friendly Formats</strong> &mdash; Includes camelCase, PascalCase, snake_case, and kebab-case used in variable naming conventions across programming languages.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Copy to Clipboard</strong> &mdash; One-click copy button for each output format makes it easy to paste the result directly into your code or document.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free and No Signup</strong> &mdash; Convert text case without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Using the text case converter for day-to-day development tasks</li>
-          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
-          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
-          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
-          <li>Sharing the tool link with colleagues who need the same functionality</li>
+          <li>Converting a user-input string to snake_case for use as a Python variable or database column name</li>
+          <li>Transforming a blog post title to title case for consistent heading capitalization</li>
+          <li>Converting a phrase to camelCase or PascalCase for JavaScript function or class names</li>
+          <li>Fixing ALL CAPS text copied from a legacy system back to readable sentence case</li>
+          <li>Converting words to kebab-case for use as CSS class names or URL slugs</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Enter your input in the text area provided and the text case converter will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Paste or type your text in the input field. All case conversions appear instantly in the output panels below. Click the Copy button next to any format to copy that result to clipboard. No settings or configuration required.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is the Text Case Converter free to use?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes, the Text Case Converter is completely free with no usage limits. There is no signup or registration required. You can use it as many times as you need.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between camelCase and PascalCase?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">In camelCase the first word is lowercase and subsequent words are capitalized (myVariableName). In PascalCase (also called UpperCamelCase) every word including the first is capitalized (MyVariableName). PascalCase is common for class names while camelCase is used for variables and function names.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is my data safe when using this tool?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. All processing happens locally in your browser using JavaScript. Your data is never uploaded to any server or stored anywhere. Everything stays on your device.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">When should I use snake_case vs kebab-case?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">snake_case (underscores) is standard for Python variables, function names, and database column names. kebab-case (hyphens) is used for CSS class names, HTML attributes, and URL slugs. JavaScript and TypeScript typically use camelCase for variables and PascalCase for classes.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Does this tool work on mobile devices?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. The Text Case Converter is fully responsive and works on smartphones, tablets, and desktop computers. You can use it from any modern browser on any device.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does title case capitalize every word?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Standard title case capitalizes major words but lowercases short prepositions (of, in, at), conjunctions (and, but, or), and articles (a, an, the) unless they are the first word. Simple title case tools may capitalize all words regardless of grammatical function.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Do I need to install anything?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              No. The Text Case Converter runs entirely in your web browser. There is nothing to download or install. Just open the page and start using it immediately.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How is sentence case different from lowercase?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Sentence case capitalizes only the first letter of the first word in each sentence, matching normal written English. Lowercase converts all characters to lowercase with no capitalization at all. Sentence case is more readable for body text while lowercase is often used for technical identifiers.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

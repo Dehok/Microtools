@@ -192,87 +192,46 @@ export default function PasswordGenerator() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Password Generator creates strong, random passwords with customizable length and character sets. Using the browser's cryptographic random number generator, it produces passwords that are virtually impossible to guess or crack through brute-force attacks.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Password Generator creates strong, cryptographically random passwords for securing accounts, services, and databases. Choose from uppercase letters, lowercase letters, numbers, and symbols, with lengths up to 128 characters, to generate passwords that resist brute-force and dictionary attacks.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Customizable Length</strong> — Set password length from 4 to 128 characters to meet various security requirements.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Character Set Selection</strong> — Choose which character types to include: uppercase letters, lowercase letters, numbers, and special symbols.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Strength Indicator</strong> — Visual password strength meter shows how strong the generated password is based on length and complexity.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Cryptographic Randomness</strong> — Uses crypto.getRandomValues() for true randomness, unlike Math.random() which is predictable.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Customizable Character Sets</strong> &mdash; Toggle uppercase, lowercase, digits, and symbols independently to meet the specific requirements of any password policy.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Adjustable Length</strong> &mdash; Set password length from 8 to 128 characters using a slider or direct input to balance security and usability.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Strength Indicator</strong> &mdash; Real-time strength meter shows Weak, Fair, Good, or Strong based on length and character variety to guide your choices.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Cryptographically Secure</strong> &mdash; Uses the browser&apos;s window.crypto.getRandomValues API to generate truly random passwords, not pseudorandom ones.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Creating strong passwords for online accounts, email, and social media</li>
-          <li>Generating secure API keys and secret tokens for applications</li>
-          <li>Creating master passwords for password managers</li>
-          <li>Generating random strings for encryption keys and salts</li>
-          <li>Meeting specific password requirements (minimum length, special characters, etc.)</li>
+          <li>Generating a strong master password for a new password manager vault</li>
+          <li>Creating random API keys and secret tokens for web applications and microservices</li>
+          <li>Generating temporary passwords for newly created user accounts to send via onboarding email</li>
+          <li>Creating database passwords that meet complex corporate password policies (mixed case, symbols, length)</li>
+          <li>Generating Wi-Fi passwords and encryption keys for network configuration</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Adjust the password length using the slider and select which character types to include (uppercase, lowercase, numbers, symbols). Click Generate to create a new password. The strength indicator shows how secure the password is. Copy the password to your clipboard with the Copy button.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Set your desired password length using the slider. Check the character set boxes you want to include (uppercase, lowercase, numbers, symbols). Click Generate to create a new password. The strength indicator updates automatically. Click Copy to copy the password to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How strong is a generated password?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              A 16-character password with uppercase, lowercase, numbers, and symbols has approximately 95^16 possible combinations, which would take billions of years to crack with current technology.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How long should a strong password be?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">At least 16 characters for general accounts and 24+ for critical systems like banking or admin panels. Length is the most important factor: a 16-character random password is exponentially harder to crack than an 8-character one.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is it safe to generate passwords online?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes, with this tool. The password is generated entirely in your browser using the cryptographic random number generator (crypto.getRandomValues). No password is ever sent to any server.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What does cryptographically secure random mean?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">The tool uses window.crypto.getRandomValues, which generates entropy from hardware noise. This is fundamentally different from Math.random(), which is predictable and should never be used for security purposes.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What makes a password strong?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Strong passwords are long (12+ characters), use all character types (uppercase, lowercase, numbers, symbols), and are randomly generated rather than based on dictionary words or personal information.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Should I include symbols in my password?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Yes, when the service allows it. Symbols dramatically increase the number of possible combinations. A 12-character password with symbols has approximately 475 quadrillion possible values versus 3.2 trillion with only letters and numbers.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How often should I change my passwords?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Modern security guidelines (NIST) recommend changing passwords only when there&apos;s evidence of compromise, rather than on a fixed schedule. Using unique, strong passwords with a password manager is more effective.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Can I use the same password for multiple sites?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Never. If one site suffers a data breach, attackers will try your password on other services (credential stuffing). Use a unique, randomly generated password for each account and store them in a password manager.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

@@ -71,87 +71,46 @@ export default function WordCounter() {
       
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Word Counter is a free online text analysis tool that counts words, characters, sentences, and paragraphs in any text. It is essential for writers, students, and content creators who need to meet word count requirements for essays, blog posts, social media captions, or SEO content.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Word Counter tool provides real-time character, word, sentence, and paragraph counts as you type or paste text. It is designed for writers, bloggers, students, and content marketers who need to meet specific length requirements for articles, social media posts, academic papers, and SEO content.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Word Count</strong> — Accurately counts words by splitting text on whitespace while handling multiple spaces and line breaks.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Character Count</strong> — Counts total characters including spaces, and characters without spaces for precise length tracking.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Sentence Count</strong> — Detects sentence boundaries using punctuation marks (periods, question marks, exclamation points).
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Paragraph Count</strong> — Counts paragraphs separated by blank lines for document structure analysis.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Real-Time Counting</strong> &mdash; Characters, words, sentences, and paragraphs update instantly as you type or paste text, with no button press required.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Reading Time Estimate</strong> &mdash; Calculates the estimated reading time based on the average adult reading speed of 200 words per minute.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Character Count With &amp; Without Spaces</strong> &mdash; Displays both character counts so you can meet platform limits that count differently, like Twitter or SMS.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All text analysis runs locally in your browser. Your content never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Checking word count for essays, assignments, and academic papers</li>
-          <li>Monitoring character limits for social media posts (Twitter, Instagram, LinkedIn)</li>
-          <li>Ensuring SEO content meets recommended word count targets</li>
-          <li>Tracking writing progress for blog posts, articles, and books</li>
-          <li>Analyzing text statistics for readability and content optimization</li>
+          <li>Checking blog posts and articles meet the 300&ndash;1500 word minimum recommended for SEO indexing</li>
+          <li>Ensuring academic essays and dissertations hit the required word count set by the institution</li>
+          <li>Verifying social media captions and bio text fit within platform character limits</li>
+          <li>Estimating how long a speech or presentation will take to deliver by reading time</li>
+          <li>Tracking progress toward daily writing goals in journaling or NaNoWriMo challenges</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Paste or type your text into the input area. All statistics (words, characters, sentences, paragraphs) are calculated instantly in real time. The counts update automatically as you edit the text.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Paste or type your text into the input area. All counts&mdash;characters, words, sentences, and paragraphs&mdash;update in real time as you type. No button press is needed. The reading time estimate appears automatically based on your word count.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How does the word counter count words?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              The tool counts words by splitting text on whitespace boundaries (spaces, tabs, newlines). It handles multiple consecutive spaces correctly and ignores leading/trailing whitespace.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How does the tool count words?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Words are counted by splitting text on whitespace and punctuation boundaries. Hyphenated words like &quot;well-known&quot; count as one word. Sequences of digits also count as words.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Does it count characters with or without spaces?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Both. The tool shows total characters (including spaces) and characters without spaces, so you can use whichever metric you need.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How is reading time calculated?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Reading time is based on the average adult silent reading speed of 200 words per minute. A 1000-word article takes about 5 minutes. Adjust for your audience; technical content is typically read more slowly.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I use this for essay word count requirements?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. The word count is accurate and matches the counting method used by most word processors. It&apos;s ideal for checking essay, blog post, and assignment word limits.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the ideal word count for an SEO article?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">There is no single ideal length, but articles between 1500 and 2500 words tend to rank well for competitive keywords. Google rewards depth and relevance over raw word count.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the average reading time calculation based on?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Reading time is estimated at approximately 200-250 words per minute, which is the average adult reading speed. Speaking time uses approximately 130-150 words per minute.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How many characters does Twitter allow?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Twitter allows up to 280 characters per tweet. Links count as 23 characters regardless of their actual length. Use the character count to stay within the limit.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

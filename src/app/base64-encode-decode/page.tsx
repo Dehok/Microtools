@@ -137,87 +137,46 @@ export default function Base64Tool() {
       
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Base64 Encoder/Decoder is a free online tool that converts text to Base64-encoded strings and decodes Base64 back to readable text. Base64 encoding is commonly used in web development, email protocols, and data serialization to safely transmit binary data as ASCII text.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Base64 Encoder/Decoder converts text to Base64-encoded strings and decodes Base64 back to readable text. Base64 encoding is widely used to safely transmit binary data as ASCII text in web applications, email protocols, JWT tokens, and data URLs.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Encode to Base64</strong> — Converts any text or string into its Base64-encoded representation using the standard Base64 alphabet.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Decode from Base64</strong> — Converts Base64-encoded strings back into their original readable text format.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Encoding and decoding happen in real time as you type, with no need to click a button.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">UTF-8 Support</strong> — Handles Unicode and special characters correctly by encoding text as UTF-8 before Base64 conversion.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Encode to Base64</strong> &mdash; Converts any plain text or Unicode characters into its Base64-encoded representation using the standard RFC 4648 alphabet.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Decode from Base64</strong> &mdash; Converts Base64-encoded strings back into their original readable text, revealing the content of any Base64 payload.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Swap Direction</strong> &mdash; One-click Swap button moves the output back to the input and toggles mode for quick round-trip testing.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All operations run locally in your browser. Your data never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Encoding data for embedding in HTML data URIs (e.g., inline images or fonts)</li>
-          <li>Decoding Base64 strings from API responses, cookies, or authentication tokens</li>
-          <li>Preparing binary data for transmission in JSON, XML, or email attachments</li>
-          <li>Debugging encoded values in URLs, headers, or configuration files</li>
-          <li>Learning and experimenting with Base64 encoding for educational purposes</li>
+          <li>Decoding Base64 strings embedded in JWT tokens to inspect their claims and expiration timestamps</li>
+          <li>Encoding images or binary files to Base64 data URIs for embedding directly in HTML or CSS stylesheets</li>
+          <li>Decoding Base64 values from API responses, HTTP Authorization headers, or cookie values</li>
+          <li>Encoding configuration secrets and API keys for environment variables or base64-encoded config files</li>
+          <li>Testing and debugging Base64 encoding in web applications before deployment</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Select the mode (Encode or Decode) and paste your text into the input area. The result appears instantly in the output. Use the Copy button to copy the encoded or decoded text to your clipboard.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Select Encode or Decode mode using the buttons at the top. Paste your text into the input area and click the action button. The result appears in the output field below. Use the Swap button to reverse the operation, and Copy to copy the result to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is Base64 encoding?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Base64 is a method of encoding binary data into ASCII text using 64 characters (A-Z, a-z, 0-9, +, /). It&apos;s commonly used to embed images in HTML, transmit data in URLs, and encode email attachments.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is Base64 encoding?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Base64 represents binary data using 64 printable ASCII characters (A&ndash;Z, a&ndash;z, 0&ndash;9, +, /). It allows binary content to be safely transmitted over channels that only support text, such as email or JSON.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is Base64 encoding the same as encryption?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              No. Base64 is an encoding scheme, not encryption. Anyone can decode Base64 text back to its original form. It provides no security — it&apos;s only used to safely transmit binary data as text.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Is Base64 encoding the same as encryption?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">No. Base64 is an encoding scheme, not encryption. Anyone can decode Base64 text instantly. It provides no security and should never be used to protect sensitive data.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Why does Base64 increase the size of data?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Base64 encoding increases data size by approximately 33% because it represents 3 bytes of binary data using 4 ASCII characters. This trade-off is necessary for safe text-based transmission.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Why does Base64 increase data size?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Base64 represents 3 bytes of binary data using 4 ASCII characters, increasing size by approximately 33%. This overhead is the trade-off for safe text-based transmission.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Does this tool handle Unicode characters?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. The tool encodes text as UTF-8 before Base64 conversion, ensuring that special characters, emojis, and non-Latin scripts are handled correctly.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does this tool handle Unicode and emoji?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Yes. The tool encodes text as UTF-8 before Base64 conversion, correctly handling all Unicode characters including accented letters, Chinese characters, and emoji.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

@@ -12,6 +12,7 @@ export const CATEGORIES = [
   { id: "converter", name: "Converters", icon: "🔄" },
   { id: "generator", name: "Generators", icon: "⚡" },
   { id: "crypto", name: "Crypto & Security", icon: "🔒" },
+  { id: "media", name: "Image & Media Tools", icon: "🖼️" },
 ] as const;
 
 export const tools: Tool[] = [
@@ -749,5 +750,33 @@ export const tools: Tool[] = [
     description: "Translate regular expressions to plain English explanations. Understand any regex pattern.",
     category: "developer",
     icon: "R→E",
+  },
+  {
+    slug: "image-compressor",
+    name: "Image Compressor",
+    description: "Compress JPEG, PNG, and WebP images in your browser. Reduce file size without losing quality.",
+    category: "media",
+    icon: "📦",
+  },
+  {
+    slug: "image-resizer",
+    name: "Image Resizer",
+    description: "Resize images to exact pixel dimensions or scale by percentage. Free online image resizer.",
+    category: "media",
+    icon: "📐",
+  },
+  {
+    slug: "screenshot-to-text",
+    name: "Screenshot to Text (OCR)",
+    description: "Extract text from images and screenshots using OCR. Supports 100+ languages. Runs in your browser.",
+    category: "media",
+    icon: "👁️",
+  },
+  {
+    slug: "pdf-to-text",
+    name: "PDF to Text",
+    description: "Extract text from PDF files directly in your browser. No upload required. Free PDF text extraction.",
+    category: "converter",
+    icon: "📄",
   },
 ];

@@ -172,87 +172,46 @@ export default function RegexTester() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Regex Tester lets you test regular expressions against sample text with real-time match highlighting. Regular expressions are powerful patterns used for searching, matching, and manipulating text in programming. This tool helps you build, debug, and validate regex patterns before using them in your code.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Regex Tester lets you write and test regular expressions against sample text in real time. Match highlights update instantly as you type your pattern, making it easy to validate, debug, and refine regular expressions for search, validation, and text processing tasks.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Real-Time Matching</strong> — Highlights all matches instantly as you type or modify your regex pattern.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Flag Support</strong> — Toggle regex flags including global (g), case-insensitive (i), and multiline (m).
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Match Details</strong> — Shows all matched groups, capture groups, and their positions in the text.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Error Detection</strong> — Highlights syntax errors in your regex pattern with descriptive error messages.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Live Match Highlighting</strong> &mdash; Highlights all pattern matches in your test string in real time as you type, with no button press needed.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Flags Support</strong> &mdash; Toggle standard regex flags: g (global), i (case-insensitive), m (multiline), and s (dot-all) to control match behavior.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Match Details</strong> &mdash; Shows the number of matches found, their positions, and captured group values for each match.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All regex execution runs locally in your browser using the JavaScript RegExp engine. Your text never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Building and debugging regex patterns for form validation (email, phone, URL)</li>
-          <li>Testing text extraction patterns for web scraping and data parsing</li>
-          <li>Creating search-and-replace patterns for batch text processing</li>
-          <li>Learning regex syntax with immediate visual feedback on matches</li>
-          <li>Validating regex patterns before implementing them in code (JavaScript, Python, etc.)</li>
+          <li>Validating that user-entered email addresses, phone numbers, or postal codes match expected formats</li>
+          <li>Extracting specific data patterns such as dates, prices, or identifiers from raw text strings</li>
+          <li>Testing search-and-replace patterns before using them in a code editor, database query, or shell script</li>
+          <li>Debugging complex regex patterns by breaking them into parts and testing each section independently</li>
+          <li>Learning regular expression syntax interactively with immediate visual feedback</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Enter your regular expression pattern in the regex input field and set the desired flags (global, case-insensitive, multiline). Then paste or type your test text below. All matches are highlighted in real time. Match details show the matched text, groups, and positions.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Enter your regular expression in the Pattern field (without surrounding slashes). Select any flags you need using the checkboxes. Paste or type your test string in the Test String area. Matches are highlighted in the string and listed with their positions below.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What are regex flags?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Flags modify how the regex engine works. Common ones: g (global — find all matches), i (case-insensitive), m (multiline — ^ and $ match line boundaries), s (dotAll — dot matches newlines).
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between the g flag and no flag in regex?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Without the g (global) flag, the regex stops after finding the first match. With g, it finds all non-overlapping matches in the string. Most practical use cases (replace-all, extract-all) require the g flag.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the difference between * and + in regex?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              * matches zero or more occurrences of the preceding element (can match empty strings). + matches one or more occurrences (must match at least once). For example, a* matches &apos;&apos; and &apos;aaa&apos;, while a+ only matches &apos;aaa&apos;.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What are capturing groups and how do they work?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Wrapping part of a pattern in parentheses (e.g., (\d{4})) creates a capturing group. The matched content is saved separately. For example, (\d{4})-(\d{2})-(\d{2}) matching 2024-01-15 gives group 1=2024, group 2=01, group 3=15.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How do I match an email address with regex?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              A common pattern is: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]&#123;2,&#125;$. However, email validation with regex is complex — for production use, consider using a dedicated validation library.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is catastrophic backtracking?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Catastrophic backtracking occurs when a poorly written regex takes exponential time to determine there is no match, causing the browser or server to freeze. Avoid nested quantifiers like (a+)+ on large inputs.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Why does my regex work differently in different languages?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Different programming languages use different regex engines (PCRE, POSIX, ECMAScript). This tool uses JavaScript&apos;s RegExp engine (ECMAScript). Some features like lookbehinds may not be available in all engines.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does this tool use JavaScript regex or another engine?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">This tool uses JavaScript&apos;s built-in RegExp engine. JavaScript regex is largely compatible with PCRE (Perl-Compatible Regular Expressions) but has some differences, such as no lookbehind support in older engines and no possessive quantifiers.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

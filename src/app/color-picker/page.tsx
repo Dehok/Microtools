@@ -225,87 +225,46 @@ export default function ColorPicker() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Color Picker is a free online tool for selecting colors and converting between HEX, RGB, and HSL formats. Whether you are designing a website, creating a brand identity, or choosing colors for a project, this tool lets you pick colors visually and get CSS-ready values instantly.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Color Picker tool lets you select any color and instantly get its value in HEX, RGB, and HSL formats. Designed for web developers and UI/UX designers, it eliminates the need to manually convert between color formats when building CSS styles, design systems, or brand color palettes.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Visual Color Picker</strong> — Click anywhere on the color spectrum to select your desired color with precision.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Format Conversion</strong> — Instantly converts between HEX, RGB, and HSL color formats with accurate values.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">CSS-Ready Output</strong> — Copies color values in CSS-compatible format, ready to paste into your stylesheets.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Color Preview</strong> — Large preview area shows the selected color alongside its various format representations.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Three Format Output</strong> &mdash; Displays the selected color simultaneously in HEX (#RRGGBB), RGB (rgb(r,g,b)), and HSL (hsl(h,s%,l%)) formats with one-click copy for each.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Visual Color Preview</strong> &mdash; A large color swatch updates in real time as you move the color picker, so you can see the exact shade before copying the value.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Manual Hex Input</strong> &mdash; Type any valid hex color code directly into the input field to jump to a specific color without using the picker.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All color conversion runs locally in your browser. No data is sent to any server.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Choosing colors for web design projects and CSS styling</li>
-          <li>Converting colors between HEX, RGB, and HSL for different design tools</li>
-          <li>Picking brand colors and generating their various format representations</li>
-          <li>Matching colors from mockups and converting them to code-ready values</li>
-          <li>Experimenting with color variations by adjusting hue, saturation, and lightness</li>
+          <li>Converting brand colors from HEX codes in a style guide into RGB values for CSS or Canvas drawing</li>
+          <li>Finding the exact HSL hue, saturation, and lightness values to create color variations and tints in CSS</li>
+          <li>Picking accessible text and background color combinations and verifying contrast ratios</li>
+          <li>Translating colors from Figma or Sketch design files into CSS-ready format for front-end development</li>
+          <li>Building a consistent color palette by picking base colors and reading their exact HSL values</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Use the color picker to select a color visually, or enter a specific color value in any supported format (HEX, RGB, or HSL). The tool instantly converts and displays the color in all formats. Click the Copy button next to any format to copy the color value to your clipboard.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Use the color picker control to visually select a color, or type a HEX code directly into the input field. The HEX, RGB, and HSL values update instantly. Click the Copy button next to any format to copy that value to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is HEX color format?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              HEX is a six-digit hexadecimal representation of color. The first two digits represent red, the middle two green, and the last two blue. For example, #FF5733 is a shade of orange-red.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between HEX, RGB, and HSL?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">HEX is a compact 6-digit code used in CSS and design tools. RGB specifies red, green, and blue channels (0&ndash;255) and is intuitive for programmers. HSL (Hue, Saturation, Lightness) is human-readable and ideal for generating color variations programmatically.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the difference between RGB and HSL?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              RGB defines colors using Red, Green, and Blue channel values (0-255). HSL uses Hue (0-360°), Saturation (0-100%), and Lightness (0-100%). HSL is more intuitive for humans — you can easily make a color lighter or more saturated.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Which color format should I use in CSS?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">All three work in modern CSS. HEX is the most compact and widely used. RGB is best when you need transparency (use rgba). HSL is best for dynamic color manipulation like creating hover states or dark mode variants.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I use the picked color in CSS?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. All color values are displayed in CSS-ready format. Simply copy the HEX, RGB, or HSL value and paste it directly into your CSS stylesheet.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What does the # in a HEX color code mean?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">The # is just a prefix indicating a hexadecimal color value. The following 6 characters are pairs of hex digits representing red, green, and blue channel intensities from 00 (0) to FF (255).</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How do I find the exact color from a website?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Use your browser&apos;s built-in color picker: right-click → Inspect → click the color swatch in the Styles panel. Or use browser extensions like ColorZilla to pick colors from any webpage.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How do I create a lighter version of a color?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Convert the color to HSL format and increase the Lightness value while keeping the Hue and Saturation the same. For example, a color at 40% lightness becomes a lighter tint at 70% lightness.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

@@ -139,87 +139,46 @@ export default function JwtDecoder() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The JWT Decoder lets you decode and inspect JSON Web Tokens (JWTs) without needing the secret key. JWTs are widely used in authentication and authorization systems (OAuth 2.0, OpenID Connect) to securely transmit information between parties. This tool displays the header, payload, and signature sections of any JWT.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The JWT Decoder decodes JSON Web Tokens (JWTs) and displays their header, payload, and signature in a readable format. It is an essential debugging tool for developers working with authentication systems, API security, OAuth 2.0 flows, and session management.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Header Inspection</strong> — Decodes and displays the JWT header showing the algorithm and token type.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Payload Display</strong> — Shows all claims in the payload including standard claims (iss, sub, exp, iat) and custom data.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Expiration Check</strong> — Automatically checks if the token has expired based on the exp claim.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Pretty Formatting</strong> — Displays the decoded header and payload as formatted, readable JSON.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Header &amp; Payload Decoding</strong> &mdash; Decodes and pretty-prints the JWT header (algorithm, token type) and payload (claims, expiration, issuer) sections.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Expiration Check</strong> &mdash; Reads the exp claim and shows whether the token is currently valid or has expired, with the exact expiry date and time in your local timezone.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Signature Section Display</strong> &mdash; Shows the Base64url-encoded signature section for reference, without performing signature verification (which requires the secret key).</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All decoding runs locally in your browser. Your JWT tokens never leave your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Debugging authentication issues by inspecting JWT contents and expiration times</li>
-          <li>Verifying JWT payload data during API development and testing</li>
-          <li>Inspecting tokens received from OAuth 2.0 and OpenID Connect providers</li>
-          <li>Checking token claims for authorization and access control debugging</li>
-          <li>Learning about JWT structure and claims for educational purposes</li>
+          <li>Inspecting the claims inside an access token received from an OAuth 2.0 authorization server</li>
+          <li>Checking whether a JWT is expired by reading the exp claim when debugging a 401 Unauthorized error</li>
+          <li>Verifying that the correct user roles or permissions are included in the token payload during development</li>
+          <li>Examining the algorithm (alg) and key ID (kid) in the header when troubleshooting token validation failures</li>
+          <li>Reading tokens passed via Authorization headers in API requests during frontend debugging sessions</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Paste your JWT token into the input field. The tool automatically decodes and displays the header, payload, and signature information. The expiration status is shown if the token contains an exp claim.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Paste the full JWT (the three-part dot-separated string) into the input field. The header and payload sections are decoded and displayed as formatted JSON. The expiration status is shown automatically based on the exp claim. The signature is displayed but not verified.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is a JWT?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              A JSON Web Token (JWT) is a compact, URL-safe token format used for securely transmitting information between parties. It consists of three Base64-encoded parts separated by dots: header, payload, and signature.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is a JWT and how is it structured?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">A JWT (JSON Web Token) consists of three Base64url-encoded parts separated by dots: the header (algorithm and token type), the payload (claims like user ID, roles, expiration), and the signature (which verifies the token has not been tampered with).</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I decode a JWT without the secret key?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. The header and payload of a JWT are only Base64-encoded, not encrypted. Anyone can decode them. The secret key is only needed to verify the signature (i.e., to confirm the token hasn&apos;t been tampered with).
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does decoding a JWT verify its signature?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">No. This tool only decodes the header and payload sections, which are plain Base64url-encoded JSON. Signature verification requires the secret key or public key and must be done server-side. Never trust a decoded JWT without server-side verification.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What does the &apos;exp&apos; claim mean?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              The &apos;exp&apos; (expiration time) claim identifies the time after which the JWT must not be accepted. It&apos;s a Unix timestamp. This tool automatically checks whether the token has expired.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Is it safe to decode a JWT in a browser tool?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Yes, for debugging purposes. The header and payload are not encrypted&mdash;anyone with the token can read them. Treat JWTs like session cookies: only paste tokens from development environments, not production user tokens.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is it safe to put sensitive data in a JWT?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              No. Since JWT payloads are only Base64-encoded (not encrypted), anyone who has the token can read its contents. Never put passwords, credit card numbers, or other secrets in a JWT payload.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between JWTs signed with HS256 and RS256?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">HS256 uses a shared secret (symmetric): both the issuer and verifier must know the secret key. RS256 uses a private key to sign and a public key to verify (asymmetric), which is safer for multi-service architectures where services should verify but not issue tokens.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

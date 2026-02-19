@@ -143,87 +143,46 @@ export default function CSSMinifier() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The CSS Minifier removes unnecessary whitespace, comments, and formatting from CSS code to reduce file size. Minified CSS loads faster by reducing the number of bytes transferred over the network. The beautifier mode reformats minified or poorly formatted CSS into a readable, properly indented format.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The CSS Minifier compresses your CSS by removing comments, whitespace, and redundant formatting to reduce file size for production deployment. Smaller CSS files load faster, improve Core Web Vitals scores, and reduce bandwidth costs for high-traffic websites.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Minify CSS</strong> — Removes all comments, whitespace, and line breaks while preserving the CSS functionality.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Beautify CSS</strong> — Reformats compressed CSS with proper indentation, line breaks, and spacing for readability.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Size Comparison</strong> — Shows the original and minified file sizes so you can see the space savings.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Error Preservation</strong> — Maintains CSS validity during minification — your styles will work exactly the same.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Comment Removal</strong> &mdash; Strips all CSS comments (/* ... */) that are useful during development but waste bytes in production stylesheets.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Whitespace Compression</strong> &mdash; Removes unnecessary spaces, tabs, and newlines while preserving the CSS rule structure to produce the most compact valid output.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Beautify / Restore</strong> &mdash; Prettifies minified CSS back to a readable, indented format for editing or debugging compressed stylesheets.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All CSS processing runs locally in your browser. Your code never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Minifying CSS files before deploying to production for faster page loads</li>
-          <li>Beautifying minified CSS from third-party libraries for debugging and modification</li>
-          <li>Reducing CSS file size to improve Core Web Vitals and page performance scores</li>
-          <li>Formatting CSS pasted from browser DevTools into readable code</li>
-          <li>Preparing CSS for code reviews by ensuring consistent formatting</li>
+          <li>Minifying production CSS files before deploying a website to improve page load speed and Lighthouse scores</li>
+          <li>Compressing Tailwind CSS purged output or Bootstrap customizations for CDN delivery</li>
+          <li>Reducing CSS bundle size in Next.js or Vite projects that do not auto-minify in all environments</li>
+          <li>Decompressing and reading minified third-party stylesheets to understand or debug their rules</li>
+          <li>Optimizing inline &lt;style&gt; blocks in HTML email templates to reduce email size</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Paste your CSS code into the input area. Click &quot;Minify&quot; to compress the CSS or &quot;Beautify&quot; to format it with proper indentation. The result appears in the output area. Copy the processed CSS with the Copy button.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Paste your CSS into the input panel on the left. Click Minify to compress the stylesheet or Beautify to format a minified stylesheet into readable code. The output appears on the right. Use the Copy button to copy the result to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What does CSS minification do?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              CSS minification removes all unnecessary characters from CSS code — whitespace, line breaks, comments, and redundant semicolons — without changing its functionality. This reduces file size and improves page load speed.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How much does CSS minification reduce file size?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Typically 20&ndash;40% for handwritten CSS with comments and formatting. Stylesheets with many comments or excessive whitespace can see reductions of 50% or more. Results vary based on your original code style.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How much file size reduction can I expect?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Typically, CSS minification reduces file size by 20-40% depending on how your CSS is written. Files with many comments and generous formatting see the biggest reductions.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does minifying CSS change how it works?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">No. Minification only removes characters that are invisible to the browser&apos;s CSS parser (comments and extra whitespace). The visual output of your web page is identical before and after minification.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Will minification break my CSS?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              No. Proper minification only removes characters that have no effect on how CSS is interpreted by browsers. Your styles will look and work exactly the same.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Should I minify CSS manually or use a build tool?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Build tools like Vite, webpack, or Next.js automatically minify CSS in production builds. Use this manual tool for one-off files, third-party code snippets, or projects without a build pipeline.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Should I minify CSS for development or production?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Only for production. During development, keep your CSS readable and well-formatted for easier debugging. Minify only when deploying to production for optimal performance.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does CSS minification affect vendor prefixes?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">No. This tool removes only whitespace and comments. Vendor prefixes like -webkit- or -moz- are preserved as-is. Advanced optimizers (like PostCSS with autoprefixer) handle prefix management separately.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

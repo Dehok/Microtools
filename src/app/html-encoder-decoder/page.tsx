@@ -120,87 +120,46 @@ export default function HtmlEncoderDecoder() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The HTML Encoder/Decoder converts special characters to their HTML entity equivalents and back. HTML encoding prevents browser rendering issues and cross-site scripting (XSS) vulnerabilities by escaping characters like &lt;, &gt;, &amp;, and quotes that have special meaning in HTML.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The HTML Encoder/Decoder converts special characters like &lt;, &gt;, &amp;, and &quot; to their HTML entity equivalents for safe embedding in HTML documents, and decodes HTML entities back to their original characters for reading or processing raw content.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Encode HTML</strong> — Converts special characters (&lt;, &gt;, &amp;, &quot;, ') to their corresponding HTML entities.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Decode HTML</strong> — Converts HTML entities back to their original characters for readability.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Named &amp; Numeric Entities</strong> — Supports both named entities (&amp;amp;) and numeric entities (&amp;#38;).
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">XSS Prevention</strong> — Helps sanitize user input by encoding characters that could execute malicious scripts.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Encode Special Characters</strong> &mdash; Converts &lt;, &gt;, &amp;, &quot;, and other reserved HTML characters to entities like &amp;lt;, &amp;gt;, &amp;amp;, and &amp;quot;.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Decode HTML Entities</strong> &mdash; Converts HTML entities and numeric character references (&amp;#60;, &amp;#x3C;) back to the original characters for reading or further processing.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Swap Direction</strong> &mdash; One-click Swap button reverses the operation for quick round-trip testing of encode-decode accuracy.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All encoding and decoding runs locally in your browser. Your text never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Encoding user-generated content before displaying it in web pages to prevent XSS</li>
-          <li>Displaying HTML code snippets in tutorials and documentation without browser rendering</li>
-          <li>Preparing text for safe inclusion in HTML attributes and meta tags</li>
-          <li>Decoding HTML entities from parsed web content or API responses</li>
-          <li>Converting special characters for use in email templates and newsletters</li>
+          <li>Encoding HTML code snippets for safe display inside a blog post or documentation page without the browser rendering them</li>
+          <li>Preventing XSS (Cross-Site Scripting) attacks by encoding user-submitted content before inserting it into an HTML page</li>
+          <li>Decoding HTML-encoded content from scraping or API responses to read the actual text values</li>
+          <li>Encoding attribute values containing quotes for use in dynamically generated HTML attributes</li>
+          <li>Preparing code examples with HTML tags for use in XML-based formats like RSS or Atom feeds</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Select Encode or Decode mode. Paste your text or HTML into the input area. The encoded or decoded result appears instantly. Copy the result to use in your HTML documents.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Select Encode or Decode mode using the toggle buttons at the top. Paste your content into the input field. Click the action button to process the text. The result appears in the output area. Use Swap to reverse the operation and Copy to copy the result.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Why do I need to encode HTML entities?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              HTML encoding prevents special characters like &lt;, &gt;, and &amp; from being interpreted as HTML tags or entities. This is essential for displaying code snippets and preventing cross-site scripting (XSS) attacks.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Why do I need to encode HTML characters?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Characters like &lt;, &gt;, and &amp; have special meaning in HTML. If included literally in text content, browsers may interpret them as HTML tags or entities, breaking the layout or creating security vulnerabilities. Encoding converts them to safe representations.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is XSS and how does HTML encoding prevent it?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              XSS (Cross-Site Scripting) is an attack where malicious scripts are injected into web pages. HTML encoding user input ensures that &lt; and &gt; are displayed as text rather than interpreted as HTML tags, preventing script execution.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between &amp;lt; and &amp;#60;?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Both represent the less-than character &lt;. &amp;lt; is a named entity which is more readable. &amp;#60; is a decimal numeric character reference. &amp;#x3C; is the hexadecimal form. All three are equivalent and browsers display them identically.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the difference between &amp;amp; and &amp;#38;?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              &amp;amp; is a named HTML entity, while &amp;#38; is its numeric equivalent. Both represent the ampersand (&amp;) character. Named entities are more readable, while numeric entities work for any Unicode character.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does HTML encoding prevent XSS attacks?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">HTML encoding alone prevents reflected XSS when inserting untrusted text into HTML content. However, different contexts (JavaScript code, URL attributes, CSS values) require different escaping strategies. Always use a context-aware escaping library for security-critical applications.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Should I encode all special characters?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              At minimum, encode these five characters: &lt; (&amp;lt;), &gt; (&amp;gt;), &amp; (&amp;amp;), &quot; (&amp;quot;), and &apos; (&amp;#39;). These are the characters that can cause interpretation issues or security vulnerabilities in HTML.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Do I need to encode spaces in HTML?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Spaces in HTML content do not need encoding. They only need encoding in URL query parameters (as %20 or +). In HTML attributes, spaces within quoted values are safe. Only in special contexts like XML attribute normalization do spaces become significant.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

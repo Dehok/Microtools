@@ -187,87 +187,46 @@ export default function DiffChecker() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Diff Checker compares two texts and highlights the differences between them line by line. It is an essential tool for code reviews, document comparison, and version tracking. The tool shows added, removed, and modified lines with color-coded highlighting for easy identification.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Diff Checker compares two blocks of text side by side, highlighting additions, deletions, and unchanged lines with color-coded markup. It is used by developers, writers, and QA testers to quickly identify exactly what changed between two versions of code, configuration, or content.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Line-by-Line Comparison</strong> — Compares text line by line and identifies additions, deletions, and modifications.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Color-Coded Output</strong> — Green highlights for added lines, red for removed lines, making differences easy to spot.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Inline Diff</strong> — Shows character-level changes within modified lines for precise difference identification.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Clean Interface</strong> — Side-by-side text input areas with clear labeling for original and modified text.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Line-by-Line Comparison</strong> &mdash; Compares text at the line level, highlighting added lines in green and removed lines in red for immediate visual clarity.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Unified Diff Output</strong> &mdash; Displays changes in a standard unified diff format that developers recognize from git diff and patch workflows.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Character-Level Highlighting</strong> &mdash; Within changed lines, highlights the specific words or characters that differ so you can spot single-character typos instantly.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All comparison happens locally in your browser. Your code and text never leave your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Comparing code changes before committing or during code reviews</li>
-          <li>Checking differences between configuration file versions</li>
-          <li>Verifying document changes between drafts</li>
-          <li>Debugging by comparing expected vs. actual output</li>
-          <li>Tracking content changes in text files, scripts, or data files</li>
+          <li>Comparing two versions of a configuration file to find what changed during a production incident</li>
+          <li>Reviewing changes to a legal document or contract to confirm only the agreed edits were applied</li>
+          <li>Checking differences between two SQL scripts or database migration files before deployment</li>
+          <li>Verifying that a translation or localization file has all the same keys as the original English source</li>
+          <li>Spotting accidental whitespace, encoding, or line-ending changes in source code or scripts</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Paste the original text in the left panel and the modified text in the right panel. The differences are highlighted automatically. Added lines appear in green, removed lines in red, and modified lines show both old and new content.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Paste the original text into the left panel labeled Original and the modified text into the right panel labeled Changed. Click Compare to run the diff. Added lines appear highlighted in green and removed lines in red. Scroll through the results to review all changes.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What types of differences does it detect?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              The tool detects three types of differences: added lines (present only in the new text), removed lines (present only in the original text), and modified lines (lines that exist in both but have different content).
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How does the diff algorithm work?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">The tool uses the Myers diff algorithm, the same algorithm used by git. It finds the shortest edit script (minimum number of additions and deletions) needed to transform the original text into the modified text.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I compare code with this tool?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. The diff checker works with any text, including source code in any programming language. It&apos;s commonly used for code reviews, comparing configuration files, and tracking changes between versions.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does the diff check ignore whitespace?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">By default, whitespace changes are included in the comparison. A single extra space or different line ending (CRLF vs LF) will appear as a change. This is intentional for code and configuration file accuracy.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How does the comparison algorithm work?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              The tool uses a line-by-line comparison algorithm similar to Unix diff. It identifies the longest common subsequence between the two texts and highlights everything that differs.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Can I compare binary files or images?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">No. This is a text diff tool and works with plain text, code, JSON, XML, and similar formats. Binary files produce meaningless output because they contain non-printable characters.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I compare files directly?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Currently, the tool works with pasted text. Copy and paste the contents of two files into the left and right panels to compare them.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between a unified diff and a side-by-side diff?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">A unified diff shows a single view with + and - prefix markers for added and removed lines. A side-by-side diff shows original and modified text in two columns. Both convey the same information but side-by-side is often easier to read.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

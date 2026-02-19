@@ -145,87 +145,46 @@ export default function LoremIpsumGenerator() {
       
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Lorem Ipsum Generator creates placeholder text for design mockups, website layouts, and document templates. Lorem Ipsum has been the industry-standard dummy text since the 1500s, providing realistic-looking text without distracting from the visual design.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Lorem Ipsum Generator creates placeholder text for web design mockups, print layouts, and UI prototyping. Based on scrambled Latin text from Cicero&apos;s De Finibus, lorem ipsum has been the industry&apos;s standard dummy text since the 1500s and remains essential for designers and developers worldwide.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Multiple Output Types</strong> — Generate paragraphs, sentences, or individual words based on your needs.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Customizable Amount</strong> — Choose exactly how many paragraphs, sentences, or words you want to generate.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Standard Lorem Ipsum</strong> — Uses the classic Lorem Ipsum text that designers and developers have relied on for decades.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">One-Click Copy</strong> — Copy the generated placeholder text to your clipboard instantly.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Paragraphs, Words, or Sentences</strong> &mdash; Choose exactly how much text to generate&mdash;by paragraph count, word count, or sentence count&mdash;to fit any layout requirement.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Start With Lorem Ipsum</strong> &mdash; Option to begin the text with the classic &quot;Lorem ipsum dolor sit amet&quot; opening phrase for convention-compliant placeholder content.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">One-Click Copy</strong> &mdash; Instantly copy all generated text to your clipboard with a single button click, ready to paste into any design or code editor.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All generation happens locally in your browser. No data is sent to any server.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Filling website mockups and wireframes with realistic placeholder text</li>
-          <li>Testing typography, font sizes, and line spacing in web designs</li>
-          <li>Populating database records with dummy content for development and testing</li>
-          <li>Creating document templates with placeholder text for content management systems</li>
-          <li>Demonstrating layout designs to clients before real content is available</li>
+          <li>Filling text areas in Figma, Sketch, or Adobe XD mockups to simulate realistic content density</li>
+          <li>Populating HTML templates and CSS layout tests with dummy text to check typography and spacing</li>
+          <li>Seeding databases with realistic paragraph-length text fields for testing search and display features</li>
+          <li>Creating placeholder content for email templates and newsletter designs before final copy is ready</li>
+          <li>Testing text truncation, overflow, and line-height behavior in responsive web components</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Select whether you want paragraphs, sentences, or words. Set the desired amount using the controls. The Lorem Ipsum text is generated instantly. Copy it to your clipboard with the Copy button.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Choose your output type (Paragraphs, Words, or Sentences) and set the desired count using the input field. Toggle the &quot;Start with Lorem ipsum&quot; switch if you want the classic opening. Click Generate to produce the text, then click Copy to copy everything to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is Lorem Ipsum?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Lorem Ipsum is dummy text used in the printing and typesetting industry since the 1500s. It is derived from a scrambled section of &apos;De Finibus Bonorum et Malorum&apos; by Cicero, written in 45 BC.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Why is it called Lorem Ipsum?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">The text derives from Cicero&apos;s De Finibus Bonorum et Malorum written in 45 BC. A typesetter scrambled the text in the 1500s to create filler content, and it became the standard placeholder ever since.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Why use Lorem Ipsum instead of real text?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Lorem Ipsum helps focus on visual design without the distraction of readable content. Real text can bias viewers toward reading rather than evaluating layout, typography, and spacing.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Is Lorem Ipsum real Latin?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">The words are real Latin but the specific phrase &quot;Lorem ipsum dolor sit amet&quot; is a scrambled fragment. The original passage discusses the theory of ethics, not the meaning of the words.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is Lorem Ipsum real Latin?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Lorem Ipsum is based on Latin but is not standard Latin. It is a scrambled and altered version of a passage by Cicero. Some words are real Latin, while others are modified or made up.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Can I use Lorem Ipsum in production?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Lorem ipsum is strictly for prototyping and should never appear in a finished product. Replace all placeholder text with real, meaningful content before launching any website or application.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I use Lorem Ipsum in my projects commercially?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. Lorem Ipsum is in the public domain and can be used freely in any project. It is meant as placeholder text and should be replaced with real content before publishing.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How many words are in a paragraph of Lorem Ipsum?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Paragraph length varies by generator settings. Typical lorem ipsum paragraphs contain 50&ndash;100 words. Use the Words mode if you need an exact word count for a specific content slot.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

@@ -212,87 +212,46 @@ export default function MarkdownPreview() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Markdown Preview tool lets you write Markdown and see the rendered HTML output in real time. Markdown is a lightweight markup language used for README files, documentation, blog posts, and note-taking. This tool supports standard Markdown syntax including headings, lists, links, images, code blocks, and more.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Markdown Preview tool renders Markdown syntax to HTML in real time, showing exactly how your text will appear when published. It supports GitHub Flavored Markdown including headings, bold, italic, code blocks, tables, blockquotes, and task lists.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Live Preview</strong> — See your Markdown rendered as HTML instantly as you type, with no delay.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Full Syntax Support</strong> — Supports headings, bold, italic, links, images, lists, blockquotes, code blocks, and tables.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Split View</strong> — Side-by-side editor and preview layout for efficient editing and reviewing.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Clean HTML Output</strong> — Generates clean, semantic HTML that can be copied and used in web pages.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Live Side-by-Side Preview</strong> &mdash; Split-pane view shows your raw Markdown on the left and the rendered HTML output on the right, updating as you type.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">GitHub Flavored Markdown</strong> &mdash; Supports GFM extensions including fenced code blocks with syntax hints, tables, strikethrough text, and task list checkboxes.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Sample Content</strong> &mdash; Load a built-in sample document with one click to explore the full range of supported Markdown syntax without typing.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All Markdown rendering happens locally in your browser. Your content never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Writing and previewing GitHub README files before committing</li>
-          <li>Drafting blog posts and articles in Markdown format</li>
-          <li>Creating documentation with proper formatting and structure</li>
-          <li>Learning Markdown syntax by seeing instant visual feedback</li>
-          <li>Converting Markdown notes to HTML for web publishing</li>
+          <li>Drafting and previewing README.md files for GitHub repositories before committing them</li>
+          <li>Writing and formatting technical blog posts or documentation in Markdown before publishing to a CMS</li>
+          <li>Checking that code blocks, tables, and lists render correctly before pasting into Confluence or Notion</li>
+          <li>Previewing Markdown-formatted API documentation before generating static site output with Jekyll or Hugo</li>
+          <li>Learning Markdown syntax interactively by typing and immediately seeing how each element renders</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Type or paste your Markdown content into the editor on the left. The rendered HTML preview appears instantly on the right. Edit your content and see the changes reflected in real time.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Type or paste Markdown into the left panel. The rendered preview updates instantly in the right panel. Click the Sample button to load a demo document. Switch to preview-only mode with the toggle if you need more space to read the rendered output.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is Markdown?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Markdown is a lightweight markup language created by John Gruber in 2004. It uses simple syntax like # for headings, ** for bold, and - for lists to format text. It&apos;s widely used for README files, documentation, and content writing.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is Markdown and who invented it?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Markdown is a lightweight markup language created by John Gruber in 2004. It uses plain text formatting conventions that convert easily to HTML.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What Markdown syntax is supported?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              This tool supports standard Markdown including headings (#), bold (**), italic (*), links, images, ordered and unordered lists, blockquotes, code blocks, horizontal rules, and tables (GitHub Flavored Markdown).
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is GitHub Flavored Markdown (GFM)?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">GFM is a superset of standard Markdown used by GitHub. It adds fenced code blocks with language hints, tables, task lists, and strikethrough text.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I export the HTML output?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. The tool generates clean HTML from your Markdown. You can copy the rendered HTML and use it in your web pages, emails, or documentation.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How do I create a table in Markdown?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Use pipe characters | to separate columns and dashes --- to create the header separator row. Alignment colons control column alignment in the rendered table.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is GitHub Flavored Markdown (GFM)?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              GFM is GitHub&apos;s extended version of Markdown that adds support for tables, task lists, strikethrough text, autolinked URLs, and syntax-highlighted code blocks.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between inline code and a code block?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Inline code uses single backticks for short snippets within a sentence. A fenced code block uses triple backticks on separate lines for multi-line code samples with optional syntax highlighting.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

@@ -175,87 +175,46 @@ export default function JsonCsvConverter() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The JSON to CSV Converter is a free online tool available on CodeUtilo. Convert JSON arrays to CSV format and CSV back to JSON. All processing happens directly in your browser — no data is ever sent to any server, ensuring your privacy and security. No signup or installation is required.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The JSON to CSV Converter transforms JSON arrays of objects into CSV (Comma-Separated Values) spreadsheet format, and converts CSV data back to JSON arrays. It is built for data analysts, developers, and data engineers who need to move structured data between APIs and spreadsheet tools.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> — All json to csv converter operations run locally in your browser using JavaScript. Your data never leaves your device.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Instant Results</strong> — Get results immediately as you type or paste your input. No waiting for server responses or page reloads.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> — Use the json to csv converter as many times as you need without creating an account or paying anything.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Mobile Friendly</strong> — Works on desktop, tablet, and mobile browsers. Access this tool from any device with an internet connection.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Bidirectional Conversion</strong> &mdash; Converts JSON arrays to CSV with auto-detected column headers, and converts CSV back to JSON arrays of objects with header-mapped keys.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Auto Column Detection</strong> &mdash; Automatically infers column names from the object keys in the JSON array without requiring any manual configuration.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Handles Nested Data</strong> &mdash; Flattens simple nested objects and arrays into CSV-compatible string representations for compatibility with spreadsheet software.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All conversion runs locally in your browser. Your data never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Using the json to csv converter for day-to-day development tasks</li>
-          <li>Saving time on repetitive tasks by using a browser-based tool instead of writing custom code</li>
-          <li>Working on projects where installing software is not an option (school, work, shared computers)</li>
-          <li>Quick prototyping and debugging without switching to a terminal or IDE</li>
-          <li>Sharing the tool link with colleagues who need the same functionality</li>
+          <li>Exporting API response data from a REST endpoint into CSV for analysis in Excel or Google Sheets</li>
+          <li>Converting database query results exported as JSON into CSV format for reporting or data import</li>
+          <li>Transforming CSV data from a spreadsheet export into JSON arrays for feeding into a web application</li>
+          <li>Preparing data migration scripts by converting between JSON and CSV formats for ETL pipelines</li>
+          <li>Validating that the column structure of a JSON dataset matches the expected CSV schema before import</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Enter your input in the text area provided and the json to csv converter will process it instantly. Use the Copy button to copy the result to your clipboard. All operations are performed locally in your browser — no data is transmitted to any server.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Select JSON to CSV or CSV to JSON mode using the toggle. Paste your input data into the left panel. Click Convert to process the data. The result appears in the right panel. Use the Copy button to copy the output to your clipboard or the Download button to save it as a file.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is the JSON to CSV Converter free to use?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes, the JSON to CSV Converter is completely free with no usage limits. There is no signup or registration required. You can use it as many times as you need.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What JSON structure can be converted to CSV?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Only JSON arrays of flat objects can be directly converted to CSV. Each object in the array becomes a row, and its keys become column headers. Nested objects or arrays are converted to their string representation.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is my data safe when using this tool?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. All processing happens locally in your browser using JavaScript. Your data is never uploaded to any server or stored anywhere. Everything stays on your device.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Why does my CSV have missing values in some cells?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Missing values appear when objects in the JSON array have different keys. The converter uses all unique keys as columns, leaving cells empty where an object does not have that key.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Does this tool work on mobile devices?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. The JSON to CSV Converter is fully responsive and works on smartphones, tablets, and desktop computers. You can use it from any modern browser on any device.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Can I open the CSV output in Excel?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Yes. Copy the CSV text and paste it into a text editor, save it with a .csv extension, and Excel will open it correctly. Alternatively, use the Download button to save the file directly.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Do I need to install anything?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              No. The JSON to CSV Converter runs entirely in your web browser. There is nothing to download or install. Just open the page and start using it immediately.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What delimiter does the CSV output use?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">The converter uses commas as the default delimiter. Values that contain commas or quote characters are wrapped in double quotes per the RFC 4180 CSV specification to prevent parsing errors.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

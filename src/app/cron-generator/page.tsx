@@ -164,87 +164,46 @@ export default function CronGenerator() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Cron Expression Generator helps you build and understand cron expressions using a visual, interactive editor. Cron expressions define schedules for automated tasks in Linux, macOS, and many server environments. Instead of memorizing the cryptic five-field syntax, this tool lets you select time intervals visually.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Cron Expression Generator helps you build, validate, and understand cron job schedules using a visual interface. Instead of memorizing the five-field cron syntax, select the schedule from intuitive controls and see the human-readable description instantly.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Visual Editor</strong> — Select minutes, hours, days, months, and weekdays from dropdown menus instead of writing raw cron syntax.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Expression Preview</strong> — See the generated cron expression update in real time as you adjust the schedule.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Human-Readable Description</strong> — Displays a natural-language description of what the cron expression means.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Common Presets</strong> — Quick-select buttons for common schedules like every minute, hourly, daily, weekly, and monthly.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Visual Schedule Builder</strong> &mdash; Select minute, hour, day, month, and weekday fields from dropdowns. The expression updates in real time.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Human-Readable Description</strong> &mdash; Translates the cron expression into plain English so you can verify the schedule before deploying.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Common Presets</strong> &mdash; One-click presets for every minute, hourly, daily, weekly, monthly, and yearly schedules.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Copy Expression</strong> &mdash; Copy the cron expression to clipboard for use in crontab, GitHub Actions, or any scheduler.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free and No Signup</strong> &mdash; Generate unlimited cron expressions without an account or payment.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Setting up scheduled tasks (cron jobs) on Linux and Unix servers</li>
-          <li>Configuring CI/CD pipeline schedules in GitHub Actions, GitLab CI, or Jenkins</li>
-          <li>Scheduling database backups, log rotation, and cleanup tasks</li>
-          <li>Defining schedule expressions for cloud services (AWS CloudWatch, Azure Scheduler)</li>
-          <li>Learning cron syntax with immediate visual feedback</li>
+          <li>Scheduling a database backup to run every night at 2 AM using server cron or AWS EventBridge</li>
+          <li>Setting up a weekly report email that sends every Monday morning through a task scheduler</li>
+          <li>Configuring a GitHub Actions workflow on a recurring schedule for nightly builds or weekly updates</li>
+          <li>Understanding an existing cron expression in a legacy system by reading its human-readable translation</li>
+          <li>Creating a scheduled task in Kubernetes CronJobs for periodic cleanup or data processing</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Use the visual editor to select your desired schedule by choosing values for minutes, hours, days of month, months, and days of week. The cron expression is generated automatically. Use preset buttons for common schedules. Copy the expression and use it in your crontab or scheduling service.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Select a preset or manually set the minute, hour, day of month, month, and day of week fields. The expression and description update instantly. Copy and paste into your crontab, workflow config, or scheduler.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is a cron expression?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              A cron expression is a string of five fields (minute, hour, day of month, month, day of week) that defines a schedule for automated tasks. For example, &apos;0 9 * * 1&apos; means &apos;every Monday at 9:00 AM&apos;.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is cron syntax and how does each field work?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">A cron expression has five fields: minute (0-59), hour (0-23), day of month (1-31), month (1-12), and day of week (0-6, Sunday=0). Each field accepts a number, * for any value, ranges like 1-5, step values like */15, or comma-separated lists.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What does the asterisk (*) mean in cron?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              The asterisk (*) means &apos;every possible value&apos; for that field. For example, * in the minute field means &apos;every minute&apos;, and * in the day-of-week field means &apos;every day of the week&apos;.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What does */5 mean in a cron expression?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">*/5 means every 5 units. In the minute field it means every 5 minutes (0, 5, 10...). In the hour field it means every 5 hours. The step syntax applies to all five fields.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the difference between cron and crontab?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Cron is the daemon (background service) that runs scheduled tasks. Crontab (cron table) is the file where you define your scheduled tasks and their cron expressions. You edit it with &apos;crontab -e&apos;.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Why does my cron job run at an unexpected time?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Cron jobs run in the server timezone, which may differ from your local timezone. Check your server or scheduler timezone settings and verify the field order: minute hour day month weekday.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I use cron expressions in cloud services?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. AWS CloudWatch Events, Azure Functions, Google Cloud Scheduler, GitHub Actions, and many CI/CD platforms use cron expressions (sometimes with slight syntax variations) for scheduling.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Does this tool support non-standard cron syntax like @daily?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">This tool generates standard five-field cron expressions. Shortcuts like @daily and @weekly work in some schedulers but are not universal across all environments.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

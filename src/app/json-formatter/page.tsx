@@ -145,95 +145,46 @@ export default function JsonFormatter() {
       
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The JSON Formatter is a free online tool that helps you format, beautify, validate, and minify JSON data instantly. Whether you are debugging API responses, cleaning up configuration files, or preparing JSON for documentation, this tool makes it easy to work with JSON without installing any software.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The JSON Formatter is a free online tool that instantly formats, validates, and minifies JSON data directly in your browser. Built for developers working with APIs, configuration files, and data pipelines, it gives you clean, readable JSON or compact production-ready output with a single click.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Format &amp; Beautify</strong> — Automatically indents and formats JSON with customizable spacing (2 or 4 spaces, or tabs) for maximum readability.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Validate JSON</strong> — Instantly detects and highlights syntax errors such as missing brackets, trailing commas, unquoted keys, and mismatched braces.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Minify JSON</strong> — Compresses JSON by removing all unnecessary whitespace and line breaks, reducing file size for production use.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Syntax Highlighting</strong> — Color-coded output makes it easy to distinguish between keys, values, strings, numbers, booleans, and null values.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Adjustable Indentation</strong> &mdash; Choose 2 spaces, 4 spaces, or tabs to match your project&apos;s code style when beautifying JSON.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Syntax Error Detection</strong> &mdash; Pinpoints the exact line and position of JSON errors including trailing commas, missing quotes, and unmatched brackets.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Minify to Single Line</strong> &mdash; Strips all whitespace and line breaks to produce a compact JSON string optimized for network transmission.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All operations run locally in your browser. Your data never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Debugging REST API responses by formatting raw JSON payloads</li>
-          <li>Cleaning up and validating JSON configuration files (package.json, tsconfig.json, etc.)</li>
-          <li>Preparing JSON data for documentation, presentations, or code reviews</li>
-          <li>Minifying JSON before embedding it in scripts or sending over the network</li>
-          <li>Validating JSON syntax before importing data into databases or applications</li>
+          <li>Formatting raw REST API responses to inspect nested objects and arrays during debugging</li>
+          <li>Validating package.json, tsconfig.json, or other config files before committing to version control</li>
+          <li>Minifying large JSON payloads to reduce bandwidth usage in production APIs</li>
+          <li>Preparing formatted JSON examples for technical documentation or code reviews</li>
+          <li>Checking whether data exported from a database or spreadsheet is valid JSON</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Paste your JSON data into the input area or type it directly. Click &quot;Format / Beautify&quot; to prettify the JSON with proper indentation, or click &quot;Minify&quot; to compress it into a single line. If your JSON contains errors, the tool will display the error message with the location of the problem. You can copy the formatted output to your clipboard with one click.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Paste your JSON into the input panel on the left, or click &quot;Sample&quot; to load an example. Select your indentation from the Indent dropdown, then click &quot;Format&quot; to pretty-print or &quot;Minify&quot; to compress it. If your JSON contains errors, the error message shows the exact problem location.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is valid JSON?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Valid JSON must use double quotes for keys and strings, no trailing commas, no comments, and must start with an object &#123;&#125; or array []. Numbers, booleans (true/false), and null are also valid values.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What makes JSON invalid?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Common causes include trailing commas after the last item, single quotes instead of double quotes, JavaScript comments, and unquoted key names. This formatter shows the exact error location to help you fix issues quickly.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Does this tool validate JSON?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes. When you paste or type JSON, the tool checks for syntax errors and shows the error message with the exact location of the problem, making it easy to fix invalid JSON.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Can I format large JSON files?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Yes. The tool processes JSON in your browser using JSON.parse and JSON.stringify, so there are no server-side limits. Very large files (50 MB+) may be slow depending on your device&apos;s memory.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is my data safe?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Absolutely. All formatting and validation happens locally in your browser using JavaScript. Your JSON data is never sent to any server.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between 2-space and 4-space indentation?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Both are cosmetic choices that do not affect the JSON meaning. Two spaces are common in JavaScript projects. Four spaces are common in Python and Java. Choose whichever matches your team&apos;s convention.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the difference between formatting and minifying JSON?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Formatting (beautifying) adds indentation and line breaks to make JSON readable. Minifying removes all unnecessary whitespace to reduce file size, which is useful for production environments and API responses.
-            </p>
-          </details>
-          <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I use this tool for large JSON files?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Yes, the tool handles large JSON documents efficiently since all processing runs in your browser. However, extremely large files (10MB+) may cause slower performance depending on your device.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Why minify JSON instead of keeping it formatted?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Minified JSON removes all whitespace, reducing file size by 20&ndash;30%. This matters for HTTP responses, JavaScript bundles, and database storage. Formatted JSON is only for human readability during development.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

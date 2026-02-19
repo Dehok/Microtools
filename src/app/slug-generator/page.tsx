@@ -117,87 +117,46 @@ export default function SlugGenerator() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Slug Generator converts any text into a clean, URL-friendly slug. Slugs are the human-readable portion of a URL that identifies a page, such as &quot;my-blog-post&quot; in &quot;example.com/blog/my-blog-post&quot;. Good slugs improve SEO, readability, and user experience.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Slug Generator converts text titles, headlines, and phrases into URL-friendly slugs by lowercasing letters, replacing spaces with hyphens, and removing special characters. Slugs are used in blog post URLs, product pages, category paths, and any other URL segment that needs to be human-readable and SEO-friendly.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Instant Conversion</strong> — Transforms text to a URL-friendly slug in real time as you type.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Special Character Handling</strong> — Removes or transliterates accented characters, symbols, and non-ASCII characters.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Lowercase &amp; Hyphenated</strong> — Converts all text to lowercase and replaces spaces with hyphens for URL compatibility.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Clean Output</strong> — Removes consecutive hyphens, leading/trailing hyphens, and invalid URL characters.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Real-Time Conversion</strong> &mdash; Converts your input text to a slug instantly as you type, with no button press required.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Handles Special Characters &amp; Accents</strong> &mdash; Removes punctuation, replaces accented characters (like &eacute; and &uuml;) with their ASCII equivalents, and strips symbols.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Separator Options</strong> &mdash; Choose between hyphens (recommended for SEO) or underscores as the word separator in the generated slug.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All processing runs locally in your browser. Your text never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Generating URL slugs for blog posts, product pages, and CMS content</li>
-          <li>Creating SEO-friendly URLs that include target keywords</li>
-          <li>Converting article titles to slugs for static site generators (Next.js, Hugo, Jekyll)</li>
-          <li>Generating file names from titles for content management systems</li>
-          <li>Creating clean permalink structures for web applications</li>
+          <li>Generating URL-friendly slugs for new blog posts or articles in a CMS like WordPress or Contentful</li>
+          <li>Creating consistent product URL slugs for e-commerce catalog pages</li>
+          <li>Converting category or tag names into URL path segments for navigation menus</li>
+          <li>Normalizing user-submitted titles for use as unique identifiers or file names in a web application</li>
+          <li>Generating slugs in bulk for content migration or database seeding scripts</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Type or paste your text (e.g., a blog post title) into the input field. The URL-friendly slug is generated instantly. Copy the slug with the Copy button and use it in your URLs.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Type or paste your title or phrase into the input field. The slug appears instantly in the output box below. Choose Hyphen or Underscore as the separator using the toggle. Click Copy to copy the slug to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is a URL slug?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              A URL slug is the human-readable part of a URL that identifies a specific page. For example, in &apos;example.com/blog/my-first-post&apos;, the slug is &apos;my-first-post&apos;. Good slugs are lowercase, hyphenated, and descriptive.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is a URL slug?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">A slug is the URL-friendly part of a web address that identifies a specific page. For example, in &quot;codeutilo.com/blog/how-to-use-json&quot;, the slug is &quot;how-to-use-json&quot;. Slugs use lowercase letters, numbers, and hyphens only.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Why are slugs important for SEO?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Search engines use URL slugs as a ranking signal. URLs containing relevant keywords rank slightly better than generic ones. Clean, descriptive slugs also improve click-through rates in search results.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Should I use hyphens or underscores in slugs?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Google recommends hyphens for URL slugs. Google treats hyphens as word separators, while underscores are treated as character joiners. Using hyphens helps search engines read individual words in your URL for better SEO.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What characters are allowed in a URL slug?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Best practice is to use only lowercase letters (a-z), numbers (0-9), and hyphens (-). Avoid underscores, spaces, special characters, and uppercase letters for maximum compatibility.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How are accented characters handled?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Accented characters like &eacute;, &agrave;, and &uuml; are transliterated to their closest ASCII equivalents (e, a, u) before slug generation. This ensures the slug contains only safe URL characters without requiring percent-encoding.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How does this tool handle special characters?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              The tool transliterates accented characters (é → e, ü → u), removes non-alphanumeric characters, converts spaces to hyphens, and removes consecutive or trailing hyphens.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">How long should a URL slug be?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Keep slugs between 3 and 5 words (roughly 20&ndash;60 characters). Shorter slugs are easier to read and share. Very long slugs can be truncated by some CMSs and look unappealing in search results.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

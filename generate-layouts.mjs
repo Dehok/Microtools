@@ -748,6 +748,34 @@ const tools = [
         desc: "Translate regular expressions to plain English explanations. Understand any regex pattern. Free tool.",
         kw: ["regex to english", "explain regex", "regex explainer", "understand regex", "regex translator"],
     },
+    {
+        slug: "image-compressor",
+        name: "Image Compressor",
+        seoTitle: "Image Compressor Online — Reduce Image File Size",
+        desc: "Compress JPEG, PNG, and WebP images directly in your browser. Reduce file size without losing quality. Free, fast, and private.",
+        kw: ["image compressor", "compress image online", "reduce image size", "image optimizer", "compress jpg png webp"],
+    },
+    {
+        slug: "image-resizer",
+        name: "Image Resizer",
+        seoTitle: "Image Resizer Online — Resize Images to Any Size",
+        desc: "Resize images to exact pixel dimensions or scale by percentage. Supports JPEG, PNG, and WebP output. Free online image resizer.",
+        kw: ["image resizer", "resize image online", "image resize tool", "resize photo", "change image dimensions"],
+    },
+    {
+        slug: "screenshot-to-text",
+        name: "Screenshot to Text (OCR)",
+        seoTitle: "Screenshot to Text (OCR) — Extract Text from Images",
+        desc: "Extract text from images and screenshots using OCR. Supports 100+ languages. Free, fast, and runs entirely in your browser.",
+        kw: ["screenshot to text", "ocr online", "image to text", "extract text from image", "ocr tool free"],
+    },
+    {
+        slug: "pdf-to-text",
+        name: "PDF to Text",
+        seoTitle: "PDF to Text Converter Online — Extract Text from PDFs",
+        desc: "Extract text from PDF files directly in your browser. No upload required. Free, fast, and private PDF text extraction.",
+        kw: ["pdf to text", "extract text from pdf", "pdf text extractor", "convert pdf to text", "pdf to txt online"],
+    },
 ];
 
 // ─── Generate layout.tsx for each tool ────────────────────────────────

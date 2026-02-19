@@ -129,87 +129,46 @@ export default function HashGenerator() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Hash Generator creates cryptographic hash values from any text input using popular algorithms including MD5, SHA-1, SHA-256, and SHA-512. Hashing is a one-way function that converts data into a fixed-length string, widely used for data integrity verification, password storage, and digital signatures.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Hash Generator computes cryptographic hash digests of text input using MD5, SHA-1, SHA-256, and SHA-512 algorithms. Hashing is fundamental to data integrity verification, password storage, digital signatures, and checksums in modern software development.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Multiple Algorithms</strong> — Supports MD5, SHA-1, SHA-256, and SHA-512 hash algorithms for various security requirements.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Instant Hashing</strong> — Generates hash values in real time as you type, with no need to submit a form.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Hex Output</strong> — Displays hash values in standard hexadecimal format, compatible with all programming languages and tools.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">One-Click Copy</strong> — Copy any hash value to your clipboard with a single click for easy use in your projects.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Four Hash Algorithms</strong> &mdash; Generates MD5, SHA-1, SHA-256, and SHA-512 digests simultaneously so you can compare outputs and choose the right algorithm for your use case.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Uppercase &amp; Lowercase Output</strong> &mdash; Toggle between uppercase and lowercase hex output to match the format expected by your application or comparison target.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Real-Time Hashing</strong> &mdash; Hash values update instantly as you type, so you can see how small changes in input produce completely different output (the avalanche effect).</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All hashing runs locally in your browser using the Web Crypto API. Your input text never leaves your device.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Verifying file integrity by comparing hash values before and after transfer</li>
-          <li>Generating hash values for password storage and authentication systems</li>
-          <li>Creating checksums for data validation and error detection</li>
-          <li>Comparing hash outputs across different algorithms for security analysis</li>
-          <li>Generating deterministic identifiers from text input for caching or deduplication</li>
+          <li>Verifying file integrity by comparing SHA-256 checksums before and after download or transfer</li>
+          <li>Generating a hash of a password to compare against a stored hash during authentication testing</li>
+          <li>Computing MD5 checksums to detect accidental data corruption in files or database records</li>
+          <li>Creating content-addressable cache keys by hashing request parameters or file contents</li>
+          <li>Learning how the avalanche effect works by observing that one character change completely changes the hash</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Enter or paste your text into the input area. Hash values for all supported algorithms are generated instantly. Click the Copy button next to any hash to copy it to your clipboard.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>Type or paste text into the input field. Hash values for MD5, SHA-1, SHA-256, and SHA-512 appear immediately below. Use the Uppercase toggle to switch between hex case formats. Click the Copy icon next to any hash to copy it to your clipboard.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is a hash function?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              A hash function takes any input and produces a fixed-length output (the hash). The same input always produces the same hash, but it&apos;s computationally infeasible to reverse the process or find two inputs with the same hash.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between MD5, SHA-1, and SHA-256?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">MD5 produces a 128-bit hash and is fast but cryptographically broken. SHA-1 produces 160 bits and is also deprecated for security use. SHA-256 (part of SHA-2) produces 256 bits and is currently secure for most applications.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Which hash algorithm should I use?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              For general purposes, use SHA-256. MD5 and SHA-1 are considered insecure for cryptographic use. For password hashing, use bcrypt, scrypt, or Argon2 instead.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Can I reverse a hash to get the original text?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">No. Cryptographic hashes are one-way functions by design. You cannot mathematically reverse a hash. Attackers may use precomputed rainbow tables for common passwords, which is why salting is important for password hashing.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Is MD5 secure?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              No. MD5 is cryptographically broken — collision attacks are practical and fast. Don&apos;t use MD5 for security purposes. It&apos;s still acceptable for checksums and non-security data integrity checks.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Should I use this tool to hash passwords?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">No. This tool uses raw hash functions, which are not suitable for password storage. Use a dedicated password hashing algorithm like bcrypt, Argon2, or PBKDF2, which include salting and cost factors.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              Can I reverse a hash to get the original text?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Hash functions are one-way by design. You cannot mathematically reverse a hash. However, short or common inputs can be found using rainbow tables or brute force, which is why strong passwords are important.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the avalanche effect?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">The avalanche effect means that a tiny change in input (even one character) produces a completely different hash output. This property ensures that two similar inputs cannot be distinguished from their hashes alone.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }

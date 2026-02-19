@@ -146,87 +146,46 @@ export default function EpochConverter() {
     
       {/* SEO Content */}
       <div className="mt-12 space-y-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-8">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-          About This Tool
-        </h2>
-        <p>
-          The Epoch Converter transforms Unix timestamps (seconds since January 1, 1970 UTC) into human-readable dates and vice versa. Unix timestamps are the standard way computers track time internally and are used extensively in databases, APIs, log files, and server configurations.
-        </p>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Key Features
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>The Epoch Converter tool translates Unix timestamps to human-readable dates and converts dates back to Unix epoch seconds. Unix timestamps are the standard way to represent time in databases, APIs, log files, and programming languages across all time zones.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Key Features</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Timestamp to Date</strong> — Converts Unix epoch timestamps (seconds or milliseconds) to human-readable date and time.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Date to Timestamp</strong> — Converts any date and time to its Unix epoch timestamp representation.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Current Timestamp</strong> — Shows the current Unix timestamp updating in real time.
-          </li>
-          <li>
-            <strong className="text-gray-700 dark:text-gray-300">Multiple Formats</strong> — Displays dates in ISO 8601, UTC, and local time zone formats.
-          </li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Timestamp to Date</strong> &mdash; Converts a Unix epoch (seconds since January 1, 1970 UTC) to a readable local date and time in your browser&apos;s timezone.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Date to Timestamp</strong> &mdash; Converts any date and time you enter into the corresponding Unix timestamp in seconds for use in APIs and databases.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Current Epoch Time</strong> &mdash; Displays the live current Unix timestamp in seconds and milliseconds, updating every second.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Browser-Based Processing</strong> &mdash; All conversion runs locally in your browser using JavaScript Date objects. No data is sent to any server.</li>
+          <li><strong className="text-gray-700 dark:text-gray-300">Free &amp; No Signup</strong> &mdash; Use this tool as many times as you need without creating an account or paying anything.</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Common Use Cases
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Common Use Cases</h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Converting API timestamps to readable dates for debugging and logging</li>
-          <li>Generating Unix timestamps for database queries and data filters</li>
-          <li>Comparing timestamps from different systems or time zones</li>
-          <li>Setting expiration times for tokens, cookies, and cache entries</li>
-          <li>Debugging time-related issues in server logs and application data</li>
+          <li>Debugging API requests that use Unix timestamps in request headers or response payloads</li>
+          <li>Checking whether a JWT token expiration timestamp (exp claim) has already passed</li>
+          <li>Converting database-stored timestamps to readable dates for data analysis and reporting</li>
+          <li>Generating epoch timestamps for constructing time-based queries or scheduled event triggers</li>
+          <li>Reading log file timestamps and correlating events across different time zones</li>
         </ul>
-
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          How to Use
-        </h2>
-        <p>
-          Enter a Unix timestamp (in seconds or milliseconds) to see it converted to a human-readable date. Or use the date picker to select a date and get the corresponding Unix timestamp. The current timestamp is displayed at the top for reference.
-        </p>
-      
-        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">How to Use</h2>
+        <p>The current Unix timestamp is shown at the top and updates live. To convert a timestamp to a date, paste the epoch value into the Timestamp field and click Convert. To convert a date to a timestamp, enter the date and time in the Date field and click Convert.</p>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is Unix epoch time?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Unix epoch time (also called POSIX time or Unix timestamp) is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. It&apos;s the standard way computers internally track time.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is a Unix timestamp?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">A Unix timestamp is the number of seconds elapsed since January 1, 1970, 00:00:00 UTC (the Unix epoch). It is a time zone-independent way to represent moments in time used by virtually all operating systems and programming languages.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the difference between seconds and milliseconds timestamps?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Unix timestamps in seconds are 10 digits (e.g., 1708300800), while millisecond timestamps are 13 digits (e.g., 1708300800000). JavaScript&apos;s Date.now() returns milliseconds, while most other systems use seconds.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the Year 2038 problem?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">The Year 2038 problem affects 32-bit signed integers storing Unix timestamps. The maximum value (2,147,483,647) corresponds to January 19, 2038. After that date, the counter overflows. Modern systems use 64-bit integers which will not overflow for billions of years.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              What is the Year 2038 problem?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              Systems using 32-bit signed integers to store Unix timestamps will overflow on January 19, 2038. After this date, the timestamp wraps around to a negative number. Most modern systems use 64-bit integers to avoid this.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">What is the difference between Unix timestamps in seconds and milliseconds?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">Most Unix APIs use seconds. JavaScript&apos;s Date.now() and many web APIs return milliseconds. If a timestamp is 13 digits long, it is in milliseconds. Divide by 1000 to get seconds.</p>
           </details>
           <details className="group">
-            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-              How do I get the current Unix timestamp in code?
-            </summary>
-            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
-              In JavaScript: Math.floor(Date.now() / 1000). In Python: import time; int(time.time()). In PHP: time(). In Java: System.currentTimeMillis() / 1000.
-            </p>
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Are Unix timestamps affected by time zones?</summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">No. Unix timestamps always represent UTC seconds regardless of local time zone. The human-readable display shows local time, but the underlying timestamp is always UTC.</p>
           </details>
         </div>
-</div>
+      </div>
     </ToolLayout>
   );
 }
