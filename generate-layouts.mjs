@@ -1021,6 +1021,55 @@ const tools = [
         desc: "Generate XML sitemaps for your website. Add URLs individually or in bulk. Set priorities, change frequencies, and dates. Download sitemap.xml.",
         kw: ["sitemap generator", "xml sitemap creator", "sitemap builder", "sitemap maker", "generate sitemap xml"],
     },
+    {
+        slug: "background-remover",
+        name: "Background Remover",
+        seoTitle: "Background Remover — AI-Powered Image Background Removal Free",
+        desc: "Remove image backgrounds instantly using AI running 100% in your browser. No server uploads, completely private. Works with people, products, and animals.",
+        kw: ["background remover", "remove background online", "image background remover", "background eraser", "transparent background maker"],
+    },
+    {
+        slug: "video-to-gif",
+        name: "Video to GIF",
+        seoTitle: "Video to GIF Converter Online — Convert Video to Animated GIF",
+        desc: "Convert video clips to animated GIF/WebM in your browser. Adjust FPS, resolution, quality, start time and duration. No uploads required.",
+        kw: ["video to gif", "convert video to gif", "video to gif converter", "mp4 to gif", "video gif maker"],
+    },
+    {
+        slug: "gif-maker",
+        name: "GIF Maker",
+        seoTitle: "GIF Maker — Create Animated GIFs from Images Online",
+        desc: "Create animated GIFs from individual image frames. Upload images, arrange order, set speed and resolution. All processing in your browser.",
+        kw: ["gif maker", "create gif", "animated gif maker", "gif creator online", "image to gif"],
+    },
+    {
+        slug: "svg-editor",
+        name: "SVG Editor",
+        seoTitle: "SVG Editor Online — Create & Edit SVG Graphics Free",
+        desc: "Create and edit SVG graphics with a visual editor. Add rectangles, circles, text. Customize colors and export clean SVG code.",
+        kw: ["svg editor", "svg editor online", "svg creator", "svg maker", "edit svg online"],
+    },
+    {
+        slug: "api-docs-generator",
+        name: "API Docs Generator",
+        seoTitle: "API Docs Generator — OpenAPI 3.0 Swagger Builder",
+        desc: "Generate OpenAPI 3.0 (Swagger) documentation visually. Build endpoints, configure parameters, tags, and responses. Export YAML.",
+        kw: ["api docs generator", "openapi generator", "swagger builder", "api documentation tool", "openapi yaml generator"],
+    },
+    {
+        slug: "color-palette-from-image",
+        name: "Color Palette from Image",
+        seoTitle: "Color Palette from Image — Extract Colors from Photos",
+        desc: "Extract dominant colors from any uploaded image. Get hex codes and RGB values. Adjust palette size from 3 to 12 colors. 100% client-side.",
+        kw: ["color palette from image", "extract colors from image", "image color picker", "photo color palette", "dominant colors extractor"],
+    },
+    {
+        slug: "json-schema-generator",
+        name: "JSON Schema Generator",
+        seoTitle: "JSON Schema Generator — Auto-Generate Schema from JSON",
+        desc: "Generate JSON Schema (2020-12 draft) from any JSON data. Auto-detects formats like email, URI, date, UUID. Handles nested objects and arrays.",
+        kw: ["json schema generator", "generate json schema", "json to schema", "json schema maker", "json schema from json"],
+    },
 ];
 
 // ─── Generate layout.tsx for each tool ────────────────────────────────
