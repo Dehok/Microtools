@@ -287,7 +287,34 @@ export default function VideoCompressorPage() {
           </button>
         </div>
       )}
+
+      <div className="mt-12 space-y-6 border-t border-gray-200 dark:border-gray-700 pt-8 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>
+          Compress videos locally by lowering resolution, frame rate, and bitrate. This helps reduce file size for
+          sharing, uploads, and storage while keeping your original media private on your device.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Why is the output format WebM?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              WebM is the most reliable browser-side encoding path without server processing or heavy native binaries.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              What settings reduce size the most?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Lower bitrate has the biggest impact, then lower resolution, then lower FPS.
+            </p>
+          </details>
+        </div>
+      </div>
     </ToolLayout>
   );
 }
-

@@ -222,6 +222,35 @@ export default function Mp4ToMp3Page() {
           </button>
         </div>
       )}
+
+      <div className="mt-12 space-y-6 border-t border-gray-200 dark:border-gray-700 pt-8 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
+        <p>
+          This MP4 to MP3 converter extracts and re-encodes audio locally using Web Audio and an in-browser MP3 encoder.
+          It is useful for podcast clips, speech extraction, and quick audio exports without uploading private files.
+        </p>
+
+        <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Is the conversion private?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              Yes. The file is processed locally in your browser and never uploaded.
+            </p>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              Which bitrate should I choose?
+            </summary>
+            <p className="mt-2 pl-4 text-gray-600 dark:text-gray-400">
+              128 kbps is a common balance for voice and casual listening. Use 192 kbps or higher for better music
+              quality.
+            </p>
+          </details>
+        </div>
+      </div>
     </ToolLayout>
   );
 }
