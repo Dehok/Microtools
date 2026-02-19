@@ -68,7 +68,7 @@ export default function Mp4ToMp3Page() {
         const rightChannel = channels > 1 ? decoded.getChannelData(1) : null;
         const encoder = new Mp3Encoder(channels, decoded.sampleRate, bitrate);
         const blockSize = 1152;
-        const chunks: Int8Array[] = [];
+        const chunks: BlobPart[] = [];
 
         for (let i = 0; i < leftChannel.length; i += blockSize) {
           const end = Math.min(i + blockSize, leftChannel.length);
@@ -82,12 +82,12 @@ export default function Mp4ToMp3Page() {
             encoded = encoder.encodeBuffer(left);
           }
 
-          if (encoded.length > 0) chunks.push(new Int8Array(encoded));
+          if (encoded.length > 0) chunks.push(Uint8Array.from(encoded));
           setProgress(25 + Math.round(((i + blockSize) / leftChannel.length) * 70));
         }
 
         const flushChunk = encoder.flush();
-        if (flushChunk.length > 0) chunks.push(new Int8Array(flushChunk));
+        if (flushChunk.length > 0) chunks.push(Uint8Array.from(flushChunk));
 
         await audioContext.close();
 
