@@ -53,7 +53,6 @@ for (const slug of dirs) {
     const after = restored.slice(faqEndIdx);
 
     // In the FAQ section, escape { and } only in text content (between > and <)
-    const original = faqSection;
     faqSection = faqSection.replace(/>([^<]+)</g, (match, textContent) => {
         // Skip if it's a JSX attribute or expression
         if (textContent.includes("className=")) return match;

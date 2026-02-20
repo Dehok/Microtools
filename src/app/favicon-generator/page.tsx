@@ -114,23 +114,19 @@ export default function FaviconGenerator() {
           <div className="mb-4 flex items-center gap-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6">
             <div className="text-center">
               <div className="mb-1 text-xs text-gray-400 dark:text-gray-500">48×48</div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={dataUri} alt="Favicon 48px" width={48} height={48} />
             </div>
             <div className="text-center">
               <div className="mb-1 text-xs text-gray-400 dark:text-gray-500">32×32</div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={dataUri} alt="Favicon 32px" width={32} height={32} />
             </div>
             <div className="text-center">
               <div className="mb-1 text-xs text-gray-400 dark:text-gray-500">16×16</div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={dataUri} alt="Favicon 16px" width={16} height={16} />
             </div>
             <div className="text-center">
               <div className="mb-1 text-xs text-gray-400 dark:text-gray-500">Browser tab</div>
               <div className="flex items-center gap-1 rounded-t bg-gray-100 dark:bg-gray-800 px-2 py-1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={dataUri} alt="Tab" width={16} height={16} />
                 <span className="text-xs text-gray-600 dark:text-gray-400">My Page</span>
               </div>

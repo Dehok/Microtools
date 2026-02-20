@@ -34,7 +34,7 @@ export default function CssNeumorphismGenerator() {
 ${bg}
 box-shadow: ${shadowType}${distance}px ${distance}px ${blur}px ${dark},
             ${shadowType}-${distance}px -${distance}px ${blur}px ${light};`;
-    }, [bgColor, radius, distance, blur, shape, light, dark, intensity]);
+    }, [bgColor, radius, distance, blur, shape, light, dark]);
 
     const handleCopy = () => {
         navigator.clipboard.writeText(css);

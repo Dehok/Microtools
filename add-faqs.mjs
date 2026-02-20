@@ -143,7 +143,7 @@ const TOOL_FAQS = {
 };
 
 // Generic FAQ generator for tools without specific FAQs
-function generateGenericFAQs(slug, toolName, description) {
+function generateGenericFAQs(toolName) {
     const name = toolName.replace(/[<>]/g, "");
     return [
         { q: `Is the ${name} free to use?`, a: `Yes, the ${name} is completely free with no usage limits. There is no signup or registration required. You can use it as many times as you need.` },
@@ -155,10 +155,6 @@ function generateGenericFAQs(slug, toolName, description) {
 
 function escJSX(s) {
     return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;").replace(/\{/g, "&#123;").replace(/\}/g, "&#125;");
-}
-
-function escJSXAttr(s) {
-    return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
 }
 
 function generateFAQJSX(faqs) {
@@ -204,7 +200,7 @@ for (const slug of dirs) {
     const tool = toolEntries[slug];
     if (!tool) continue;
 
-    const faqs = TOOL_FAQS[slug] || generateGenericFAQs(slug, tool.name, tool.description);
+    const faqs = TOOL_FAQS[slug] || generateGenericFAQs(tool.name);
 
     // ── Inject FAQ into page.tsx ──
     // Insert FAQ before the closing </div> of the SEO content section, or before </ToolLayout>

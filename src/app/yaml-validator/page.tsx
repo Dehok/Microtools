@@ -70,16 +70,14 @@ function parseYamlLines(
 
   const firstLine = lines[si];
   const trimmed = firstLine.trim();
-  const firstIndent = firstLine.length - firstLine.trimStart().length;
-
   // Multi-line literal block scalar (|)
   if (trimmed === "|" || trimmed === "|+" || trimmed === "|-") {
-    return parseBlockScalar(lines, lineMap, si, "literal", trimmed);
+    return parseBlockScalar(lines, si, "literal");
   }
 
   // Multi-line folded block scalar (>)
   if (trimmed === ">" || trimmed === ">+" || trimmed === ">-") {
-    return parseBlockScalar(lines, lineMap, si, "folded", trimmed);
+    return parseBlockScalar(lines, si, "folded");
   }
 
   // Array at current level
@@ -171,11 +169,11 @@ function parseYamlLines(
       const valStr = lt.slice(colonIdx + 1).trim();
 
       if (valStr === "|" || valStr === "|+" || valStr === "|-") {
-        const blockResult = parseBlockScalarAfterKey(lines, lineMap, idx, "literal", valStr);
+        const blockResult = parseBlockScalarAfterKey(lines, lineMap, idx, "literal");
         obj[key] = blockResult.value;
         idx = blockResult.nextIdx;
       } else if (valStr === ">" || valStr === ">+" || valStr === ">-") {
-        const blockResult = parseBlockScalarAfterKey(lines, lineMap, idx, "folded", valStr);
+        const blockResult = parseBlockScalarAfterKey(lines, lineMap, idx, "folded");
         obj[key] = blockResult.value;
         idx = blockResult.nextIdx;
       } else if (valStr) {
@@ -228,10 +226,8 @@ function findColon(line: string): number {
 
 function parseBlockScalar(
   lines: string[],
-  lineMap: number[],
   startIdx: number,
-  mode: "literal" | "folded",
-  _indicator: string
+  mode: "literal" | "folded"
 ): ParseResult {
   let idx = startIdx + 1;
   if (idx >= lines.length) return { value: "", nextIdx: idx };
@@ -272,10 +268,9 @@ function parseBlockScalarAfterKey(
   lines: string[],
   lineMap: number[],
   startIdx: number,
-  mode: "literal" | "folded",
-  _indicator: string
+  mode: "literal" | "folded"
 ): ParseResult {
-  return parseBlockScalar(lines, lineMap, startIdx, mode, _indicator);
+  return parseBlockScalar(lines, startIdx, mode);
 }
 
 function parseYamlValue(val: string): unknown {

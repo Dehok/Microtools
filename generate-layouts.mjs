@@ -4,7 +4,7 @@
  *
  * Run: node generate-layouts.mjs
  */
-import { writeFileSync, mkdirSync, existsSync } from "fs";
+import { writeFileSync, existsSync } from "fs";
 import { join } from "path";
 
 const SITE = "CodeUtilo";

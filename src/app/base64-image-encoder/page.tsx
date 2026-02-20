@@ -174,7 +174,6 @@ export default function Base64ImageEncoder() {
           {/* Image Preview & File Info */}
           <div className="mb-6 grid gap-4 sm:grid-cols-2">
             <div className="flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={imageData.previewUrl}
                 alt="Preview"

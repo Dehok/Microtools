@@ -65,7 +65,7 @@ export default function VideoToGif() {
 
             // Simple animated image: we create individual frames as PNGs
             // For actual GIF encoding, we'll use a canvas-based approach with webp
-            const blob = await new Promise<Blob>((resolve) => {
+            await new Promise<Blob>((resolve) => {
                 canvas.toBlob((b) => resolve(b!), "image/webp", settings.quality / 20);
             });
 

@@ -160,7 +160,6 @@ export default function PlaceholderImage() {
         <div>
           <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Preview</label>
           <div className="flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={dataUri}
               alt={displayText}

@@ -55,7 +55,7 @@ export default function GithubActionsGenerator() {
         }
 
         return lines.join("\n");
-    }, [name, trigger, branches, nodeVersion, steps, packageManager, deployTarget, schedule, installCmd, buildCmd, lintCmd, testCmd]);
+    }, [name, trigger, branches, nodeVersion, steps, deployTarget, schedule, installCmd, buildCmd, lintCmd, testCmd]);
 
     const handleCopy = () => { navigator.clipboard.writeText(yaml); setCopied(true); setTimeout(() => setCopied(false), 1500); };
     const handleDownload = () => { const blob = new Blob([yaml], { type: "text/yaml" }); const link = document.createElement("a"); link.download = "ci.yml"; link.href = URL.createObjectURL(blob); link.click(); };

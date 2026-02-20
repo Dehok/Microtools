@@ -151,7 +151,7 @@ export default function InvoiceGenerator() {
             <div className="mt-6">
                 <h3 className="mb-3 text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Line Items</h3>
                 <div className="space-y-2">
-                    {items.map((item, idx) => (
+                    {items.map((item) => (
                         <div key={item.id} className="flex gap-2 items-center">
                             <input value={item.description} onChange={(e) => updateItem(item.id, "description", e.target.value)} placeholder="Description" className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" />
                             <input type="number" value={item.quantity} onChange={(e) => updateItem(item.id, "quantity", Number(e.target.value))} min={1} className="w-16 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-2 py-2 text-sm text-center focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Qty" />

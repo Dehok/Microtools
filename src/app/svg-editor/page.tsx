@@ -43,7 +43,7 @@ export default function SvgEditor() {
         dragging.current = { id, ox: e.clientX - rect.left - el.x, oy: e.clientY - rect.top - el.y };
     }, [tool, elements]);
 
-    const handleCanvasMouseDown = (e: React.MouseEvent) => {
+    const handleCanvasMouseDown = () => {
         if (tool === "select") { setSelected(null); return; }
         addElement(tool);
     };
