@@ -908,7 +908,511 @@ const COMPARISON_DEFINITIONS: ToolComparisonDefinition[] = [
       },
     ],
   },
-];
+  {
+    slug: "prompt-versioning-regression-dashboard-vs-prompt-ab-test-matrix",
+    leftSlug: "prompt-versioning-regression-dashboard",
+    rightSlug: "prompt-ab-test-matrix",
+    intent: "Version timeline regression tracking vs controlled prompt variant experiment planning.",
+    summary:
+      "Prompt Versioning + Regression Dashboard tracks quality drift across snapshots, while Prompt A/B Test Matrix structures controlled variant experiments for decision clarity.",
+    keyTakeaways: [
+      "Use Prompt Versioning Dashboard for release-history visibility and regression trend checks.",
+      "Use Prompt A/B Test Matrix when you need hypothesis-driven prompt experiments.",
+      "Run A/B experiments first, then track long-term snapshot performance in the dashboard.",
+    ],
+    whenToUseLeft: [
+      "You need timeline-style monitoring across multiple prompt revisions.",
+      "You want a release dashboard for regression and drift summaries.",
+      "You need quick comparison across many prompt snapshots.",
+    ],
+    whenToUseRight: [
+      "You are designing controlled variant tests with explicit success metrics.",
+      "You need structured experiment matrices for team prompt decisions.",
+      "You want to compare candidate prompts before version promotion.",
+    ],
+    criteria: [
+      { criterion: "Primary lens", left: "Version monitoring", right: "Experiment design", winner: "tie" },
+      { criterion: "Timeline visibility", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Hypothesis testing structure", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Release process fit", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Best first step", left: "Snapshot tracking", right: "Variant planning", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can I use both in one prompt release cycle?",
+        answer:
+          "Yes. Many teams run A/B test matrix planning first, then move winning prompts into version dashboard monitoring.",
+      },
+      {
+        question: "Which one is better for PM review?",
+        answer:
+          "Prompt Versioning Dashboard is usually better for fast PM snapshot review, while A/B Matrix is better for experiment planning details.",
+      },
+    ],
+  },
+  {
+    slug: "ai-qa-workflow-runner-vs-eval-results-comparator",
+    leftSlug: "ai-qa-workflow-runner",
+    rightSlug: "eval-results-comparator",
+    intent: "End-to-end QA gate decisioning vs baseline-candidate eval delta analytics.",
+    summary:
+      "AI QA Workflow Runner aggregates multi-stage QA into a Ship/Review/Block decision, while Eval Results Comparator focuses on analyzing run-to-run score and pass-rate deltas.",
+    keyTakeaways: [
+      "Use AI QA Workflow Runner for final release gate decisions.",
+      "Use Eval Results Comparator for deep post-run delta diagnostics.",
+      "Best sequence: compare eval deltas first, then finalize release in workflow runner.",
+    ],
+    whenToUseLeft: [
+      "You need one deterministic go/no-go decision across QA stages.",
+      "You want action recommendations tied to weak QA stages.",
+      "You need a release-ready summary for launch review.",
+    ],
+    whenToUseRight: [
+      "You already have baseline and candidate eval outputs.",
+      "You need regression/improvement case-level delta analysis.",
+      "You want to inspect pass-rate and score trends between runs.",
+    ],
+    criteria: [
+      { criterion: "Primary output", left: "Release decision", right: "Run deltas", winner: "tie" },
+      { criterion: "Stage aggregation", left: "Strong", right: "Limited", winner: "left" },
+      { criterion: "Delta diagnostics depth", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Go/no-go clarity", left: "Very strong", right: "Moderate", winner: "left" },
+      { criterion: "Pipeline stage", left: "Final gate", right: "Post-eval analysis", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can Eval Results Comparator replace workflow runner decisions?",
+        answer:
+          "Not fully. Comparator is excellent for deltas, but Workflow Runner is better for multi-stage final release decisioning.",
+      },
+      {
+        question: "Should I run these in sequence?",
+        answer:
+          "Yes. Compare baseline-candidate eval outputs first, then aggregate that signal with other QA stages in Workflow Runner.",
+      },
+    ],
+  },
+  {
+    slug: "prompt-test-case-generator-vs-llm-response-grader",
+    leftSlug: "prompt-test-case-generator",
+    rightSlug: "llm-response-grader",
+    intent: "Deterministic prompt-eval dataset generation vs weighted response quality scoring.",
+    summary:
+      "Prompt Test Case Generator creates reusable deterministic test records, while LLM Response Grader scores generated outputs against weighted rubric rules.",
+    keyTakeaways: [
+      "Use Prompt Test Case Generator to build standardized QA input sets.",
+      "Use LLM Response Grader to score response quality against explicit criteria.",
+      "Use both to create and then evaluate a consistent prompt QA pipeline.",
+    ],
+    whenToUseLeft: [
+      "You need JSONL-ready deterministic prompt test data.",
+      "You are standardizing QA inputs across team members.",
+      "You need repeatable benchmark cases for ongoing tests.",
+    ],
+    whenToUseRight: [
+      "You need weighted rubric scoring on model responses.",
+      "You are tuning outputs against strict quality requirements.",
+      "You need pass/fail style grading with rule detail.",
+    ],
+    criteria: [
+      { criterion: "Primary role", left: "Test generation", right: "Response grading", winner: "tie" },
+      { criterion: "Deterministic dataset output", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Quality scoring depth", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "CI pipeline fit", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Recommended order", left: "First", right: "Second", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Which tool should come first?",
+        answer:
+          "Usually generate deterministic test cases first and then grade responses produced for those cases.",
+      },
+      {
+        question: "Can grading work without deterministic test records?",
+        answer:
+          "Yes, but deterministic test records make trend comparisons and regression checks more reliable over time.",
+      },
+    ],
+  },
+  {
+    slug: "ai-qa-workflow-runner-vs-prompt-versioning-regression-dashboard",
+    leftSlug: "ai-qa-workflow-runner",
+    rightSlug: "prompt-versioning-regression-dashboard",
+    intent: "Final QA stage-gated release decision vs multi-snapshot version drift dashboarding.",
+    summary:
+      "AI QA Workflow Runner gives deterministic Ship/Review/Block outcomes, while Prompt Versioning + Regression Dashboard tracks how prompt snapshots evolve across releases.",
+    keyTakeaways: [
+      "Use Workflow Runner when you need release-gate decisions today.",
+      "Use Versioning Dashboard when monitoring prompt quality over many revisions.",
+      "Use dashboard trends to inform the final decision inside Workflow Runner.",
+    ],
+    whenToUseLeft: [
+      "You need a single release call backed by stage scores.",
+      "You need action items tied to policy, replay, eval, and contract stages.",
+      "You are running a launch readiness meeting.",
+    ],
+    whenToUseRight: [
+      "You maintain many prompt snapshots over time.",
+      "You need trend visibility on regression and quality drift.",
+      "You want timeline context before deciding promotions and rollbacks.",
+    ],
+    criteria: [
+      { criterion: "Primary output", left: "Ship/Review/Block", right: "Version trend view", winner: "tie" },
+      { criterion: "Immediate launch decision", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Historical visibility", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Operational QA depth", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Best usage window", left: "Release day", right: "Ongoing iteration", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can dashboard trends replace workflow gating?",
+        answer:
+          "No. Trends are useful context, but Workflow Runner is better for deterministic final launch decisions.",
+      },
+      {
+        question: "Should both be used in mature prompt teams?",
+        answer:
+          "Yes. Version dashboards support iteration and Workflow Runner supports strict release gates.",
+      },
+    ],
+  },
+  {
+    slug: "rag-noise-pruner-vs-rag-chunking-simulator",
+    leftSlug: "rag-noise-pruner",
+    rightSlug: "rag-chunking-simulator",
+    intent: "Retrieval chunk cleanup and deduplication vs chunk strategy simulation and comparison.",
+    summary:
+      "RAG Noise Pruner removes noisy or redundant chunks, while RAG Chunking Simulator compares chunk-size and overlap strategies before indexing.",
+    keyTakeaways: [
+      "Use RAG Noise Pruner for corpus hygiene and duplication control.",
+      "Use RAG Chunking Simulator for chunk strategy tuning experiments.",
+      "Use simulator first for strategy, then prune final chunk set for cleanliness.",
+    ],
+    whenToUseLeft: [
+      "You need to reduce redundant and low-signal retrieval chunks.",
+      "Your corpus has many repeated or boilerplate fragments.",
+      "You want cleaner retrieval inputs before ranking.",
+    ],
+    whenToUseRight: [
+      "You are deciding chunk-size and overlap parameters.",
+      "You need to simulate chunk boundary behavior before indexing.",
+      "You are tuning retrieval recall/precision tradeoffs.",
+    ],
+    criteria: [
+      { criterion: "Primary action", left: "Prune noise", right: "Simulate chunking", winner: "tie" },
+      { criterion: "Duplicate reduction", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Chunk-strategy planning", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Pre-index optimization", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Best sequence", left: "After strategy", right: "Before pruning", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can chunking simulator replace noise pruning?",
+        answer:
+          "No. Simulator helps choose a chunk plan, while Noise Pruner removes low-value chunks in the resulting set.",
+      },
+      {
+        question: "What order is practical?",
+        answer:
+          "Tune chunk strategy first with simulation, then prune noisy and duplicate chunks before retrieval evaluation.",
+      },
+    ],
+  },
+  {
+    slug: "grounded-answer-citation-checker-vs-hallucination-risk-checklist",
+    leftSlug: "grounded-answer-citation-checker",
+    rightSlug: "hallucination-risk-checklist",
+    intent: "Citation-grounding validation on generated answers vs risk-level assessment checklist for hallucination exposure.",
+    summary:
+      "Grounded Answer Citation Checker validates whether answer claims align with cited evidence, while Hallucination Risk Checklist estimates systemic hallucination risk before release.",
+    keyTakeaways: [
+      "Use Grounded Answer Citation Checker for answer-level grounding audits.",
+      "Use Hallucination Risk Checklist for broader risk planning and prevention.",
+      "Use checklist early and citation checks during QA execution.",
+    ],
+    whenToUseLeft: [
+      "You need to inspect grounding quality for generated answers.",
+      "You want citation mismatch signals on real outputs.",
+      "You are auditing factual support in answer text.",
+    ],
+    whenToUseRight: [
+      "You need a pre-release risk estimate for hallucination exposure.",
+      "You want checklist-based mitigation planning before production.",
+      "You are evaluating safety posture across workflows, not single answers.",
+    ],
+    criteria: [
+      { criterion: "Primary lens", left: "Answer grounding", right: "Risk assessment", winner: "tie" },
+      { criterion: "Output-level diagnostics", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Pre-release planning value", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Factual reliability support", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Workflow stage", left: "QA execution", right: "Planning and hardening", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can checklist scoring replace citation checks?",
+        answer:
+          "No. Checklist scoring estimates risk, but citation checks validate grounding on concrete outputs.",
+      },
+      {
+        question: "Should these be combined?",
+        answer:
+          "Yes. Teams often use risk checklist planning first and then run citation checks during answer QA.",
+      },
+    ],
+  },
+  {
+    slug: "claim-evidence-matrix-vs-answer-consistency-checker",
+    leftSlug: "claim-evidence-matrix",
+    rightSlug: "answer-consistency-checker",
+    intent: "Claim-level evidence mapping vs multi-answer stability and conflict analysis.",
+    summary:
+      "Claim Evidence Matrix focuses on whether each claim is properly supported by evidence, while Answer Consistency Checker focuses on whether multiple generated answers stay aligned.",
+    keyTakeaways: [
+      "Use Claim Evidence Matrix when evidence traceability is your top requirement.",
+      "Use Answer Consistency Checker when output stability across runs/models matters most.",
+      "Use both for factual support plus response stability coverage.",
+    ],
+    whenToUseLeft: [
+      "You need auditable claim-to-source traceability.",
+      "You are documenting support strength per claim.",
+      "You need review-ready evidence tables.",
+    ],
+    whenToUseRight: [
+      "You need drift/conflict detection across answer variants.",
+      "You are testing model response stability over repeated runs.",
+      "You need fast consistency diagnostics across outputs.",
+    ],
+    criteria: [
+      { criterion: "Primary objective", left: "Evidence support mapping", right: "Consistency analysis", winner: "tie" },
+      { criterion: "Audit-ready evidence output", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Cross-run stability checks", left: "Limited", right: "Strong", winner: "right" },
+      { criterion: "Best for factual QA", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Review speed", left: "Moderate", right: "Strong", winner: "right" },
+    ],
+    faqs: [
+      {
+        question: "If I care about both reliability and stability, which first?",
+        answer:
+          "Start with consistency checks for broad drift signals, then run claim-evidence mapping for deep factual auditing.",
+      },
+      {
+        question: "Can one tool cover the other?",
+        answer:
+          "Not completely. They evaluate different failure modes and are strongest when used together.",
+      },
+    ],
+  },
+  {
+    slug: "prompt-guardrail-pack-composer-vs-prompt-policy-firewall",
+    leftSlug: "prompt-guardrail-pack-composer",
+    rightSlug: "prompt-policy-firewall",
+    intent: "Reusable system guardrail template composition vs runtime prompt policy gate and redaction checks.",
+    summary:
+      "Prompt Guardrail Pack Composer builds reusable policy modules for system prompts, while Prompt Policy Firewall evaluates incoming prompts for policy violations before execution.",
+    keyTakeaways: [
+      "Use Guardrail Pack Composer for reusable baseline prompt policy templates.",
+      "Use Prompt Policy Firewall for runtime allow/review/block style enforcement.",
+      "Best stack: compose guardrails first, then enforce with firewall checks at runtime.",
+    ],
+    whenToUseLeft: [
+      "You need a reusable guardrail template library for assistants.",
+      "You are standardizing refusal/citation/output policy text across teams.",
+      "You need deterministic system prompt module composition.",
+    ],
+    whenToUseRight: [
+      "You need real-time prompt risk checks before model calls.",
+      "You want policy decisions and redacted prompt outputs.",
+      "You are enforcing hard gates for PII and injection patterns.",
+    ],
+    criteria: [
+      { criterion: "Primary role", left: "Template composition", right: "Policy enforcement", winner: "tie" },
+      { criterion: "Reusable baseline creation", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Runtime gate strength", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Workflow position", left: "Setup phase", right: "Execution phase", winner: "tie" },
+      { criterion: "Combined value", left: "High", right: "High", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Should firewall replace guardrail packs?",
+        answer:
+          "No. Guardrail packs define reusable behavior contracts, while firewall checks enforce policy at runtime.",
+      },
+      {
+        question: "Can I run firewall after composing packs?",
+        answer:
+          "Yes. That is the recommended pattern in production prompt pipelines.",
+      },
+    ],
+  },
+  {
+    slug: "prompt-policy-firewall-vs-agent-safety-checklist",
+    leftSlug: "prompt-policy-firewall",
+    rightSlug: "agent-safety-checklist",
+    intent: "Prompt-level runtime policy gate vs broader operational safety governance checklist.",
+    summary:
+      "Prompt Policy Firewall checks prompts for policy risks before model calls, while Agent Safety Checklist audits operational controls such as approvals, budgets, and fallback behavior.",
+    keyTakeaways: [
+      "Use Prompt Policy Firewall for immediate prompt risk gating.",
+      "Use Agent Safety Checklist for launch governance and runbook safety controls.",
+      "Both are complementary: one is runtime defense, the other is operational governance.",
+    ],
+    whenToUseLeft: [
+      "You need immediate policy decisioning on incoming prompt content.",
+      "You must catch PII, secrets, and injection patterns before API calls.",
+      "You need redacted prompt output for safer execution.",
+    ],
+    whenToUseRight: [
+      "You need a structured launch-readiness safety audit.",
+      "You are validating human approvals, budgets, and tool boundaries.",
+      "You need governance documentation for stakeholders or compliance.",
+    ],
+    criteria: [
+      { criterion: "Primary focus", left: "Prompt input risk", right: "Operational controls", winner: "tie" },
+      { criterion: "Runtime enforcement", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Governance audit depth", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Pre-launch value", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Best audience", left: "Prompt safety owners", right: "Ops and compliance", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can checklist audits replace prompt firewalling?",
+        answer:
+          "No. Checklist audits help governance, while firewalling protects live prompt traffic from risky content.",
+      },
+      {
+        question: "Which should run daily?",
+        answer:
+          "Prompt Policy Firewall should run continuously. Agent Safety Checklist is usually reviewed per release or policy update.",
+      },
+    ],
+  },
+  {
+    slug: "prompt-security-scanner-vs-secret-detector-for-code-snippets",
+    leftSlug: "prompt-security-scanner",
+    rightSlug: "secret-detector-for-code-snippets",
+    intent: "Broad prompt security diagnostics vs code-oriented secret leak pattern detection.",
+    summary:
+      "Prompt Security Scanner analyzes prompt-level risks broadly, while Secret Detector for Code Snippets specializes in identifying leaked credentials and token patterns in code text.",
+    keyTakeaways: [
+      "Use Prompt Security Scanner for broad prompt safety diagnostics.",
+      "Use Secret Detector for Code Snippets for credential leak checks in code blocks.",
+      "Use both when prompts include embedded code or stack traces.",
+    ],
+    whenToUseLeft: [
+      "You need PII/override/jailbreak pattern scanning on prompts.",
+      "You are doing first-pass security checks on user inputs.",
+      "You need broad risk indicators for prompt hardening.",
+    ],
+    whenToUseRight: [
+      "You need to detect API keys, tokens, and credentials in code snippets.",
+      "You are sanitizing logs, pull requests, or shared code samples.",
+      "You need code-specific secret pattern coverage.",
+    ],
+    criteria: [
+      { criterion: "Primary data type", left: "Prompt text", right: "Code snippets", winner: "tie" },
+      { criterion: "Secret pattern depth", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Prompt attack pattern checks", left: "Strong", right: "Limited", winner: "left" },
+      { criterion: "Leak prevention utility", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Best usage", left: "Prompt safety pass", right: "Code secret scan", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "If prompts contain code, which tool should I start with?",
+        answer:
+          "Run Prompt Security Scanner first for broad risk signals, then run Secret Detector for deep credential pattern checks.",
+      },
+      {
+        question: "Do either of these upload code to a server?",
+        answer:
+          "No. Both tools are intended for browser-side local analysis workflows.",
+      },
+    ],
+  },
+  {
+    slug: "output-contract-tester-vs-function-calling-schema-tester",
+    leftSlug: "output-contract-tester",
+    rightSlug: "function-calling-schema-tester",
+    intent: "General output validation rules vs function/tool-call schema conformance validation.",
+    summary:
+      "Output Contract Tester validates broad response constraints, while Function Calling Schema Tester focuses on argument payload correctness for tool or function calls.",
+    keyTakeaways: [
+      "Use Output Contract Tester for required fields, forbidden phrases, and high-level response rules.",
+      "Use Function Calling Schema Tester for strict tool-call argument validation.",
+      "Use both when workflows include natural-language output plus tool invocation payloads.",
+    ],
+    whenToUseLeft: [
+      "You need flexible contract checks beyond strict schemas.",
+      "You validate response structure, required keys, and policy constraints.",
+      "You need generic output QA before downstream automation.",
+    ],
+    whenToUseRight: [
+      "You need strict argument schema checks for tool/function calls.",
+      "You are debugging malformed function payloads.",
+      "You require typed conformance before invoking downstream services.",
+    ],
+    criteria: [
+      { criterion: "Primary output target", left: "General response text/JSON", right: "Function call payload", winner: "tie" },
+      { criterion: "Schema strictness", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Policy rule flexibility", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Automation safety", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Best combination", left: "Contract layer", right: "Invocation layer", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can Output Contract Tester replace function schema testing?",
+        answer:
+          "Not completely. Function schema testing is better for strict argument validation in tool-calling workflows.",
+      },
+      {
+        question: "What order should I run for agent pipelines?",
+        answer:
+          "Validate function-call payloads with schema tester, then validate full response contracts for final safety and quality rules.",
+      },
+    ],
+  },
+  {
+    slug: "json-output-guard-vs-function-calling-schema-tester",
+    leftSlug: "json-output-guard",
+    rightSlug: "function-calling-schema-tester",
+    intent: "Strict JSON output schema safety vs tool/function argument payload schema validation.",
+    summary:
+      "JSON Output Guard ensures final model output matches expected JSON schema, while Function Calling Schema Tester validates tool-call argument structures before execution.",
+    keyTakeaways: [
+      "Use JSON Output Guard for strict final response JSON conformance.",
+      "Use Function Calling Schema Tester for validating tool invocation arguments.",
+      "Use both in agent workflows where both JSON responses and function calls must be reliable.",
+    ],
+    whenToUseLeft: [
+      "You need parser-safe JSON output from model responses.",
+      "Your downstream systems consume strict JSON contracts.",
+      "You need schema validation on the final output object.",
+    ],
+    whenToUseRight: [
+      "You need to validate tool-call argument objects before execution.",
+      "You are debugging broken function invocation payloads.",
+      "Your failure mode is malformed arguments, not final response shape.",
+    ],
+    criteria: [
+      { criterion: "Validation target", left: "Final JSON output", right: "Tool-call args", winner: "tie" },
+      { criterion: "Parser safety impact", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Function-call focus", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Final response conformance", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Agent workflow fit", left: "Output stage", right: "Invocation stage", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Which one should I run when using tool calling?",
+        answer:
+          "Use Function Calling Schema Tester for call arguments and JSON Output Guard for final model output contracts.",
+      },
+      {
+        question: "Do these tools overlap completely?",
+        answer:
+          "No. They validate different schema targets and are complementary in multi-step agent workflows.",
+      },
+    ],
+  },
+  ];
 
 function hydrateComparison(definition: ToolComparisonDefinition): ToolComparison | null {
   const leftTool = tools.find((tool) => tool.slug === definition.leftSlug);
