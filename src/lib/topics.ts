@@ -65,6 +65,16 @@ export const TOPIC_HUBS: TopicHub[] = [
         answer:
           "No. The tools are model-agnostic and evaluate text patterns and constraints locally in your browser.",
       },
+      {
+        question: "What is the recommended tool order before release?",
+        answer:
+          "A practical sequence is prompt lint and test-case generation, then grading and consistency checks, followed by policy/replay checks and final QA workflow gating.",
+      },
+      {
+        question: "Which flow is best for a quick pre-publish check?",
+        answer:
+          "Use the quick QA flow: Prompt Linter, Prompt Test Case Generator, LLM Response Grader, Answer Consistency Checker, and Grounded Answer Citation Checker.",
+      },
     ],
   },
   {
