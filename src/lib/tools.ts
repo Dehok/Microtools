@@ -1364,6 +1364,41 @@ export const tools: Tool[] = [
     category: "crypto",
     icon: "SDS",
   },
+  {
+    slug: "prompt-regression-suite-builder",
+    name: "Prompt Regression Suite Builder",
+    description: "Compare prompt versions, detect removed constraints, and generate deterministic QA suites.",
+    category: "developer",
+    icon: "PRS",
+  },
+  {
+    slug: "hallucination-risk-checklist",
+    name: "Hallucination Risk Checklist",
+    description: "Estimate hallucination risk from prompt/context quality and suggest guardrail mitigations.",
+    category: "text",
+    icon: "HRK",
+  },
+  {
+    slug: "grounded-answer-citation-checker",
+    name: "Grounded Answer Citation Checker",
+    description: "Verify claim grounding against provided sources and detect citation mismatches.",
+    category: "developer",
+    icon: "GAC",
+  },
+  {
+    slug: "prompt-ab-test-matrix",
+    name: "Prompt A/B Test Matrix",
+    description: "Generate deterministic prompt variant matrices across tone, length, and output format.",
+    category: "text",
+    icon: "ABM",
+  },
+  {
+    slug: "rag-context-relevance-scorer",
+    name: "RAG Context Relevance Scorer",
+    description: "Rank retrieval chunks for a query with overlap, phrase hits, and redundancy penalties.",
+    category: "developer",
+    icon: "RCR",
+  },
 ];
 
 
