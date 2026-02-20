@@ -9,8 +9,13 @@ export function generateStaticParams() {
   return TOPIC_HUBS.map((topic) => ({ topic: topic.slug }));
 }
 
-export function generateMetadata({ params }: { params: { topic: string } }): Metadata {
-  const topic = getTopicBySlug(params.topic);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ topic: string }>;
+}): Promise<Metadata> {
+  const { topic: topicSlug } = await params;
+  const topic = getTopicBySlug(topicSlug);
   if (!topic) {
     return {
       title: "Topic Not Found",
@@ -38,8 +43,13 @@ export function generateMetadata({ params }: { params: { topic: string } }): Met
   };
 }
 
-export default function TopicPage({ params }: { params: { topic: string } }) {
-  const topic = getTopicBySlug(params.topic);
+export default async function TopicPage({
+  params,
+}: {
+  params: Promise<{ topic: string }>;
+}) {
+  const { topic: topicSlug } = await params;
+  const topic = getTopicBySlug(topicSlug);
   if (!topic) notFound();
 
   const topicTools = getTopicTools(topic.slug);

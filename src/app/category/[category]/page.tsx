@@ -134,8 +134,13 @@ export function generateStaticParams() {
   return CATEGORIES.map((category) => ({ category: category.id }));
 }
 
-export function generateMetadata({ params }: { params: { category: string } }): Metadata {
-  const selected = getCategory(params.category);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category: categorySlug } = await params;
+  const selected = getCategory(categorySlug);
   if (!selected) {
     return {
       title: "Category Not Found",
@@ -166,8 +171,13 @@ export function generateMetadata({ params }: { params: { category: string } }): 
   };
 }
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
-  const selected = getCategory(params.category);
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const { category: categorySlug } = await params;
+  const selected = getCategory(categorySlug);
   if (!selected) notFound();
 
   const categoryTools = tools.filter((tool) => tool.category === selected.id);
