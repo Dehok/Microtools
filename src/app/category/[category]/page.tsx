@@ -394,6 +394,12 @@ export default async function CategoryPage({
               >
                 AI topic hub
               </Link>
+              <Link
+                href="/workflows"
+                className="rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-blue-300 hover:text-blue-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-700 dark:hover:text-blue-300"
+              >
+                Workflow guides
+              </Link>
             </div>
           </div>
 
