@@ -205,7 +205,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ToolExplorer id="tool-explorer" />
+      <ToolExplorer className="hidden md:block" id="tool-explorer" />
 
       <section className="mt-12 rounded-2xl border border-gray-200 bg-white p-6 text-sm leading-relaxed text-gray-600 shadow-sm dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400">
         <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-gray-100">SEO and Crawl-Friendly Structure</h2>

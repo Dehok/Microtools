@@ -13,6 +13,7 @@ interface ToolExplorerProps {
 export default function ToolExplorer({ className = "", compact = false, id }: ToolExplorerProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const [visibleCount, setVisibleCount] = useState(24);
 
   const filteredTools = useMemo(() => {
     const base = activeCategory ? tools.filter((tool) => tool.category === activeCategory) : tools;
@@ -23,6 +24,8 @@ export default function ToolExplorer({ className = "", compact = false, id }: To
     );
   }, [activeCategory, query]);
   const compactTools = filteredTools.slice(0, 8);
+  const visibleTools = filteredTools.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredTools.length;
 
   if (compact) {
     return (
@@ -35,10 +38,10 @@ export default function ToolExplorer({ className = "", compact = false, id }: To
             <p className="text-xs text-gray-600 dark:text-gray-400">Search before browsing topic hubs.</p>
           </div>
           <Link
-            href="#tool-explorer"
+            href="/category"
             className="text-xs font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
           >
-            Open full explorer
+            Browse categories
           </Link>
         </div>
 
@@ -85,7 +88,10 @@ export default function ToolExplorer({ className = "", compact = false, id }: To
         <input
           type="text"
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setVisibleCount(24);
+          }}
           placeholder="Search tools by name or description..."
           className="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100 dark:placeholder-gray-400 md:w-80"
         />
@@ -94,7 +100,10 @@ export default function ToolExplorer({ className = "", compact = false, id }: To
       <div className="mb-5 flex flex-wrap gap-2">
         <button
           type="button"
-          onClick={() => setActiveCategory(null)}
+          onClick={() => {
+            setActiveCategory(null);
+            setVisibleCount(24);
+          }}
           className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
             activeCategory === null
               ? "border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
@@ -107,7 +116,10 @@ export default function ToolExplorer({ className = "", compact = false, id }: To
           <button
             key={category.id}
             type="button"
-            onClick={() => setActiveCategory(activeCategory === category.id ? null : category.id)}
+            onClick={() => {
+              setActiveCategory(activeCategory === category.id ? null : category.id);
+              setVisibleCount(24);
+            }}
             className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
               activeCategory === category.id
                 ? "border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
@@ -120,13 +132,16 @@ export default function ToolExplorer({ className = "", compact = false, id }: To
       </div>
 
       <div className="mb-4 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-        <span>{filteredTools.length} tools shown</span>
+        <span>
+          Showing {Math.min(visibleCount, filteredTools.length)} of {filteredTools.length} tools
+        </span>
         {(activeCategory || query) && (
           <button
             type="button"
             onClick={() => {
               setActiveCategory(null);
               setQuery("");
+              setVisibleCount(24);
             }}
             className="rounded-lg border border-gray-200 px-2 py-1 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
           >
@@ -136,7 +151,7 @@ export default function ToolExplorer({ className = "", compact = false, id }: To
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredTools.map((tool) => (
+        {visibleTools.map((tool) => (
           <Link
             key={tool.slug}
             href={`/${tool.slug}`}
@@ -154,6 +169,17 @@ export default function ToolExplorer({ className = "", compact = false, id }: To
           </Link>
         ))}
       </div>
+      {hasMore && (
+        <div className="mt-4 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setVisibleCount((count) => count + 24)}
+            className="rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-blue-300 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-blue-700 dark:hover:text-blue-300"
+          >
+            Show more tools
+          </button>
+        </div>
+      )}
     </section>
   );
 }
