@@ -783,6 +783,90 @@ const COMPARISON_DEFINITIONS: ToolComparisonDefinition[] = [
     ],
   },
   {
+    slug: "ai-qa-workflow-runner-vs-ai-reliability-scorecard",
+    leftSlug: "ai-qa-workflow-runner",
+    rightSlug: "ai-reliability-scorecard",
+    intent: "Stage-by-stage QA pipeline runner vs weighted release-readiness scorecard.",
+    summary:
+      "AI QA Workflow Runner is best for deterministic stage aggregation with explicit Ship/Review/Block decisioning, while AI Reliability Scorecard is best for broader readiness pillar scoring.",
+    keyTakeaways: [
+      "Use AI QA Workflow Runner for release meetings that need stage-level pass/review/fail visibility.",
+      "Use AI Reliability Scorecard for executive-style composite readiness snapshots.",
+      "Use scorecard outputs as one input and finalize decisioning in workflow runner.",
+    ],
+    whenToUseLeft: [
+      "You need deterministic QA stage gating from lint, policy, replay, output, and eval deltas.",
+      "You need a direct Ship, Review, or Block release call.",
+      "You want action lists tied to specific weak QA stages.",
+    ],
+    whenToUseRight: [
+      "You want a broad multi-pillar reliability score for stakeholder reporting.",
+      "You need weighted readiness signals without deep stage workflow detail.",
+      "You are benchmarking release quality over time using one normalized score.",
+    ],
+    criteria: [
+      { criterion: "Primary output", left: "Stage gate decision", right: "Composite scorecard", winner: "tie" },
+      { criterion: "Stage-level diagnostics", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Executive summary fit", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Operational release gating", left: "Very strong", right: "Strong", winner: "left" },
+      { criterion: "Portfolio trend tracking", left: "Moderate", right: "Strong", winner: "right" },
+    ],
+    faqs: [
+      {
+        question: "Should AI QA Workflow Runner replace AI Reliability Scorecard?",
+        answer:
+          "Not usually. Reliability Scorecard is useful for high-level tracking, and Workflow Runner is better for final go/no-go gating.",
+      },
+      {
+        question: "Can I run these together in one release process?",
+        answer:
+          "Yes. Teams often review reliability score first, then run workflow-stage gating for an explicit release decision.",
+      },
+    ],
+  },
+  {
+    slug: "prompt-guardrail-pack-composer-vs-hallucination-guardrail-builder",
+    leftSlug: "prompt-guardrail-pack-composer",
+    rightSlug: "hallucination-guardrail-builder",
+    intent: "General multi-policy guardrail pack composition vs hallucination-focused guardrail blocks.",
+    summary:
+      "Prompt Guardrail Pack Composer builds broader reusable system-prompt policy packs, while Hallucination Guardrail Builder is specialized for anti-hallucination control patterns.",
+    keyTakeaways: [
+      "Use Prompt Guardrail Pack Composer when you need refusal, uncertainty, citation, and tool boundary modules in one pack.",
+      "Use Hallucination Guardrail Builder when grounding and claim-confidence control is the primary risk.",
+      "Use both by composing broad policy baseline and then adding hallucination-specific constraints.",
+    ],
+    whenToUseLeft: [
+      "You need a reusable baseline safety pack for many assistants.",
+      "You want one place to configure output contracts, escalation, and PII safeguards.",
+      "You are creating policy templates for cross-team prompt standards.",
+    ],
+    whenToUseRight: [
+      "Hallucination reduction is your main concern.",
+      "You need targeted grounding and evidence-aware response behavior.",
+      "You are tuning factual reliability for retrieval or citation-heavy workflows.",
+    ],
+    criteria: [
+      { criterion: "Primary scope", left: "General guardrails", right: "Hallucination control", winner: "tie" },
+      { criterion: "Policy module breadth", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Hallucination specialization", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Template reusability", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Best workflow role", left: "Baseline policy layer", right: "Factuality hardening layer", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Do these tools overlap?",
+        answer:
+          "Partly. Prompt Guardrail Pack Composer covers broad policy structure, while Hallucination Guardrail Builder is focused on factual reliability controls.",
+      },
+      {
+        question: "What order should I apply them?",
+        answer:
+          "Start with Prompt Guardrail Pack Composer for baseline policy modules, then refine hallucination controls using Hallucination Guardrail Builder.",
+      },
+    ],
+  },
+  {
     slug: "eval-results-comparator-vs-prompt-regression-suite-builder",
     leftSlug: "eval-results-comparator",
     rightSlug: "prompt-regression-suite-builder",

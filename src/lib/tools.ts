@@ -1366,6 +1366,13 @@ export const tools: Tool[] = [
     icon: "ARS",
   },
   {
+    slug: "ai-qa-workflow-runner",
+    name: "AI QA Workflow Runner",
+    description: "Aggregate AI QA stage metrics into one deterministic Ship/Review/Block release decision.",
+    category: "ai",
+    icon: "AQR",
+  },
+  {
     slug: "prompt-test-case-generator",
     name: "Prompt Test Case Generator",
     description: "Generate deterministic prompt evaluation cases and JSONL exports for regression testing.",
@@ -1497,6 +1504,13 @@ export const tools: Tool[] = [
     description: "Generate reusable guardrail prompt blocks for grounded answers and uncertainty handling.",
     category: "ai",
     icon: "HGB",
+  },
+  {
+    slug: "prompt-guardrail-pack-composer",
+    name: "Prompt Guardrail Pack Composer",
+    description: "Compose reusable refusal, citation, uncertainty, and output guardrail packs for system prompts.",
+    category: "ai",
+    icon: "PGP",
   },
 ];
 

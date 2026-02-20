@@ -40,12 +40,14 @@ export const TOPIC_HUBS: TopicHub[] = [
       "prompt-test-case-generator",
       "llm-response-grader",
       "ai-reliability-scorecard",
+      "ai-qa-workflow-runner",
       "answer-consistency-checker",
       "claim-evidence-matrix",
       "grounded-answer-citation-checker",
       "output-contract-tester",
       "hallucination-risk-checklist",
       "hallucination-guardrail-builder",
+      "prompt-guardrail-pack-composer",
     ],
     faqs: [
       {
@@ -84,6 +86,7 @@ export const TOPIC_HUBS: TopicHub[] = [
       "prompt-security-scanner",
       "prompt-red-team-generator",
       "jailbreak-replay-lab",
+      "prompt-guardrail-pack-composer",
       "sensitive-data-pseudonymizer",
       "pii-redactor",
       "secret-detector-for-code-snippets",
