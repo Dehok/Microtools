@@ -4,7 +4,13 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { CATEGORIES, tools } from "@/lib/tools";
 
-export default function ToolExplorer() {
+interface ToolExplorerProps {
+  className?: string;
+  compact?: boolean;
+  id?: string;
+}
+
+export default function ToolExplorer({ className = "", compact = false, id }: ToolExplorerProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [query, setQuery] = useState("");
 
@@ -16,9 +22,59 @@ export default function ToolExplorer() {
       (tool) => tool.name.toLowerCase().includes(q) || tool.description.toLowerCase().includes(q)
     );
   }, [activeCategory, query]);
+  const compactTools = filteredTools.slice(0, 8);
+
+  if (compact) {
+    return (
+      <section
+        className={`${className} rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900 sm:p-6`}
+      >
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <div>
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">Quick Tool Search</h2>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Search before browsing topic hubs.</p>
+          </div>
+          <Link
+            href="#tool-explorer"
+            className="text-xs font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+          >
+            Open full explorer
+          </Link>
+        </div>
+
+        <input
+          type="text"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search tools by name or description..."
+          className="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100 dark:placeholder-gray-400"
+        />
+
+        <div className="mt-4 space-y-2">
+          {compactTools.map((tool) => (
+            <Link
+              key={tool.slug}
+              href={`/${tool.slug}`}
+              className="block rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-700 hover:border-blue-300 hover:text-blue-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-700 dark:hover:text-blue-300"
+            >
+              {tool.name}
+            </Link>
+          ))}
+          {compactTools.length === 0 && (
+            <p className="rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400">
+              No matching tools.
+            </p>
+          )}
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900 sm:p-6">
+    <section
+      id={id}
+      className={`${className} rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900 sm:p-6`}
+    >
       <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Tool Explorer</h2>
