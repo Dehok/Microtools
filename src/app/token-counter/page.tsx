@@ -33,6 +33,9 @@ export default function TokenCounterPage() {
   const [text, setText] = useState("");
   const [expectedOutputTokens, setExpectedOutputTokens] = useState(300);
   const [selectedModelId, setSelectedModelId] = useState(MODELS[0].id);
+  const [inputPricePer1M, setInputPricePer1M] = useState(2.5);
+  const [outputPricePer1M, setOutputPricePer1M] = useState(10);
+  const [monthlyRequests, setMonthlyRequests] = useState(5000);
 
   const selectedModel = MODELS.find((m) => m.id === selectedModelId) ?? MODELS[0];
 
@@ -43,6 +46,8 @@ export default function TokenCounterPage() {
     const promptTokens = estimateTokens(text);
     const totalTokens = promptTokens + expectedOutputTokens;
     const utilization = Math.min(100, (totalTokens / selectedModel.contextWindow) * 100);
+    const costPerRequest = (promptTokens * inputPricePer1M + expectedOutputTokens * outputPricePer1M) / 1_000_000;
+    const monthlyCost = costPerRequest * monthlyRequests;
 
     return {
       characters,
@@ -53,8 +58,10 @@ export default function TokenCounterPage() {
       utilization,
       remaining: Math.max(0, selectedModel.contextWindow - totalTokens),
       exceedsLimit: totalTokens > selectedModel.contextWindow,
+      costPerRequest,
+      monthlyCost,
     };
-  }, [expectedOutputTokens, selectedModel.contextWindow, text]);
+  }, [expectedOutputTokens, inputPricePer1M, monthlyRequests, outputPricePer1M, selectedModel.contextWindow, text]);
 
   const exportSummary = [
     `Characters: ${metrics.characters}`,
@@ -65,14 +72,16 @@ export default function TokenCounterPage() {
     `Estimated total tokens: ${metrics.totalTokens}`,
     `Context window: ${selectedModel.contextWindow}`,
     `Remaining: ${metrics.remaining}`,
+    `Cost/request (est.): $${metrics.costPerRequest.toFixed(6)}`,
+    `Monthly cost (est.): $${metrics.monthlyCost.toFixed(2)}`,
   ].join("\n");
 
   return (
-    <ToolLayout
-      title="AI Token Counter"
-      description="Estimate token usage for prompts and text inputs. Useful for planning context limits before sending requests to AI models."
-      relatedTools={["ai-prompt-generator", "word-counter", "byte-counter"]}
-    >
+      <ToolLayout
+        title="AI Token Counter"
+        description="Estimate token usage for prompts and text inputs. Useful for planning context limits before sending requests to AI models."
+        relatedTools={["ai-cost-estimator", "ai-prompt-generator", "byte-counter"]}
+      >
       <div className="mb-4 grid gap-4 md:grid-cols-2">
         <div>
           <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Target model</label>
@@ -154,6 +163,58 @@ export default function TokenCounterPage() {
         )}
       </div>
 
+      <div className="mt-4 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+        <div className="mb-3 grid gap-3 md:grid-cols-3">
+          <label className="text-sm text-gray-700 dark:text-gray-300">
+            Input price / 1M tokens (USD)
+            <input
+              type="number"
+              min={0}
+              step={0.1}
+              value={inputPricePer1M}
+              onChange={(e) => setInputPricePer1M(Math.max(0, Number(e.target.value) || 0))}
+              className="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm"
+            />
+          </label>
+          <label className="text-sm text-gray-700 dark:text-gray-300">
+            Output price / 1M tokens (USD)
+            <input
+              type="number"
+              min={0}
+              step={0.1}
+              value={outputPricePer1M}
+              onChange={(e) => setOutputPricePer1M(Math.max(0, Number(e.target.value) || 0))}
+              className="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm"
+            />
+          </label>
+          <label className="text-sm text-gray-700 dark:text-gray-300">
+            Monthly requests
+            <input
+              type="number"
+              min={1}
+              step={1}
+              value={monthlyRequests}
+              onChange={(e) => setMonthlyRequests(Math.max(1, Number(e.target.value) || 1))}
+              className="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm"
+            />
+          </label>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-3">
+            <p className="text-xs text-gray-500 dark:text-gray-400">Estimated cost / request</p>
+            <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">${metrics.costPerRequest.toFixed(6)}</p>
+          </div>
+          <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-3">
+            <p className="text-xs text-gray-500 dark:text-gray-400">Estimated monthly cost</p>
+            <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">${metrics.monthlyCost.toFixed(2)}</p>
+          </div>
+        </div>
+        <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+          Cost math is approximate. For a full budget model (cache hit ratio, daily budgets), use AI Cost Estimator.
+        </p>
+      </div>
+
       <div className="mt-4 flex items-center justify-between">
         <p className="text-xs text-gray-500 dark:text-gray-400">
           Estimation only. Real tokenization differs by model and tokenizer.
@@ -171,4 +232,3 @@ export default function TokenCounterPage() {
     </ToolLayout>
   );
 }
-

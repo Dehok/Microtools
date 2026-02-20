@@ -1113,6 +1113,20 @@ export const tools: Tool[] = [
     icon: "TOK",
   },
   {
+    slug: "ai-cost-estimator",
+    name: "AI Cost Estimator",
+    description: "Estimate AI usage costs per request/day/month with custom token pricing and cache ratio.",
+    category: "calculator",
+    icon: "AIC",
+  },
+  {
+    slug: "prompt-compressor",
+    name: "Prompt Compressor",
+    description: "Compress verbose prompts by removing filler and duplicate lines to reduce token usage.",
+    category: "text",
+    icon: "CMP",
+  },
+  {
     slug: "heic-to-jpg",
     name: "HEIC to JPG Converter",
     description: "Convert HEIC/HEIF photos to JPG directly in your browser with no server upload.",
@@ -1225,11 +1239,25 @@ export const tools: Tool[] = [
     icon: "BFP",
   },
   {
+    slug: "browser-permissions-auditor",
+    name: "Browser Permissions Auditor",
+    description: "Check browser permission states for camera, microphone, geolocation, notifications, and more.",
+    category: "crypto",
+    icon: "PER",
+  },
+  {
     slug: "webrtc-leak-test",
     name: "WebRTC Leak Test",
     description: "Check WebRTC ICE candidates for local/public IP exposure in your browser.",
     category: "crypto",
     icon: "RTC",
+  },
+  {
+    slug: "url-tracker-cleaner",
+    name: "URL Tracker Cleaner",
+    description: "Remove UTM and tracking parameters from links in bulk for cleaner, privacy-friendly URLs.",
+    category: "seo",
+    icon: "URL",
   },
   {
     slug: "passphrase-generator",
