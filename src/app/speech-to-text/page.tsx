@@ -9,17 +9,16 @@ export default function SpeechToText() {
     const [language, setLanguage] = useState("en-US");
     const [interim, setInterim] = useState("");
     const [copied, setCopied] = useState(false);
-    const [supported, setSupported] = useState(true);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const recognitionRef = useRef<any>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const speechWindow = typeof window !== "undefined" ? (window as any) : null;
+    const supported =
+        !!(speechWindow?.SpeechRecognition || speechWindow?.webkitSpeechRecognition);
 
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-        if (!SR) {
-            setSupported(false);
-            return;
-        }
+        if (!supported) return;
+        const SR = speechWindow.SpeechRecognition || speechWindow.webkitSpeechRecognition;
         const recognition = new SR();
         recognition.continuous = true;
         recognition.interimResults = true;
@@ -44,7 +43,7 @@ export default function SpeechToText() {
         recognition.onerror = () => setListening(false);
         recognition.onend = () => setListening(false);
         recognitionRef.current = recognition;
-    }, [language]);
+    }, [language, supported, speechWindow]);
 
     const toggleListening = useCallback(() => {
         if (!recognitionRef.current) return;

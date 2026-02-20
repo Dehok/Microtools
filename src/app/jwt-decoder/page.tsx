@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import CopyButton from "@/components/CopyButton";
 
@@ -25,7 +25,15 @@ const SAMPLE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiw
 export default function JwtDecoder() {
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
+  const [nowMs, setNowMs] = useState(0);
   const [result, setResult] = useState<{ header: Record<string, unknown>; payload: Record<string, unknown>; signature: string } | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNowMs(Date.now());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleDecode = () => {
     setError("");
@@ -40,7 +48,7 @@ export default function JwtDecoder() {
   };
 
   const isExpired = result?.payload?.exp
-    ? (result.payload.exp as number) * 1000 < Date.now()
+    ? (result.payload.exp as number) * 1000 < nowMs
     : null;
 
   return (

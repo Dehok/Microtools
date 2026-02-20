@@ -267,7 +267,7 @@ export default function TextReverserPage() {
         <ul className="list-disc list-inside space-y-2">
           <li>
             <strong className="text-gray-700 dark:text-gray-300">Reverse Characters</strong> - Flips the entire
-            string character by character. "hello world" becomes "dlrow olleh". The most common type of text reversal.
+            string character by character. &quot;hello world&quot; becomes &quot;dlrow olleh&quot;. The most common type of text reversal.
           </li>
           <li>
             <strong className="text-gray-700 dark:text-gray-300">Reverse Words</strong> - Keeps each word intact
@@ -293,7 +293,7 @@ export default function TextReverserPage() {
         </h2>
         <p>
           A palindrome is a word, phrase, or sequence that reads the same forwards and backwards when ignoring
-          spaces and punctuation. Classic examples include "racecar", "level", and "A man a plan a canal Panama".
+          spaces and punctuation. Classic examples include &quot;racecar&quot;, &quot;level&quot;, and &quot;A man a plan a canal Panama&quot;.
           This tool automatically detects palindromes in your input text as you type.
         </p>
 

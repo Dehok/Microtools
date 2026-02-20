@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import ToolLayout from "@/components/ToolLayout";
 
 interface KeyEvent {
@@ -347,14 +347,14 @@ export default function KeyboardEventTesterPage() {
             </h2>
             <p>
               <strong>event.key</strong> returns the logical key value - the character or action the key represents
-              (e.g., <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">"A"</code> when Shift is held, <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">"a"</code> otherwise,
-              or <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">"Enter"</code> for the Enter key). It is locale- and layout-aware.
+              (e.g., <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">&quot;A&quot;</code> when Shift is held, <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">&quot;a&quot;</code> otherwise,
+              or <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">&quot;Enter&quot;</code> for the Enter key). It is locale- and layout-aware.
             </p>
             <p className="mt-2">
               <strong>event.code</strong> returns the physical key identifier based on the key position on a standard keyboard,
-              regardless of layout or modifier state (e.g., <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">"KeyA"</code>,
-              <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">"ArrowLeft"</code>,
-              <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">"Numpad0"</code>). Use <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">event.code</code> when
+              regardless of layout or modifier state (e.g., <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">&quot;KeyA&quot;</code>,
+              <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">&quot;ArrowLeft&quot;</code>,
+              <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">&quot;Numpad0&quot;</code>). Use <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">event.code</code> when
               you care about the physical location (e.g., game controls), and <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">event.key</code> when you
               care about the character (e.g., text shortcuts).
             </p>

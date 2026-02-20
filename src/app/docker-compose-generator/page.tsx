@@ -10,7 +10,7 @@ export default function DockerComposeGenerator() {
         { name: "app", image: "node:20-alpine", ports: "3000:3000", env: "NODE_ENV=production", volumes: "./:/app", depends: "" },
         { name: "db", image: "postgres:16-alpine", ports: "5432:5432", env: "POSTGRES_PASSWORD=secret\nPOSTGRES_DB=myapp", volumes: "pgdata:/var/lib/postgresql/data", depends: "" },
     ]);
-    const [version, setVersion] = useState("3.8");
+    const [version] = useState("3.8");
     const [copied, setCopied] = useState(false);
 
     const addService = () => setServices([...services, { name: "service" + (services.length + 1), image: "", ports: "", env: "", volumes: "", depends: "" }]);
@@ -26,7 +26,7 @@ export default function DockerComposeGenerator() {
     ];
 
     const yaml = useMemo(() => {
-        let lines: string[] = [`version: '${version}'`, "", "services:"];
+        const lines: string[] = [`version: '${version}'`, "", "services:"];
         const volumes = new Set<string>();
 
         for (const svc of services) {

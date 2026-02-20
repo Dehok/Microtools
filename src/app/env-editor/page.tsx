@@ -146,7 +146,7 @@ export default function EnvEditorPage() {
         const eqIdx = trimmed.indexOf("=");
         if (eqIdx === -1) return line;
         const key = trimmed.slice(0, eqIdx);
-        let val = trimmed.slice(eqIdx + 1);
+        const val = trimmed.slice(eqIdx + 1);
         if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) return line;
         return `${key}="${val}"`;
       }).join("\n")

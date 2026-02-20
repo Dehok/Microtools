@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useEffect } from "react";
 import ToolLayout from "@/components/ToolLayout";
 
 const CATEGORIES = [
@@ -56,7 +56,7 @@ export default function AiPromptGenerator() {
 
     const current = CATEGORIES[category].prompts[promptIdx];
 
-    useMemo(() => {
+    useEffect(() => {
         setCustomized(current.template);
     }, [current]);
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
 
 export default function JsonSchemaGenerator() {
@@ -20,18 +20,20 @@ export default function JsonSchemaGenerator() {
     const [title, setTitle] = useState("MySchema");
     const [requiredAll, setRequiredAll] = useState(true);
     const [copied, setCopied] = useState(false);
-    const [error, setError] = useState("");
-
-    const schema = useMemo(() => {
-        setError("");
+    const schemaResult = (() => {
         try {
             const data = JSON.parse(input);
-            return JSON.stringify(generateSchema(data, title, requiredAll), null, 2);
+            return {
+                schema: JSON.stringify(generateSchema(data, title, requiredAll), null, 2),
+                error: "",
+            };
         } catch (e) {
-            setError("Invalid JSON: " + (e as Error).message);
-            return "";
+            return {
+                schema: "",
+                error: "Invalid JSON: " + (e as Error).message,
+            };
         }
-    }, [input, title, requiredAll]);
+    })();
 
     function generateSchema(value: unknown, name: string, reqAll: boolean): Record<string, unknown> {
         const s: Record<string, unknown> = { $schema: "https://json-schema.org/draft/2020-12/schema", $id: `https://example.com/${name.toLowerCase()}.schema.json` };
@@ -66,8 +68,8 @@ export default function JsonSchemaGenerator() {
         return {};
     }
 
-    const handleCopy = () => { navigator.clipboard.writeText(schema); setCopied(true); setTimeout(() => setCopied(false), 1500); };
-    const handleDownload = () => { const blob = new Blob([schema], { type: "application/json" }); const link = document.createElement("a"); link.download = `${title.toLowerCase()}.schema.json`; link.href = URL.createObjectURL(blob); link.click(); };
+    const handleCopy = () => { navigator.clipboard.writeText(schemaResult.schema); setCopied(true); setTimeout(() => setCopied(false), 1500); };
+    const handleDownload = () => { const blob = new Blob([schemaResult.schema], { type: "application/json" }); const link = document.createElement("a"); link.download = `${title.toLowerCase()}.schema.json`; link.href = URL.createObjectURL(blob); link.click(); };
 
     return (
         <ToolLayout title="JSON Schema Generator" description="Generate JSON Schema from any JSON data. Auto-detect formats (email, URI, date), nested objects, arrays." relatedTools={["json-formatter", "json-to-csv", "yaml-to-json"]}>
@@ -80,11 +82,11 @@ export default function JsonSchemaGenerator() {
                 <div>
                     <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">JSON Input</label>
                     <textarea value={input} onChange={(e) => setInput(e.target.value)} rows={18} spellCheck={false} className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-3 font-mono text-sm focus:border-blue-500 focus:outline-none" />
-                    {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+                    {schemaResult.error && <p className="mt-1 text-xs text-red-500">{schemaResult.error}</p>}
                 </div>
                 <div>
                     <div className="flex items-center justify-between mb-1"><label className="text-xs font-medium text-gray-600 dark:text-gray-400">JSON Schema</label><div className="flex gap-2"><button onClick={handleCopy} className="rounded-md bg-blue-600 px-3 py-1 text-xs font-medium text-white hover:bg-blue-700">{copied ? "Copied!" : "Copy"}</button><button onClick={handleDownload} className="rounded-md border border-gray-300 dark:border-gray-600 px-3 py-1 text-xs text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800">Download</button></div></div>
-                    <pre className="rounded-lg bg-gray-900 p-4 text-xs text-green-400 font-mono overflow-x-auto whitespace-pre-wrap" style={{ minHeight: 420 }}>{schema}</pre>
+                    <pre className="rounded-lg bg-gray-900 p-4 text-xs text-green-400 font-mono overflow-x-auto whitespace-pre-wrap" style={{ minHeight: 420 }}>{schemaResult.schema}</pre>
                 </div>
             </div>
 

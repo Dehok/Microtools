@@ -399,7 +399,7 @@ export default function PasswordStrengthChecker() {
         <p className="mb-3">
           Yes. This tool runs entirely in your browser using JavaScript. Your password is never
           sent to any server, logged, or stored anywhere. You can verify this by checking the
-          network tab in your browser's developer tools — no requests are made while you type.
+          network tab in your browser&apos;s developer tools — no requests are made while you type.
         </p>
 
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">

@@ -84,6 +84,54 @@ function InfoCard({
   );
 }
 
+function renderVisualRepresentation(info: ScreenInfo) {
+  const MAX_WIDTH = 280;
+  const MAX_HEIGHT = 160;
+
+  const scaleX = MAX_WIDTH / info.screenWidth;
+  const scaleY = MAX_HEIGHT / info.screenHeight;
+  const scale = Math.min(scaleX, scaleY);
+
+  const screenW = Math.round(info.screenWidth * scale);
+  const screenH = Math.round(info.screenHeight * scale);
+  const viewW = Math.min(Math.round(info.viewportWidth * scale), screenW);
+  const viewH = Math.min(Math.round(info.viewportHeight * scale), screenH);
+
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div
+        className="relative rounded border-2 border-gray-400 bg-gray-200 dark:bg-gray-700"
+        style={{ width: screenW, height: screenH }}
+        title={`Screen: ${info.screenWidth} x ${info.screenHeight}`}
+      >
+        <div
+          className="absolute left-0 top-0 rounded border-2 border-blue-500 dark:border-blue-400 bg-blue-200 opacity-70"
+          style={{ width: viewW, height: viewH }}
+          title={`Viewport: ${info.viewportWidth} x ${info.viewportHeight}`}
+        />
+        <span className="absolute bottom-1 right-1 text-[9px] font-bold text-gray-600 dark:text-gray-400">
+          Screen
+        </span>
+        {viewW > 30 && viewH > 14 && (
+          <span className="absolute left-1 top-1 text-[9px] font-bold text-blue-700 dark:text-blue-300">
+            Viewport
+          </span>
+        )}
+      </div>
+      <div className="flex gap-4 text-xs text-gray-600 dark:text-gray-400">
+        <span className="flex items-center gap-1">
+          <span className="inline-block h-3 w-3 rounded border-2 border-gray-400 bg-gray-200 dark:bg-gray-700" />
+          Screen ({info.screenWidth}&times;{info.screenHeight})
+        </span>
+        <span className="flex items-center gap-1">
+          <span className="inline-block h-3 w-3 rounded border-2 border-blue-500 dark:border-blue-400 bg-blue-200" />
+          Viewport ({info.viewportWidth}&times;{info.viewportHeight})
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function ScreenResolutionInfo() {
   const [info, setInfo] = useState<ScreenInfo | null>(null);
   const [copied, setCopied] = useState(false);
@@ -93,11 +141,12 @@ export default function ScreenResolutionInfo() {
   }, []);
 
   useEffect(() => {
-    refreshInfo();
+    const initialTimer = window.setTimeout(refreshInfo, 0);
     window.addEventListener("resize", refreshInfo);
     window.addEventListener("online", refreshInfo);
     window.addEventListener("offline", refreshInfo);
     return () => {
+      window.clearTimeout(initialTimer);
       window.removeEventListener("resize", refreshInfo);
       window.removeEventListener("online", refreshInfo);
       window.removeEventListener("offline", refreshInfo);
@@ -142,57 +191,6 @@ export default function ScreenResolutionInfo() {
     }
   }, [buildCopyText]);
 
-  // Scaled visual representation
-  const VisualRepresentation = useCallback(() => {
-    if (!info) return null;
-
-    const MAX_WIDTH = 280;
-    const MAX_HEIGHT = 160;
-
-    const scaleX = MAX_WIDTH / info.screenWidth;
-    const scaleY = MAX_HEIGHT / info.screenHeight;
-    const scale = Math.min(scaleX, scaleY);
-
-    const screenW = Math.round(info.screenWidth * scale);
-    const screenH = Math.round(info.screenHeight * scale);
-    const viewW = Math.min(Math.round(info.viewportWidth * scale), screenW);
-    const viewH = Math.min(Math.round(info.viewportHeight * scale), screenH);
-
-    return (
-      <div className="flex flex-col items-center gap-2">
-        <div
-          className="relative rounded border-2 border-gray-400 bg-gray-200 dark:bg-gray-700"
-          style={{ width: screenW, height: screenH }}
-          title={`Screen: ${info.screenWidth} x ${info.screenHeight}`}
-        >
-          <div
-            className="absolute left-0 top-0 rounded border-2 border-blue-500 dark:border-blue-400 bg-blue-200 opacity-70"
-            style={{ width: viewW, height: viewH }}
-            title={`Viewport: ${info.viewportWidth} x ${info.viewportHeight}`}
-          />
-          <span className="absolute bottom-1 right-1 text-[9px] font-bold text-gray-600 dark:text-gray-400">
-            Screen
-          </span>
-          {viewW > 30 && viewH > 14 && (
-            <span className="absolute left-1 top-1 text-[9px] font-bold text-blue-700 dark:text-blue-300">
-              Viewport
-            </span>
-          )}
-        </div>
-        <div className="flex gap-4 text-xs text-gray-600 dark:text-gray-400">
-          <span className="flex items-center gap-1">
-            <span className="inline-block h-3 w-3 rounded border-2 border-gray-400 bg-gray-200 dark:bg-gray-700" />
-            Screen ({info.screenWidth}&times;{info.screenHeight})
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="inline-block h-3 w-3 rounded border-2 border-blue-500 dark:border-blue-400 bg-blue-200" />
-            Viewport ({info.viewportWidth}&times;{info.viewportHeight})
-          </span>
-        </div>
-      </div>
-    );
-  }, [info]);
-
   if (!info) {
     return (
       <ToolLayout
@@ -216,7 +214,7 @@ export default function ScreenResolutionInfo() {
         <h2 className="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
           Screen vs Viewport (scaled)
         </h2>
-        <VisualRepresentation />
+        {renderVisualRepresentation(info)}
       </div>
 
       {/* Copy All button */}

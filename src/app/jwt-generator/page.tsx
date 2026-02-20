@@ -75,6 +75,10 @@ function makeDefaultPayload(): string {
   );
 }
 
+function unixNowSeconds() {
+  return Math.floor(Date.now() / 1000);
+}
+
 /* ── Component ────────────────────────────────────────────────── */
 
 export default function JwtGenerator() {
@@ -142,7 +146,7 @@ export default function JwtGenerator() {
   function addClaim(claim: ClaimDef) {
     try {
       const obj = JSON.parse(payload);
-      const now = Math.floor(Date.now() / 1000);
+      const now = unixNowSeconds();
 
       switch (claim.key) {
         case "iss":
@@ -177,7 +181,7 @@ export default function JwtGenerator() {
   function setExpiration(seconds: number) {
     try {
       const obj = JSON.parse(payload);
-      const now = Math.floor(Date.now() / 1000);
+      const now = unixNowSeconds();
       obj.iat = now;
       obj.exp = now + seconds;
       setPayload(JSON.stringify(obj, null, 2));

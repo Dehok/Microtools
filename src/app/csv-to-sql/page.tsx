@@ -238,7 +238,7 @@ export default function CsvToSqlConverter() {
             onChange={(e) => setQuoteChar(e.target.value as QuoteChar)}
             className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm focus:border-blue-500 dark:border-blue-400 focus:outline-none"
           >
-            <option value="double">Double Quote ( " )</option>
+            <option value="double">Double Quote ( &quot; )</option>
             <option value="single">Single Quote ( &#39; )</option>
             <option value="none">None</option>
           </select>

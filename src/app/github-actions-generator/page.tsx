@@ -23,7 +23,7 @@ export default function GithubActionsGenerator() {
     const testCmd = packageManager === "npm" ? "npm test" : `${packageManager} test`;
 
     const yaml = useMemo(() => {
-        let lines: string[] = [];
+        const lines: string[] = [];
         lines.push(`name: ${name}`, "");
         lines.push("on:");
         if (trigger === "push") { lines.push("  push:", `    branches: [${branches}]`); }

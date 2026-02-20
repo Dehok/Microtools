@@ -18,7 +18,7 @@ export default function DockerfileGenerator() {
     const [copied, setCopied] = useState(false);
 
     const dockerfile = useMemo(() => {
-        let lines: string[] = [];
+        const lines: string[] = [];
 
         if (multiStage) {
             lines.push(`# Build stage`);

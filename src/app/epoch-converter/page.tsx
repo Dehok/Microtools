@@ -7,7 +7,7 @@ import CopyButton from "@/components/CopyButton";
 export default function EpochConverter() {
   const [epoch, setEpoch] = useState("");
   const [dateStr, setDateStr] = useState("");
-  const [currentEpoch, setCurrentEpoch] = useState(Math.floor(Date.now() / 1000));
+  const [currentEpoch, setCurrentEpoch] = useState(0);
   const [error, setError] = useState("");
 
   useEffect(() => {

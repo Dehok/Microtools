@@ -6,6 +6,15 @@ import CopyButton from "@/components/CopyButton";
 
 type SortMode = "az" | "za" | "short" | "long" | "reverse" | "shuffle" | "numeric";
 
+function deterministicHash(input: string) {
+  let hash = 2166136261;
+  for (let i = 0; i < input.length; i++) {
+    hash ^= input.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
 export default function LineSorter() {
   const [input, setInput] = useState("banana\napple\ncherry\napple\ndate\nbanana\nelderberry");
   const [mode, setMode] = useState<SortMode>("az");
@@ -37,10 +46,10 @@ export default function LineSorter() {
         lines.reverse();
         break;
       case "shuffle":
-        for (let i = lines.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [lines[i], lines[j]] = [lines[j], lines[i]];
-        }
+        lines.sort((a, b) => {
+          const diff = deterministicHash(a) - deterministicHash(b);
+          return diff !== 0 ? diff : a.localeCompare(b);
+        });
         break;
       case "numeric":
         lines.sort((a, b) => {
