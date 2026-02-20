@@ -80,6 +80,12 @@ export default function Navbar() {
           >
             All Tools
           </Link>
+          <Link
+            href="/category"
+            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            Categories
+          </Link>
         </div>
       </div>
     </nav>
