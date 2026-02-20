@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { tools } from "@/lib/tools";
 import ToolFlowLinks from "@/components/ToolFlowLinks";
+import ToolCompareLinks from "@/components/ToolCompareLinks";
 
 interface ToolLayoutProps {
   title: string;
@@ -48,6 +49,7 @@ export default function ToolLayout({
         </div>
       )}
 
+      <ToolCompareLinks />
       <ToolFlowLinks />
     </div>
   );

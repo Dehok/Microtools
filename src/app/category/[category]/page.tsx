@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CATEGORIES, tools } from "@/lib/tools";
+import { getComparisonBySlug } from "@/lib/tool-comparisons";
 
 const SITE_URL = "https://codeutilo.com";
 
@@ -29,6 +30,11 @@ const categoryFaqs: Record<string, { question: string; answer: string }[]> = {
     {
       question: "Are AI category tools client-side?",
       answer: "Yes. Tool processing runs in-browser so prompt and file inputs are not uploaded by default.",
+    },
+    {
+      question: "How should I sequence AI tools for production prompts?",
+      answer:
+        "A practical flow is Prompt QA first, then safety/policy checks, followed by RAG relevance tuning and output contract validation.",
     },
   ],
   developer: [
@@ -138,6 +144,85 @@ const categoryFaqs: Record<string, { question: string; answer: string }[]> = {
   ],
 };
 
+const AI_SUBSECTIONS = [
+  {
+    id: "prompt-qa",
+    title: "Prompt QA and Evaluation",
+    description:
+      "Improve prompt quality, detect regressions, and evaluate model output consistency before production release.",
+    toolSlugs: [
+      "prompt-linter",
+      "prompt-regression-suite-builder",
+      "prompt-test-case-generator",
+      "llm-response-grader",
+      "answer-consistency-checker",
+      "output-contract-tester",
+    ],
+    compareSlugs: [
+      "prompt-linter-vs-prompt-policy-firewall",
+      "prompt-regression-suite-builder-vs-prompt-test-case-generator",
+      "llm-response-grader-vs-answer-consistency-checker",
+      "output-contract-tester-vs-json-output-guard",
+    ],
+  },
+  {
+    id: "rag",
+    title: "RAG Tuning and Grounding",
+    description:
+      "Tune retrieval quality, reduce noise, and strengthen grounding between generated claims and source evidence.",
+    toolSlugs: [
+      "rag-chunking-simulator",
+      "rag-noise-pruner",
+      "rag-context-relevance-scorer",
+      "claim-evidence-matrix",
+      "grounded-answer-citation-checker",
+    ],
+    compareSlugs: [
+      "rag-noise-pruner-vs-rag-context-relevance-scorer",
+      "rag-chunking-simulator-vs-rag-context-relevance-scorer",
+      "claim-evidence-matrix-vs-grounded-answer-citation-checker",
+    ],
+  },
+  {
+    id: "safety",
+    title: "Safety, Privacy, and Guardrails",
+    description:
+      "Reduce leakage risk, scan for policy violations, and add guardrails for safer model interactions.",
+    toolSlugs: [
+      "prompt-policy-firewall",
+      "prompt-security-scanner",
+      "sensitive-data-pseudonymizer",
+      "hallucination-risk-checklist",
+      "hallucination-guardrail-builder",
+      "agent-safety-checklist",
+    ],
+    compareSlugs: [
+      "prompt-security-scanner-vs-prompt-policy-firewall",
+      "sensitive-data-pseudonymizer-vs-pii-redactor",
+      "hallucination-risk-checklist-vs-hallucination-guardrail-builder",
+      "prompt-red-team-generator-vs-agent-safety-checklist",
+    ],
+  },
+  {
+    id: "ops",
+    title: "Cost, Batching, and Operations",
+    description:
+      "Estimate token and spend impact, pack context windows, and validate batch data before large-scale runs.",
+    toolSlugs: [
+      "token-counter",
+      "ai-cost-estimator",
+      "context-window-packer",
+      "openai-batch-jsonl-validator",
+      "jsonl-batch-splitter",
+    ],
+    compareSlugs: [
+      "token-counter-vs-ai-cost-estimator",
+      "context-window-packer-vs-prompt-compressor",
+      "openai-batch-jsonl-validator-vs-jsonl-batch-splitter",
+    ],
+  },
+] as const;
+
 function getCategory(id: string) {
   return CATEGORIES.find((category) => category.id === id);
 }
@@ -214,6 +299,21 @@ export default async function CategoryPage({
   };
 
   const faqItems = categoryFaqs[selected.id] || [];
+  const aiRows =
+    selected.id === "ai"
+      ? AI_SUBSECTIONS.map((section) => ({
+          ...section,
+          items: section.toolSlugs
+            .map((slug) => tools.find((tool) => tool.slug === slug))
+            .filter((tool): tool is (typeof tools)[number] => Boolean(tool)),
+          comparisons: section.compareSlugs
+            .map((slug) => getComparisonBySlug(slug))
+            .filter((comparison): comparison is NonNullable<ReturnType<typeof getComparisonBySlug>> =>
+              Boolean(comparison)
+            ),
+        }))
+      : [];
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -246,6 +346,76 @@ export default async function CategoryPage({
           {categoryDescriptions[selected.id]} This category contains {categoryTools.length} tools.
         </p>
       </header>
+
+      {selected.id === "ai" && (
+        <section className="mb-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+          <div className="mb-5 flex flex-wrap items-end justify-between gap-2">
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">AI Workflow Sections</h2>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                Focused clusters for prompt QA, RAG tuning, safety, and AI operations.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                href="/compare"
+                className="rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-blue-300 hover:text-blue-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-700 dark:hover:text-blue-300"
+              >
+                All comparisons
+              </Link>
+              <Link
+                href="/topics/ai-prompt-quality"
+                className="rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-blue-300 hover:text-blue-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-700 dark:hover:text-blue-300"
+              >
+                AI topic hub
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {aiRows.map((section) => (
+              <article key={section.id} className="rounded-xl border border-gray-200 p-4 dark:border-gray-700">
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">{section.title}</h3>
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{section.description}</p>
+                <div className="mt-3">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                    Tools
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {section.items.map((tool) => (
+                      <Link
+                        key={tool.slug}
+                        href={`/${tool.slug}`}
+                        className="rounded-full border border-gray-200 px-2.5 py-1 text-xs text-gray-700 hover:border-blue-300 hover:text-blue-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-700 dark:hover:text-blue-300"
+                      >
+                        {tool.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                {section.comparisons.length > 0 && (
+                  <div className="mt-3">
+                    <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                      Compare Guides
+                    </p>
+                    <div className="space-y-1.5">
+                      {section.comparisons.map((comparison) => (
+                        <Link
+                          key={comparison.slug}
+                          href={`/compare/${comparison.slug}`}
+                          className="block text-xs text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+                        >
+                          {comparison.leftTool.name} vs {comparison.rightTool.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {categoryTools.map((tool) => (
