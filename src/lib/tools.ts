@@ -1336,6 +1336,34 @@ export const tools: Tool[] = [
     category: "crypto",
     icon: "PSC",
   },
+  {
+    slug: "context-window-packer",
+    name: "Context Window Packer",
+    description: "Pack prompt segments by priority into a fixed token budget with required-rule support.",
+    category: "developer",
+    icon: "CWP",
+  },
+  {
+    slug: "llm-response-grader",
+    name: "LLM Response Grader",
+    description: "Grade model responses using weighted rubric rules, regex checks, and banned-term penalties.",
+    category: "developer",
+    icon: "LRG",
+  },
+  {
+    slug: "prompt-test-case-generator",
+    name: "Prompt Test Case Generator",
+    description: "Generate deterministic prompt evaluation cases and JSONL exports for regression testing.",
+    category: "text",
+    icon: "TCG",
+  },
+  {
+    slug: "secret-detector-for-code-snippets",
+    name: "Secret Detector for Code Snippets",
+    description: "Detect hardcoded keys, tokens, and credential-like strings before sharing code snippets.",
+    category: "crypto",
+    icon: "SDS",
+  },
 ];
 
 
