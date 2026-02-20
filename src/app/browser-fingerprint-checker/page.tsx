@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import CopyButton from "@/components/CopyButton";
 
@@ -86,6 +86,10 @@ function getWebglInfo() {
 }
 
 function collectFingerprint(): FingerprintData {
+  if (typeof window === "undefined") {
+    return getInitialFingerprintData();
+  }
+
   const nav = navigator as Navigator & { deviceMemory?: number };
   const webgl = getWebglInfo();
   const doNotTrack =
@@ -118,6 +122,31 @@ function collectFingerprint(): FingerprintData {
   };
 }
 
+function getInitialFingerprintData(): FingerprintData {
+  return {
+    userAgent: "unknown",
+    language: "unknown",
+    languages: "unknown",
+    platform: "unknown",
+    hardwareConcurrency: "unknown",
+    deviceMemory: "unknown",
+    maxTouchPoints: 0,
+    colorDepth: 0,
+    screenResolution: "0 x 0",
+    viewport: "0 x 0",
+    devicePixelRatio: 1,
+    timezone: "unknown",
+    timezoneOffsetMinutes: 0,
+    doNotTrack: "unspecified",
+    cookiesEnabled: false,
+    canvasHash: "unavailable",
+    webglVendor: "unavailable",
+    webglRenderer: "unavailable",
+    prefersColorScheme: "light",
+    prefersReducedMotion: "no-preference",
+  };
+}
+
 function computeFingerprintScore(data: FingerprintData) {
   let score = 0;
   if (data.canvasHash !== "unavailable") score += 18;
@@ -143,8 +172,16 @@ function scoreLabel(score: number) {
 }
 
 export default function BrowserFingerprintCheckerPage() {
-  const [data, setData] = useState<FingerprintData>(() => collectFingerprint());
+  const [data, setData] = useState<FingerprintData>(() => getInitialFingerprintData());
   const [scannedAt, setScannedAt] = useState(() => new Date());
+
+  useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      setData(collectFingerprint());
+      setScannedAt(new Date());
+    });
+    return () => window.cancelAnimationFrame(frameId);
+  }, []);
 
   const score = useMemo(() => computeFingerprintScore(data), [data]);
   const label = useMemo(() => scoreLabel(score), [score]);
