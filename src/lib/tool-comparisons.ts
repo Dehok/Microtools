@@ -656,6 +656,90 @@ const COMPARISON_DEFINITIONS: ToolComparisonDefinition[] = [
       },
     ],
   },
+  {
+    slug: "prompt-versioning-regression-dashboard-vs-prompt-regression-suite-builder",
+    leftSlug: "prompt-versioning-regression-dashboard",
+    rightSlug: "prompt-regression-suite-builder",
+    intent: "Version timeline dashboard monitoring vs focused baseline-candidate regression suite generation.",
+    summary:
+      "Prompt Versioning + Regression Dashboard is best for tracking multiple prompt snapshots and release drift, while Prompt Regression Suite Builder is best for generating deterministic regression artifacts from a baseline-candidate pair.",
+    keyTakeaways: [
+      "Use Prompt Versioning Dashboard for iterative version tracking and quick release checks.",
+      "Use Prompt Regression Suite Builder for deterministic suite output and structured assertions.",
+      "Use dashboard first, then regression suite builder for deeper QA exports.",
+    ],
+    whenToUseLeft: [
+      "You maintain many prompt revisions and need a timeline view.",
+      "You want quick regression scores across snapshot candidates.",
+      "You need lightweight version-level release gating.",
+    ],
+    whenToUseRight: [
+      "You need deterministic markdown/JSONL regression artifacts.",
+      "You are comparing one baseline against one candidate deeply.",
+      "You need suite-ready output for downstream QA pipelines.",
+    ],
+    criteria: [
+      { criterion: "Primary focus", left: "Version dashboard", right: "Regression suite export", winner: "tie" },
+      { criterion: "Multi-version visibility", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Deterministic suite artifacts", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Release snapshot workflow", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Best first step", left: "Version monitoring", right: "Detailed suite generation", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can these tools be used together?",
+        answer:
+          "Yes. Use Prompt Versioning Dashboard to shortlist candidate versions and then run Prompt Regression Suite Builder for deterministic exports.",
+      },
+      {
+        question: "Which tool is better for quick PM reviews?",
+        answer:
+          "Prompt Versioning + Regression Dashboard is typically better for quick release review because it emphasizes snapshot-level comparisons.",
+      },
+    ],
+  },
+  {
+    slug: "jailbreak-replay-lab-vs-prompt-red-team-generator",
+    leftSlug: "jailbreak-replay-lab",
+    rightSlug: "prompt-red-team-generator",
+    intent: "Response replay scoring lab vs adversarial test case generation.",
+    summary:
+      "Jailbreak Replay Lab evaluates actual model responses against replay scenarios, while Prompt Red-Team Generator creates adversarial cases for testing.",
+    keyTakeaways: [
+      "Use Prompt Red-Team Generator to produce attack datasets.",
+      "Use Jailbreak Replay Lab to score model responses against those attacks.",
+      "Use both sequentially for full offensive-to-defensive safety evaluation.",
+    ],
+    whenToUseLeft: [
+      "You already have model outputs and need defense scoring.",
+      "You want replay-style pass/warning/fail safety reports.",
+      "You need deterministic scoring for regression monitoring.",
+    ],
+    whenToUseRight: [
+      "You need fresh adversarial prompts for safety testing.",
+      "You want category-based jailbreak case generation.",
+      "You need reusable attack prompts for red-team workflows.",
+    ],
+    criteria: [
+      { criterion: "Primary output", left: "Replay defense score", right: "Attack cases", winner: "tie" },
+      { criterion: "Adversarial generation depth", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Response scoring workflow", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Best pipeline role", left: "Evaluation stage", right: "Test creation stage", winner: "tie" },
+      { criterion: "Combined value", left: "High", right: "High", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Should replay lab replace red-team generation?",
+        answer:
+          "No. Replay Lab evaluates responses, while Red-Team Generator creates adversarial input cases. They are complementary.",
+      },
+      {
+        question: "What is the recommended order?",
+        answer:
+          "Generate attacks first with Prompt Red-Team Generator, then evaluate model responses in Jailbreak Replay Lab.",
+      },
+    ],
+  },
 ];
 
 function hydrateComparison(definition: ToolComparisonDefinition): ToolComparison | null {

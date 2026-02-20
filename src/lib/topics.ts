@@ -33,6 +33,7 @@ export const TOPIC_HUBS: TopicHub[] = [
     ],
     toolSlugs: [
       "prompt-linter",
+      "prompt-versioning-regression-dashboard",
       "prompt-regression-suite-builder",
       "prompt-ab-test-matrix",
       "prompt-test-case-generator",
@@ -79,6 +80,8 @@ export const TOPIC_HUBS: TopicHub[] = [
     toolSlugs: [
       "prompt-policy-firewall",
       "prompt-security-scanner",
+      "prompt-red-team-generator",
+      "jailbreak-replay-lab",
       "sensitive-data-pseudonymizer",
       "pii-redactor",
       "secret-detector-for-code-snippets",

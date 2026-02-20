@@ -1359,6 +1359,13 @@ export const tools: Tool[] = [
     icon: "TCG",
   },
   {
+    slug: "prompt-versioning-regression-dashboard",
+    name: "Prompt Versioning + Regression Dashboard",
+    description: "Track prompt snapshots, compare constraints, and monitor regression risk before release.",
+    category: "ai",
+    icon: "PVR",
+  },
+  {
     slug: "secret-detector-for-code-snippets",
     name: "Secret Detector for Code Snippets",
     description: "Detect hardcoded keys, tokens, and credential-like strings before sharing code snippets.",
@@ -1427,6 +1434,13 @@ export const tools: Tool[] = [
     description: "Generate adversarial prompt test cases for jailbreak, leakage, and policy-bypass evaluation.",
     category: "ai",
     icon: "RTG",
+  },
+  {
+    slug: "jailbreak-replay-lab",
+    name: "Jailbreak Replay Lab",
+    description: "Replay jailbreak scenarios, score model defenses, and export deterministic safety reports.",
+    category: "ai",
+    icon: "JRL",
   },
   {
     slug: "rag-noise-pruner",

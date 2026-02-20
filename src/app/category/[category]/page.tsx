@@ -152,6 +152,7 @@ const AI_SUBSECTIONS = [
       "Improve prompt quality, detect regressions, and evaluate model output consistency before production release.",
     toolSlugs: [
       "prompt-linter",
+      "prompt-versioning-regression-dashboard",
       "prompt-regression-suite-builder",
       "prompt-test-case-generator",
       "llm-response-grader",
@@ -160,6 +161,7 @@ const AI_SUBSECTIONS = [
     ],
     compareSlugs: [
       "prompt-linter-vs-prompt-policy-firewall",
+      "prompt-versioning-regression-dashboard-vs-prompt-regression-suite-builder",
       "prompt-regression-suite-builder-vs-prompt-test-case-generator",
       "llm-response-grader-vs-answer-consistency-checker",
       "output-contract-tester-vs-json-output-guard",
@@ -192,12 +194,15 @@ const AI_SUBSECTIONS = [
       "prompt-policy-firewall",
       "prompt-security-scanner",
       "sensitive-data-pseudonymizer",
+      "prompt-red-team-generator",
+      "jailbreak-replay-lab",
       "hallucination-risk-checklist",
       "hallucination-guardrail-builder",
       "agent-safety-checklist",
     ],
     compareSlugs: [
       "prompt-security-scanner-vs-prompt-policy-firewall",
+      "jailbreak-replay-lab-vs-prompt-red-team-generator",
       "sensitive-data-pseudonymizer-vs-pii-redactor",
       "hallucination-risk-checklist-vs-hallucination-guardrail-builder",
       "prompt-red-team-generator-vs-agent-safety-checklist",
