@@ -1399,6 +1399,41 @@ export const tools: Tool[] = [
     category: "developer",
     icon: "RCR",
   },
+  {
+    slug: "prompt-policy-firewall",
+    name: "Prompt Policy Firewall",
+    description: "Scan prompts for PII, secrets, and injection patterns before sending data to AI models.",
+    category: "crypto",
+    icon: "PPF",
+  },
+  {
+    slug: "claim-evidence-matrix",
+    name: "Claim Evidence Matrix",
+    description: "Map answer claims to source evidence and score support strength in a verification matrix.",
+    category: "developer",
+    icon: "CEM",
+  },
+  {
+    slug: "answer-consistency-checker",
+    name: "Answer Consistency Checker",
+    description: "Compare multiple model answers and detect conflicts, drift, and stability issues.",
+    category: "text",
+    icon: "ACC",
+  },
+  {
+    slug: "prompt-red-team-generator",
+    name: "Prompt Red-Team Generator",
+    description: "Generate adversarial prompt test cases for jailbreak, leakage, and policy-bypass evaluation.",
+    category: "developer",
+    icon: "RTG",
+  },
+  {
+    slug: "rag-noise-pruner",
+    name: "RAG Noise Pruner",
+    description: "Prune noisy and redundant RAG chunks with relevance and duplication heuristics.",
+    category: "developer",
+    icon: "RNP",
+  },
 ];
 
 
