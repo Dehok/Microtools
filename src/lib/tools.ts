@@ -1434,6 +1434,41 @@ export const tools: Tool[] = [
     category: "developer",
     icon: "RNP",
   },
+  {
+    slug: "agent-safety-checklist",
+    name: "Agent Safety Checklist",
+    description: "Audit agent runbooks for allowlists, confirmation gates, budgets, fallbacks, and logging.",
+    category: "developer",
+    icon: "ASC",
+  },
+  {
+    slug: "output-contract-tester",
+    name: "Output Contract Tester",
+    description: "Validate model outputs against contracts: JSON format, required keys, forbidden terms, and length.",
+    category: "developer",
+    icon: "OCT",
+  },
+  {
+    slug: "sensitive-data-pseudonymizer",
+    name: "Sensitive Data Pseudonymizer",
+    description: "Replace sensitive identifiers with reversible placeholders before sending text to AI.",
+    category: "crypto",
+    icon: "SDP",
+  },
+  {
+    slug: "meeting-summary-verifier",
+    name: "Meeting Summary Verifier",
+    description: "Verify meeting summaries against transcript evidence and flag unsupported statements.",
+    category: "text",
+    icon: "MSV",
+  },
+  {
+    slug: "hallucination-guardrail-builder",
+    name: "Hallucination Guardrail Builder",
+    description: "Generate reusable guardrail prompt blocks for grounded answers and uncertainty handling.",
+    category: "text",
+    icon: "HGB",
+  },
 ];
 
 
