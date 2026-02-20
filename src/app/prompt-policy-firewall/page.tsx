@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import CopyButton from "@/components/CopyButton";
+import HowToBlock from "@/components/HowToBlock";
 
 type Severity = "high" | "medium" | "low";
 
@@ -280,6 +281,36 @@ export default function PromptPolicyFirewallPage() {
           />
         </div>
       </div>
+
+      <HowToBlock
+        title="How to use Prompt Policy Firewall"
+        intro="Screen prompts for PII, secrets, and injection phrases before sending text to AI APIs."
+        schemaName="How to use Prompt Policy Firewall"
+        schemaUrl="https://codeutilo.com/prompt-policy-firewall"
+        steps={[
+          {
+            title: "Paste prompt content",
+            details: "Include the exact text block that would be sent to your model endpoint.",
+          },
+          {
+            title: "Enable the right severity checks",
+            details: "Keep high severity enabled by default and tune medium or low checks as needed.",
+          },
+          {
+            title: "Review findings and line numbers",
+            details: "Inspect each hit, confirm if it is real risk, and apply recommendation guidance.",
+          },
+          {
+            title: "Copy redacted output",
+            details: "Use the redacted prompt version for safer downstream model calls.",
+          },
+        ]}
+        tips={[
+          "Treat leaked keys and private key blocks as compromised and rotate them.",
+          "Run this as a final safety gate after prompt quality edits.",
+          "Use findings JSON for audit logs in internal QA workflows.",
+        ]}
+      />
 
       <div className="mt-12 space-y-6 border-t border-gray-200 pt-8 text-sm leading-relaxed text-gray-600 dark:border-gray-700 dark:text-gray-400">
         <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>

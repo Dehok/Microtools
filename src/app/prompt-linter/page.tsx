@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import CopyButton from "@/components/CopyButton";
+import HowToBlock from "@/components/HowToBlock";
 
 type Severity = "low" | "medium" | "high";
 
@@ -194,6 +195,36 @@ export default function PromptLinterPage() {
           )}
         </div>
       </div>
+
+      <HowToBlock
+        title="How to use Prompt Linter"
+        intro="Run a quick prompt QA pass before every model call to reduce ambiguity and unstable outputs."
+        schemaName="How to use Prompt Linter"
+        schemaUrl="https://codeutilo.com/prompt-linter"
+        steps={[
+          {
+            title: "Paste your draft prompt",
+            details: "Insert the exact prompt template you plan to send to your AI model.",
+          },
+          {
+            title: "Review score and issue list",
+            details: "Check high-severity findings first, then medium and low issues.",
+          },
+          {
+            title: "Fix format and constraints",
+            details: "Add explicit output format, role context, and clear must/limit rules.",
+          },
+          {
+            title: "Re-lint until stable",
+            details: "Iterate until the score improves and conflict warnings are resolved.",
+          },
+        ]}
+        tips={[
+          "Use measurable terms instead of vague words like 'good' or 'etc'.",
+          "Split conflicting instructions into separate prompt passes.",
+          "After linting, run Prompt Policy Firewall as a safety gate.",
+        ]}
+      />
 
       <div className="mt-12 space-y-6 border-t border-gray-200 pt-8 text-sm leading-relaxed text-gray-600 dark:border-gray-700 dark:text-gray-400">
         <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>

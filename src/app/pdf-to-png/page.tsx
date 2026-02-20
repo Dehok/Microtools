@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
+import HowToBlock from "@/components/HowToBlock";
 
 interface RenderedPage {
   pageNumber: number;
@@ -245,6 +246,36 @@ export default function PdfToPngPage() {
           </div>
         </>
       )}
+
+      <HowToBlock
+        title="How to convert PDF to PNG"
+        intro="Convert PDF pages to sharp PNG images in-browser with adjustable render scale."
+        schemaName="How to convert PDF to PNG"
+        schemaUrl="https://codeutilo.com/pdf-to-png"
+        steps={[
+          {
+            title: "Adjust render scale",
+            details: "Set scale based on detail needs. Higher scale gives clearer text and graphics.",
+          },
+          {
+            title: "Upload your PDF",
+            details: "Drop a PDF file or click the upload area to pick a file from your device.",
+          },
+          {
+            title: "Check page previews",
+            details: "Inspect each generated page preview and confirm resolution and file size.",
+          },
+          {
+            title: "Export PNG files",
+            details: "Download each page separately or export all pages in sequence.",
+          },
+        ]}
+        tips={[
+          "PNG is better for OCR and text-heavy pages.",
+          "Higher scale improves sharpness but increases file size.",
+          "Use PDF to JPG when small files matter more than lossless quality.",
+        ]}
+      />
 
       <div className="mt-12 space-y-6 border-t border-gray-200 pt-8 text-sm leading-relaxed text-gray-600 dark:border-gray-700 dark:text-gray-400">
         <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>

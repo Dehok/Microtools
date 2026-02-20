@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
+import HowToBlock from "@/components/HowToBlock";
 
 interface RenderedPage {
   pageNumber: number;
@@ -265,6 +266,36 @@ export default function PdfToJpgPage() {
           </div>
         </>
       )}
+
+      <HowToBlock
+        title="How to convert PDF to JPG"
+        intro="Export PDF pages to JPG locally in your browser with control over image quality and render scale."
+        schemaName="How to convert PDF to JPG"
+        schemaUrl="https://codeutilo.com/pdf-to-jpg"
+        steps={[
+          {
+            title: "Set quality and render scale",
+            details: "Choose JPG quality and resolution scale before uploading your PDF.",
+          },
+          {
+            title: "Upload or drop your PDF",
+            details: "Drag a PDF into the drop zone or click to select it from your device.",
+          },
+          {
+            title: "Preview converted pages",
+            details: "Review page thumbnails and file sizes to confirm output quality.",
+          },
+          {
+            title: "Download one page or all pages",
+            details: "Export individual JPG files or use Download All for the full document.",
+          },
+        ]}
+        tips={[
+          "Use higher scale for better text readability.",
+          "Lower quality reduces file size for faster sharing.",
+          "Use PDF to PNG when you need lossless output.",
+        ]}
+      />
 
       <div className="mt-12 space-y-6 border-t border-gray-200 pt-8 text-sm leading-relaxed text-gray-600 dark:border-gray-700 dark:text-gray-400">
         <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">About This Tool</h2>
