@@ -1217,6 +1217,41 @@ export const tools: Tool[] = [
     category: "crypto",
     icon: "PII",
   },
+  {
+    slug: "browser-fingerprint-checker",
+    name: "Browser Fingerprint Checker",
+    description: "Inspect browser/device fingerprint signals like canvas hash, WebGL, timezone, and platform.",
+    category: "crypto",
+    icon: "BFP",
+  },
+  {
+    slug: "webrtc-leak-test",
+    name: "WebRTC Leak Test",
+    description: "Check WebRTC ICE candidates for local/public IP exposure in your browser.",
+    category: "crypto",
+    icon: "RTC",
+  },
+  {
+    slug: "passphrase-generator",
+    name: "Passphrase Generator",
+    description: "Generate memorable high-entropy passphrases with browser-side secure randomness.",
+    category: "generator",
+    icon: "PPH",
+  },
+  {
+    slug: "ai-text-detector-lite",
+    name: "AI Text Detector (Lite)",
+    description: "Estimate AI-likeness of text with local stylometric heuristics and no uploads.",
+    category: "text",
+    icon: "AID",
+  },
+  {
+    slug: "prompt-security-scanner",
+    name: "Prompt Security Scanner",
+    description: "Scan prompts for secret leakage, PII, and injection-style phrases before sending to AI.",
+    category: "crypto",
+    icon: "PSC",
+  },
 ];
 
 
