@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { tools } from "@/lib/tools";
+import ToolFlowLinks from "@/components/ToolFlowLinks";
 
 interface ToolLayoutProps {
   title: string;
@@ -46,6 +47,8 @@ export default function ToolLayout({
           </div>
         </div>
       )}
+
+      <ToolFlowLinks />
     </div>
   );
 }

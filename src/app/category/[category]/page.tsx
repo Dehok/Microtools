@@ -18,6 +18,114 @@ const categoryDescriptions: Record<string, string> = {
   seo: "SEO tools for metadata, sitemaps, social previews, and search readiness.",
 };
 
+const categoryFaqs: Record<string, { question: string; answer: string }[]> = {
+  developer: [
+    {
+      question: "Which developer tools are most useful for API workflows?",
+      answer:
+        "JSON Formatter, API Response Mocker, JSON Schema tools, and output validation utilities are a strong baseline stack.",
+    },
+    {
+      question: "Can I chain tools in this category?",
+      answer: "Yes. Many developer tools are intended for step-by-step workflows such as parse, transform, validate, and test.",
+    },
+  ],
+  text: [
+    {
+      question: "Do text tools support AI prompt workflows?",
+      answer:
+        "Yes. This category includes prompt linting, consistency checks, guardrail generation, and other AI-oriented text utilities.",
+    },
+    {
+      question: "Are text transformations done locally?",
+      answer: "Yes. Text input processing runs in the browser for privacy-friendly usage.",
+    },
+  ],
+  converter: [
+    {
+      question: "Can I convert files without upload?",
+      answer: "Most converter tools process files directly in-browser without remote upload.",
+    },
+    {
+      question: "Which conversion flow is common?",
+      answer: "Typical flows include source format cleanup, conversion, then validation or compression.",
+    },
+  ],
+  generator: [
+    {
+      question: "What can generator tools produce?",
+      answer: "Generators create IDs, templates, content blocks, configs, and utility assets with deterministic options.",
+    },
+    {
+      question: "Are generated outputs reusable?",
+      answer: "Yes. You can copy generated results and reuse them in docs, codebases, and workflows.",
+    },
+  ],
+  crypto: [
+    {
+      question: "Does this category include privacy-focused tools?",
+      answer:
+        "Yes. It includes token scanners, redaction helpers, pseudonymization, and browser privacy diagnostics.",
+    },
+    {
+      question: "Can these tools reduce AI data leakage risk?",
+      answer:
+        "Yes. Tools like Prompt Policy Firewall and Sensitive Data Pseudonymizer help remove risky content before model calls.",
+    },
+  ],
+  media: [
+    {
+      question: "Are media tools browser-only?",
+      answer:
+        "Yes. Core image and media transformations are designed for local browser execution whenever supported by the browser.",
+    },
+    {
+      question: "Can I chain media operations?",
+      answer: "Yes. A common flow is convert, resize/compress, then export.",
+    },
+  ],
+  calculator: [
+    {
+      question: "Are calculator results saved?",
+      answer: "No. Calculations are performed instantly and locally without account storage.",
+    },
+    {
+      question: "Can calculators be used for quick checks?",
+      answer: "Yes. They are designed for rapid operational checks and planning estimates.",
+    },
+  ],
+  legal: [
+    {
+      question: "Do legal tools replace professional advice?",
+      answer: "No. They provide draft starting points and templates, not legal counsel.",
+    },
+    {
+      question: "Can generated legal drafts be edited?",
+      answer: "Yes. Generated text is editable and should be reviewed before final use.",
+    },
+  ],
+  design: [
+    {
+      question: "What can design tools help with?",
+      answer: "They help with color systems, gradients, typography pairings, and quick visual assets.",
+    },
+    {
+      question: "Can outputs be copied directly?",
+      answer: "Yes. Most design outputs are copy-ready for CSS and project assets.",
+    },
+  ],
+  seo: [
+    {
+      question: "Which SEO tasks are covered?",
+      answer: "Meta tags, sitemap generation, Open Graph previewing, and crawl-related utility tasks.",
+    },
+    {
+      question: "Are SEO pages crawl-friendly?",
+      answer: "Yes. Category and tool pages use canonical metadata and structured data for indexing clarity.",
+    },
+  ],
+};
+
 function getCategory(id: string) {
   return CATEGORIES.find((category) => category.id === id);
 }
@@ -83,6 +191,20 @@ export default function CategoryPage({ params }: { params: { category: string } 
     })),
   };
 
+  const faqItems = categoryFaqs[selected.id] || [];
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <nav className="mb-4 text-xs text-gray-500 dark:text-gray-400">
@@ -138,10 +260,32 @@ export default function CategoryPage({ params }: { params: { category: string } 
         </div>
       </section>
 
+      {faqItems.length > 0 && (
+        <section className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+          <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-100">{selected.name} FAQ</h2>
+          <div className="space-y-4">
+            {faqItems.map((item) => (
+              <details key={item.question} className="group rounded-lg border border-gray-200 px-4 py-3 dark:border-gray-700">
+                <summary className="cursor-pointer font-medium text-gray-800 group-hover:text-blue-700 dark:text-gray-200 dark:group-hover:text-blue-300">
+                  {item.question}
+                </summary>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      {faqItems.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
     </div>
   );
 }

@@ -86,6 +86,12 @@ export default function Navbar() {
           >
             Categories
           </Link>
+          <Link
+            href="/topics"
+            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            Topics
+          </Link>
         </div>
       </div>
     </nav>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ToolExplorer from "@/components/ToolExplorer";
 import { CATEGORIES, tools } from "@/lib/tools";
+import { TOPIC_HUBS } from "@/lib/topics";
 
 const SITE_URL = "https://codeutilo.com";
 
@@ -76,8 +77,14 @@ export default function Home() {
               Browse by category
             </Link>
             <Link
-              href="/about"
+              href="/topics"
               className="rounded-xl border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+            >
+              Open topic hubs
+            </Link>
+            <Link
+              href="/about"
+              className="rounded-xl border border-white/30 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               How CodeUtilo works
             </Link>
@@ -97,6 +104,32 @@ export default function Home() {
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{row.count} tools available</p>
           </Link>
         ))}
+      </section>
+
+      <section className="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="mb-4 flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Topic Hubs</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Curated collections for high-intent workflows and stronger internal SEO clustering.
+            </p>
+          </div>
+          <Link href="/topics" className="text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200">
+            View all hubs
+          </Link>
+        </div>
+        <div className="grid gap-3 md:grid-cols-3">
+          {TOPIC_HUBS.map((hub) => (
+            <Link
+              key={hub.slug}
+              href={`/topics/${hub.slug}`}
+              className="rounded-xl border border-gray-200 p-4 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950"
+            >
+              <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">{hub.name}</h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{hub.description}</p>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section className="mb-10">

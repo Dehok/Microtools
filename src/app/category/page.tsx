@@ -44,6 +44,37 @@ export default function CategoryIndexPage() {
     })),
   };
 
+  const faq = [
+    {
+      question: "How are categories organized on CodeUtilo?",
+      answer:
+        "Categories group tools by intent, such as developer workflows, AI text operations, privacy checks, converters, and SEO tasks.",
+    },
+    {
+      question: "Are category pages indexable by search engines?",
+      answer:
+        "Yes. Category pages are static, crawlable routes with canonical metadata and structured data.",
+    },
+    {
+      question: "Do tools in these categories upload data?",
+      answer:
+        "Core tool processing is browser-side. Category pages help discover tools but do not process user input themselves.",
+    },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mb-8">
@@ -84,9 +115,27 @@ export default function CategoryIndexPage() {
         ))}
       </div>
 
+      <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-100">Category FAQ</h2>
+        <div className="space-y-4">
+          {faq.map((item) => (
+            <details key={item.question} className="group rounded-lg border border-gray-200 px-4 py-3 dark:border-gray-700">
+              <summary className="cursor-pointer font-medium text-gray-800 group-hover:text-blue-700 dark:text-gray-200 dark:group-hover:text-blue-300">
+                {item.question}
+              </summary>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </div>
   );
