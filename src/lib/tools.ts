@@ -1226,6 +1226,13 @@ export const tools: Tool[] = [
     icon: "BJL",
   },
   {
+    slug: "eval-results-comparator",
+    name: "Eval Results Comparator",
+    description: "Compare baseline and candidate eval runs to quantify score and pass-rate deltas.",
+    category: "ai",
+    icon: "EVC",
+  },
+  {
     slug: "jsonl-batch-splitter",
     name: "JSONL Batch Splitter",
     description: "Split large JSONL datasets into chunked files by line count or byte size limits.",
@@ -1350,6 +1357,13 @@ export const tools: Tool[] = [
     description: "Grade model responses using weighted rubric rules, regex checks, and banned-term penalties.",
     category: "ai",
     icon: "LRG",
+  },
+  {
+    slug: "ai-reliability-scorecard",
+    name: "AI Reliability Scorecard",
+    description: "Score prompt quality, safety, output contract fit, and replay-test risk before release.",
+    category: "ai",
+    icon: "ARS",
   },
   {
     slug: "prompt-test-case-generator",

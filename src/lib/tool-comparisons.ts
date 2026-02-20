@@ -740,6 +740,90 @@ const COMPARISON_DEFINITIONS: ToolComparisonDefinition[] = [
       },
     ],
   },
+  {
+    slug: "ai-reliability-scorecard-vs-llm-response-grader",
+    leftSlug: "ai-reliability-scorecard",
+    rightSlug: "llm-response-grader",
+    intent: "Release-readiness composite score vs rubric-focused response grading.",
+    summary:
+      "AI Reliability Scorecard combines multiple readiness pillars, while LLM Response Grader focuses on weighted rubric scoring for single responses.",
+    keyTakeaways: [
+      "Use AI Reliability Scorecard for go/no-go release visibility.",
+      "Use LLM Response Grader for detailed response-quality rubric checks.",
+      "Use rubric scoring as an input, then aggregate in reliability scorecard.",
+    ],
+    whenToUseLeft: [
+      "You need one decision score across prompt, safety, output, and replay outcomes.",
+      "You are running release-gate checks for production readiness.",
+      "You want executive-level QA summaries with clear verdicts.",
+    ],
+    whenToUseRight: [
+      "You need detailed weighted rule checks on response quality.",
+      "You are tuning prompts based on rubric criteria.",
+      "You need granular pass/fail signals for specific response requirements.",
+    ],
+    criteria: [
+      { criterion: "Primary output", left: "Composite reliability score", right: "Rubric score", winner: "tie" },
+      { criterion: "Release gate clarity", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Rubric granularity", left: "Moderate", right: "Strong", winner: "right" },
+      { criterion: "Safety/replay integration", left: "Strong", right: "Limited", winner: "left" },
+      { criterion: "Best usage", left: "Final readiness check", right: "Detailed quality analysis", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can LLM Response Grader feed the reliability scorecard process?",
+        answer:
+          "Yes. Many teams run response rubric grading first and then aggregate broader readiness factors in AI Reliability Scorecard.",
+      },
+      {
+        question: "Which tool should I run first?",
+        answer:
+          "Use LLM Response Grader for detailed quality diagnostics first, then AI Reliability Scorecard for final release decision.",
+      },
+    ],
+  },
+  {
+    slug: "eval-results-comparator-vs-prompt-regression-suite-builder",
+    leftSlug: "eval-results-comparator",
+    rightSlug: "prompt-regression-suite-builder",
+    intent: "Run-to-run eval delta analysis vs deterministic regression suite construction.",
+    summary:
+      "Eval Results Comparator quantifies baseline vs candidate result deltas, while Prompt Regression Suite Builder builds deterministic regression cases from prompt changes.",
+    keyTakeaways: [
+      "Use Prompt Regression Suite Builder to generate deterministic QA cases.",
+      "Use Eval Results Comparator to analyze outcomes across two completed runs.",
+      "Best stack: generate suite, execute evals, then compare run deltas.",
+    ],
+    whenToUseLeft: [
+      "You already have two eval outputs and need delta insights.",
+      "You need pass-rate and score trend comparisons.",
+      "You want quick identification of improved and regressed cases.",
+    ],
+    whenToUseRight: [
+      "You need to create deterministic test suites before running evals.",
+      "You are checking constraint drift between baseline and candidate prompts.",
+      "You need structured export artifacts for QA pipeline input.",
+    ],
+    criteria: [
+      { criterion: "Pipeline stage", left: "Post-run analysis", right: "Pre-run suite generation", winner: "tie" },
+      { criterion: "Delta analytics", left: "Strong", right: "Moderate", winner: "left" },
+      { criterion: "Test case generation", left: "Limited", right: "Strong", winner: "right" },
+      { criterion: "Regression debugging", left: "Strong", right: "Strong", winner: "tie" },
+      { criterion: "Recommended order", left: "After eval runs", right: "Before eval runs", winner: "tie" },
+    ],
+    faqs: [
+      {
+        question: "Can Eval Results Comparator replace suite generation?",
+        answer:
+          "No. It compares results after runs are complete, while Prompt Regression Suite Builder creates the deterministic cases used in those runs.",
+      },
+      {
+        question: "What is the practical workflow?",
+        answer:
+          "Build regression suite first, run baseline/candidate evals, then compare outputs with Eval Results Comparator.",
+      },
+    ],
+  },
 ];
 
 function hydrateComparison(definition: ToolComparisonDefinition): ToolComparison | null {
