@@ -31,6 +31,7 @@ const AI_USE_CASE_SECTIONS: TopicUseCaseSection[] = [
     toolSlugs: [
       "prompt-linter",
       "prompt-test-case-generator",
+      "json-output-repairer",
       "llm-response-grader",
       "prompt-versioning-regression-dashboard",
       "eval-results-comparator",
@@ -49,6 +50,7 @@ const AI_USE_CASE_SECTIONS: TopicUseCaseSection[] = [
     toolSlugs: [
       "prompt-policy-firewall",
       "prompt-security-scanner",
+      "prompt-injection-simulator",
       "prompt-guardrail-pack-composer",
       "jailbreak-replay-lab",
       "agent-safety-checklist",
@@ -67,6 +69,7 @@ const AI_USE_CASE_SECTIONS: TopicUseCaseSection[] = [
     toolSlugs: [
       "rag-chunking-simulator",
       "rag-noise-pruner",
+      "rag-context-poisoning-detector",
       "rag-context-relevance-scorer",
       "claim-evidence-matrix",
       "grounded-answer-citation-checker",
@@ -108,6 +111,11 @@ const AI_WORKFLOWS: TopicWorkflow[] = [
         label: "Prompt Test Case Generator",
         href: "/prompt-test-case-generator",
         note: "Build deterministic records for quick repeatable checks.",
+      },
+      {
+        label: "JSON Output Repairer",
+        href: "/json-output-repairer",
+        note: "Fix malformed structured outputs before strict validation.",
       },
       { label: "LLM Response Grader", href: "/llm-response-grader", note: "Score output quality against rubric." },
       {
@@ -173,6 +181,11 @@ const AI_WORKFLOWS: TopicWorkflow[] = [
         label: "Prompt Security Scanner",
         href: "/prompt-security-scanner",
         note: "Detect new risky phrases and leakage patterns.",
+      },
+      {
+        label: "Prompt Injection Simulator",
+        href: "/prompt-injection-simulator",
+        note: "Stress-test guardrails against override and exfiltration attacks.",
       },
       {
         label: "Hallucination Risk Checklist",

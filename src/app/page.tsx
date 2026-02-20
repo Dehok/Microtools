@@ -61,14 +61,14 @@ const TOOL_STACKS = [
     id: "prompt-release",
     name: "Prompt Release Stack",
     description: "Use before deploying prompt updates to production.",
-    toolSlugs: ["prompt-linter", "prompt-test-case-generator", "prompt-policy-firewall", "ai-qa-workflow-runner"],
+    toolSlugs: ["prompt-linter", "prompt-test-case-generator", "json-output-repairer", "ai-qa-workflow-runner"],
     href: "/workflows/prompt-release-checklist",
   },
   {
     id: "rag-grounding",
     name: "RAG Grounding Stack",
     description: "Improve retrieval signal and reduce unsupported answer claims.",
-    toolSlugs: ["rag-chunking-simulator", "rag-noise-pruner", "rag-context-relevance-scorer", "claim-evidence-matrix"],
+    toolSlugs: ["rag-chunking-simulator", "rag-noise-pruner", "rag-context-poisoning-detector", "claim-evidence-matrix"],
     href: "/workflows/rag-grounding-audit",
   },
   {
@@ -77,7 +77,7 @@ const TOOL_STACKS = [
     description: "Reduce leakage risk in prompts and snippet-based workflows.",
     toolSlugs: [
       "prompt-security-scanner",
-      "secret-detector-for-code-snippets",
+      "prompt-injection-simulator",
       "prompt-policy-firewall",
       "prompt-guardrail-pack-composer",
     ],
@@ -87,7 +87,7 @@ const TOOL_STACKS = [
     id: "output-validation",
     name: "Output Validation Stack",
     description: "Harden parser-safe outputs and function/tool-call payloads.",
-    toolSlugs: ["output-contract-tester", "json-output-guard", "function-calling-schema-tester", "context-window-packer"],
+    toolSlugs: ["json-output-repairer", "output-contract-tester", "json-output-guard", "function-calling-schema-tester"],
     href: "/workflows/ai-output-validation",
   },
 ];

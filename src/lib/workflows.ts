@@ -43,6 +43,7 @@ export const WORKFLOW_GUIDES: WorkflowGuide[] = [
     toolSlugs: [
       "prompt-linter",
       "prompt-test-case-generator",
+      "json-output-repairer",
       "llm-response-grader",
       "prompt-policy-firewall",
       "jailbreak-replay-lab",
@@ -66,6 +67,12 @@ export const WORKFLOW_GUIDES: WorkflowGuide[] = [
         toolSlug: "prompt-test-case-generator",
         reason: "Create consistent test cases for repeatable validation.",
         outcome: "Stable test input set for scoring and regression checks.",
+      },
+      {
+        title: "Repair malformed structured outputs",
+        toolSlug: "json-output-repairer",
+        reason: "Fix broken JSON responses before running strict validation and scoring.",
+        outcome: "Cleaner structured outputs for downstream QA checks.",
       },
       {
         title: "Score output quality",
@@ -122,6 +129,7 @@ export const WORKFLOW_GUIDES: WorkflowGuide[] = [
     toolSlugs: [
       "rag-chunking-simulator",
       "rag-noise-pruner",
+      "rag-context-poisoning-detector",
       "rag-context-relevance-scorer",
       "claim-evidence-matrix",
       "grounded-answer-citation-checker",
@@ -145,6 +153,12 @@ export const WORKFLOW_GUIDES: WorkflowGuide[] = [
         toolSlug: "rag-noise-pruner",
         reason: "Remove low-signal content that pollutes retrieval context.",
         outcome: "Cleaner chunk pool for ranking and grounding.",
+      },
+      {
+        title: "Detect poisoned chunks",
+        toolSlug: "rag-context-poisoning-detector",
+        reason: "Flag chunks with injection, exfiltration, or suspicious instruction payloads.",
+        outcome: "Safer retrieval context set before answer generation.",
       },
       {
         title: "Score context relevance",
@@ -193,6 +207,7 @@ export const WORKFLOW_GUIDES: WorkflowGuide[] = [
       "Automation-safe output hardening",
     ],
     toolSlugs: [
+      "json-output-repairer",
       "output-contract-tester",
       "json-output-guard",
       "function-calling-schema-tester",
@@ -205,6 +220,12 @@ export const WORKFLOW_GUIDES: WorkflowGuide[] = [
       "json-output-guard-vs-function-calling-schema-tester",
     ],
     steps: [
+      {
+        title: "Repair malformed JSON first",
+        toolSlug: "json-output-repairer",
+        reason: "Recover parseable JSON from imperfect model outputs before strict checks.",
+        outcome: "Lower validation noise and clearer downstream error signals.",
+      },
       {
         title: "Define response contract",
         toolSlug: "output-contract-tester",
@@ -265,6 +286,7 @@ export const WORKFLOW_GUIDES: WorkflowGuide[] = [
     ],
     toolSlugs: [
       "prompt-security-scanner",
+      "prompt-injection-simulator",
       "secret-detector-for-code-snippets",
       "prompt-policy-firewall",
       "prompt-guardrail-pack-composer",
@@ -284,6 +306,12 @@ export const WORKFLOW_GUIDES: WorkflowGuide[] = [
         toolSlug: "prompt-security-scanner",
         reason: "Detect leakage, injection, and risky language patterns quickly.",
         outcome: "First-pass risk inventory before deeper policy gating.",
+      },
+      {
+        title: "Simulate injection attacks",
+        toolSlug: "prompt-injection-simulator",
+        reason: "Stress-test guardrail coverage against override and exfiltration attempts.",
+        outcome: "Defense coverage score with clear weak points.",
       },
       {
         title: "Check code snippets for leaked secrets",
@@ -409,4 +437,3 @@ export function getWorkflowTools(slug: string) {
     .map((toolSlug) => tools.find((tool) => tool.slug === toolSlug))
     .filter((tool): tool is (typeof tools)[number] => Boolean(tool));
 }
-

@@ -39,15 +39,18 @@ export const TOPIC_HUBS: TopicHub[] = [
       "prompt-ab-test-matrix",
       "prompt-test-case-generator",
       "llm-response-grader",
+      "json-output-repairer",
       "ai-reliability-scorecard",
       "ai-qa-workflow-runner",
       "answer-consistency-checker",
       "claim-evidence-matrix",
       "grounded-answer-citation-checker",
+      "rag-context-poisoning-detector",
       "output-contract-tester",
       "hallucination-risk-checklist",
       "hallucination-guardrail-builder",
       "prompt-guardrail-pack-composer",
+      "prompt-injection-simulator",
     ],
     faqs: [
       {
@@ -94,6 +97,7 @@ export const TOPIC_HUBS: TopicHub[] = [
     toolSlugs: [
       "prompt-policy-firewall",
       "prompt-security-scanner",
+      "prompt-injection-simulator",
       "prompt-red-team-generator",
       "jailbreak-replay-lab",
       "prompt-guardrail-pack-composer",

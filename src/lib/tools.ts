@@ -1135,6 +1135,13 @@ export const tools: Tool[] = [
     icon: "JOG",
   },
   {
+    slug: "json-output-repairer",
+    name: "JSON Output Repairer",
+    description: "Repair malformed AI JSON outputs and recover parser-safe structured data.",
+    category: "ai",
+    icon: "JOR",
+  },
+  {
     slug: "function-calling-schema-tester",
     name: "Function Calling Schema Tester",
     description: "Test tool-call arguments against function schema and catch validation failures early.",
@@ -1345,6 +1352,13 @@ export const tools: Tool[] = [
     icon: "PSC",
   },
   {
+    slug: "prompt-injection-simulator",
+    name: "Prompt Injection Simulator",
+    description: "Simulate prompt-injection attacks and score guardrail resilience before release.",
+    category: "ai",
+    icon: "PIS",
+  },
+  {
     slug: "context-window-packer",
     name: "Context Window Packer",
     description: "Pack prompt segments by priority into a fixed token budget with required-rule support.",
@@ -1427,6 +1441,13 @@ export const tools: Tool[] = [
     description: "Rank retrieval chunks for a query with overlap, phrase hits, and redundancy penalties.",
     category: "ai",
     icon: "RCR",
+  },
+  {
+    slug: "rag-context-poisoning-detector",
+    name: "RAG Context Poisoning Detector",
+    description: "Detect poisoned retrieval chunks with injection and exfiltration-style risk markers.",
+    category: "ai",
+    icon: "RPD",
   },
   {
     slug: "prompt-policy-firewall",

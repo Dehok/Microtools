@@ -156,6 +156,7 @@ const AI_SUBSECTIONS = [
       "prompt-regression-suite-builder",
       "prompt-test-case-generator",
       "llm-response-grader",
+      "json-output-repairer",
       "ai-reliability-scorecard",
       "ai-qa-workflow-runner",
       "eval-results-comparator",
@@ -188,6 +189,7 @@ const AI_SUBSECTIONS = [
       "rag-chunking-simulator",
       "rag-noise-pruner",
       "rag-context-relevance-scorer",
+      "rag-context-poisoning-detector",
       "claim-evidence-matrix",
       "grounded-answer-citation-checker",
     ],
@@ -208,6 +210,7 @@ const AI_SUBSECTIONS = [
     toolSlugs: [
       "prompt-policy-firewall",
       "prompt-security-scanner",
+      "prompt-injection-simulator",
       "sensitive-data-pseudonymizer",
       "prompt-red-team-generator",
       "jailbreak-replay-lab",
