@@ -6,8 +6,9 @@ import { CATEGORIES, tools } from "@/lib/tools";
 const SITE_URL = "https://codeutilo.com";
 
 const categoryDescriptions: Record<string, string> = {
+  ai: "AI utilities for prompt engineering, safety checks, RAG tuning, and response evaluation.",
   developer: "Developer utilities for coding, debugging, formatting, and API workflows.",
-  text: "Text and AI-focused utilities for prompts, writing checks, parsing, and transformation.",
+  text: "Text utilities for writing checks, parsing, cleanup, and transformation.",
   converter: "Converters for files, data formats, units, and structured transformations.",
   generator: "Generators for content, identifiers, templates, and productivity assets.",
   crypto: "Privacy and security tools for hashing, redaction, token checks, and safe handling.",
@@ -19,6 +20,17 @@ const categoryDescriptions: Record<string, string> = {
 };
 
 const categoryFaqs: Record<string, { question: string; answer: string }[]> = {
+  ai: [
+    {
+      question: "What does the AI category include?",
+      answer:
+        "It includes prompt quality tools, policy and safety checks, RAG tuning helpers, and model output evaluation utilities.",
+    },
+    {
+      question: "Are AI category tools client-side?",
+      answer: "Yes. Tool processing runs in-browser so prompt and file inputs are not uploaded by default.",
+    },
+  ],
   developer: [
     {
       question: "Which developer tools are most useful for API workflows?",
@@ -32,9 +44,9 @@ const categoryFaqs: Record<string, { question: string; answer: string }[]> = {
   ],
   text: [
     {
-      question: "Do text tools support AI prompt workflows?",
+      question: "What kind of text workflows fit this category?",
       answer:
-        "Yes. This category includes prompt linting, consistency checks, guardrail generation, and other AI-oriented text utilities.",
+        "Text tools focus on writing cleanup, formatting, parsing, and generic text transformations not specific to AI model QA.",
     },
     {
       question: "Are text transformations done locally?",
@@ -70,7 +82,7 @@ const categoryFaqs: Record<string, { question: string; answer: string }[]> = {
     {
       question: "Can these tools reduce AI data leakage risk?",
       answer:
-        "Yes. Tools like Prompt Policy Firewall and Sensitive Data Pseudonymizer help remove risky content before model calls.",
+        "Yes. Tools like PII Redactor and Secret Detector help reduce accidental exposure before sharing text or code.",
     },
   ],
   media: [

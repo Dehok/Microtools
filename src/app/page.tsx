@@ -180,8 +180,8 @@ export default function Home() {
               High-demand tools for prompt quality, grounding, and sensitive-data handling.
             </p>
           </div>
-          <Link href="/category/text" className="text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200">
-            View all AI text tools
+          <Link href="/category/ai" className="text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200">
+            View all AI tools
           </Link>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

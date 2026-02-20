@@ -7,14 +7,14 @@ const SITE_URL = "https://codeutilo.com";
 export const metadata: Metadata = {
   title: "Tool Categories",
   description:
-    "Browse CodeUtilo tool categories including developer, AI text, privacy, SEO, converters, calculators, and media tools.",
+    "Browse CodeUtilo tool categories including AI, developer, privacy, SEO, converters, calculators, and media tools.",
   alternates: {
     canonical: `${SITE_URL}/category`,
   },
   openGraph: {
     title: "Tool Categories | CodeUtilo",
     description:
-      "Browse CodeUtilo tool categories including developer, AI text, privacy, SEO, converters, calculators, and media tools.",
+      "Browse CodeUtilo tool categories including AI, developer, privacy, SEO, converters, calculators, and media tools.",
     url: `${SITE_URL}/category`,
     siteName: "CodeUtilo",
     type: "website",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Tool Categories | CodeUtilo",
     description:
-      "Browse CodeUtilo tool categories including developer, AI text, privacy, SEO, converters, calculators, and media tools.",
+      "Browse CodeUtilo tool categories including AI, developer, privacy, SEO, converters, calculators, and media tools.",
   },
 };
 
@@ -48,7 +48,7 @@ export default function CategoryIndexPage() {
     {
       question: "How are categories organized on CodeUtilo?",
       answer:
-        "Categories group tools by intent, such as developer workflows, AI text operations, privacy checks, converters, and SEO tasks.",
+        "Categories group tools by intent, such as AI workflows, developer operations, privacy checks, converters, and SEO tasks.",
     },
     {
       question: "Are category pages indexable by search engines?",
