@@ -41,7 +41,7 @@ export default function AboutPage() {
         <h2 className="mt-8 text-xl font-semibold text-gray-900 dark:text-gray-100">Contact</h2>
         <p>
           Have a suggestion for a new tool? Found a bug? We&apos;d love to hear from you.
-          Reach out at <strong>hello@codeutilo.com</strong>.
+          Reach out at <strong>codeutilo@proton.me</strong>.
         </p>
       </div>
 

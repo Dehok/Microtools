@@ -77,7 +77,7 @@ export default function PrivacyPage() {
         <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-gray-100">9. Contact</h2>
         <p>
           If you have questions about this privacy policy, please contact us at{" "}
-          <strong>hello@codeutilo.com</strong>.
+          <strong>codeutilo@proton.me</strong>.
         </p>
       </div>
 
