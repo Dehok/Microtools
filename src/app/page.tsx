@@ -56,6 +56,48 @@ const topCategoryRows = categoryCounts
 
 const featuredComparisons = getAllComparisons().slice(0, 4);
 const featuredWorkflows = WORKFLOW_GUIDES.slice(0, 4);
+const TOOL_STACKS = [
+  {
+    id: "prompt-release",
+    name: "Prompt Release Stack",
+    description: "Use before deploying prompt updates to production.",
+    toolSlugs: ["prompt-linter", "prompt-test-case-generator", "prompt-policy-firewall", "ai-qa-workflow-runner"],
+    href: "/workflows/prompt-release-checklist",
+  },
+  {
+    id: "rag-grounding",
+    name: "RAG Grounding Stack",
+    description: "Improve retrieval signal and reduce unsupported answer claims.",
+    toolSlugs: ["rag-chunking-simulator", "rag-noise-pruner", "rag-context-relevance-scorer", "claim-evidence-matrix"],
+    href: "/workflows/rag-grounding-audit",
+  },
+  {
+    id: "privacy-hardening",
+    name: "Privacy Hardening Stack",
+    description: "Reduce leakage risk in prompts and snippet-based workflows.",
+    toolSlugs: [
+      "prompt-security-scanner",
+      "secret-detector-for-code-snippets",
+      "prompt-policy-firewall",
+      "prompt-guardrail-pack-composer",
+    ],
+    href: "/workflows/prompt-safety-hardening",
+  },
+  {
+    id: "output-validation",
+    name: "Output Validation Stack",
+    description: "Harden parser-safe outputs and function/tool-call payloads.",
+    toolSlugs: ["output-contract-tester", "json-output-guard", "function-calling-schema-tester", "context-window-packer"],
+    href: "/workflows/ai-output-validation",
+  },
+];
+
+const resolvedToolStacks = TOOL_STACKS.map((stack) => ({
+  ...stack,
+  tools: stack.toolSlugs
+    .map((slug) => tools.find((tool) => tool.slug === slug))
+    .filter((tool): tool is (typeof tools)[number] => Boolean(tool)),
+}));
 
 export default function Home() {
   return (
@@ -179,6 +221,48 @@ export default function Home() {
       <section className="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
         <div className="mb-4 flex items-end justify-between">
           <div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Recommended Tool Stacks</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Curated tool bundles for common AI workflows. Start with a stack and run it end-to-end.
+            </p>
+          </div>
+          <Link
+            href="/workflows"
+            className="text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+          >
+            All workflow guides
+          </Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {resolvedToolStacks.map((stack) => (
+            <article key={stack.id} className="rounded-xl border border-gray-200 p-4 dark:border-gray-700">
+              <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">{stack.name}</h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{stack.description}</p>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {stack.tools.map((tool) => (
+                  <Link
+                    key={tool.slug}
+                    href={`/${tool.slug}`}
+                    className="rounded-full border border-gray-200 px-2.5 py-1 text-xs text-gray-700 hover:border-blue-300 hover:text-blue-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-700 dark:hover:text-blue-300"
+                  >
+                    {tool.name}
+                  </Link>
+                ))}
+              </div>
+              <Link
+                href={stack.href}
+                className="mt-3 inline-flex text-xs font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+              >
+                Open stack workflow
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="mb-4 flex items-end justify-between">
+          <div>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Workflow Guides</h2>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Step-by-step landing pages for high-intent AI tasks like release checks, RAG grounding audits, and
@@ -206,7 +290,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+      <ToolExplorer className="hidden md:block" id="tool-explorer" />
+
+      <section className="mt-10 mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
         <div className="mb-4 flex items-end justify-between">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Tool Comparisons</h2>
@@ -236,8 +322,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      <ToolExplorer className="hidden md:block" id="tool-explorer" />
 
       <section className="mt-12 rounded-2xl border border-gray-200 bg-white p-6 text-sm leading-relaxed text-gray-600 shadow-sm dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400">
         <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-gray-100">SEO and Crawl-Friendly Structure</h2>
