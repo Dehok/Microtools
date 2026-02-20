@@ -1197,6 +1197,13 @@ export const tools: Tool[] = [
     icon: "BJL",
   },
   {
+    slug: "jsonl-batch-splitter",
+    name: "JSONL Batch Splitter",
+    description: "Split large JSONL datasets into chunked files by line count or byte size limits.",
+    category: "developer",
+    icon: "JBS",
+  },
+  {
     slug: "pdf-to-png",
     name: "PDF to PNG Converter",
     description: "Convert PDF pages to PNG images in-browser with adjustable render scale.",
@@ -1232,6 +1239,20 @@ export const tools: Tool[] = [
     icon: "PII",
   },
   {
+    slug: "cookie-audit-parser",
+    name: "Cookie Audit Parser",
+    description: "Parse Cookie/Set-Cookie headers and audit Secure, HttpOnly, and SameSite flags.",
+    category: "crypto",
+    icon: "CKY",
+  },
+  {
+    slug: "csp-header-builder",
+    name: "CSP Header Builder",
+    description: "Generate Content-Security-Policy headers with practical defaults and risk warnings.",
+    category: "developer",
+    icon: "CSP",
+  },
+  {
     slug: "browser-fingerprint-checker",
     name: "Browser Fingerprint Checker",
     description: "Inspect browser/device fingerprint signals like canvas hash, WebGL, timezone, and platform.",
@@ -1258,6 +1279,13 @@ export const tools: Tool[] = [
     description: "Remove UTM and tracking parameters from links in bulk for cleaner, privacy-friendly URLs.",
     category: "seo",
     icon: "URL",
+  },
+  {
+    slug: "prompt-diff-optimizer",
+    name: "Prompt Diff Optimizer",
+    description: "Compare prompt revisions, estimate token delta, and spot removed constraint lines.",
+    category: "text",
+    icon: "PDO",
   },
   {
     slug: "passphrase-generator",
