@@ -145,36 +145,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-        <div className="mb-4 flex items-end justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Workflow Guides</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Step-by-step landing pages for high-intent AI tasks like release checks, RAG grounding audits, and
-              output validation.
-            </p>
-          </div>
-          <Link
-            href="/workflows"
-            className="text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
-          >
-            View all guides
-          </Link>
-        </div>
-        <div className="grid gap-3 md:grid-cols-2">
-          {featuredWorkflows.map((workflow) => (
-            <Link
-              key={workflow.slug}
-              href={`/workflows/${workflow.slug}`}
-              className="rounded-xl border border-gray-200 p-4 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950"
-            >
-              <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">{workflow.name}</h3>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{workflow.description}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       <section className="mb-10">
         <div className="mb-4 flex items-end justify-between">
           <div>
@@ -201,6 +171,36 @@ export default function Home() {
                 {tool.name}
               </h3>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{tool.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="mb-4 flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Workflow Guides</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Step-by-step landing pages for high-intent AI tasks like release checks, RAG grounding audits, and
+              output validation.
+            </p>
+          </div>
+          <Link
+            href="/workflows"
+            className="text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+          >
+            View all guides
+          </Link>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2">
+          {featuredWorkflows.map((workflow) => (
+            <Link
+              key={workflow.slug}
+              href={`/workflows/${workflow.slug}`}
+              className="rounded-xl border border-gray-200 p-4 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950"
+            >
+              <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">{workflow.name}</h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{workflow.description}</p>
             </Link>
           ))}
         </div>
