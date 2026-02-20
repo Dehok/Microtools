@@ -141,37 +141,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-        <div className="mb-4 flex items-end justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Tool Comparisons</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Side-by-side decision pages for similar AI and workflow tools.
-            </p>
-          </div>
-          <Link
-            href="/compare"
-            className="text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
-          >
-            View all comparisons
-          </Link>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {featuredComparisons.map((comparison) => (
-            <Link
-              key={comparison.slug}
-              href={`/compare/${comparison.slug}`}
-              className="rounded-xl border border-gray-200 p-4 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950"
-            >
-              <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
-                {comparison.leftTool.name} vs {comparison.rightTool.name}
-              </h3>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{comparison.intent}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       <section className="mb-10">
         <div className="mb-4 flex items-end justify-between">
           <div>
@@ -198,6 +167,37 @@ export default function Home() {
                 {tool.name}
               </h3>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{tool.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="mb-4 flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Tool Comparisons</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Side-by-side decision pages for similar AI and workflow tools.
+            </p>
+          </div>
+          <Link
+            href="/compare"
+            className="text-sm font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+          >
+            View all comparisons
+          </Link>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {featuredComparisons.map((comparison) => (
+            <Link
+              key={comparison.slug}
+              href={`/compare/${comparison.slug}`}
+              className="rounded-xl border border-gray-200 p-4 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-700 dark:hover:bg-blue-950"
+            >
+              <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                {comparison.leftTool.name} vs {comparison.rightTool.name}
+              </h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{comparison.intent}</p>
             </Link>
           ))}
         </div>
