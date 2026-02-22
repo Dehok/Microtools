@@ -39,6 +39,5 @@ module.exports = {
         allow: "/",
       },
     ],
-    additionalSitemaps: ["https://codeutilo.com/sitemap.xml"],
   },
 };
